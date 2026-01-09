@@ -1,0 +1,193 @@
+---
+description: Project-specific rules for AI coding assistants
+globs:
+  - "**/*"
+---
+
+# [Project Name] - AI Agent Rules
+
+> **Purpose**: Guide AI assistants to write code that matches project patterns.
+
+## Project Context
+
+### What This Project Is
+<!-- 1-2 sentences describing the project -->
+[Project description]
+
+### Tech Stack
+- **Language**: [TypeScript/Python/Go/etc.]
+- **Framework**: [Next.js/Django/Gin/etc.]
+- **Database**: [PostgreSQL/MongoDB/etc.]
+- **Testing**: [Jest/Pytest/etc.]
+
+### Quick Start
+```bash
+# Install dependencies
+[install command]
+
+# Run development server
+[dev command]
+
+# Run tests
+[test command]
+```
+
+---
+
+## Code Patterns
+
+### File Organization
+```
+src/
+├── [folder]/        # [Purpose]
+├── [folder]/        # [Purpose]
+└── [folder]/        # [Purpose]
+```
+
+### Naming Conventions
+
+| Type | Convention | Example |
+|------|------------|---------|
+| Files | [kebab-case/camelCase/etc.] | `user-service.ts` |
+| Components | [PascalCase] | `UserProfile.tsx` |
+| Functions | [camelCase] | `getUserById()` |
+| Constants | [SCREAMING_SNAKE] | `MAX_RETRY_COUNT` |
+
+### Import Order
+```typescript
+// 1. External packages
+import { something } from 'external-package'
+
+// 2. Internal aliases
+import { util } from '@/lib/utils'
+
+// 3. Relative imports (minimize these)
+import { local } from './local'
+```
+
+---
+
+## Do's and Don'ts
+
+### ✅ DO
+- [Pattern to follow]
+- [Pattern to follow]
+- [Pattern to follow]
+
+### ❌ DON'T
+- [Anti-pattern to avoid]
+- [Anti-pattern to avoid]
+- [Anti-pattern to avoid]
+
+---
+
+## Common Tasks
+
+### Creating a New [Component/Service/etc.]
+
+1. Create file at `[path]`
+2. Use this template:
+
+```typescript
+// Template code here
+```
+
+3. Add tests at `[test path]`
+4. Export from `[index file]`
+
+### Adding a New [Route/Endpoint/etc.]
+
+1. Step 1
+2. Step 2
+3. Step 3
+
+---
+
+## Testing
+
+### Test File Location
+- Unit tests: `[path]`
+- Integration tests: `[path]`
+- E2E tests: `[path]`
+
+### Test Naming
+```typescript
+describe('[Component/Function]', () => {
+  it('should [expected behavior] when [condition]', () => {
+    // Arrange
+    // Act
+    // Assert
+  })
+})
+```
+
+### Mocking
+```typescript
+// How to mock [common dependency]
+```
+
+---
+
+## Error Handling
+
+### Pattern
+```typescript
+// Standard error handling pattern for this project
+```
+
+### Error Types
+| Error | When to Use |
+|-------|-------------|
+| `[ErrorType]` | [Situation] |
+
+---
+
+## Documentation Rules
+
+### When to Update Docs
+- Adding new feature → Update [doc]
+- Changing API → Update [doc]
+- New pattern → Add to this file
+
+### Comment Style
+```typescript
+// ✅ Good: Explains WHY
+// Calculate with buffer to prevent race conditions
+
+// ❌ Bad: Explains WHAT (code already shows this)
+// Add 1 to count
+```
+
+---
+
+## Performance Guidelines
+
+- [Guideline 1]
+- [Guideline 2]
+- [Guideline 3]
+
+---
+
+## Security Rules
+
+- [Security rule 1]
+- [Security rule 2]
+- Never [security anti-pattern]
+
+---
+
+## Resources
+
+- **Architecture**: `docs/reference/architecture.md`
+- **Code Map**: `docs/reference/code-map.md`
+- **Current Spec**: `docs/specs/[current]/spec.md`
+
+---
+
+<!-- 
+CUSTOMIZATION:
+1. Replace all [placeholders] with project-specific content
+2. Add domain-specific patterns as they emerge
+3. Update as the project evolves
+4. Keep rules actionable and enforceable
+-->

@@ -1,0 +1,226 @@
+---
+description: Project architecture patterns and structure
+globs:
+  - "**/*"
+---
+
+# Project Architecture
+
+> **Template**: Customize this file for your project's architecture
+
+---
+
+## Directory Structure
+
+```
+project/
+├── app/                    # [Routes/pages/views]
+│   ├── (public)/          # [Public routes]
+│   ├── (protected)/       # [Auth-required routes]
+│   └── api/               # [API routes]
+│
+├── components/            # [Shared UI components]
+│   ├── ui/               # [Base UI primitives]
+│   └── common/           # [Common components]
+│
+├── features/             # [Feature modules]
+│   ├── auth/            # [Authentication feature]
+│   │   ├── components/  # Feature-specific components
+│   │   ├── hooks/       # Feature-specific hooks
+│   │   └── utils/       # Feature utilities
+│   └── [feature]/       # [Other features]
+│
+├── lib/                  # [Core utilities]
+│   ├── api/             # [API client]
+│   ├── hooks/           # [Global hooks]
+│   └── utils/           # [Helper functions]
+│
+├── types/               # [TypeScript types]
+└── config/              # [Configuration]
+```
+
+---
+
+## Routing Patterns
+
+### [Framework-specific routing]
+
+Example (Next.js App Router):
+```
+app/
+├── page.tsx              # Home (/)
+├── layout.tsx            # Root layout
+├── (auth)/
+│   ├── login/page.tsx   # /login
+│   └── signup/page.tsx  # /signup
+└── [feature]/
+    ├── page.tsx         # /[feature]
+    └── [id]/page.tsx    # /[feature]/[id]
+```
+
+---
+
+## Component Patterns
+
+### Component Organization
+
+```typescript
+// Feature component structure
+features/[feature]/
+├── components/
+│   ├── FeatureList.tsx      # Main list component
+│   ├── FeatureCard.tsx      # Card component
+│   └── FeatureForm.tsx      # Form component
+├── hooks/
+│   └── useFeature.ts        # Feature hooks
+├── utils/
+│   └── feature.utils.ts     # Helper functions
+└── types.ts                 # Feature types
+```
+
+### Component File Structure
+
+```typescript
+// Component template
+import { type FC } from 'react'
+
+interface ComponentProps {
+  // Props definition
+}
+
+export const Component: FC<ComponentProps> = ({ prop }) => {
+  // Hooks first
+  // Derived state
+  // Event handlers
+  // Render
+  return (
+    <div>
+      {/* JSX */}
+    </div>
+  )
+}
+```
+
+---
+
+## Import Conventions
+
+### Path Aliases
+
+```typescript
+// ❌ WRONG - relative imports
+import { Button } from '../../../components/ui/Button'
+
+// ✅ CORRECT - path aliases
+import { Button } from '@/components/ui/Button'
+```
+
+### Import Order
+
+```typescript
+// 1. External packages
+import { useState } from 'react'
+import { useQuery } from '@tanstack/react-query'
+
+// 2. Internal aliases
+import { Button } from '@/components/ui/Button'
+import { useAuth } from '@/features/auth/hooks/useAuth'
+
+// 3. Relative imports (same feature only)
+import { FeatureCard } from './FeatureCard'
+import type { FeatureProps } from './types'
+```
+
+---
+
+## Server vs Client Code
+
+### [Framework-specific patterns]
+
+Example (Next.js):
+```typescript
+// Server Component (default)
+export default async function Page() {
+  const data = await fetchData()
+  return <ServerComponent data={data} />
+}
+
+// Client Component (when needed)
+'use client'
+
+export function InteractiveComponent() {
+  const [state, setState] = useState()
+  return <button onClick={() => setState(!state)} />
+}
+```
+
+### When to Use Client Components
+
+- Event handlers (onClick, onChange)
+- useState, useEffect, useReducer
+- Browser-only APIs
+- Third-party client libraries
+
+---
+
+## API Patterns
+
+### API Route Structure
+
+```typescript
+// Example API handler
+export async function GET(request: Request) {
+  try {
+    const data = await fetchData()
+    return Response.json(data)
+  } catch (error) {
+    return Response.json(
+      { error: 'Failed to fetch' },
+      { status: 500 }
+    )
+  }
+}
+```
+
+---
+
+## Environment Configuration
+
+### Required Variables
+
+```env
+# Database
+DATABASE_URL=
+
+# Authentication
+AUTH_SECRET=
+
+# External APIs
+API_KEY=
+```
+
+### Environment Files
+
+- `.env.local` - Local development (never commit)
+- `.env.example` - Template (commit this)
+- `.env.production` - Production values (CI/CD only)
+
+---
+
+## Performance Considerations
+
+### [Add your performance patterns]
+
+Example:
+- Lazy load heavy components
+- Use server components for static content
+- Implement proper caching strategies
+- Optimize images and assets
+
+---
+
+## Related Rules
+
+- `coding-patterns.mdc` - Code conventions
+- `state-management.mdc` - Data patterns
+- `testing-strategy.mdc` - Test approach

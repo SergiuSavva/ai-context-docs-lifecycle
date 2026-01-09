@@ -1,0 +1,85 @@
+---
+description: Master index of all Cursor rules - AI agents should load this first
+globs:
+  - "**/*"
+---
+
+# Cursor Rules Index
+
+> **Purpose**: Guide AI agents on which rules to load and when. Load this index first.
+
+---
+
+## Rule Categories
+
+### Core Rules (Always Relevant)
+
+| Rule | File | When to Load |
+|------|------|--------------|
+| **Project Architecture** | `project-architecture.mdc` | Always - project structure |
+| **Coding Patterns** | `coding-patterns.mdc` | Always - code conventions |
+
+### Task-Specific Rules
+
+| Task Type | Rule File | Description |
+|-----------|-----------|-------------|
+| **State/Data** | `state-management.mdc` | Data fetching, caching, state |
+| **Testing** | `testing-strategy.mdc` | Test approach and patterns |
+| **Documentation** | `documentation.mdc` | Doc maintenance guidelines |
+
+---
+
+## Loading Priority by Task
+
+### Building a New Feature
+1. `project-architecture.mdc` - Where files go
+2. `coding-patterns.mdc` - How to write code
+3. `state-management.mdc` - Data handling
+4. `documentation.mdc` - What to document
+
+### Writing Tests
+1. `testing-strategy.mdc` - Test philosophy and patterns
+
+### Fixing Style Issues
+1. `coding-patterns.mdc` - Conventions and fixes
+
+### Updating Documentation
+1. `documentation.mdc` - Guidelines
+
+---
+
+## Quick Reference
+
+| # | File | Purpose |
+|---|------|---------|
+| 1 | `project-architecture.mdc` | Project structure, routing |
+| 2 | `coding-patterns.mdc` | Code style, conventions |
+| 3 | `state-management.mdc` | Data fetching, state |
+| 4 | `testing-strategy.mdc` | Test strategy |
+| 5 | `documentation.mdc` | Doc guidelines |
+
+---
+
+## Critical Reminders
+
+### [Add your key reminders here]
+
+Example:
+```tsx
+// ❌ WRONG
+import { Button } from '../../../components/Button'
+
+// ✅ CORRECT
+import { Button } from '@/components/Button'
+```
+
+---
+
+## Documentation Locations
+
+| Audience | Location | Purpose |
+|----------|----------|---------|
+| AI Agents | `.cursor/rules/*.mdc` | Detailed patterns |
+| AI Agents | `AGENTS.md` | Quick context |
+| Developers | `docs/INDEX.md` | Navigation |
+| Both | `docs/TASKS.md` | Task tracking |
