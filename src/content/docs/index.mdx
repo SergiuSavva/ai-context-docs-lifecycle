@@ -1,0 +1,98 @@
+---
+title: Give your AI agent memory
+description: A lightweight methodology that turns documentation into persistent context for AI coding assistants.
+template: splash
+head: []
+hero:
+  tagline: Documentation as persistent memory for AI coding assistants
+  actions:
+    - text: Get Started
+      link: /quick-start/
+      icon: right-arrow
+      variant: primary
+    - text: View Templates
+      link: /templates/
+      variant: minimal
+---
+
+import { LinkCard } from '@astrojs/starlight/components';
+
+## What Is This?
+
+**AI-First Dev Kit** is a lightweight methodology that turns your project documentation into persistent context for AI coding assistants.
+
+Instead of re-explaining your project every session, you write docs once — and AI reads them automatically.
+
+| Pillar | Purpose |
+|--------|---------|
+| 📋 **Specs** | What to build — PRD-lite specs define requirements before coding |
+| 📜 **Rules** | How to build — Pattern files that guide AI behavior automatically |
+| 📚 **Reference** | What exists — AGENTS.md and feature docs preserve decisions |
+
+---
+
+## Who Is This For?
+
+Developers using AI coding assistants who want:
+
+- **Consistent output** — AI that follows YOUR patterns, not generic ones
+- **Less repetition** — Stop re-explaining architecture every session
+- **Better collaboration** — AI that respects past decisions
+
+Works with any AI tool: Cursor, Claude Code, GitHub Copilot, or any LLM.
+
+---
+
+## The Problem
+
+AI coding assistants have a memory problem:
+
+- **No Memory** — Every conversation starts from zero. You explain the same things repeatedly.
+- **Generic Code** — Without project context, AI generates boilerplate that doesn't fit your style.
+- **Contradictory Advice** — Unaware of past decisions, AI suggests conflicting patterns.
+
+---
+
+## Why Documentation?
+
+**Documentation is the only persistent context AI can access.**
+
+| Without This Kit | With This Kit |
+|------------------|---------------|
+| Re-explain patterns every session | AI reads rules automatically |
+| Generic suggestions | Suggestions match your stack |
+| Conflicting recommendations | Decisions preserved in ADRs |
+| Forgotten requirements | Specs define acceptance criteria |
+
+> "Documentation as AI memory" — encode your patterns once, every session follows them.
+
+---
+
+## Quick Start
+
+Copy this prompt to your AI assistant:
+
+```
+Apply the AI-First Dev Kit methodology from https://ai-first-dev-kit.github.io to this project.
+
+Read the quick-start guide and set up the required structure.
+```
+
+Your AI will read the methodology, analyze your project, and create customized files.
+
+<LinkCard
+  title="5-Minute Setup Guide"
+  description="Step-by-step instructions to get started"
+  href="/quick-start/"
+/>
+
+---
+
+## Tool Agnostic
+
+| Tool | Configuration |
+|------|---------------|
+| **Cursor** | `.cursor/rules/*.mdc` |
+| **Claude Code** | `CLAUDE.md` |
+| **GitHub Copilot** | `.github/copilot-instructions.md` |
+| **Any LLM** | Standard Markdown files |

@@ -1,0 +1,74 @@
+---
+title: Templates
+description: Copy-paste ready templates for AI-First Dev Kit
+head: []
+---
+
+import { Card, CardGrid, LinkCard } from '@astrojs/starlight/components';
+
+Copy these templates to your project and let your AI assistant customize them for your specific context.
+
+## Required Files
+
+These are essential for the methodology to work:
+
+<CardGrid>
+  <LinkCard
+    title="📁 Project Structure"
+    description="Required folder structure and file organization"
+    href="/templates/project-structure/"
+  />
+  <LinkCard
+    title="📋 AGENTS.md"
+    description="Root context file that gives AI instant understanding"
+    href="/templates/agents-md/"
+  />
+  <LinkCard
+    title="📜 Cursor Rules"
+    description="Index and pattern files that guide AI behavior"
+    href="/templates/cursor-rules/"
+  />
+  <LinkCard
+    title="🗂️ Docs Index"
+    description="INDEX.md and TASKS.md for navigation and tracking"
+    href="/templates/docs-index/"
+  />
+</CardGrid>
+
+## Per-Feature Files
+
+Create these as you build features:
+
+<CardGrid>
+  <LinkCard
+    title="📝 PRD-lite Spec"
+    description="Lightweight feature specification with stories"
+    href="/templates/prd-lite/"
+  />
+  <LinkCard
+    title="📚 Feature Docs"
+    description="README, user stories, and tasks for features"
+    href="/templates/feature-docs/"
+  />
+  <LinkCard
+    title="🏛️ Architecture Decision"
+    description="ADR template to capture WHY, not just what"
+    href="/templates/adr/"
+  />
+</CardGrid>
+
+---
+
+## Pro Tip: Let AI Customize
+
+Instead of manually copying templates, tell your AI:
+
+```
+Read the AGENTS.md template from https://ai-first-dev-kit.github.io/templates/agents-md/ 
+and create one for this project, customized with our actual tech stack and patterns.
+```
+
+Your AI will:
+1. Read the template from this site
+2. Analyze your project's actual structure
+3. Generate a customized version

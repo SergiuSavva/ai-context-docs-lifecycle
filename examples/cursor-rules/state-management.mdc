@@ -1,0 +1,256 @@
+---
+description: State management, data fetching, and caching patterns
+globs:
+  - "**/*.{ts,tsx}"
+  - "**/hooks/**"
+  - "**/api/**"
+---
+
+# State Management
+
+> **EXAMPLE**: Customize for your state management approach.
+> Place in: `/.cursor/rules/state-management.mdc`
+
+---
+
+## State Categories
+
+| Category | Tool | Use For |
+|----------|------|---------|
+| **Server State** | React Query | API data, cached data |
+| **Client State** | Zustand / useState | UI state, forms |
+| **URL State** | Next.js router | Filters, pagination |
+| **Form State** | React Hook Form | Complex forms |
+
+---
+
+## Server State (React Query)
+
+### Basic Query
+
+```typescript
+import { useQuery } from '@tanstack/react-query'
+
+export function useUser(userId: string) {
+  return useQuery({
+    queryKey: ['user', userId],
+    queryFn: () => api.getUser(userId),
+    staleTime: 5 * 60 * 1000, // 5 minutes
+  })
+}
+```
+
+### Query with Options
+
+```typescript
+export function useUsers(filters: UserFilters) {
+  return useQuery({
+    queryKey: ['users', filters],
+    queryFn: () => api.getUsers(filters),
+    enabled: !!filters.organizationId,
+    placeholderData: keepPreviousData,
+  })
+}
+```
+
+### Mutation
+
+```typescript
+import { useMutation, useQueryClient } from '@tanstack/react-query'
+
+export function useUpdateUser() {
+  const queryClient = useQueryClient()
+  
+  return useMutation({
+    mutationFn: (data: UpdateUserData) => api.updateUser(data),
+    onSuccess: (data, variables) => {
+      // Invalidate and refetch
+      queryClient.invalidateQueries({ queryKey: ['user', variables.id] })
+      queryClient.invalidateQueries({ queryKey: ['users'] })
+    },
+  })
+}
+```
+
+---
+
+## Client State (Zustand)
+
+### Basic Store
+
+```typescript
+import { create } from 'zustand'
+
+interface UIState {
+  sidebarOpen: boolean
+  toggleSidebar: () => void
+  setSidebarOpen: (open: boolean) => void
+}
+
+export const useUIStore = create<UIState>((set) => ({
+  sidebarOpen: false,
+  toggleSidebar: () => set((state) => ({ sidebarOpen: !state.sidebarOpen })),
+  setSidebarOpen: (open) => set({ sidebarOpen: open }),
+}))
+```
+
+### Usage
+
+```typescript
+function Sidebar() {
+  const { sidebarOpen, toggleSidebar } = useUIStore()
+  
+  return (
+    <aside className={sidebarOpen ? 'open' : 'closed'}>
+      <button onClick={toggleSidebar}>Toggle</button>
+    </aside>
+  )
+}
+```
+
+---
+
+## URL State
+
+### Reading URL State
+
+```typescript
+import { useSearchParams } from 'next/navigation'
+
+function FilteredList() {
+  const searchParams = useSearchParams()
+  const status = searchParams.get('status') ?? 'all'
+  const page = Number(searchParams.get('page')) || 1
+  
+  const { data } = useItems({ status, page })
+  
+  return <List items={data} />
+}
+```
+
+### Updating URL State
+
+```typescript
+import { useRouter, useSearchParams } from 'next/navigation'
+
+function Filters() {
+  const router = useRouter()
+  const searchParams = useSearchParams()
+  
+  const setFilter = (key: string, value: string) => {
+    const params = new URLSearchParams(searchParams)
+    params.set(key, value)
+    router.push(`?${params.toString()}`)
+  }
+  
+  return (
+    <select onChange={(e) => setFilter('status', e.target.value)}>
+      <option value="all">All</option>
+      <option value="active">Active</option>
+    </select>
+  )
+}
+```
+
+---
+
+## Form State
+
+### React Hook Form
+
+```typescript
+import { useForm } from 'react-hook-form'
+import { zodResolver } from '@hookform/resolvers/zod'
+import { z } from 'zod'
+
+const schema = z.object({
+  email: z.string().email(),
+  password: z.string().min(8),
+})
+
+type FormData = z.infer<typeof schema>
+
+function LoginForm() {
+  const { register, handleSubmit, formState: { errors } } = useForm<FormData>({
+    resolver: zodResolver(schema),
+  })
+  
+  const onSubmit = (data: FormData) => {
+    // Handle submit
+  }
+  
+  return (
+    <form onSubmit={handleSubmit(onSubmit)}>
+      <input {...register('email')} />
+      {errors.email && <span>{errors.email.message}</span>}
+      
+      <input type="password" {...register('password')} />
+      {errors.password && <span>{errors.password.message}</span>}
+      
+      <button type="submit">Login</button>
+    </form>
+  )
+}
+```
+
+---
+
+## Query Key Conventions
+
+```typescript
+// Resource list
+['users']
+['users', { status: 'active' }]
+
+// Single resource
+['user', userId]
+['user', userId, 'posts']
+
+// Nested resources
+['organizations', orgId, 'members']
+['organizations', orgId, 'members', memberId]
+```
+
+---
+
+## Loading States
+
+```typescript
+function UserProfile({ userId }: { userId: string }) {
+  const { data, isLoading, error } = useUser(userId)
+  
+  if (isLoading) return <Skeleton />
+  if (error) return <ErrorMessage error={error} />
+  if (!data) return <NotFound />
+  
+  return <Profile user={data} />
+}
+```
+
+---
+
+## Optimistic Updates
+
+```typescript
+const mutation = useMutation({
+  mutationFn: updateTodo,
+  onMutate: async (newTodo) => {
+    // Cancel outgoing queries
+    await queryClient.cancelQueries({ queryKey: ['todos'] })
+    
+    // Snapshot previous value
+    const previousTodos = queryClient.getQueryData(['todos'])
+    
+    // Optimistically update
+    queryClient.setQueryData(['todos'], (old) => 
+      old.map(t => t.id === newTodo.id ? newTodo : t)
+    )
+    
+    return { previousTodos }
+  },
+  onError: (err, newTodo, context) => {
+    // Rollback on error
+    queryClient.setQueryData(['todos'], context.previousTodos)
+  },
+})
+```

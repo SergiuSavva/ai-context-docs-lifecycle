@@ -1,0 +1,59 @@
+---
+description: Project context - why, what, how
+globs:
+  - "**/*"
+alwaysApply: true
+---
+
+# Project: AI-First Dev Kit
+
+## Why?
+
+AI coding assistants lack memory and context about YOUR project. This causes:
+- Generic, inconsistent code
+- Constant re-explaining
+- Contradictory suggestions
+
+**Solution**: Documentation as AI memory.
+
+---
+
+## What?
+
+A methodology reference that AI agents read and apply to projects.
+
+| Folder | Contains |
+|--------|----------|
+| `rules/` | Required rules (structure, workflow) |
+| `examples/` | Templates to adapt |
+| `guides/` | Step-by-step instructions |
+
+---
+
+## How?
+
+```mermaid
+flowchart LR
+    A[AI reads this repo] --> B[Applies to target project]
+    B --> C[Creates structure]
+    C --> D[Follows workflow]
+```
+
+### Three Pillars
+
+| Pillar | Purpose | Location |
+|--------|---------|----------|
+| **Specs** | What to build | `docs/mvp/`, `docs/features/` |
+| **Rules** | How to build | `.cursor/rules/` |
+| **Reference** | What exists | `AGENTS.md`, `docs/` |
+
+---
+
+## Key Files
+
+| File | Purpose |
+|------|---------|
+| `README.md` | Entry point for AI agents |
+| `METHODOLOGY.md` | Full methodology explanation |
+| `rules/00-structure.md` | Required folder structure |
+| `rules/01-workflow.md` | Required workflow |

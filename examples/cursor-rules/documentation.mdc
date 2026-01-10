@@ -1,0 +1,177 @@
+---
+description: Documentation guidelines and maintenance
+globs:
+  - "**/*.md"
+  - "docs/**/*"
+---
+
+# Documentation Guide
+
+> **EXAMPLE**: Customize for your documentation needs.
+> Place in: `/.cursor/rules/documentation.mdc`
+
+---
+
+## Documentation Philosophy
+
+### Principles
+
+1. **Document decisions, not descriptions** - Why, not just what
+2. **Keep docs close to code** - AGENTS.md in feature directories
+3. **Update or delete** - Stale docs are worse than no docs
+4. **AI-first formatting** - Structured for machine parsing
+
+---
+
+## Essential Documents
+
+| Document | Purpose | Update Frequency |
+|----------|---------|------------------|
+| `AGENTS.md` | AI context | When patterns change |
+| `docs/INDEX.md` | Human navigation | When structure changes |
+| `docs/TASKS.md` | Progress tracking | Daily/per-task |
+| `.cursor/rules/*.mdc` | AI rules | When conventions change |
+| `docs/features/*/` | Feature docs | Per feature change |
+
+---
+
+## AGENTS.md Pattern
+
+### Root AGENTS.md
+
+Located at project root - loaded for every AI interaction:
+
+```markdown
+# Project - AI Agent Instructions
+
+## Quick Start
+[Essential commands]
+
+## Tech Stack
+[Key technologies]
+
+## Architecture
+[High-level patterns]
+
+## Need Help?
+[Links to detailed docs]
+```
+
+### Feature AGENTS.md
+
+Located in feature directories:
+
+```markdown
+# Feature: [Name]
+
+## Key Files
+[Important locations]
+
+## Patterns
+[Feature-specific conventions]
+
+## Dependencies
+[Related features/services]
+```
+
+---
+
+## Feature Documentation
+
+### Folder Structure
+
+```
+docs/features/<feature-name>/
+├── README.md              # Overview + code touchpoints
+├── user-stories.md        # User stories + acceptance criteria
+└── tasks.md               # Implementation checklist
+```
+
+### When to Create
+
+- New feature with multiple user stories
+- Feature spanning multiple files/components
+- Feature with complex business logic
+
+---
+
+## Architecture Decision Records
+
+### When to Write an ADR
+
+- Choosing between technologies
+- Defining architectural patterns
+- Making irreversible decisions
+- Establishing conventions
+
+### ADR Template
+
+```markdown
+# ADR-XXX: [Title]
+
+## Status: Proposed | Accepted | Deprecated
+
+## Context
+[What prompted this decision?]
+
+## Decision
+[What did we decide?]
+
+## Consequences
+[What are the implications?]
+
+## Alternatives Considered
+[What else was evaluated?]
+```
+
+---
+
+## Update Triggers
+
+| Event | Update |
+|-------|--------|
+| New pattern established | Add to rules |
+| Architecture change | Update AGENTS.md |
+| Feature completed | Update feature docs |
+| Task finished | Update TASKS.md |
+| Breaking change | Add to changelog |
+
+---
+
+## Markdown Formatting
+
+### For AI Parsing
+
+```markdown
+# Use clear hierarchy
+
+## Section with context
+
+### Subsection
+
+| Structured | Data |
+|------------|------|
+| In tables | When possible |
+
+- Bullet points for lists
+- Keep items concise
+```
+
+### Avoid
+
+- Long paragraphs without structure
+- Deeply nested content (>3 levels)
+- Inline code for long snippets
+- Ambiguous references
+
+---
+
+## Documentation Checklist
+
+When reviewing docs:
+
+- [ ] AGENTS.md reflects current project state
+- [ ] Rules match actual patterns used
+- [ ] TASKS.md has current progress
+- [ ] Stale docs identified and removed
+- [ ] Links are valid

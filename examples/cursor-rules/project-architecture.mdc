@@ -1,0 +1,219 @@
+---
+description: Project architecture patterns and structure
+globs:
+  - "**/*"
+---
+
+# Project Architecture
+
+> **EXAMPLE**: Customize this file for your project's architecture.
+> Place in: `/.cursor/rules/project-architecture.mdc`
+
+---
+
+## Directory Structure
+
+```
+project/
+├── app/                    # Next.js App Router
+│   ├── (public)/          # Public routes (no auth)
+│   ├── (protected)/       # Auth-required routes
+│   ├── api/               # API routes
+│   └── layout.tsx         # Root layout
+│
+├── components/            # Shared UI components
+│   ├── ui/               # Base UI primitives
+│   └── common/           # Common components
+│
+├── features/             # Feature modules
+│   ├── auth/            # Authentication
+│   │   ├── components/  # Feature-specific components
+│   │   ├── hooks/       # Feature-specific hooks
+│   │   └── utils/       # Feature utilities
+│   └── [feature]/       # Other features
+│
+├── lib/                  # Core utilities
+│   ├── api/             # API client
+│   ├── db/              # Database utilities
+│   └── utils/           # Helper functions
+│
+├── types/               # Shared TypeScript types
+└── config/              # Configuration
+```
+
+---
+
+## Routing Patterns
+
+### Next.js App Router
+
+```
+app/
+├── page.tsx                    # Home (/)
+├── layout.tsx                  # Root layout
+├── (auth)/
+│   ├── login/page.tsx         # /login
+│   └── signup/page.tsx        # /signup
+├── (protected)/
+│   ├── layout.tsx             # Auth check
+│   ├── dashboard/page.tsx     # /dashboard
+│   └── settings/page.tsx      # /settings
+└── api/
+    └── [resource]/route.ts    # /api/[resource]
+```
+
+---
+
+## Component Organization
+
+### Feature Component Structure
+
+```typescript
+features/[feature]/
+├── components/
+│   ├── FeatureList.tsx      # Main list component
+│   ├── FeatureCard.tsx      # Card component
+│   └── FeatureForm.tsx      # Form component
+├── hooks/
+│   ├── useFeature.ts        # Main feature hook
+│   └── useFeatureForm.ts    # Form-specific hook
+├── utils/
+│   └── feature.utils.ts     # Helper functions
+├── types.ts                 # Feature types
+└── index.ts                 # Public exports
+```
+
+### Component File Structure
+
+```typescript
+import { type FC } from 'react'
+
+interface ComponentProps {
+  // Props definition
+}
+
+export const Component: FC<ComponentProps> = ({ prop }) => {
+  // 1. Hooks first
+  // 2. Derived state
+  // 3. Event handlers
+  // 4. Render
+  return (
+    <div>
+      {/* JSX */}
+    </div>
+  )
+}
+```
+
+---
+
+## Import Conventions
+
+### Path Aliases
+
+```typescript
+// WRONG - relative imports
+import { Button } from '../../../components/ui/Button'
+
+// CORRECT - path aliases
+import { Button } from '@/components/ui/Button'
+```
+
+### Import Order
+
+```typescript
+// 1. External packages
+import { useState } from 'react'
+import { useQuery } from '@tanstack/react-query'
+
+// 2. Internal aliases
+import { Button } from '@/components/ui/Button'
+import { useAuth } from '@/features/auth/hooks/useAuth'
+
+// 3. Relative imports (same feature only)
+import { FeatureCard } from './FeatureCard'
+import type { FeatureProps } from './types'
+```
+
+---
+
+## Server vs Client Code
+
+### Default: Server Components
+
+```typescript
+// No directive = Server Component
+export default async function Page() {
+  const data = await fetchData()
+  return <ServerComponent data={data} />
+}
+```
+
+### Client Components (when needed)
+
+```typescript
+'use client'
+
+export function InteractiveComponent() {
+  const [state, setState] = useState()
+  return <button onClick={() => setState(!state)} />
+}
+```
+
+### When to Use Client Components
+
+- Event handlers (onClick, onChange)
+- useState, useEffect, useReducer
+- Browser-only APIs
+- Third-party client libraries
+
+---
+
+## API Patterns
+
+### API Route Structure
+
+```typescript
+// app/api/[resource]/route.ts
+import { NextResponse } from 'next/server'
+
+export async function GET(request: Request) {
+  try {
+    const data = await fetchData()
+    return NextResponse.json(data)
+  } catch (error) {
+    return NextResponse.json(
+      { error: 'Failed to fetch' },
+      { status: 500 }
+    )
+  }
+}
+
+export async function POST(request: Request) {
+  const body = await request.json()
+  // Validate and process
+}
+```
+
+---
+
+## Environment Configuration
+
+### Required Variables
+
+```env
+# Database
+DATABASE_URL=
+
+# Authentication
+AUTH_SECRET=
+
+# External APIs
+API_KEY=
+```
+
+### Environment Files
+
+- `.env.local` - Local development (never commit)
+- `.env.example` - Template (commit this)
+- `.env.production` - Production (CI/CD only)
