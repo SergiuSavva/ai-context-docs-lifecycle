@@ -8,7 +8,7 @@
 
 ## What is This?
 
-A documentation site with instructions and templates to help you apply the AI-First Dev Kit methodology to your own projects — with help from your AI coding assistant.
+A methodology + documentation site that helps you apply AI-First development practices to your projects — with help from your AI coding assistant.
 
 ### The Problem
 
@@ -23,6 +23,30 @@ AI coding assistants lack memory and context about YOUR project:
 - **Templates** — Copy-paste ready files for AGENTS.md, cursor rules, specs, and more
 - **Guides** — Step-by-step instructions for new and existing projects
 - **Methodology** — The three pillars: Specs, Rules, Reference
+
+---
+
+## Repository Structure
+
+```
+ai-first-dev-kit/
+├── content/              # 📁 Raw methodology content (for AI agents)
+│   ├── templates/        #    Copy-paste templates
+│   ├── guides/           #    Step-by-step guides
+│   └── rules/            #    Required rules
+├── site/                 # 🌐 Documentation website (Astro + Starlight)
+│   ├── src/
+│   └── package.json
+├── METHODOLOGY.md        # Full methodology explanation
+└── README.md             # This file
+```
+
+### Two Ways to Use
+
+| Use Case | Access |
+|----------|--------|
+| **AI agents reading raw files** | `content/` folder |
+| **Humans browsing docs** | [ai-first-dev-kit.github.io](https://ai-first-dev-kit.github.io) |
 
 ---
 
@@ -52,27 +76,6 @@ Your AI will:
 
 ---
 
-## Site Structure
-
-```
-ai-first-dev-kit.github.io/
-├── /                     # Landing page
-├── /quick-start/         # 5-minute setup guide
-├── /templates/           # Copy-paste templates
-│   ├── /agents-md/       # AGENTS.md template
-│   ├── /cursor-rules/    # Cursor rules templates
-│   ├── /prd-lite/        # PRD-lite spec template
-│   ├── /feature-docs/    # Feature documentation
-│   ├── /adr/             # Architecture decisions
-│   └── /project-structure/ # Required structure
-├── /guides/              # Step-by-step guides
-│   ├── /new-project/     # Starting from scratch
-│   └── /existing-project/ # Adding to existing code
-└── /methodology/         # Full methodology deep-dive
-```
-
----
-
 ## The Three Pillars
 
 | Pillar | Purpose | Lifecycle |
@@ -83,22 +86,34 @@ ai-first-dev-kit.github.io/
 
 ---
 
-## Required Project Structure
+## Content Overview
 
-After applying the kit, your project will have:
+### Templates (`content/templates/`)
 
-```
-your-project/
-├── AGENTS.md                    # Root AI context
-├── .cursor/rules/
-│   └── 00-index.mdc            # Rule index
-└── docs/
-    ├── INDEX.md                # Navigation
-    ├── TASKS.md                # Progress tracking
-    ├── specs/                  # Feature specifications
-    ├── features/               # Feature documentation
-    └── decisions/              # Architecture decisions
-```
+| Template | Purpose |
+|----------|---------|
+| `AGENTS.md` | Root AI context file |
+| `prd-lite.md` | Lightweight feature spec |
+| `feature-readme.md` | Feature documentation |
+| `user-stories.md` | Acceptance criteria |
+| `tasks.md` | Implementation checklist |
+| `adr.md` | Architecture decisions |
+| `cursor-rules/` | AI behavior rules |
+
+### Guides (`content/guides/`)
+
+| Guide | When to Use |
+|-------|-------------|
+| `new-project.md` | Starting from scratch |
+| `existing-project.md` | Adding to existing code |
+
+### Rules (`content/rules/`)
+
+| Rule | Purpose |
+|------|---------|
+| `00-structure.md` | Required folder structure |
+| `01-workflow.md` | Development workflow |
+| `02-code-style.md` | Code style principles |
 
 ---
 
@@ -107,18 +122,16 @@ your-project/
 ### Local Development
 
 ```bash
-# Install dependencies
+cd site
 npm install
-
-# Run local server
 npm run dev
-
 # Open http://localhost:4321
 ```
 
 ### Build
 
 ```bash
+cd site
 npm run build
 ```
 

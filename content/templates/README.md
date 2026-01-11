@@ -1,6 +1,6 @@
-# Examples
+# Templates
 
-> **For AI Agents**: Use these examples as references when creating files for a project.
+> **For AI Agents**: Use these templates as references when creating files for a project.
 
 ---
 
@@ -29,10 +29,10 @@
 
 ---
 
-## Example Templates
+## Templates
 
-| Example | Purpose | Create In |
-|---------|---------|-----------|
+| Template | Purpose | Create In |
+|----------|---------|-----------|
 | [AGENTS.md](./AGENTS.md) | Root AI context file | `/AGENTS.md` |
 | [feature-AGENTS.md](./feature-AGENTS.md) | Feature-level AI context | `/features/<name>/AGENTS.md` |
 | [prd-lite.md](./prd-lite.md) | Lightweight spec | `/docs/specs/<feature>.md` |
@@ -44,21 +44,21 @@
 
 ---
 
-## How to Use Examples
+## How to Use Templates
 
 ### For AI Agents
 
 When creating files for a project:
 
-1. **Read the relevant example** to understand structure and content
+1. **Read the relevant template** to understand structure and content
 2. **Adapt to the specific project** - replace placeholders with real values
 3. **Follow the format** - maintain structure for consistency
-4. **Customize as needed** - examples show common patterns, adjust for context
+4. **Customize as needed** - templates show common patterns, adjust for context
 
-### Example Adaptation Process
+### Template Adaptation Process
 
 ```
-1. Read example file
+1. Read template file
 2. Identify placeholders [like this]
 3. Replace with project-specific values
 4. Remove sections that don't apply
@@ -67,15 +67,15 @@ When creating files for a project:
 
 ---
 
-## Examples vs Required Rules
+## Templates vs Required Rules
 
 | Type | Location | Purpose |
 |------|----------|---------|
 | **Required Rules** | `../rules/` | MUST follow - structure and workflow |
-| **Examples** | `./` (here) | Reference for creating files |
+| **Templates** | `./` (here) | Reference for creating files |
 
 Required rules define WHAT must exist.
-Examples show HOW to create them.
+Templates show HOW to create them.
 
 ---
 
@@ -102,7 +102,7 @@ Only `00-index.mdc` is required. Others are optional based on project needs.
 
 ```bash
 # Location: /AGENTS.md (project root)
-# Use: examples/AGENTS.md as template
+# Use: content/templates/AGENTS.md as template
 ```
 
 ### Feature Documentation
@@ -110,9 +110,9 @@ Only `00-index.mdc` is required. Others are optional based on project needs.
 ```bash
 # Location: /docs/features/<feature-name>/
 # Files needed:
-#   - README.md (from examples/feature-readme.md)
-#   - user-stories.md (from examples/user-stories.md)
-#   - tasks.md (from examples/tasks.md)
+#   - README.md (from content/templates/feature-readme.md)
+#   - user-stories.md (from content/templates/user-stories.md)
+#   - tasks.md (from content/templates/tasks.md)
 ```
 
 ### PRD-lite Spec
@@ -120,14 +120,14 @@ Only `00-index.mdc` is required. Others are optional based on project needs.
 ```bash
 # Location: /docs/specs/<feature-name>.md
 #           OR /docs/specs/<phase>/<feature-name>.md for phased projects
-# Use: examples/prd-lite.md as template
+# Use: content/templates/prd-lite.md as template
 ```
 
 ### ADR
 
 ```bash
 # Location: /docs/decisions/NNN-title.md
-# Use: examples/adr.md as template
+# Use: content/templates/adr.md as template
 # Number sequentially: 001, 002, 003...
 ```
 

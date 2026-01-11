@@ -11,7 +11,7 @@ export default defineConfig({
       title: 'AI-First Dev Kit',
       description: 'A methodology reference for AI-assisted software development',
       social: [
-        { icon: 'github', label: 'GitHub', href: 'https://github.com/user/ai-first-dev-kit' },
+        { icon: 'github', label: 'GitHub', href: 'https://github.com/ai-first-dev-kit/ai-first-dev-kit' },
       ],
       head: [],
       favicon: '/favicon.svg',
@@ -57,7 +57,7 @@ export default defineConfig({
         },
       ],
       editLink: {
-        baseUrl: 'https://github.com/user/ai-first-dev-kit/edit/main/',
+        baseUrl: 'https://github.com/ai-first-dev-kit/ai-first-dev-kit/edit/main/site/',
       },
     }),
   ],
