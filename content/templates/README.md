@@ -31,16 +31,30 @@
 
 ## Templates
 
+### AI Context Files (Tool-Specific)
+
+| Template | Tool | Create In |
+|----------|------|-----------|
+| [AGENTS.md](./AGENTS.md) | Cursor, General | `/AGENTS.md` |
+| [CLAUDE.md](./CLAUDE.md) | Claude Code | `/CLAUDE.md` |
+| [copilot-instructions.md](./copilot-instructions.md) | GitHub Copilot | `/.github/copilot-instructions.md` |
+| [feature-AGENTS.md](./feature-AGENTS.md) | Any (feature-level) | `/features/<name>/AGENTS.md` |
+
+### Documentation Templates
+
 | Template | Purpose | Create In |
 |----------|---------|-----------|
-| [AGENTS.md](./AGENTS.md) | Root AI context file | `/AGENTS.md` |
-| [feature-AGENTS.md](./feature-AGENTS.md) | Feature-level AI context | `/features/<name>/AGENTS.md` |
 | [prd-lite.md](./prd-lite.md) | Lightweight spec | `/docs/specs/<feature>.md` |
 | [feature-readme.md](./feature-readme.md) | Feature overview | `/docs/features/<name>/README.md` |
 | [user-stories.md](./user-stories.md) | User stories with acceptance criteria | `/docs/features/<name>/user-stories.md` |
 | [tasks.md](./tasks.md) | Implementation checklist | `/docs/features/<name>/tasks.md` |
 | [adr.md](./adr.md) | Architecture Decision Record | `/docs/decisions/NNN-title.md` |
-| [cursor-rules/](./cursor-rules/) | AI behavior rules | `/.cursor/rules/` |
+
+### AI Behavior Rules
+
+| Template | Purpose | Create In |
+|----------|---------|-----------|
+| [cursor-rules/](./cursor-rules/) | Cursor AI behavior rules | `/.cursor/rules/` |
 
 ---
 

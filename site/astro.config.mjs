@@ -25,6 +25,7 @@ export default defineConfig({
           items: [
             { slug: 'index', label: 'Introduction' },
             { slug: 'quick-start', label: 'Quick Start' },
+            { slug: 'prompts', label: 'Prompt Library' },
             { slug: 'workflow', label: 'Development Workflow' },
           ],
         },
@@ -33,6 +34,8 @@ export default defineConfig({
           items: [
             { slug: 'templates', label: 'Overview' },
             { slug: 'templates/agents-md', label: 'AGENTS.md' },
+            { slug: 'templates/claude-md', label: 'CLAUDE.md' },
+            { slug: 'templates/copilot-instructions', label: 'Copilot Instructions' },
             { slug: 'templates/cursor-rules', label: 'Cursor Rules' },
             { slug: 'templates/prd-lite', label: 'PRD-lite Spec' },
             { slug: 'templates/feature-docs', label: 'Feature Docs' },

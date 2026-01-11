@@ -6,50 +6,24 @@ head: []
 
 Let your AI agent set up the methodology for you. Works with Cursor, Claude Code, or any AI assistant.
 
-## Step 1: Copy the Prompt
+## Step 1: Copy the Setup Prompt
 
 Open your AI coding assistant and paste this:
 
 ```
-Apply the AI-First Dev Kit methodology to this project.
+Set up AI-First Dev Kit for this project:
 
-STEP 1: Detect project type
-Check for these markers:
-- packages/ or apps/ folder, pnpm-workspace.yaml, turbo.json, nx.json, lerna.json → PACKAGE MONOREPO
-- services/ folder, docker-compose.yml with multiple services → SERVICE MONOREPO  
-- None of above → SINGLE APP
+1. Create folders: .cursor/rules, docs/specs/_archive, docs/features, docs/decisions
+2. Create AGENTS.md with: quick start commands, tech stack table, file organization
+3. Create .cursor/rules/00-index.mdc with empty rules table
+4. Create docs/INDEX.md, docs/TASKS.md
 
-STEP 2: Analyze the project
-- Read package.json / requirements.txt / pyproject.toml for tech stack
-- Scan code folders for structure and patterns
-- For monorepos: identify each package/service and its purpose
+Use actual values from package.json and the codebase - no placeholders.
 
-STEP 3: Create folder structure
-mkdir -p .cursor/rules docs/specs/_archive docs/features docs/decisions
-
-STEP 4: Create required files based on project type
-
-FOR ALL TYPES:
-| File | Template URL | Required Sections |
-|------|--------------|-------------------|
-| AGENTS.md | https://ai-first-dev-kit.github.io/templates/agents-md/ | Quick Start, Tech Stack, File Organization, Key Patterns |
-| .cursor/rules/00-index.mdc | https://ai-first-dev-kit.github.io/templates/cursor-rules/ | YAML frontmatter, Rules table |
-| docs/INDEX.md | https://ai-first-dev-kit.github.io/templates/docs-index/ | Links to all doc folders |
-| docs/TASKS.md | https://ai-first-dev-kit.github.io/templates/docs-index/ | In Progress, Completed sections |
-
-FOR MONOREPOS ONLY (additional files):
-- Create AGENTS.md in EACH package/ or service/ folder
-- Root AGENTS.md should list all packages/services with links
-- Each package AGENTS.md focuses on that component only
-
-STEP 5: Customize with real values
-- Use actual commands from package.json scripts
-- Use actual dependencies, not placeholders
-- Map actual folder structure
-- Document patterns found in the code
-
-Full methodology: https://ai-first-dev-kit.github.io/methodology/
+Reference: https://ai-first-dev-kit.github.io/templates/agents-md/
 ```
+
+That's it! Your AI will analyze your project and create the files with real values.
 
 ## Step 2: What AI Should Discover
 
@@ -153,6 +127,23 @@ Then paste the relevant sections from:
 - [Project Structure](/templates/project-structure/) — folder layout
 - [AGENTS.md Template](/templates/agents-md/) — root context format
 - [Cursor Rules](/templates/cursor-rules/) — rule file format
+
+---
+
+## Common Prompts for Daily Use
+
+Once set up, use these prompts for day-to-day development:
+
+| Task | Prompt |
+|------|--------|
+| **New feature** | "Create PRD-lite spec for [feature] in docs/specs/" |
+| **Start building** | "Implement [feature] following docs/specs/[feature].md" |
+| **Track progress** | "Update TASKS.md with current progress" |
+| **Record decision** | "Create ADR for choosing [X] over [Y]" |
+| **New pattern** | "Add rule for [pattern] to .cursor/rules/" |
+| **Complete feature** | "Archive spec and update docs for [feature]" |
+
+See the full [Prompt Library](/prompts/) for more.
 
 ---
 

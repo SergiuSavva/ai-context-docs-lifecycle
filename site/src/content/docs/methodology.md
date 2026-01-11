@@ -1,133 +1,232 @@
 ---
 title: Methodology
-description: The complete AI-First Development methodology explained
+description: A document lifecycle system for AI-assisted software development
 head: []
 ---
 
-A lightweight, spec-driven approach for AI-assisted software development.
+A document lifecycle system for AI-assisted software development.
 
-## Core Philosophy
+## The Problem
+
+AI coding assistants have no memory. Every session starts fresh. Without structured context:
+- AI produces generic, inconsistent code
+- You re-explain your project constantly
+- Documentation becomes stale and ignored
+- Decisions get lost, repeated, or contradicted
+
+**The solution isn't better AI — it's better document management.**
+
+---
+
+## Core Concept: Document Lifecycle
+
+This methodology is a **document lifecycle system**. Documents flow through defined stages, get transformed, and either stay current or get archived. Rules control this flow.
 
 ```
-Minimalist: Only what's needed, nothing more
-Flexible:   Adapt to your project, not the other way around
-Reliable:   Proven patterns from established methodologies
-Robust:     Works for solo devs and teams alike
+┌─────────────────────────────────────────────────────────────────────────────────┐
+│                           DOCUMENT LIFECYCLE FLOW                               │
+├─────────────────────────────────────────────────────────────────────────────────┤
+│                                                                                 │
+│   ┌──────────┐      ┌──────────┐      ┌──────────┐      ┌──────────┐           │
+│   │ RESEARCH │ ───► │  BUILD   │ ───► │   ADR    │ ───► │ ARCHIVE  │           │
+│   │  + SPEC  │      │ Implement│      │ Extract  │      │  Spec    │           │
+│   └──────────┘      └────┬─────┘      └──────────┘      └──────────┘           │
+│        │                 │                                    │                 │
+│        │                 │ ◄──────────────┐                   │                 │
+│        │                 ▼                │                   ▼                 │
+│        │           ┌──────────┐     ┌─────┴────┐        ┌──────────┐           │
+│        │           │  REVIEW  │ ──► │ ITERATE  │        │REFERENCE │           │
+│        │           │  Human   │     │  (loop)  │        │  Update  │           │
+│        │           └──────────┘     └──────────┘        └──────────┘           │
+│        │                 ▲                              (research +            │
+│        └─────────────────┘                               knowledge             │
+│          (context for build)                             preserved)            │
+│                                                                                 │
+│   ═══════════════════════════════════════════════════════════════════════════   │
+│                          RULES (Control Layer)                                  │
+│            Enforce lifecycle transitions + best practices                       │
+│                                                                                 │
+└─────────────────────────────────────────────────────────────────────────────────┘
 ```
 
 ---
 
 ## The Three Pillars
 
-| Pillar | Purpose | Location | Lifecycle |
-|--------|---------|----------|-----------|
-| **SPECS** | What to build | `docs/specs/` | Ephemeral (archive when done) |
-| **RULES** | How to build | `.cursor/rules/` | Stable (rarely changes) |
-| **REFERENCE** | What exists | `AGENTS.md`, `docs/` | Evergreen (always current) |
+| Pillar | Role in Lifecycle | Lifecycle Type | Location |
+|--------|-------------------|----------------|----------|
+| **SPECS** | Research + requirements for AI to build from | **Ephemeral** — converted to ADR, then archived | `docs/specs/` |
+| **REFERENCE** | Context AI reads to understand the system | **Evergreen** — always current or deleted | `docs/` + `AGENTS.md` |
+| **RULES** | Control lifecycle flow + enforce patterns | **Stable** — updated when workflow changes | `.cursor/rules/` |
 
-### 📋 SPECS — What to Build
+---
 
-Write PRD-lite specs BEFORE building. Define acceptance criteria like TDD for AI.
+## Spec Package
 
-**Location:** `docs/specs/` (with optional phase subfolders)
+A spec is not just a single file — it's a **spec package** containing everything needed to understand and build a feature.
 
-**Contents:**
-- Problem statement (1-2 sentences)
-- Success metrics
-- Scope (in/out)
-- Key user stories
-- Technical approach (if non-obvious)
-- Risks → Mitigations
+```
+docs/specs/<feature>/
+├── prd.md              # PRD-lite: problem, scope, stories, diagrams (Mermaid)
+├── research.md         # Research notes, API refs, external links
+├── user-stories.md     # Detailed acceptance criteria
+└── tasks.md            # Implementation checklist
+```
 
-**Lifecycle:** Create → Implement → Archive to `docs/specs/_archive/`
+**Diagrams:** Use Mermaid (docs-as-code). Embed directly in markdown — no separate image files.
 
-### 📜 RULES — How to Build
+```markdown
+## Data Flow
 
-Encode your patterns in rule files. AI follows them automatically in every session.
+​```mermaid
+sequenceDiagram
+    User->>+API: POST /login
+    API->>+OAuth: Redirect
+    OAuth-->>-API: Token
+    API-->>-User: Session
+​```
+```
 
-**Location:** `.cursor/rules/` (or equivalent for your tool)
+**For simple features:** A single `<feature>.md` file is enough.
 
-**Contents:**
-- Coding conventions
-- Architecture patterns
-- Testing strategies
-- State management approaches
+---
 
-**Lifecycle:** Update only when patterns change
+## Lifecycle Stages
 
-### 📚 REFERENCE — What Exists
+### Stage 1: RESEARCH + SPEC (Human)
 
-AGENTS.md gives instant context. Feature docs capture architecture. ADRs preserve decisions.
+**Trigger:** New feature, change, or fix needed
 
-**Location:** Root `AGENTS.md` + `docs/features/` + `docs/decisions/`
+| Action | Owner | Output |
+|--------|-------|--------|
+| Research the problem | Human/AI | `docs/specs/<feature>/research.md` |
+| Gather external docs, API refs | Human | Links in research.md |
+| Create diagrams (Mermaid) | Human/AI | Embedded in prd.md |
+| Write PRD-lite from template | Human | `docs/specs/<feature>/prd.md` |
+| Define acceptance criteria | Human | User stories with Given/When/Then |
+| Create initial task list | Human/AI | `docs/specs/<feature>/tasks.md` |
 
-**Contents:**
-- Quick start commands
-- Tech stack overview
-- File organization
-- Key patterns
-- Feature documentation
-- Architecture decisions
+### Stage 2: BUILD (AI)
 
-**Lifecycle:** Update continuously as system evolves
+**Trigger:** Spec package approved and ready for implementation
+
+| Action | Owner | Output |
+|--------|-------|--------|
+| Read REFERENCE for context | AI | Understanding of system |
+| Read SPEC package (prd + research) | AI | Understanding of requirements |
+| Follow RULES for patterns | AI | Consistent code |
+| Implement feature | AI | Code + tests |
+| Update task progress | AI | Tasks marked complete |
+
+### Stage 3: REVIEW + ITERATE (Human ↔ AI)
+
+**Trigger:** AI signals task/feature complete
+
+| Action | Owner | Output |
+|--------|-------|--------|
+| Verify acceptance criteria | Human | Pass / Fail |
+| Check code quality | Human | Feedback |
+| Request changes if needed | Human | Feedback for AI |
+| **Iterate** (loop back to BUILD) | AI | Fixed code |
+| Approve when criteria met | Human | Ready for completion |
+
+> **Iteration loop:** BUILD → REVIEW → feedback → BUILD → REVIEW... until approved. This is the normal flow, not an exception.
+
+### Stage 4: COMPLETE (Both)
+
+**Trigger:** Feature approved and merged
+
+| Action | Owner | Output |
+|--------|-------|--------|
+| Extract decisions to ADR | Human/AI | `docs/decisions/ADR-XXX.md` |
+| Update REFERENCE docs | AI | Current system state |
+| Move valuable diagrams/flows to REFERENCE | Human | Copy Mermaid blocks to docs |
+| Archive or delete spec package | Human | `docs/specs/_archive/` |
+| Update AGENTS.md if needed | AI | Current context |
 
 ---
 
 ## The Development Cycle
 
 ```
-┌─────────────────────────────────────────────────────────────────┐
-│                    HUMAN-AI DEVELOPMENT CYCLE                    │
-├─────────────────────────────────────────────────────────────────┤
-│                                                                  │
-│   1. SPEC                          2. BUILD                      │
-│   ┌──────────────────┐             ┌──────────────────┐         │
-│   │ Human writes:    │             │ AI executes:     │         │
-│   │ • PRD-lite       │ ─────────►  │ • Reads context  │         │
-│   │ • User stories   │             │ • Follows rules  │         │
-│   │ • Acceptance     │             │ • Writes code    │         │
-│   │   criteria       │             │ • Runs tests     │         │
-│   └──────────────────┘             └────────┬─────────┘         │
-│                                             │                    │
-│   4. MAINTAIN                      3. REVIEW                     │
-│   ┌──────────────────┐             ┌────────▼─────────┐         │
-│   │ Both update:     │             │ Human reviews:   │         │
-│   │ • Rules (if new  │ ◄───────────│ • Code quality   │         │
-│   │   patterns)      │             │ • Meets criteria │         │
-│   │ • Reference docs │             │ • Approve/reject │         │
-│   │ • ADRs           │             │                  │         │
-│   └──────────────────┘             └──────────────────┘         │
-│                                                                  │
-└─────────────────────────────────────────────────────────────────┘
+┌──────────────────────────────────────────────────────────────────────┐
+│                      HUMAN-AI DEVELOPMENT CYCLE                      │
+├──────────────────────────────────────────────────────────────────────┤
+│                                                                      │
+│   1. RESEARCH + SPEC                   2. BUILD                      │
+│   ┌────────────────────┐               ┌────────────────────┐        │
+│   │ Human prepares:    │               │ AI executes:       │        │
+│   │ • Research         │               │ • Reads REFERENCE  │        │
+│   │ • Diagrams         │ ───────────►  │ • Reads SPEC pkg   │        │
+│   │ • PRD-lite         │               │ • Follows RULES    │        │
+│   │ • User stories     │               │ • Writes code      │        │
+│   │ • Tasks            │               │ • Updates tasks    │        │
+│   └────────────────────┘               └──────────┬─────────┘        │
+│                                                   │                  │
+│   4. COMPLETE                          3. REVIEW  ▼                  │
+│   ┌────────────────────┐               ┌────────────────────┐        │
+│   │ Lifecycle actions: │               │ Human reviews:     │        │
+│   │ • Spec → ADR       │ ◄──────────── │ • Code quality     │        │
+│   │ • Research → REF   │   (approved)  │ • Meets criteria   │        │
+│   │ • Archive spec     │               │ • Approve/reject   │        │
+│   │ • Update AGENTS.md │               │         │          │        │
+│   └────────────────────┘               └─────────┼──────────┘        │
+│                                                  │                   │
+│                              ┌───────────────────┘                   │
+│                              │ (rejected)                            │
+│                              ▼                                       │
+│                        ┌───────────┐                                 │
+│                        │  ITERATE  │ ──────► back to BUILD           │
+│                        │  (loop)   │                                 │
+│                        └───────────┘                                 │
+│                                                                      │
+└──────────────────────────────────────────────────────────────────────┘
+```
+
+---
+
+## Rules: Workflow + Patterns
+
+Rules serve two purposes:
+
+1. **Workflow Control** — Enforce lifecycle transitions (when to update docs, create ADRs, archive specs)
+2. **Coding Patterns** — Enforce consistent code style and architecture
+
+### Example: Lifecycle Control Rule
+
+```markdown
+---
+description: Document lifecycle management after feature completion
+globs: ["docs/specs/**/*.md"]
+---
+
+# Document Lifecycle
+
+## After Feature Completion
+1. Extract significant decisions into ADR
+2. Move valuable research to REFERENCE
+3. Update AGENTS.md if patterns changed
+4. Archive or delete spec package
 ```
 
 ---
 
 ## Principles
 
-### 1. Documentation is Infrastructure
+### 1. Documents Have Lifecycles
+Specs are born, implemented, transformed into ADRs, and archived. Reference docs stay current or get deleted. Nothing stays stale.
 
-Not optional. Not nice-to-have. It's the memory AI agents lack.
+### 2. Rules Control the Flow
+AI rules aren't just for code patterns—they enforce when documents move through lifecycle stages.
 
-### 2. Spec First, Code Second
-
-Define acceptance criteria BEFORE building. TDD for AI.
-
-### 3. Rules Over Prompts
-
-Encode patterns once in rules. Every session follows automatically.
+### 3. Spec First, Code Second
+Define acceptance criteria BEFORE building. The spec is the contract.
 
 ### 4. Update or Delete
+Stale docs are worse than no docs. Every document is either current or gone.
 
-Stale docs are worse than no docs. Keep current or remove.
-
-### 5. Human Accountability
-
-AI builds. Human reviews. Human is responsible.
-
-### 6. Minimize Ceremony
-
-Only document what provides value. Skip everything else.
+### 5. Human Owns the Lifecycle
+AI builds and updates. Human triggers transitions and approves changes.
 
 ---
 
@@ -139,86 +238,139 @@ Only document what provides value. Skip everything else.
 | **Documentation after** | Always deprioritized, never done | Spec first, doc during, update after |
 | **Rules for everything** | Cognitive overload for AI | Only essential, stable patterns |
 | **Implicit decisions** | Lost context over time | ADRs for significant choices |
-| **Vibe coding production** | Inconsistent, unmaintainable | Specs + rules for production code |
+| **Stale specs** | Confusion, contradictions | Archive or delete when done |
 
 ---
 
-## Methodology Inspirations
+## Quick Reference: Lifecycle Actions
 
-This framework draws from proven methodologies:
+```
+RESEARCH + SPEC:
+├── Research the problem (gather docs, API refs, examples)
+├── Create diagrams if needed (sequence, flow, architecture)
+├── Write PRD-lite (problem, scope, stories)
+├── Define acceptance criteria (Given/When/Then)
+├── Create task list
+└── Approve spec package for implementation
 
-| Methodology | What We Borrow |
-|-------------|----------------|
-| **Docs-as-Code** | Version control, plain text, reviews |
-| **TDD/BDD** | Acceptance criteria before code |
-| **ADRs** | Capture WHY, not just what |
-| **Lean/XP** | Minimal rules, eliminate waste |
-| **Agile Modeling** | Just enough docs, evolve with code |
-| **FDD** | Feature-driven documentation structure |
+BUILD:
+├── AI reads REFERENCE for system context
+├── AI reads SPEC package (prd + research + tasks)
+├── AI follows RULES for patterns
+├── AI implements code + tests
+└── AI updates task progress
 
----
+REVIEW + ITERATE:
+├── Human verifies acceptance criteria
+├── Human checks code quality
+├── If rejected → AI iterates → back to BUILD
+└── If approved → proceed to COMPLETE
 
-## Document Lifecycles
-
-| Lifecycle | Meaning | Examples |
-|-----------|---------|----------|
-| **Ephemeral** | Temporary — archive when done | PRD-lite specs |
-| **Stable** | Rarely changes — update only when patterns change | Cursor rules |
-| **Evergreen** | Always current — update continuously | AGENTS.md, feature docs |
-
----
-
-## When to Use What
-
-| Situation | Document | Location |
-|-----------|----------|----------|
-| Starting a new feature | PRD-lite + user stories | `docs/specs/` + `docs/features/` |
-| Making a tech decision | ADR | `docs/decisions/` |
-| Establishing a pattern | Rule file | `.cursor/rules/` |
-| Tracking implementation | Tasks | `docs/features/*/tasks.md` |
-| Providing AI context | AGENTS.md | Root + feature dirs |
-| Onboarding developers | INDEX.md | `docs/INDEX.md` |
-
----
-
-## Quick Reference
-
-### Starting a Feature
-
-1. Write PRD-lite spec (problem, scope, stories)
-2. Create feature folder with README + stories + tasks
-3. Point AI at spec, let it build
-4. Review, iterate, approve
-
-### Establishing Patterns
-
-1. Notice a pattern emerging
-2. Create/update `.cursor/rules/*.mdc`
-3. AI follows automatically from now on
-
-### Making Decisions
-
-1. Facing a significant choice?
-2. Write ADR with context + alternatives
-3. Record decision + consequences
-4. AI respects decision going forward
-
-### Keeping Docs Current
-
-1. AI updates docs as it builds
-2. Human reviews doc changes in PR
-3. Archive completed specs
-4. Delete stale docs
+COMPLETE:
+├── Extract decisions → ADR (if significant)
+├── Move valuable diagrams → REFERENCE (copy Mermaid blocks)
+├── Update REFERENCE docs (AI)
+├── Archive or delete spec package
+└── Update AGENTS.md if patterns changed
+```
 
 ---
 
 ## Tool Support
 
-| Tool | Type | How It Helps |
-|------|------|--------------|
-| **Cursor** | IDE + Rules | Auto-loads context, follows rules |
-| **Claude Code** | CLI Agent | Autonomous task execution |
-| **GitHub Copilot** | Suggestions | Inline assistance |
-| **Any AI** | LLM | Reads your docs, provides context |
+This methodology is **tool-agnostic**. The workflow works with any AI coding assistant.
 
-The methodology is **tool-agnostic**. Your docs work regardless of which AI tool you use.
+**Cursor** is the current proof-of-concept implementation.
+
+| Tool | Rule Location | Context File |
+|------|---------------|--------------|
+| **Cursor** | `.cursor/rules/*.mdc` | Auto-detected |
+| **Claude Code** | `CLAUDE.md` | `CLAUDE.md` |
+| **GitHub Copilot** | `.github/copilot-instructions.md` | Same file |
+| **Windsurf** | `.windsurfrules` | Same file |
+| **Other AI** | Any `.md` files | `AGENTS.md` |
+
+The document types (SPECS, REFERENCE, ADRs) and lifecycle flow remain the same. Only the rule file format changes.
+
+---
+
+## Scaling: Small Projects to Monorepos
+
+The methodology uses a **fractal structure** — the same pattern repeats at every level.
+
+### The Fractal Principle
+
+```
+<scope>/
+├── AGENTS.md           # Context for this scope
+├── docs/
+│   ├── specs/          # What we're building
+│   ├── features/       # What exists
+│   └── decisions/      # Why we decided
+└── .cursor/rules/      # How we build (optional per-scope)
+```
+
+This pattern applies at every level: monorepo root, app, package, or feature.
+
+### Small Project
+
+```
+project/
+├── AGENTS.md                 # Project context + feature map
+├── docs/
+│   ├── specs/
+│   ├── features/
+│   └── decisions/
+├── .cursor/rules/
+└── src/
+```
+
+### Monorepo
+
+```
+monorepo/
+├── AGENTS.md                 # Monorepo overview + app index
+├── docs/
+│   ├── decisions/           # Shared ADRs
+│   └── architecture.md
+├── .cursor/rules/           # Shared rules
+│
+├── apps/
+│   ├── web/
+│   │   ├── AGENTS.md        # App context + feature map
+│   │   ├── docs/
+│   │   └── .cursor/rules/   # App-specific rules
+│   ├── api/
+│   │   ├── AGENTS.md
+│   │   └── docs/
+│   └── mobile/
+│       ├── AGENTS.md
+│       └── docs/
+│
+└── packages/
+    ├── shared-ui/
+    │   ├── AGENTS.md
+    │   └── docs/
+    └── core/
+        └── AGENTS.md
+```
+
+### AGENTS.md at Each Level
+
+| Scope | Contains |
+|-------|----------|
+| **Monorepo root** | App index, shared patterns, cross-app architecture |
+| **App** | App context, feature map, tech stack |
+| **Package** | Package API, usage patterns |
+
+### Rule Inheritance
+
+Rules cascade from root to specific:
+
+```
+monorepo/.cursor/rules/      # Shared (all apps inherit)
+apps/web/.cursor/rules/      # Web-specific (extends shared)
+apps/api/.cursor/rules/      # API-specific
+```
+
+AI reads from most specific scope first, then inherits shared rules.
