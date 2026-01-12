@@ -4,13 +4,11 @@ globs:
   - "**/*"
 ---
 
-# Cursor Rules Index
+# SpaceBooker - Cursor Rules Index
 
-> **TEMPLATE**: Copy this file to `/.cursor/rules/00-index.mdc`.
-> Replace all `[bracketed]` placeholders with your project's values.
-> See `../../examples/cursor-rules/00-index.mdc` for a filled-in example.
->
-> **REQUIRED**: This file MUST exist in every project using the AI Context Docs Lifecycle methodology.
+> **REFERENCE ONLY**: This is a filled-in example showing the expected format.
+> To create your own file, use `../../templates/cursor-rules/00-index.mdc` and replace the placeholders.
+> Do NOT copy this content directly - adapt the STRUCTURE, not the CONTENT.
 
 ---
 
@@ -66,10 +64,41 @@ globs:
 
 ## Critical Reminders
 
-### [Add project-specific critical reminders here]
+### Path Aliases
 
-```[language]
-// Example code pattern reminder
+```tsx
+// WRONG
+import { Button } from '../../../components/Button'
+
+// CORRECT
+import { Button } from '@/components/Button'
+```
+
+### Server vs Client Components
+
+```tsx
+// Default: Server Component (no directive needed)
+export default async function SpacesPage() {
+  const spaces = await getSpaces()
+  return <SpaceList spaces={spaces} />
+}
+
+// Client Component: Only when needed
+'use client'
+export function BookingForm() {
+  const [date, setDate] = useState()
+  return <form>...</form>
+}
+```
+
+### Booking Validation
+
+```tsx
+// ALWAYS check availability before creating booking
+const isAvailable = await checkSpaceAvailability(spaceId, date)
+if (!isAvailable) {
+  throw new Error('Space not available for selected date')
+}
 ```
 
 ---

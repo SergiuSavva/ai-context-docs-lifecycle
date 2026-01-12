@@ -1,0 +1,285 @@
+---
+description: Testing approach and patterns for SpaceBooker
+globs:
+  - "**/*.test.{ts,tsx}"
+  - "**/*.spec.{ts,tsx}"
+  - "**/e2e/**"
+---
+
+# SpaceBooker - Testing Strategy
+
+> **REFERENCE ONLY**: This is a filled-in example showing the expected format.
+> To create your own file, use `../../templates/cursor-rules/testing-strategy.mdc`.
+> Do NOT copy this content directly - adapt the STRUCTURE, not the CONTENT.
+
+---
+
+## Testing Stack
+
+| Type | Tool | Location |
+|------|------|----------|
+| Unit | Vitest | `*.test.ts` next to source |
+| Component | Vitest + Testing Library | `*.test.tsx` next to source |
+| Integration | Vitest | `__tests__/` directories |
+| E2E | Playwright | `e2e/` folder |
+
+---
+
+## Test File Naming
+
+```
+features/bookings/
+├── components/
+│   ├── BookingCard.tsx
+│   └── BookingCard.test.tsx    # Component test
+├── hooks/
+│   ├── useBookings.ts
+│   └── useBookings.test.ts     # Hook test
+└── __tests__/
+    └── booking-flow.test.ts    # Integration test
+
+e2e/
+├── booking.spec.ts             # E2E test
+└── auth.spec.ts
+```
+
+---
+
+## Unit Tests
+
+### Testing Utilities
+
+```typescript
+// lib/utils/format.test.ts
+import { describe, it, expect } from 'vitest'
+import { formatPrice, formatDate } from './format'
+
+describe('formatPrice', () => {
+  it('formats price in USD', () => {
+    expect(formatPrice(1000)).toBe('$10.00')
+  })
+
+  it('handles zero', () => {
+    expect(formatPrice(0)).toBe('$0.00')
+  })
+})
+
+describe('formatDate', () => {
+  it('formats date for display', () => {
+    const date = new Date('2025-01-15')
+    expect(formatDate(date)).toBe('Jan 15, 2025')
+  })
+})
+```
+
+### Testing Hooks
+
+```typescript
+// features/bookings/hooks/useBookings.test.ts
+import { renderHook, waitFor } from '@testing-library/react'
+import { QueryClient, QueryClientProvider } from '@tanstack/react-query'
+import { useBookings } from './useBookings'
+import { api } from '@/lib/api'
+
+vi.mock('@/lib/api')
+
+const createWrapper = () => {
+  const queryClient = new QueryClient({
+    defaultOptions: { queries: { retry: false } },
+  })
+  return ({ children }) => (
+    <QueryClientProvider client={queryClient}>
+      {children}
+    </QueryClientProvider>
+  )
+}
+
+describe('useBookings', () => {
+  it('fetches user bookings', async () => {
+    const mockBookings = [
+      { id: '1', spaceId: 'space_1', status: 'confirmed' },
+    ]
+    vi.mocked(api.getBookings).mockResolvedValue(mockBookings)
+
+    const { result } = renderHook(
+      () => useBookings('user_123'),
+      { wrapper: createWrapper() }
+    )
+
+    await waitFor(() => expect(result.current.isSuccess).toBe(true))
+    expect(result.current.data).toEqual(mockBookings)
+  })
+})
+```
+
+---
+
+## Component Tests
+
+```typescript
+// features/bookings/components/BookingCard.test.tsx
+import { render, screen, fireEvent } from '@testing-library/react'
+import { BookingCard } from './BookingCard'
+
+const mockBooking = {
+  id: '1',
+  space: { name: 'Creative Studio A', address: '123 Main St' },
+  date: new Date('2025-02-01'),
+  status: 'confirmed',
+  totalPrice: 5000,
+}
+
+describe('BookingCard', () => {
+  it('displays booking information', () => {
+    render(<BookingCard booking={mockBooking} />)
+
+    expect(screen.getByText('Creative Studio A')).toBeInTheDocument()
+    expect(screen.getByText('Feb 1, 2025')).toBeInTheDocument()
+    expect(screen.getByText('$50.00')).toBeInTheDocument()
+  })
+
+  it('shows confirmed status badge', () => {
+    render(<BookingCard booking={mockBooking} />)
+
+    expect(screen.getByText('Confirmed')).toHaveClass('bg-green-100')
+  })
+
+  it('calls onCancel when cancel button clicked', () => {
+    const onCancel = vi.fn()
+    render(<BookingCard booking={mockBooking} onCancel={onCancel} />)
+
+    fireEvent.click(screen.getByRole('button', { name: /cancel/i }))
+
+    expect(onCancel).toHaveBeenCalledWith('1')
+  })
+})
+```
+
+---
+
+## Integration Tests
+
+```typescript
+// features/bookings/__tests__/booking-flow.test.ts
+import { describe, it, expect, beforeEach } from 'vitest'
+import { prisma } from '@/lib/db'
+import { createBooking, cancelBooking } from '../services'
+
+describe('Booking Flow', () => {
+  beforeEach(async () => {
+    // Clean up test data
+    await prisma.booking.deleteMany({ where: { userId: 'test_user' } })
+  })
+
+  it('creates a booking when space is available', async () => {
+    const booking = await createBooking({
+      userId: 'test_user',
+      spaceId: 'test_space',
+      date: new Date('2025-03-01'),
+      duration: 2,
+    })
+
+    expect(booking.status).toBe('confirmed')
+    expect(booking.totalPrice).toBeGreaterThan(0)
+  })
+
+  it('rejects booking when space is not available', async () => {
+    // Create existing booking
+    await createBooking({
+      userId: 'other_user',
+      spaceId: 'test_space',
+      date: new Date('2025-03-01'),
+      duration: 4,
+    })
+
+    // Try to book same slot
+    await expect(createBooking({
+      userId: 'test_user',
+      spaceId: 'test_space',
+      date: new Date('2025-03-01'),
+      duration: 2,
+    })).rejects.toThrow('SPACE_NOT_AVAILABLE')
+  })
+})
+```
+
+---
+
+## E2E Tests (Playwright)
+
+```typescript
+// e2e/booking.spec.ts
+import { test, expect } from '@playwright/test'
+
+test.describe('Booking Flow', () => {
+  test.beforeEach(async ({ page }) => {
+    // Login as test user
+    await page.goto('/login')
+    await page.fill('[name="email"]', 'test@example.com')
+    await page.fill('[name="password"]', 'password123')
+    await page.click('button[type="submit"]')
+    await page.waitForURL('/dashboard')
+  })
+
+  test('user can book a space', async ({ page }) => {
+    // Navigate to spaces
+    await page.goto('/spaces')
+    
+    // Click on first available space
+    await page.click('[data-testid="space-card"]')
+    
+    // Click book button
+    await page.click('button:has-text("Book Now")')
+    
+    // Fill booking form
+    await page.fill('[name="date"]', '2025-03-15')
+    await page.selectOption('[name="duration"]', '2')
+    
+    // Submit
+    await page.click('button:has-text("Confirm Booking")')
+    
+    // Verify success
+    await expect(page.locator('.toast-success')).toContainText('Booking confirmed')
+  })
+
+  test('user can view booking history', async ({ page }) => {
+    await page.goto('/bookings')
+    
+    await expect(page.locator('h1')).toContainText('My Bookings')
+    await expect(page.locator('[data-testid="booking-card"]')).toHaveCount.greaterThan(0)
+  })
+})
+```
+
+---
+
+## Test Commands
+
+```bash
+# Run all tests
+npm test
+
+# Run with coverage
+npm test -- --coverage
+
+# Run specific file
+npm test -- BookingCard.test.tsx
+
+# Run E2E tests
+npm run test:e2e
+
+# Run E2E with UI
+npm run test:e2e -- --ui
+```
+
+---
+
+## What to Test
+
+| Priority | What | How |
+|----------|------|-----|
+| **High** | Business logic (pricing, availability) | Unit tests |
+| **High** | API routes | Integration tests |
+| **Medium** | Component interactions | Component tests |
+| **Medium** | Critical user flows | E2E tests |
+| **Low** | Simple display components | Skip or minimal |

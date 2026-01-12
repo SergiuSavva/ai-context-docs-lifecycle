@@ -24,9 +24,10 @@ A methodology reference that AI agents read and apply to projects.
 
 | Folder | Contains |
 |--------|----------|
-| `rules/` | Required rules (structure, workflow) |
-| `examples/` | Templates to adapt |
-| `guides/` | Step-by-step instructions |
+| `content/rules/` | Required rules (structure, workflow) |
+| `content/templates/` | Skeleton files with placeholders (AI copies these) |
+| `content/examples/` | Filled-in reference samples (for understanding) |
+| `content/guides/` | Step-by-step instructions |
 
 ---
 
@@ -43,7 +44,7 @@ flowchart LR
 
 | Pillar | Purpose | Location |
 |--------|---------|----------|
-| **Specs** | What to build | `docs/mvp/`, `docs/features/` |
+| **Specs** | What to build | `docs/specs/` |
 | **Rules** | How to build | `.cursor/rules/` |
 | **Reference** | What exists | `AGENTS.md`, `docs/` |
 
@@ -55,5 +56,5 @@ flowchart LR
 |------|---------|
 | `README.md` | Entry point for AI agents |
 | `METHODOLOGY.md` | Full methodology explanation |
-| `rules/00-structure.md` | Required folder structure |
-| `rules/01-workflow.md` | Required workflow |
+| `content/rules/00-structure.md` | Required folder structure |
+| `content/rules/01-workflow.md` | Required workflow |

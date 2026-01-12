@@ -1,12 +1,12 @@
-# Applying AI-First Dev Kit to a New Project
+# Applying AI Context Docs Lifecycle to a New Project
 
-> **For AI Agents**: Follow these steps when setting up the kit for a brand new project.
+> **For AI Agents**: Follow these steps when setting up the methodology for a brand new project.
 
 ---
 
 ## Overview
 
-Setting up a new project with the AI-First Dev Kit involves:
+Setting up a new project with the AI Context Docs Lifecycle methodology involves:
 
 1. Creating the required folder structure
 2. Setting up AGENTS.md
@@ -34,7 +34,10 @@ mkdir -p .cursor/rules
 
 ## Step 2: Create AGENTS.md
 
-Create `/AGENTS.md` at the project root using `examples/AGENTS.md` as reference.
+Create `/AGENTS.md` at the project root.
+
+**Use template:** `../templates/AGENTS.md`
+**See example:** `../examples/AGENTS.md`
 
 **Customize with:**
 - Actual project name
@@ -75,20 +78,23 @@ npm test
 
 ### 3.1 Create 00-index.mdc (REQUIRED)
 
-Create `/.cursor/rules/00-index.mdc` using `examples/cursor-rules/00-index.mdc`.
+Create `/.cursor/rules/00-index.mdc`.
+
+**Use template:** `../templates/cursor-rules/00-index.mdc`
+**See example:** `../examples/cursor-rules/00-index.mdc`
 
 This file MUST exist and list all other rules.
 
 ### 3.2 Create Project-Specific Rules (Optional)
 
-Based on project needs, create additional rules from examples:
+Based on project needs, create additional rules:
 
-| If project has... | Create from... |
-|-------------------|----------------|
-| Specific architecture | `examples/cursor-rules/project-architecture.mdc` |
-| Code conventions | `examples/cursor-rules/coding-patterns.mdc` |
-| Data fetching | `examples/cursor-rules/state-management.mdc` |
-| Testing requirements | `examples/cursor-rules/testing-strategy.mdc` |
+| If project has... | Use template... | See example... |
+|-------------------|-----------------|----------------|
+| Specific architecture | `templates/cursor-rules/project-architecture.mdc` | `examples/cursor-rules/project-architecture.mdc` |
+| Code conventions | `templates/cursor-rules/coding-patterns.mdc` | `examples/cursor-rules/coding-patterns.mdc` |
+| Data fetching | `templates/cursor-rules/state-management.mdc` | `examples/cursor-rules/state-management.mdc` |
+| Testing requirements | `templates/cursor-rules/testing-strategy.mdc` | `examples/cursor-rules/testing-strategy.mdc` |
 
 ---
 
@@ -148,7 +154,8 @@ This folder contains PRD-lite specifications for features.
 - Completed specs: `_archive/`
 
 ## Format
-See examples/prd-lite.md for template.
+Use template: ../templates/prd-lite.md
+See example: ../examples/prd-lite.md
 
 ## Active Specs
 | Spec | Feature | Status |
@@ -167,7 +174,8 @@ See examples/prd-lite.md for template.
 | - | - | - |
 
 ## Template
-See examples/adr.md
+Use template: ../templates/adr.md
+See example: ../examples/adr.md
 ```
 
 ---

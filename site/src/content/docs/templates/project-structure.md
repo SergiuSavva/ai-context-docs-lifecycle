@@ -6,7 +6,7 @@ head: []
 
 ## Purpose
 
-Every project using AI-First Dev Kit needs this minimum structure. It provides consistent locations for AI context, rules, and documentation.
+Every project using AI Context Docs Lifecycle needs this minimum structure. It provides consistent locations for AI context, rules, and documentation.
 
 ---
 

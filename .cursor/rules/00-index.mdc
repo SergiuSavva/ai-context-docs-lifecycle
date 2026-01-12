@@ -1,5 +1,5 @@
 ---
-description: Master index of Cursor rules for ai-first-dev-kit
+description: Master index of Cursor rules for ai-context-docs-lifecycle
 globs:
   - "**/*"
 ---

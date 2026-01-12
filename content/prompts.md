@@ -1,6 +1,6 @@
 # AI Prompt Library
 
-> Ready-to-use prompts for AI-First Development. Copy, paste, and customize.
+> Ready-to-use prompts for AI Context Docs Lifecycle. Copy, paste, and customize.
 
 ---
 
@@ -9,7 +9,7 @@
 ### 1. Quick Setup (Minimal)
 
 ```
-Set up AI-First Dev Kit for this project:
+Set up AI Context Docs Lifecycle for this project:
 
 1. Create folders: .cursor/rules, docs/specs/_archive, docs/features, docs/decisions
 2. Create AGENTS.md with: quick start commands, tech stack table, file organization
@@ -21,7 +21,7 @@ Use actual values from package.json and the codebase - no placeholders.
 ### 2. Full Setup (Comprehensive)
 
 ```
-Apply AI-First Dev Kit methodology to this project:
+Apply AI Context Docs Lifecycle methodology to this project:
 
 1. Analyze: Read package.json, scan src/ for structure, identify patterns
 2. Create structure:
@@ -39,13 +39,13 @@ Apply AI-First Dev Kit methodology to this project:
    - Current file organization
    - Patterns observed in the code
 
-Reference: https://ai-first-dev-kit.github.io/methodology/
+Reference: https://sergiusavva.github.io/ai-context-docs-lifecycle/methodology/
 ```
 
 ### 3. Monorepo Setup
 
 ```
-Set up AI-First Dev Kit for this monorepo:
+Set up AI Context Docs Lifecycle for this monorepo:
 
 1. Detect type: Check for packages/, apps/, services/, workspace configs
 2. Create root AGENTS.md listing all packages/services
@@ -214,7 +214,7 @@ Report findings and suggest fixes.
 ### Verify Setup
 
 ```
-Verify AI-First Dev Kit setup:
+Verify AI Context Docs Lifecycle setup:
 
 Check:
 1. AGENTS.md exists and has real values (not placeholders)
@@ -238,7 +238,7 @@ Report any issues found.
 | Record decision | "Create ADR for choosing [X] over [Y]" |
 | New pattern | "Add rule for [pattern] to .cursor/rules/" |
 | Complete feature | "Archive spec and update docs for [feature]" |
-| Health check | "Verify AI-First Dev Kit setup" |
+| Health check | "Verify AI Context Docs Lifecycle setup" |
 
 ---
 

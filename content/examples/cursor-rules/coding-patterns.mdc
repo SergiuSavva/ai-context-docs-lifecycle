@@ -1,0 +1,253 @@
+---
+description: Code style, TypeScript, and framework-specific patterns for SpaceBooker
+globs:
+  - "**/*.{ts,tsx,js,jsx}"
+---
+
+# SpaceBooker - Coding Patterns
+
+> **REFERENCE ONLY**: This is a filled-in example showing the expected format.
+> To create your own file, use `../../templates/cursor-rules/coding-patterns.mdc`.
+> Do NOT copy this content directly - adapt the STRUCTURE, not the CONTENT.
+
+---
+
+## TypeScript Configuration
+
+### Key Settings
+
+```json
+{
+  "compilerOptions": {
+    "strict": true,
+    "noUncheckedIndexedAccess": true,
+    "noImplicitReturns": true
+  }
+}
+```
+
+### Rules
+
+- Strict mode ON
+- Explicit return types for public functions
+- No `any` - use `unknown` when type is uncertain
+- Prefer `interface` over `type` for object shapes
+
+---
+
+## Naming Conventions
+
+### Files and Directories
+
+| Type | Convention | Example |
+|------|------------|---------|
+| Components | PascalCase | `BookingCard.tsx` |
+| Hooks | camelCase with `use` | `useBookings.ts` |
+| Utils | camelCase | `formatDate.ts` |
+| Types | PascalCase | `Booking.types.ts` |
+| Constants | SCREAMING_SNAKE | `API_ENDPOINTS.ts` |
+| Directories | kebab-case | `booking-history/` |
+
+### Code
+
+```typescript
+// Variables - camelCase
+const spaceId = 'space_123'
+
+// Constants - SCREAMING_SNAKE_CASE
+const MAX_BOOKING_DURATION_HOURS = 8
+
+// Functions - camelCase, verb prefix
+function getSpaceById(id: string): Promise<Space> {}
+function handleBookingSubmit(): void {}
+
+// Types/Interfaces - PascalCase
+interface BookingRequest {
+  spaceId: string
+  date: Date
+  duration: number
+}
+type BookingStatus = 'pending' | 'confirmed' | 'cancelled'
+
+// Components - PascalCase
+function BookingCard({ booking }: BookingCardProps) {}
+
+// Hooks - camelCase with use prefix
+function useSpaceAvailability(spaceId: string) {}
+```
+
+---
+
+## Component Patterns
+
+### Functional Components Only
+
+```typescript
+// CORRECT - Functional component
+interface BookingCardProps {
+  booking: Booking
+  onCancel?: (id: string) => void
+}
+
+export function BookingCard({ booking, onCancel }: BookingCardProps) {
+  return (
+    <div className="rounded-lg border p-4">
+      <h3>{booking.space.name}</h3>
+      <p>{formatDate(booking.date)}</p>
+      {onCancel && (
+        <Button onClick={() => onCancel(booking.id)}>Cancel</Button>
+      )}
+    </div>
+  )
+}
+```
+
+### Component Structure
+
+```typescript
+export function BookingList({ userId }: BookingListProps) {
+  // 1. Hooks (always at the top)
+  const { data, isLoading } = useBookings(userId)
+  const [filter, setFilter] = useState<BookingStatus>('all')
+  
+  // 2. Derived/computed values
+  const filteredBookings = useMemo(
+    () => data?.filter(b => filter === 'all' || b.status === filter),
+    [data, filter]
+  )
+  
+  // 3. Event handlers
+  const handleFilterChange = useCallback((status: BookingStatus) => {
+    setFilter(status)
+  }, [])
+  
+  // 4. Early returns
+  if (isLoading) return <BookingListSkeleton />
+  if (!data?.length) return <EmptyState />
+  
+  // 5. Render
+  return (
+    <div>
+      <BookingFilters value={filter} onChange={handleFilterChange} />
+      {filteredBookings?.map(booking => (
+        <BookingCard key={booking.id} booking={booking} />
+      ))}
+    </div>
+  )
+}
+```
+
+---
+
+## SpaceBooker-Specific Patterns
+
+### Booking Validation
+
+```typescript
+// ALWAYS validate before creating booking
+async function createBooking(data: CreateBookingInput) {
+  // 1. Check availability
+  const isAvailable = await checkSpaceAvailability(
+    data.spaceId, 
+    data.date, 
+    data.duration
+  )
+  if (!isAvailable) {
+    throw new BookingError('SPACE_NOT_AVAILABLE')
+  }
+  
+  // 2. Check user has valid payment method
+  const hasPayment = await hasValidPaymentMethod(data.userId)
+  if (!hasPayment) {
+    throw new BookingError('NO_PAYMENT_METHOD')
+  }
+  
+  // 3. Create booking
+  return prisma.booking.create({ data })
+}
+```
+
+### Price Calculation
+
+```typescript
+// Use the central pricing utility
+import { calculateBookingPrice } from '@/lib/pricing'
+
+const price = calculateBookingPrice({
+  baseRate: space.hourlyRate,
+  duration: booking.duration,
+  date: booking.date, // Weekend rates may apply
+})
+```
+
+---
+
+## Error Handling
+
+```typescript
+// Custom error types for SpaceBooker
+class BookingError extends Error {
+  constructor(
+    public code: 'SPACE_NOT_AVAILABLE' | 'NO_PAYMENT_METHOD' | 'INVALID_DATE',
+    message?: string
+  ) {
+    super(message ?? code)
+    this.name = 'BookingError'
+  }
+}
+
+// API route error handling
+export async function POST(request: Request) {
+  try {
+    const body = await request.json()
+    const data = CreateBookingSchema.parse(body)
+    const booking = await createBooking(data)
+    return NextResponse.json({ data: booking })
+  } catch (error) {
+    if (error instanceof BookingError) {
+      return NextResponse.json(
+        { error: error.code, message: error.message },
+        { status: 400 }
+      )
+    }
+    if (error instanceof z.ZodError) {
+      return NextResponse.json(
+        { error: 'VALIDATION_ERROR', details: error.errors },
+        { status: 400 }
+      )
+    }
+    console.error('Unexpected error:', error)
+    return NextResponse.json(
+      { error: 'INTERNAL_ERROR' },
+      { status: 500 }
+    )
+  }
+}
+```
+
+---
+
+## Anti-Patterns to Avoid
+
+```typescript
+// WRONG - Creating booking without availability check
+const booking = await prisma.booking.create({ data })
+
+// CORRECT - Always check first
+const isAvailable = await checkSpaceAvailability(...)
+if (isAvailable) {
+  const booking = await prisma.booking.create({ data })
+}
+
+// WRONG - Hardcoding prices
+const total = hours * 50
+
+// CORRECT - Use pricing utility
+const total = calculateBookingPrice({ ... })
+
+// WRONG - Mutating state directly
+booking.status = 'cancelled'
+
+// CORRECT - Create new reference
+setBooking(prev => ({ ...prev, status: 'cancelled' }))
+```

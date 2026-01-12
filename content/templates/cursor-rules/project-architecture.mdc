@@ -1,219 +1,121 @@
 ---
-description: Project architecture patterns and structure
+description: Project structure and file organization
 globs:
   - "**/*"
 ---
 
 # Project Architecture
 
-> **EXAMPLE**: Customize this file for your project's architecture.
-> Place in: `/.cursor/rules/project-architecture.mdc`
+> **TEMPLATE**: Copy this file to `/.cursor/rules/project-architecture.mdc`.
+> Replace all `[bracketed]` placeholders with your project's values.
+> See `../../examples/cursor-rules/project-architecture.mdc` for a filled-in example.
 
 ---
 
 ## Directory Structure
 
 ```
-project/
-├── app/                    # Next.js App Router
-│   ├── (public)/          # Public routes (no auth)
-│   ├── (protected)/       # Auth-required routes
-│   ├── api/               # API routes
-│   └── layout.tsx         # Root layout
+[project-name]/
+├── [folder]/                   # [Description]
+│   ├── [subfolder]/           # [Description]
+│   └── [subfolder]/           # [Description]
 │
-├── components/            # Shared UI components
-│   ├── ui/               # Base UI primitives
-│   └── common/           # Common components
+├── [folder]/                   # Shared UI components
+│   ├── [subfolder]/           # [Description]
+│   └── [subfolder]/           # [Description]
 │
-├── features/             # Feature modules
-│   ├── auth/            # Authentication
-│   │   ├── components/  # Feature-specific components
-│   │   ├── hooks/       # Feature-specific hooks
-│   │   └── utils/       # Feature utilities
-│   └── [feature]/       # Other features
+├── [folder]/                   # Feature modules
+│   ├── [feature-1]/
+│   └── [feature-2]/
 │
-├── lib/                  # Core utilities
-│   ├── api/             # API client
-│   ├── db/              # Database utilities
-│   └── utils/           # Helper functions
+├── [folder]/                   # Core utilities
 │
-├── types/               # Shared TypeScript types
-└── config/              # Configuration
+└── docs/                       # Project documentation
+    ├── specs/
+    ├── features/
+    └── decisions/
 ```
 
 ---
 
-## Routing Patterns
+## Route/Page Organization
 
-### Next.js App Router
+### [Group 1] - [Description]
+
+| Route | File | Purpose |
+|-------|------|---------|
+| `/[route]` | `[path/to/file]` | [Purpose] |
+| `/[route]` | `[path/to/file]` | [Purpose] |
+
+### [Group 2] - [Description]
+
+| Route | File | Purpose |
+|-------|------|---------|
+| `/[route]` | `[path/to/file]` | [Purpose] |
+| `/[route]` | `[path/to/file]` | [Purpose] |
+
+---
+
+## Feature Module Structure
+
+Each feature follows this pattern:
 
 ```
-app/
-├── page.tsx                    # Home (/)
-├── layout.tsx                  # Root layout
-├── (auth)/
-│   ├── login/page.tsx         # /login
-│   └── signup/page.tsx        # /signup
-├── (protected)/
-│   ├── layout.tsx             # Auth check
-│   ├── dashboard/page.tsx     # /dashboard
-│   └── settings/page.tsx      # /settings
-└── api/
-    └── [resource]/route.ts    # /api/[resource]
+[features-folder]/[feature]/
+├── components/           # UI components for this feature
+│   └── index.ts
+├── hooks/               # Data hooks
+│   └── index.ts
+├── utils/               # Feature-specific utilities (optional)
+├── types.ts             # Feature types
+└── AGENTS.md            # Feature AI context (for complex features)
 ```
 
 ---
 
-## Component Organization
-
-### Feature Component Structure
-
-```typescript
-features/[feature]/
-├── components/
-│   ├── FeatureList.tsx      # Main list component
-│   ├── FeatureCard.tsx      # Card component
-│   └── FeatureForm.tsx      # Form component
-├── hooks/
-│   ├── useFeature.ts        # Main feature hook
-│   └── useFeatureForm.ts    # Form-specific hook
-├── utils/
-│   └── feature.utils.ts     # Helper functions
-├── types.ts                 # Feature types
-└── index.ts                 # Public exports
-```
-
-### Component File Structure
-
-```typescript
-import { type FC } from 'react'
-
-interface ComponentProps {
-  // Props definition
-}
-
-export const Component: FC<ComponentProps> = ({ prop }) => {
-  // 1. Hooks first
-  // 2. Derived state
-  // 3. Event handlers
-  // 4. Render
-  return (
-    <div>
-      {/* JSX */}
-    </div>
-  )
-}
-```
-
----
-
-## Import Conventions
+## Import Rules
 
 ### Path Aliases
 
-```typescript
-// WRONG - relative imports
-import { Button } from '../../../components/ui/Button'
-
-// CORRECT - path aliases
-import { Button } from '@/components/ui/Button'
+```json
+{
+  "[alias]/*": ["[path]/*"]
+}
 ```
 
 ### Import Order
 
-```typescript
+```[language]
 // 1. External packages
-import { useState } from 'react'
-import { useQuery } from '@tanstack/react-query'
 
-// 2. Internal aliases
-import { Button } from '@/components/ui/Button'
-import { useAuth } from '@/features/auth/hooks/useAuth'
+// 2. Internal modules (absolute paths)
 
 // 3. Relative imports (same feature only)
-import { FeatureCard } from './FeatureCard'
-import type { FeatureProps } from './types'
+
+// 4. Types
 ```
 
 ---
 
-## Server vs Client Code
+## Where to Put New Files
 
-### Default: Server Components
-
-```typescript
-// No directive = Server Component
-export default async function Page() {
-  const data = await fetchData()
-  return <ServerComponent data={data} />
-}
-```
-
-### Client Components (when needed)
-
-```typescript
-'use client'
-
-export function InteractiveComponent() {
-  const [state, setState] = useState()
-  return <button onClick={() => setState(!state)} />
-}
-```
-
-### When to Use Client Components
-
-- Event handlers (onClick, onChange)
-- useState, useEffect, useReducer
-- Browser-only APIs
-- Third-party client libraries
+| Type of File | Location |
+|--------------|----------|
+| New page | `[path]` |
+| API route | `[path]` |
+| Shared UI component | `[path]` |
+| Layout component | `[path]` |
+| Feature component | `[path]` |
+| Data hook | `[path]` |
+| Utility function | `[path]` |
+| Type definition | `[path]` |
+| Store | `[path]` |
 
 ---
 
-## API Patterns
+## Colocation Rules
 
-### API Route Structure
-
-```typescript
-// app/api/[resource]/route.ts
-import { NextResponse } from 'next/server'
-
-export async function GET(request: Request) {
-  try {
-    const data = await fetchData()
-    return NextResponse.json(data)
-  } catch (error) {
-    return NextResponse.json(
-      { error: 'Failed to fetch' },
-      { status: 500 }
-    )
-  }
-}
-
-export async function POST(request: Request) {
-  const body = await request.json()
-  // Validate and process
-}
-```
-
----
-
-## Environment Configuration
-
-### Required Variables
-
-```env
-# Database
-DATABASE_URL=
-
-# Authentication
-AUTH_SECRET=
-
-# External APIs
-API_KEY=
-```
-
-### Environment Files
-
-- `.env.local` - Local development (never commit)
-- `.env.example` - Template (commit this)
-- `.env.production` - Production (CI/CD only)
+1. **Feature-specific components** stay in `[features-folder]/[feature]/components/`
+2. **Shared components** go in `[components-folder]/`
+3. **Tests** live next to source files (`*.test.[ext]`)
+4. **Types** can be in feature folder or shared `[types-folder]/`

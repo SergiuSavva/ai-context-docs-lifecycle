@@ -1,10 +1,10 @@
 ---
 title: New Project Guide
-description: Set up AI-First Dev Kit for a brand new project
+description: Set up AI Context Docs Lifecycle for a brand new project
 head: []
 ---
 
-Setting up AI-First Dev Kit for a brand new project from scratch.
+Setting up AI Context Docs Lifecycle for a brand new project from scratch.
 
 ## Overview
 
@@ -191,7 +191,7 @@ project/
 Instead of manual setup, tell your AI:
 
 ```
-Apply the AI-First Dev Kit methodology from https://ai-first-dev-kit.github.io to this project.
+Apply the AI Context Docs Lifecycle methodology from https://sergiusavva.github.io/ai-context-docs-lifecycle to this project.
 
 This is a new [language/framework] project. Set up:
 1. AGENTS.md with our actual tech stack

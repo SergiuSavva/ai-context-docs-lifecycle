@@ -1,0 +1,210 @@
+---
+description: Project structure and file organization for SpaceBooker
+globs:
+  - "**/*"
+---
+
+# SpaceBooker - Project Architecture
+
+> **REFERENCE ONLY**: This is a filled-in example showing the expected format.
+> To create your own file, use `../../templates/cursor-rules/project-architecture.mdc`.
+> Do NOT copy this content directly - adapt the STRUCTURE, not the CONTENT.
+
+---
+
+## Directory Structure
+
+```
+spacebooker/
+├── app/                        # Next.js App Router
+│   ├── (public)/              # Public routes (no auth required)
+│   │   ├── page.tsx           # Landing page
+│   │   ├── login/             # Login page
+│   │   ├── register/          # Registration page
+│   │   └── spaces/            # Public space browsing
+│   │       └── [id]/          # Space detail (public view)
+│   │
+│   ├── (protected)/           # Auth-required routes
+│   │   ├── dashboard/         # User dashboard
+│   │   ├── bookings/          # Booking history
+│   │   │   └── [id]/          # Booking detail
+│   │   ├── profile/           # User profile
+│   │   └── host/              # Host dashboard (space owners)
+│   │
+│   ├── api/                   # API routes
+│   │   ├── auth/              # NextAuth.js routes
+│   │   ├── spaces/            # Space CRUD
+│   │   ├── bookings/          # Booking CRUD
+│   │   └── users/             # User management
+│   │
+│   ├── layout.tsx             # Root layout
+│   ├── providers.tsx          # Client providers (QueryClient, etc.)
+│   └── globals.css            # Global styles
+│
+├── components/                # Shared UI components
+│   ├── ui/                   # Base primitives
+│   │   ├── Button.tsx
+│   │   ├── Input.tsx
+│   │   ├── Card.tsx
+│   │   └── index.ts          # Re-exports
+│   │
+│   └── common/               # Layout components
+│       ├── Header.tsx
+│       ├── Footer.tsx
+│       ├── Sidebar.tsx
+│       └── index.ts
+│
+├── features/                  # Feature modules
+│   ├── auth/
+│   │   ├── components/
+│   │   ├── hooks/
+│   │   ├── utils/
+│   │   └── types.ts
+│   │
+│   ├── spaces/
+│   │   ├── components/
+│   │   ├── hooks/
+│   │   └── types.ts
+│   │
+│   ├── bookings/
+│   │   ├── components/
+│   │   ├── hooks/
+│   │   └── types.ts
+│   │
+│   └── payments/
+│       ├── components/
+│       ├── hooks/
+│       └── types.ts
+│
+├── lib/                       # Core utilities
+│   ├── api/                  # API client
+│   │   └── client.ts
+│   ├── db/                   # Database
+│   │   ├── prisma.ts         # Prisma client
+│   │   └── migrations/
+│   ├── auth/                 # Auth utilities
+│   │   └── config.ts         # NextAuth config
+│   └── utils/                # Helpers
+│       ├── format.ts         # Date/currency formatting
+│       └── validation.ts     # Zod schemas
+│
+├── types/                     # Shared types
+│   ├── api.ts                # API response types
+│   ├── database.ts           # Prisma-generated types
+│   └── index.ts
+│
+├── stores/                    # Zustand stores
+│   ├── ui-store.ts
+│   └── index.ts
+│
+└── docs/                      # Project documentation
+    ├── INDEX.md
+    ├── TASKS.md
+    ├── specs/
+    ├── features/
+    └── decisions/
+```
+
+---
+
+## Route Groups
+
+### (public) - No Auth Required
+
+| Route | File | Purpose |
+|-------|------|---------|
+| `/` | `(public)/page.tsx` | Landing page |
+| `/login` | `(public)/login/page.tsx` | Login |
+| `/register` | `(public)/register/page.tsx` | Registration |
+| `/spaces` | `(public)/spaces/page.tsx` | Browse spaces |
+| `/spaces/[id]` | `(public)/spaces/[id]/page.tsx` | Space detail |
+
+### (protected) - Auth Required
+
+| Route | File | Purpose |
+|-------|------|---------|
+| `/dashboard` | `(protected)/dashboard/page.tsx` | User dashboard |
+| `/bookings` | `(protected)/bookings/page.tsx` | Booking history |
+| `/bookings/[id]` | `(protected)/bookings/[id]/page.tsx` | Booking detail |
+| `/profile` | `(protected)/profile/page.tsx` | User profile |
+| `/host` | `(protected)/host/page.tsx` | Host dashboard |
+
+---
+
+## Feature Module Structure
+
+Each feature follows this pattern:
+
+```
+features/<feature>/
+├── components/           # UI components for this feature
+│   ├── FeatureList.tsx
+│   ├── FeatureCard.tsx
+│   └── index.ts
+├── hooks/               # Data hooks
+│   ├── useFeature.ts
+│   └── index.ts
+├── utils/               # Feature-specific utilities (optional)
+├── types.ts             # Feature types
+└── AGENTS.md            # Feature AI context (for complex features)
+```
+
+---
+
+## Import Rules
+
+### Path Aliases
+
+```typescript
+// tsconfig.json paths
+{
+  "@/*": ["./src/*"],
+  "@/components/*": ["./src/components/*"],
+  "@/features/*": ["./src/features/*"],
+  "@/lib/*": ["./src/lib/*"],
+  "@/types/*": ["./src/types/*"]
+}
+```
+
+### Import Order
+
+```typescript
+// 1. External packages
+import { useState } from 'react'
+import { useQuery } from '@tanstack/react-query'
+
+// 2. Internal modules (absolute paths)
+import { Button } from '@/components/ui'
+import { useAuth } from '@/features/auth'
+
+// 3. Relative imports (same feature only)
+import { BookingCard } from './BookingCard'
+
+// 4. Types
+import type { Booking } from '@/types'
+```
+
+---
+
+## Where to Put New Files
+
+| Type of File | Location |
+|--------------|----------|
+| New page | `app/(public)/` or `app/(protected)/` |
+| API route | `app/api/<resource>/` |
+| Shared UI component | `components/ui/` |
+| Layout component | `components/common/` |
+| Feature component | `features/<feature>/components/` |
+| Data hook | `features/<feature>/hooks/` |
+| Utility function | `lib/utils/` |
+| Type definition | `types/` or `features/<feature>/types.ts` |
+| Zustand store | `stores/` |
+
+---
+
+## Colocation Rules
+
+1. **Feature-specific components** stay in `features/<feature>/components/`
+2. **Shared components** go in `components/`
+3. **Tests** live next to source files (`Component.test.tsx`)
+4. **Types** can be in feature folder or shared `types/`

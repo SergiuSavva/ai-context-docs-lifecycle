@@ -1,10 +1,11 @@
-# ADR-001: [Decision Title]
+# ADR-[NNN]: [Decision Title]
 
-> **EXAMPLE**: Architecture Decision Record template.
-> Place in: `/docs/decisions/NNN-title.md`
+> **TEMPLATE**: Copy this file to `/docs/decisions/NNN-title.md`.
+> Replace all `[bracketed]` placeholders with your decision's values.
+> See `../examples/adr.md` for a filled-in example.
 
 > **Status:** Proposed | Accepted | Deprecated | Superseded  
-> **Date:** 2025-01-09  
+> **Date:** [YYYY-MM-DD]  
 > **Decision Makers:** [Names/Roles]
 
 ---
@@ -13,17 +14,11 @@
 
 [Describe the context and problem. What issue or question prompted this decision?]
 
-**Example**:
-> We need to choose a state management approach for our React application. The app will have both server data (from APIs) and client UI state. We need something that handles both efficiently without over-engineering.
-
 ---
 
 ## Decision
 
 [State the decision clearly and concisely.]
-
-**Example**:
-> We will use React Query for server state and Zustand for client-only UI state.
 
 ---
 
@@ -31,12 +26,9 @@
 
 [Explain why this decision was made. What factors were considered?]
 
-**Example**:
-- React Query handles caching, refetching, and synchronization automatically
-- Zustand is lightweight and simpler than Redux for our needs
-- Separating server and client state reduces complexity
-- Team has experience with both libraries
-- Both have excellent TypeScript support
+- [Reason 1]
+- [Reason 2]
+- [Reason 3]
 
 ---
 
@@ -44,83 +36,73 @@
 
 ### Positive
 
-- Automatic cache invalidation and background refetching
-- Simpler code than manual fetch + useState
-- Built-in loading and error states
-- DevTools available for debugging
+- [Positive consequence 1]
+- [Positive consequence 2]
+- [Positive consequence 3]
 
 ### Negative
 
-- Learning curve for team members new to React Query
-- Two libraries instead of one unified solution
-- Need to be careful about query key consistency
+- [Negative consequence 1]
+- [Negative consequence 2]
 
 ### Neutral
 
-- Bundle size increase (~30kb combined)
-- Need to set up QueryClient provider
+- [Neutral consequence 1]
 
 ---
 
 ## Alternatives Considered
 
-### Alternative 1: Redux Toolkit + RTK Query
+### Alternative 1: [Name]
 
-**Description:** Full Redux ecosystem with RTK Query for data fetching
-
-**Pros:**
-- Single unified solution
-- Team has Redux experience
-- Robust ecosystem
-
-**Cons:**
-- More boilerplate than React Query
-- Overkill for our app size
-- RTK Query less mature than React Query
-
-**Why not chosen:** Too heavy for our needs. React Query handles our use cases with less code.
-
-### Alternative 2: SWR
-
-**Description:** Vercel's data fetching library
+**Description:** [Brief description]
 
 **Pros:**
-- Lightweight
-- Simple API
-- Good Next.js integration
+- [Pro 1]
+- [Pro 2]
 
 **Cons:**
-- Less features than React Query
-- Mutations less elegant
-- Smaller ecosystem
+- [Con 1]
+- [Con 2]
 
-**Why not chosen:** React Query's mutation handling and DevTools are superior for our needs.
+**Why not chosen:** [Reason]
+
+### Alternative 2: [Name]
+
+**Description:** [Brief description]
+
+**Pros:**
+- [Pro 1]
+- [Pro 2]
+
+**Cons:**
+- [Con 1]
+- [Con 2]
+
+**Why not chosen:** [Reason]
 
 ---
 
 ## Implementation Notes
 
-1. Set up QueryClient in `app/providers.tsx`
-2. Create custom hooks per resource in `features/*/hooks/`
-3. Use Zustand stores only for UI state (modals, sidebars, etc.)
-4. Document query key conventions in coding-patterns.mdc
+1. [Implementation step 1]
+2. [Implementation step 2]
+3. [Implementation step 3]
 
 ---
 
 ## Related Decisions
 
-- [ADR-002: API Design](./002-api-design.md)
-- [ADR-005: Error Handling](./005-error-handling.md)
+- [ADR-XXX: Related Decision](./XXX-related.md)
 
 ---
 
 ## References
 
-- [React Query Docs](https://tanstack.com/query)
-- [Zustand Docs](https://zustand-demo.pmnd.rs/)
-- Team discussion: [Link to Slack/Issue]
+- [Reference 1](URL)
+- [Reference 2](URL)
 
 ---
 
-*Recorded: 2025-01-09*  
-*Last Updated: 2025-01-09*
+*Recorded: [YYYY-MM-DD]*  
+*Last Updated: [YYYY-MM-DD]*

@@ -1,6 +1,6 @@
 # Required Rules
 
-> **For AI Agents**: These rules are MANDATORY for all projects using the AI-First Dev Kit.
+> **For AI Agents**: These rules are MANDATORY for all projects using the AI Context Docs Lifecycle methodology.
 
 ---
 
@@ -31,7 +31,8 @@ Required rules define the **non-negotiable foundation** that every project must 
 1. Read `00-structure.md` - Create the required folders and files
 2. Read `01-workflow.md` - Follow the workflow from day one
 3. Read `02-code-style.md` - Apply quality principles to all code
-4. Check `../examples/` - Use examples as starting points
+4. Use `../templates/` - Copy templates as starting points
+5. Reference `../examples/` - See filled-in examples for understanding
 
 ### For Existing Projects
 
@@ -46,7 +47,7 @@ Required rules define the **non-negotiable foundation** that every project must 
 
 - **Minimal**: Only what's necessary, nothing more
 - **Universal**: Works for any tech stack
-- **Flexible**: Adapt examples to your needs
+- **Flexible**: Adapt templates to your needs
 - **AI-First**: Optimized for AI agent comprehension
 
 ---
@@ -59,7 +60,7 @@ These are optional and depend on your project:
 - Testing strategies (use your preferred approach)
 - State management patterns (framework-dependent)
 
-See `../examples/cursor-rules/` for optional rule examples.
+Use `../templates/cursor-rules/` for skeleton rules, see `../examples/cursor-rules/` for filled-in examples.
 
 ---
 
@@ -67,6 +68,7 @@ See `../examples/cursor-rules/` for optional rule examples.
 
 | Resource | Purpose |
 |----------|---------|
-| [Methodology](../METHODOLOGY.md) | Full philosophy and document types |
+| [Methodology](../../METHODOLOGY.md) | Full philosophy and document types |
 | [Guides](../guides/README.md) | Step-by-step kit application |
-| [Examples](../examples/README.md) | Templates and samples |
+| [Templates](../templates/README.md) | Skeleton files to copy |
+| [Examples](../examples/README.md) | Filled-in reference samples |

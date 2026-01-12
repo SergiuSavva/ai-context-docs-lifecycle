@@ -1,6 +1,8 @@
 # [Project Name] - AI Agent Instructions
 
-> **EXAMPLE**: Adapt this for your project. Replace all [bracketed] content.
+> **TEMPLATE**: Copy this file to your project root as `AGENTS.md`.
+> Replace all `[bracketed]` placeholders with your project's values.
+> See `../examples/AGENTS.md` for a filled-in example.
 
 ---
 
@@ -8,13 +10,13 @@
 
 ```bash
 # Installation
-npm install
+[install command]
 
 # Development  
-npm run dev
+[dev command]
 
 # Tests
-npm test
+[test command]
 ```
 
 ---
@@ -23,47 +25,38 @@ npm test
 
 [Brief description of what this project does - 1-2 sentences]
 
-**Example**: "A SaaS platform for booking creative workspaces, connecting artists with studio owners."
-
 ---
 
 ## Tech Stack
 
 | Category | Technology |
 |----------|------------|
-| **Language** | TypeScript |
-| **Framework** | Next.js 15 (App Router) |
-| **Database** | PostgreSQL + Prisma |
-| **Styling** | Tailwind CSS |
-| **Auth** | NextAuth.js |
-| **Testing** | Vitest + Playwright |
+| **Language** | [Language] |
+| **Framework** | [Framework + version] |
+| **Database** | [Database + ORM] |
+| **Styling** | [CSS framework] |
+| **Auth** | [Auth solution] |
+| **Testing** | [Test frameworks] |
 
 ---
 
 ## File Organization
 
 ```
-project/
-├── app/                    # Next.js App Router
-│   ├── (public)/          # Public routes
-│   ├── (protected)/       # Auth-required routes
-│   └── api/               # API routes
+[project-name]/
+├── [source-folder]/         # [Description]
+│   ├── [subfolder]/        # [Description]
+│   └── [subfolder]/        # [Description]
 │
-├── components/            # Shared UI components
-│   ├── ui/               # Base primitives (Button, Input)
-│   └── common/           # Common components (Header, Footer)
+├── [components-folder]/     # Shared UI components
 │
-├── features/             # Feature modules
-│   ├── auth/            # Authentication
-│   ├── bookings/        # Booking system
-│   └── spaces/          # Space management
+├── [features-folder]/       # Feature modules
+│   ├── [feature-1]/
+│   └── [feature-2]/
 │
-├── lib/                  # Core utilities
-│   ├── api/             # API client
-│   ├── db/              # Database utilities
-│   └── utils/           # Helper functions
+├── [lib-folder]/            # Core utilities
 │
-└── types/               # Shared TypeScript types
+└── [types-folder]/          # Shared types
 ```
 
 ---
@@ -71,29 +64,29 @@ project/
 ## Key Patterns
 
 ### State Management
-- **Server state**: React Query for all API data
-- **Client state**: Zustand for UI state
+- **Server state**: [Approach]
+- **Client state**: [Approach]
 - See: `.cursor/rules/state-management.mdc`
 
 ### Components
-- Functional components only
-- Props interfaces for all components
+- [Pattern 1]
+- [Pattern 2]
 - See: `.cursor/rules/coding-patterns.mdc`
 
 ### API
-- REST endpoints in `/app/api/`
-- Prisma for database access
-- Zod for validation
+- [API approach]
+- [Database access approach]
+- [Validation approach]
 
 ---
 
 ## Common Gotchas
 
-1. **Server vs Client Components**: Default to Server Components. Add `'use client'` only when needed (hooks, interactivity).
+1. **[Gotcha 1]**: [Description and solution]
 
-2. **Path Aliases**: Always use `@/` imports, never relative paths beyond the current feature.
+2. **[Gotcha 2]**: [Description and solution]
 
-3. **Auth**: Protected routes require session check in layout, not individual pages.
+3. **[Gotcha 3]**: [Description and solution]
 
 ---
 

@@ -1,7 +1,8 @@
 # Feature: [Feature Name]
 
-> **EXAMPLE**: Feature overview documentation.
-> Place in: `/docs/features/<feature-name>/README.md`
+> **TEMPLATE**: Copy this file to `/docs/features/<feature-name>/README.md`.
+> Replace all `[bracketed]` placeholders with your feature's values.
+> See `../examples/feature-readme.md` for a filled-in example.
 
 ---
 
@@ -9,51 +10,48 @@
 
 | Field | Value |
 |-------|-------|
-| **Slug** | booking-history |
-| **Status** | In Progress |
-| **Last Updated** | 2025-01-09 |
-| **Tags** | mvp, user-facing |
+| **Slug** | [feature-slug] |
+| **Status** | Not Started / In Progress / Complete |
+| **Last Updated** | [YYYY-MM-DD] |
+| **Tags** | [tag1], [tag2] |
 
 ---
 
 ## Overview
 
-Users can view their complete booking history, including past and upcoming reservations. This feature provides transparency and helps users track their activity on the platform.
+[Description of what this feature does and why it exists. 2-3 sentences.]
 
 ---
 
 ## Goals
 
-- [ ] Users can access booking history from dashboard
-- [ ] History displays all booking statuses (completed, cancelled, upcoming)
-- [ ] Users can filter and search their bookings
+- [ ] [Goal 1]
+- [ ] [Goal 2]
+- [ ] [Goal 3]
 
 ---
 
 ## User Impact
 
-**Who benefits:** All registered users with at least one booking
+**Who benefits:** [User type or segment]
 
 **How they benefit:**
-- Easy reference to past reservations
-- Quick access to booking details and receipts
-- Better tracking of spending and activity
+- [Benefit 1]
+- [Benefit 2]
+- [Benefit 3]
 
 ---
 
 ## Scope
 
 ### In Scope
-- List view of all bookings
-- Filter by status (completed, cancelled, upcoming)
-- Filter by date range
-- Booking detail view
-- Receipt download
+- [Item 1]
+- [Item 2]
+- [Item 3]
 
 ### Out of Scope
-- Modifying past bookings
-- Rebooking from history
-- Analytics dashboard
+- [Item 1]
+- [Item 2]
 
 ---
 
@@ -63,34 +61,29 @@ Users can view their complete booking history, including past and upcoming reser
 
 | Type | Location |
 |------|----------|
-| Routes | `app/(protected)/bookings/page.tsx` |
-| | `app/(protected)/bookings/[id]/page.tsx` |
-| Components | `features/bookings/components/BookingList.tsx` |
-| | `features/bookings/components/BookingCard.tsx` |
-| | `features/bookings/components/BookingDetail.tsx` |
-| Hooks | `features/bookings/hooks/useBookings.ts` |
-| | `features/bookings/hooks/useBookingDetail.ts` |
+| Routes | `[path/to/route.tsx]` |
+| Components | `[path/to/component.tsx]` |
+| Hooks | `[path/to/hook.ts]` |
 
 ### Backend
 
 | Type | Location |
 |------|----------|
-| API Routes | `app/api/bookings/route.ts` |
-| | `app/api/bookings/[id]/route.ts` |
-| Database | `bookings` table (existing) |
-| Services | `lib/bookings/queries.ts` |
+| API Routes | `[path/to/api/route.ts]` |
+| Database | `[table name]` |
+| Services | `[path/to/service.ts]` |
 
 ---
 
 ## Dependencies
 
 ### Requires
-- Authentication (user must be logged in)
-- Existing bookings data
+- [Dependency 1]
+- [Dependency 2]
 
 ### Enables
-- Receipt generation feature
-- Booking analytics (future)
+- [Future feature 1]
+- [Future feature 2]
 
 ---
 
@@ -98,16 +91,16 @@ Users can view their complete booking history, including past and upcoming reser
 
 | Decision | Rationale |
 |----------|-----------|
-| Cursor pagination | Better performance for users with many bookings |
-| Server-side filtering | Reduce data transfer, faster filtering |
+| [Decision 1] | [Rationale] |
+| [Decision 2] | [Rationale] |
 
 ---
 
 ## Success Metrics
 
-- [ ] Page loads in < 2 seconds
-- [ ] Users can find a booking in < 30 seconds
-- [ ] Receipt downloads work on all supported browsers
+- [ ] [Metric 1]
+- [ ] [Metric 2]
+- [ ] [Metric 3]
 
 ---
 
@@ -115,4 +108,4 @@ Users can view their complete booking history, including past and upcoming reser
 
 - [User Stories](./user-stories.md)
 - [Tasks](./tasks.md)
-- [PRD-lite](/docs/specs/booking-history.md)
+- [PRD-lite](/docs/specs/[feature].md)

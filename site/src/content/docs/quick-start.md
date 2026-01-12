@@ -1,6 +1,6 @@
 ---
 title: Quick Start
-description: Set up AI-First Dev Kit in 5 minutes with help from your AI assistant
+description: Set up AI Context Docs Lifecycle in 5 minutes with help from your AI assistant
 head: []
 ---
 
@@ -11,7 +11,7 @@ Let your AI agent set up the methodology for you. Works with Cursor, Claude Code
 Open your AI coding assistant and paste this:
 
 ```
-Set up AI-First Dev Kit for this project:
+Set up AI Context Docs Lifecycle for this project:
 
 1. Create folders: .cursor/rules, docs/specs/_archive, docs/features, docs/decisions
 2. Create AGENTS.md with: quick start commands, tech stack table, file organization
@@ -20,7 +20,7 @@ Set up AI-First Dev Kit for this project:
 
 Use actual values from package.json and the codebase - no placeholders.
 
-Reference: https://ai-first-dev-kit.github.io/templates/agents-md/
+Reference: https://sergiusavva.github.io/ai-context-docs-lifecycle/templates/agents-md/
 ```
 
 That's it! Your AI will analyze your project and create the files with real values.
@@ -91,7 +91,7 @@ your-monorepo/
 
 Ask your AI:
 ```
-Verify the AI-First Dev Kit setup:
+Verify the AI Context Docs Lifecycle setup:
 1. Does AGENTS.md contain real project commands that work?
 2. Does the Tech Stack table reflect actual dependencies?
 3. Are the Key Patterns based on actual code in this repo?
@@ -115,7 +115,7 @@ Setup complete! Now use the [Development Workflow](/workflow/) for day-to-day pr
 Some AI assistants can't access web content. Use this alternative:
 
 ```
-Apply the AI-First Dev Kit methodology to this project.
+Apply the AI Context Docs Lifecycle methodology to this project.
 I'll provide the reference content below.
 
 First, analyze this project's tech stack and patterns.

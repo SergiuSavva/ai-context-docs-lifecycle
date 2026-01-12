@@ -1,7 +1,8 @@
 # User Stories: [Feature Name]
 
-> **EXAMPLE**: User stories with acceptance criteria.
-> Place in: `/docs/features/<feature-name>/user-stories.md`
+> **TEMPLATE**: Copy this file to `/docs/features/<feature-name>/user-stories.md`.
+> Replace all `[bracketed]` placeholders with your feature's values.
+> See `../examples/user-stories.md` for a filled-in example.
 
 ---
 
@@ -9,8 +10,8 @@
 
 | Actor | Description |
 |-------|-------------|
-| **User** | Registered user with at least one booking |
-| **Admin** | Platform administrator (future) |
+| **[Actor 1]** | [Description] |
+| **[Actor 2]** | [Description] |
 
 ---
 
@@ -18,96 +19,91 @@
 
 | ID | Title | Actor | Priority |
 |----|-------|-------|----------|
-| US-001 | View booking history | User | P0 |
-| US-002 | Filter bookings | User | P1 |
-| US-003 | View booking details | User | P0 |
-| US-004 | Download receipt | User | P2 |
+| US-001 | [Title] | [Actor] | P0 |
+| US-002 | [Title] | [Actor] | P1 |
+| US-003 | [Title] | [Actor] | P1 |
+| US-004 | [Title] | [Actor] | P2 |
 
 ---
 
 ## User Stories
 
-### US-001: View Booking History
+### US-001: [Story Title]
 
 **Priority:** P0 (Critical)
 
-**As a** registered user  
-**I want** to see a list of all my bookings  
-**So that** I can track my reservation history
+**As a** [user type]  
+**I want** [action]  
+**So that** [benefit]
 
 #### Acceptance Criteria
 
-- [ ] **AC-001.1**: Given I am logged in, when I navigate to "My Bookings", then I see a list of all my bookings
-- [ ] **AC-001.2**: Given I have bookings, when the list loads, then each booking shows: space name, date, status, total price
-- [ ] **AC-001.3**: Given I have no bookings, when I view the list, then I see an empty state with a CTA to browse spaces
+- [ ] **AC-001.1**: Given [context], when [action], then [result]
+- [ ] **AC-001.2**: Given [context], when [action], then [result]
+- [ ] **AC-001.3**: Given [context], when [action], then [result]
 
 #### Notes
 
-- List should be paginated (20 items per page)
-- Most recent bookings appear first
-- Include loading skeleton while fetching
+- [Note 1]
+- [Note 2]
 
 ---
 
-### US-002: Filter Bookings
+### US-002: [Story Title]
 
 **Priority:** P1 (High)
 
-**As a** user with many bookings  
-**I want** to filter my booking history  
-**So that** I can quickly find specific reservations
+**As a** [user type]  
+**I want** [action]  
+**So that** [benefit]
 
 #### Acceptance Criteria
 
-- [ ] **AC-002.1**: Given I am viewing booking history, when I select a status filter, then only bookings with that status appear
-- [ ] **AC-002.2**: Given I am viewing booking history, when I select a date range, then only bookings within that range appear
-- [ ] **AC-002.3**: Given I have applied filters, when I clear filters, then all bookings appear again
+- [ ] **AC-002.1**: Given [context], when [action], then [result]
+- [ ] **AC-002.2**: Given [context], when [action], then [result]
+- [ ] **AC-002.3**: Given [context], when [action], then [result]
 
 #### Notes
 
-- Filters should be combinable (status AND date range)
-- URL should reflect filter state (shareable links)
+- [Note 1]
 
 ---
 
-### US-003: View Booking Details
+### US-003: [Story Title]
 
-**Priority:** P0 (Critical)
+**Priority:** P1 (High)
 
-**As a** user  
-**I want** to view the full details of a booking  
-**So that** I can see all information about my reservation
+**As a** [user type]  
+**I want** [action]  
+**So that** [benefit]
 
 #### Acceptance Criteria
 
-- [ ] **AC-003.1**: Given I click on a booking, when the detail page loads, then I see: space details, booking dates/times, price breakdown, status
-- [ ] **AC-003.2**: Given the booking is upcoming, when I view details, then I see cancellation options
-- [ ] **AC-003.3**: Given the booking is completed, when I view details, then I see option to download receipt
+- [ ] **AC-003.1**: Given [context], when [action], then [result]
+- [ ] **AC-003.2**: Given [context], when [action], then [result]
 
 #### Notes
 
-- Include link back to space page
-- Show host contact info for confirmed bookings
+- [Note 1]
 
 ---
 
-### US-004: Download Receipt
+### US-004: [Story Title]
 
 **Priority:** P2 (Medium)
 
-**As a** user  
-**I want** to download a receipt for completed bookings  
-**So that** I have documentation for expense tracking
+**As a** [user type]  
+**I want** [action]  
+**So that** [benefit]
 
 #### Acceptance Criteria
 
-- [ ] **AC-004.1**: Given a completed booking, when I click "Download Receipt", then a PDF downloads
-- [ ] **AC-004.2**: Given the receipt, when I view it, then it includes: booking ID, dates, price, payment info, space details
+- [ ] **AC-004.1**: Given [context], when [action], then [result]
+- [ ] **AC-004.2**: Given [context], when [action], then [result]
 
 #### Notes
 
-- PDF should be printer-friendly
-- Include company logo and contact info
+- [Note 1]
 
 ---
 
@@ -115,9 +111,9 @@
 
 | Scenario | Expected Behavior |
 |----------|-------------------|
-| User has 1000+ bookings | Pagination handles gracefully, no performance issues |
-| Booking cancelled by host | Shows "Cancelled by host" status, refund info if applicable |
-| Space no longer exists | Shows booking with "Space unavailable" note |
+| [Edge case 1] | [Behavior] |
+| [Edge case 2] | [Behavior] |
+| [Edge case 3] | [Behavior] |
 
 ---
 
@@ -125,9 +121,9 @@
 
 | Requirement | Target |
 |-------------|--------|
-| Performance | List loads in < 2s |
-| Accessibility | WCAG 2.1 AA compliant |
-| Mobile | Fully responsive |
+| Performance | [Target] |
+| Accessibility | [Standard] |
+| Mobile | [Requirement] |
 
 ---
 

@@ -1,7 +1,10 @@
 # Feature: [Feature Name] - AI Context
 
-> **EXAMPLE**: Use this for complex features that need dedicated AI context.
-> Place in: `/features/<feature-name>/AGENTS.md`
+> **TEMPLATE**: Copy this file to `/features/<feature-name>/AGENTS.md`.
+> Replace all `[bracketed]` placeholders with your feature's values.
+> See `../examples/feature-AGENTS.md` for a filled-in example.
+>
+> Use this for complex features that need dedicated AI context.
 
 ---
 
@@ -9,73 +12,71 @@
 
 [1-2 sentences describing what this feature does]
 
-**Example**: "Handles user authentication including login, registration, password reset, and session management."
-
 ---
 
 ## Key Files
 
 | Type | Location | Purpose |
 |------|----------|---------|
-| Components | `./components/` | UI components |
-| Hooks | `./hooks/` | Feature hooks |
-| Utils | `./utils/` | Helper functions |
-| Types | `./types.ts` | TypeScript types |
-| API | `/app/api/auth/` | API endpoints |
+| Components | `./components/` | [Description] |
+| Hooks | `./hooks/` | [Description] |
+| Utils | `./utils/` | [Description] |
+| Types | `./types.ts` | [Description] |
+| API | `/app/api/[feature]/` | [Description] |
 
 ---
 
 ## Patterns for This Feature
 
-### Authentication Flow
+### [Main Flow Name]
 
 ```
-1. User submits credentials
-2. API validates against database
-3. Session created with NextAuth
-4. Redirect to dashboard
+1. [Step 1]
+2. [Step 2]
+3. [Step 3]
+4. [Step 4]
 ```
 
 ### State Management
 
-- Session state: NextAuth `useSession()`
-- Form state: React Hook Form
-- Server state: React Query for user data
+- [State type 1]: [Approach]
+- [State type 2]: [Approach]
+- [State type 3]: [Approach]
 
 ### Key Components
 
 | Component | Purpose |
 |-----------|---------|
-| `LoginForm` | Email/password login |
-| `RegisterForm` | New user registration |
-| `AuthProvider` | Session context wrapper |
+| `[ComponentName]` | [Description] |
+| `[ComponentName]` | [Description] |
+| `[ComponentName]` | [Description] |
 
 ---
 
 ## Dependencies
 
 ### Requires
-- Database (users table)
-- Email service (for password reset)
+- [Dependency 1]
+- [Dependency 2]
 
 ### Used By
-- All protected routes
-- User profile feature
-- Booking feature (for user context)
+- [Consumer 1]
+- [Consumer 2]
+- [Consumer 3]
 
 ---
 
 ## Important Notes
 
-1. **Never** store passwords in plain text - always hash with bcrypt
-2. **Always** validate email format before API call
-3. **Session** expires after 7 days of inactivity
-4. **Protected routes** check auth in middleware, not components
+1. **[Topic 1]**: [Important detail]
+2. **[Topic 2]**: [Important detail]
+3. **[Topic 3]**: [Important detail]
+4. **[Topic 4]**: [Important detail]
 
 ---
 
 ## Related Docs
 
-- Feature docs: `/docs/features/auth/`
-- ADR: `/docs/decisions/002-auth-approach.md`
-- Global tasks: `/docs/TASKS.md#authentication`
+- Feature docs: `/docs/features/[feature]/`
+- ADR: `/docs/decisions/[NNN]-[decision].md`
+- Global tasks: `/docs/TASKS.md#[feature]`

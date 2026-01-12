@@ -1,14 +1,14 @@
-# AI-First Development Kit
+# AI Context Docs Lifecycle
 
-> **A methodology reference for AI-assisted software development**
+> **A document lifecycle methodology for AI-assisted software development**
 
-🌐 **Live Site:** [https://ai-first-dev-kit.github.io](https://ai-first-dev-kit.github.io)
+🌐 **Live Site:** [https://sergiusavva.github.io/ai-context-docs-lifecycle](https://sergiusavva.github.io/ai-context-docs-lifecycle)
 
 ---
 
 ## What is This?
 
-A methodology + documentation site that helps you apply AI-First development practices to your projects — with help from your AI coding assistant.
+A document lifecycle methodology that gives AI coding assistants persistent context about your project — through structured documentation that flows from spec to build to record.
 
 ### The Problem
 
@@ -19,17 +19,17 @@ AI coding assistants lack memory and context about YOUR project:
 
 ### The Solution
 
-**Documentation as AI memory.** This kit provides:
+**Documentation as AI memory.** This methodology provides:
 - **Templates** — Copy-paste ready files for AGENTS.md, cursor rules, specs, and more
 - **Guides** — Step-by-step instructions for new and existing projects
-- **Methodology** — The three pillars: Specs, Rules, Reference
+- **Lifecycle Flow** — Spec → Build → Record with the three pillars: Specs, Rules, Reference
 
 ---
 
 ## Repository Structure
 
 ```
-ai-first-dev-kit/
+ai-context-docs-lifecycle/
 ├── content/              # 📁 Raw methodology content (for AI agents)
 │   ├── templates/        #    Copy-paste templates
 │   ├── guides/           #    Step-by-step guides
@@ -46,7 +46,7 @@ ai-first-dev-kit/
 | Use Case | Access |
 |----------|--------|
 | **AI agents reading raw files** | `content/` folder |
-| **Humans browsing docs** | [ai-first-dev-kit.github.io](https://ai-first-dev-kit.github.io) |
+| **Humans browsing docs** | [sergiusavva.github.io/ai-context-docs-lifecycle](https://sergiusavva.github.io/ai-context-docs-lifecycle) |
 
 ---
 
@@ -57,7 +57,7 @@ ai-first-dev-kit/
 Tell your AI coding assistant:
 
 ```
-Apply the AI-First Dev Kit methodology from https://ai-first-dev-kit.github.io to this project.
+Apply the AI Context Docs Lifecycle methodology from https://sergiusavva.github.io/ai-context-docs-lifecycle to this project.
 
 Read the quick-start guide and set up the required structure.
 ```
@@ -69,8 +69,8 @@ Your AI will:
 
 ### Option 2: Manual Setup
 
-1. Visit [ai-first-dev-kit.github.io](https://ai-first-dev-kit.github.io)
-2. Browse [Templates](https://ai-first-dev-kit.github.io/templates/)
+1. Visit [sergiusavva.github.io/ai-context-docs-lifecycle](https://sergiusavva.github.io/ai-context-docs-lifecycle)
+2. Browse [Templates](https://sergiusavva.github.io/ai-context-docs-lifecycle/templates/)
 3. Copy templates to your project
 4. Customize for your tech stack
 

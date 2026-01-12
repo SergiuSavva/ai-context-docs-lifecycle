@@ -61,6 +61,7 @@ The `README.md` inside `specs/` should document:
 
 **Location**: Project root (`/AGENTS.md`)
 
+Use template: `../templates/AGENTS.md`
 See example: `../examples/AGENTS.md`
 
 ---
@@ -76,6 +77,7 @@ See example: `../examples/AGENTS.md`
 
 **Location**: `/.cursor/rules/00-index.mdc`
 
+Use template: `../templates/cursor-rules/00-index.mdc`
 See example: `../examples/cursor-rules/00-index.mdc`
 
 ---
@@ -104,6 +106,7 @@ See example: `../examples/cursor-rules/00-index.mdc`
 
 **Location**: `/docs/TASKS.md`
 
+Use template: `../templates/tasks.md`
 See example: `../examples/tasks.md`
 
 ---
@@ -122,6 +125,7 @@ features/auth/
 └── utils/
 ```
 
+Use template: `../templates/feature-AGENTS.md`
 See example: `../examples/feature-AGENTS.md`
 
 ---
@@ -134,11 +138,11 @@ When applying this kit to a project:
 
 ```
 1. Check if AGENTS.md exists
-   - If not: Create from ../examples/AGENTS.md
+   - If not: Create from ../templates/AGENTS.md
    
 2. Check if .cursor/rules/ exists
    - If not: Create folder
-   - Add 00-index.mdc from ../examples/cursor-rules/
+   - Add 00-index.mdc from ../templates/cursor-rules/
    
 3. Check if docs/ exists
    - If not: Create full structure

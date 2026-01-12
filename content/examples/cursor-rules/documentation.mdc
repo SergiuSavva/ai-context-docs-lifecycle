@@ -1,16 +1,16 @@
 ---
-description: Documentation maintenance guidelines
+description: Documentation maintenance guidelines for SpaceBooker
 globs:
   - "docs/**/*.md"
   - "**/README.md"
   - "**/AGENTS.md"
 ---
 
-# Documentation Guidelines
+# SpaceBooker - Documentation Guidelines
 
-> **TEMPLATE**: Copy this file to `/.cursor/rules/documentation.mdc`.
-> Replace all `[bracketed]` placeholders with your project's values.
-> See `../../examples/cursor-rules/documentation.mdc` for a filled-in example.
+> **REFERENCE ONLY**: This is a filled-in example showing the expected format.
+> To create your own file, use `../../templates/cursor-rules/documentation.mdc`.
+> Do NOT copy this content directly - adapt the STRUCTURE, not the CONTENT.
 
 ---
 
@@ -22,11 +22,17 @@ docs/
 ├── TASKS.md              # Global progress tracking
 ├── specs/                # Feature specifications
 │   ├── README.md         # Specs index
+│   ├── booking-history.md
 │   └── _archive/         # Completed specs
 ├── features/             # Feature documentation
-│   └── README.md         # Feature index
+│   ├── README.md         # Feature index
+│   ├── auth/
+│   ├── bookings/
+│   └── spaces/
 └── decisions/            # Architecture Decision Records
-    └── README.md         # ADR index
+    ├── README.md         # ADR index
+    ├── 001-tech-stack.md
+    └── 002-auth-nextauth.md
 ```
 
 ---
@@ -64,18 +70,20 @@ When completing a task, AI should:
 ```markdown
 | Feature | Status | Tasks | Done | Progress |
 |---------|--------|-------|------|----------|
-| [Feature] | [Status] | [X] | [X] | [X%] |
+| Auth | ✅ Done | 8 | 8 | 100% |
+| Bookings | 🔄 Active | 10 | 5 | 50% |
+| Payments | ⏳ Pending | 6 | 0 | 0% |
 ```
 
 ### Feature Status Update
 
 ```markdown
-## [Feature Name]
+## Booking History
 
-**Status:** [Status]
-**Last Updated:** [Date]
+**Status:** ✅ Complete
+**Last Updated:** 2025-01-15
 
-[Summary of current state]
+Completed all user stories. Receipt generation working.
 ```
 
 ### ADR Trigger Checklist
@@ -92,16 +100,35 @@ Create an ADR when:
 ## Writing Guidelines
 
 ### Be Concise
+```markdown
+<!-- BAD -->
+The booking history feature allows users to view all of their past bookings
+in a comprehensive list format that includes filtering capabilities.
 
-Write clear, brief documentation. Avoid unnecessary prose.
+<!-- GOOD -->
+Users view and filter their booking history.
+```
 
 ### Use Tables for Structure
+```markdown
+<!-- BAD -->
+The BookingCard component is in features/bookings/components/. The 
+useBookings hook is in features/bookings/hooks/.
 
-Use tables instead of long paragraphs for structured information.
+<!-- GOOD -->
+| Component | Location |
+|-----------|----------|
+| BookingCard | `features/bookings/components/` |
+| useBookings | `features/bookings/hooks/` |
+```
 
 ### Link Related Documents
-
-Always link to related specs, tasks, and ADRs.
+```markdown
+## Related
+- [User Stories](./user-stories.md)
+- [Tasks](./tasks.md)
+- [ADR: Pagination](/docs/decisions/005-pagination.md)
+```
 
 ---
 
@@ -114,17 +141,17 @@ Always link to related specs, tasks, and ADRs.
 
 | Type | Location |
 |------|----------|
-| Routes | `[path]` |
-| Components | `[path]` |
-| Hooks | `[path]` |
+| Routes | `app/(protected)/bookings/page.tsx` |
+| Components | `features/bookings/components/BookingList.tsx` |
+| Hooks | `features/bookings/hooks/useBookings.ts` |
 
 ### Backend
 
 | Type | Location |
 |------|----------|
-| API | `[path]` |
-| Database | `[table]` |
-| Services | `[path]` |
+| API | `app/api/bookings/route.ts` |
+| Database | `bookings` table |
+| Services | `lib/bookings/queries.ts` |
 ```
 
 ---

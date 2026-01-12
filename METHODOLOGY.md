@@ -1,6 +1,6 @@
-# AI-First Development Methodology
+# AI Context Docs Lifecycle
 
-> **A document lifecycle system for AI-assisted software development**
+> **A document lifecycle methodology for AI-assisted software development**
 
 ---
 
@@ -430,7 +430,7 @@ Only document what provides value. The lifecycle should feel natural, not bureau
 
 | Situation | Document | Location |
 |-----------|----------|----------|
-| Researching a feature | Spec package with research | `docs/specs/<feature>/research/` |
+| Researching a feature | Spec package with research | `docs/specs/<feature>/research.md` |
 | Starting a new feature | PRD-lite + user stories + tasks | `docs/specs/<feature>/` |
 | Making a tech decision | ADR | `docs/decisions/` |
 | Establishing a pattern | Rule file | `.cursor/rules/` |

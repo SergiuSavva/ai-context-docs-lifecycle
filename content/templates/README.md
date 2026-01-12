@@ -1,6 +1,21 @@
-# Templates
+# Templates (Primary Source for AI)
 
-> **For AI Agents**: Use these templates as references when creating files for a project.
+> **FOR AI AGENTS**: These are the PRIMARY files to copy when creating project documentation.
+> Copy templates, replace `[placeholders]` with project values.
+> See `../examples/` only if you need to understand the expected format.
+
+---
+
+## What Are Templates?
+
+Templates are **skeleton files with placeholders** that AI agents should copy and customize for each project.
+
+| Placeholder | Replace With |
+|-------------|--------------|
+| `[Project Name]` | Actual project name |
+| `[Description]` | Actual description |
+| `[language]` | Actual programming language |
+| `[path/to/file]` | Actual file paths |
 
 ---
 
@@ -64,49 +79,30 @@
 
 When creating files for a project:
 
-1. **Read the relevant template** to understand structure and content
-2. **Adapt to the specific project** - replace placeholders with real values
-3. **Follow the format** - maintain structure for consistency
-4. **Customize as needed** - templates show common patterns, adjust for context
+1. **Copy the template** from this folder
+2. **Replace all `[placeholders]`** with project-specific values
+3. **Remove sections** that don't apply to the project
+4. **Add sections** if the project needs them
+5. **See `../examples/`** if you need to understand the expected format
 
 ### Template Adaptation Process
 
 ```
-1. Read template file
-2. Identify placeholders [like this]
+1. Copy template file content
+2. Find all [bracketed] placeholders
 3. Replace with project-specific values
-4. Remove sections that don't apply
+4. Remove inapplicable sections
 5. Add project-specific sections if needed
 ```
 
 ---
 
-## Templates vs Required Rules
+## Templates vs Examples
 
-| Type | Location | Purpose |
-|------|----------|---------|
-| **Required Rules** | `../rules/` | MUST follow - structure and workflow |
-| **Templates** | `./` (here) | Reference for creating files |
-
-Required rules define WHAT must exist.
-Templates show HOW to create them.
-
----
-
-## Cursor Rules Examples
-
-The `cursor-rules/` folder contains example `.mdc` files for AI behavior rules:
-
-| File | Purpose |
-|------|---------|
-| `00-index.mdc` | Master rule index (REQUIRED) |
-| `project-architecture.mdc` | File structure patterns |
-| `coding-patterns.mdc` | Code style conventions |
-| `state-management.mdc` | Data handling patterns |
-| `testing-strategy.mdc` | Test approach |
-| `documentation.mdc` | Doc maintenance |
-
-Only `00-index.mdc` is required. Others are optional based on project needs.
+| Folder | Purpose | AI Should... |
+|--------|---------|--------------|
+| **templates/** (here) | Skeleton files to copy | **COPY and customize** |
+| **../examples/** | Filled-in reference samples | **READ to understand**, not copy |
 
 ---
 
@@ -116,17 +112,18 @@ Only `00-index.mdc` is required. Others are optional based on project needs.
 
 ```bash
 # Location: /AGENTS.md (project root)
-# Use: content/templates/AGENTS.md as template
+# Use template: content/templates/AGENTS.md
+# See example: content/examples/AGENTS.md
 ```
 
 ### Feature Documentation
 
 ```bash
 # Location: /docs/features/<feature-name>/
-# Files needed:
-#   - README.md (from content/templates/feature-readme.md)
-#   - user-stories.md (from content/templates/user-stories.md)
-#   - tasks.md (from content/templates/tasks.md)
+# Use templates:
+#   - README.md from templates/feature-readme.md
+#   - user-stories.md from templates/user-stories.md
+#   - tasks.md from templates/tasks.md
 ```
 
 ### PRD-lite Spec
@@ -134,14 +131,14 @@ Only `00-index.mdc` is required. Others are optional based on project needs.
 ```bash
 # Location: /docs/specs/<feature-name>.md
 #           OR /docs/specs/<phase>/<feature-name>.md for phased projects
-# Use: content/templates/prd-lite.md as template
+# Use template: templates/prd-lite.md
 ```
 
 ### ADR
 
 ```bash
 # Location: /docs/decisions/NNN-title.md
-# Use: content/templates/adr.md as template
+# Use template: templates/adr.md
 # Number sequentially: 001, 002, 003...
 ```
 
@@ -149,6 +146,6 @@ Only `00-index.mdc` is required. Others are optional based on project needs.
 
 ```bash
 # Location: /.cursor/rules/
-# Required: 00-index.mdc
+# Required: 00-index.mdc (use templates/cursor-rules/00-index.mdc)
 # Optional: other rules based on project needs
 ```

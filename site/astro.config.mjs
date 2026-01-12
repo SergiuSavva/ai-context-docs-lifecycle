@@ -4,14 +4,15 @@ import starlight from '@astrojs/starlight';
 import tailwindcss from '@tailwindcss/vite';
 
 export default defineConfig({
-  site: 'https://ai-first-dev-kit.github.io',
+  site: 'https://sergiusavva.github.io',
+  base: '/ai-context-docs-lifecycle',
 
   integrations: [
     starlight({
-      title: 'AI-First Dev Kit',
-      description: 'A methodology reference for AI-assisted software development',
+      title: 'AI Context Docs Lifecycle',
+      description: 'A document lifecycle methodology for AI-assisted software development',
       social: [
-        { icon: 'github', label: 'GitHub', href: 'https://github.com/ai-first-dev-kit/ai-first-dev-kit' },
+        { icon: 'github', label: 'GitHub', href: 'https://github.com/SergiuSavva/ai-context-docs-lifecycle' },
       ],
       head: [],
       favicon: '/favicon.svg',
@@ -60,7 +61,7 @@ export default defineConfig({
         },
       ],
       editLink: {
-        baseUrl: 'https://github.com/ai-first-dev-kit/ai-first-dev-kit/edit/main/site/',
+        baseUrl: 'https://github.com/SergiuSavva/ai-context-docs-lifecycle/edit/main/site/',
       },
     }),
   ],

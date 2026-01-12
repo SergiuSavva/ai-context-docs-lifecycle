@@ -1,7 +1,8 @@
 # Feature: [Feature Name]
 
-> **EXAMPLE**: Lightweight PRD for feature specification.
-> Place in: `/docs/specs/<feature-name>.md` or `/docs/specs/<phase>/<feature-name>.md`
+> **TEMPLATE**: Copy this file to `/docs/specs/<feature-name>.md`.
+> Replace all `[bracketed]` placeholders with your feature's values.
+> See `../examples/prd-lite.md` for a filled-in example.
 
 > **Status:** Draft | In Progress | Complete  
 > **Priority:** P0 (Critical) | P1 (High) | P2 (Medium)  
@@ -13,18 +14,15 @@
 
 [1-2 sentences describing what pain point this feature solves. Be specific about who has the problem and why it matters.]
 
-**Example**:
-> Users currently cannot see their booking history, making it difficult to track past reservations or reference previous visits. This leads to support requests and poor user experience.
-
 ---
 
 ## Success Metrics
 
 How do we know this feature is successful?
 
-- [ ] Users can view booking history within 2 clicks
-- [ ] 90% of users can complete the flow without errors
-- [ ] Support tickets about booking history reduced by 50%
+- [ ] [Metric 1]
+- [ ] [Metric 2]
+- [ ] [Metric 3]
 
 ---
 
@@ -32,16 +30,16 @@ How do we know this feature is successful?
 
 ### In Scope
 
-- List of past bookings with status
-- Filter by date range
-- View booking details
-- Download receipt/invoice
+- [Item 1]
+- [Item 2]
+- [Item 3]
+- [Item 4]
 
 ### Out of Scope
 
-- Modifying past bookings (separate feature)
-- Analytics/insights on bookings (Phase 2)
-- Export to calendar (future enhancement)
+- [Item 1] (reason)
+- [Item 2] (reason)
+- [Item 3] (reason)
 
 ---
 
@@ -49,29 +47,29 @@ How do we know this feature is successful?
 
 ### Primary Story
 
-**As a** registered user  
-**I want** to view my past bookings  
-**So that** I can reference previous reservations and track my activity
+**As a** [user type]  
+**I want** [action]  
+**So that** [benefit]
 
 ### Supporting Stories
 
-1. **As a** user, **I want** to filter bookings by date **so that** I can find specific reservations
-2. **As a** user, **I want** to download a receipt **so that** I have records for expenses
+1. **As a** [user], **I want** [action] **so that** [benefit]
+2. **As a** [user], **I want** [action] **so that** [benefit]
 
 ---
 
 ## User Flow
 
 ```
-Dashboard
+[Start point]
     ↓
-"My Bookings" link
+[Step 1]
     ↓
-Booking History (list view)
+[Step 2]
     ↓
-Click booking → Detail view
+[Step 3]
     ↓
-Download receipt (optional)
+[End point]
 ```
 
 ---
@@ -84,13 +82,13 @@ _Skip if implementation is straightforward._
 
 | Decision | Approach | Rationale |
 |----------|----------|-----------|
-| Data source | Existing bookings table | No new tables needed |
-| Pagination | Cursor-based | Better performance for large lists |
+| [Decision 1] | [Approach] | [Rationale] |
+| [Decision 2] | [Approach] | [Rationale] |
 
 ### Dependencies
 
-- Auth feature (user must be logged in)
-- Existing bookings API
+- [Dependency 1]
+- [Dependency 2]
 
 ---
 
@@ -98,19 +96,19 @@ _Skip if implementation is straightforward._
 
 | Risk | Impact | Mitigation |
 |------|--------|------------|
-| Large booking history slow | Medium | Implement pagination, lazy loading |
-| Receipt generation complex | Low | Use existing PDF library |
+| [Risk 1] | [High/Medium/Low] | [Mitigation] |
+| [Risk 2] | [High/Medium/Low] | [Mitigation] |
 
 ---
 
 ## Open Questions
 
-- [ ] Should cancelled bookings appear in history?
-- [ ] How far back should history go?
+- [ ] [Question 1]
+- [ ] [Question 2]
 
 ---
 
 ## Related Documents
 
-- Feature docs: [/docs/features/booking-history/](../features/booking-history/)
+- Feature docs: [/docs/features/[feature]/](../features/[feature]/)
 - Tasks: [/docs/TASKS.md](../TASKS.md)

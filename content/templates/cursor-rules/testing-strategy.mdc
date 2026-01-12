@@ -1,222 +1,113 @@
 ---
-description: Testing patterns and requirements
+description: Testing approach and patterns
 globs:
-  - "**/*.test.ts"
-  - "**/*.test.tsx"
-  - "**/*.spec.ts"
-  - "**/tests/**"
+  - "**/*.test.*"
+  - "**/*.spec.*"
+  - "**/[test-folder]/**"
 ---
 
 # Testing Strategy
 
-> **EXAMPLE**: Customize for your testing approach.
-> Place in: `/.cursor/rules/testing-strategy.mdc`
+> **TEMPLATE**: Copy this file to `/.cursor/rules/testing-strategy.mdc`.
+> Replace all `[bracketed]` placeholders with your project's values.
+> See `../../examples/cursor-rules/testing-strategy.mdc` for a filled-in example.
 
 ---
 
 ## Testing Stack
 
-| Type | Tool | Purpose |
-|------|------|---------|
-| **Unit** | Vitest | Functions, hooks, utils |
-| **Component** | Vitest + Testing Library | React components |
-| **E2E** | Playwright | Critical user flows |
-| **API Mocking** | MSW | Mock API responses |
+| Type | Tool | Location |
+|------|------|----------|
+| Unit | [Tool] | `*.test.[ext]` next to source |
+| Component | [Tool] | `*.test.[ext]` next to source |
+| Integration | [Tool] | `[location]` |
+| E2E | [Tool] | `[location]` |
 
 ---
 
-## File Naming
+## Test File Naming
 
-| Type | Pattern | Example |
-|------|---------|---------|
-| Unit tests | `{module}.test.ts` | `formatDate.test.ts` |
-| Component tests | `{Component}.test.tsx` | `Button.test.tsx` |
-| E2E tests | `{feature}.e2e.ts` | `auth.e2e.ts` |
-
----
-
-## Test Structure
-
-### Unit Test Pattern
-
-```typescript
-import { describe, it, expect } from 'vitest'
-import { formatDate } from './formatDate'
-
-describe('formatDate', () => {
-  it('should format date in default format', () => {
-    const date = new Date('2025-01-09')
-    expect(formatDate(date)).toBe('Jan 9, 2025')
-  })
-
-  it('should handle invalid date', () => {
-    expect(() => formatDate('invalid')).toThrow()
-  })
-})
 ```
+[features-folder]/[feature]/
+├── components/
+│   ├── [Component].[ext]
+│   └── [Component].test.[ext]    # Component test
+├── hooks/
+│   ├── [hook].[ext]
+│   └── [hook].test.[ext]         # Hook test
+└── __tests__/
+    └── [feature]-flow.test.[ext] # Integration test
 
-### Component Test Pattern
-
-```typescript
-import { describe, it, expect } from 'vitest'
-import { render, screen, fireEvent } from '@testing-library/react'
-import { Button } from './Button'
-
-describe('Button', () => {
-  it('should render children', () => {
-    render(<Button>Click me</Button>)
-    expect(screen.getByText('Click me')).toBeInTheDocument()
-  })
-
-  it('should call onClick when clicked', () => {
-    const onClick = vi.fn()
-    render(<Button onClick={onClick}>Click</Button>)
-    
-    fireEvent.click(screen.getByRole('button'))
-    
-    expect(onClick).toHaveBeenCalledOnce()
-  })
-
-  it('should be disabled when disabled prop is true', () => {
-    render(<Button disabled>Click</Button>)
-    expect(screen.getByRole('button')).toBeDisabled()
-  })
-})
-```
-
-### Hook Test Pattern
-
-```typescript
-import { describe, it, expect } from 'vitest'
-import { renderHook, waitFor } from '@testing-library/react'
-import { QueryClient, QueryClientProvider } from '@tanstack/react-query'
-import { useUser } from './useUser'
-
-const wrapper = ({ children }) => (
-  <QueryClientProvider client={new QueryClient()}>
-    {children}
-  </QueryClientProvider>
-)
-
-describe('useUser', () => {
-  it('should fetch user data', async () => {
-    const { result } = renderHook(() => useUser('123'), { wrapper })
-    
-    await waitFor(() => {
-      expect(result.current.isSuccess).toBe(true)
-    })
-    
-    expect(result.current.data).toMatchObject({
-      id: '123',
-      name: expect.any(String),
-    })
-  })
-})
+[e2e-folder]/
+├── [feature].spec.[ext]          # E2E test
 ```
 
 ---
 
-## E2E Test Pattern
+## Unit Tests
 
-```typescript
-import { test, expect } from '@playwright/test'
+### Testing Utilities
 
-test.describe('Authentication', () => {
-  test('should allow user to log in', async ({ page }) => {
-    await page.goto('/login')
-    
-    await page.fill('[name="email"]', 'test@example.com')
-    await page.fill('[name="password"]', 'password123')
-    await page.click('button[type="submit"]')
-    
-    await expect(page).toHaveURL('/dashboard')
-    await expect(page.getByText('Welcome')).toBeVisible()
-  })
+```[language]
+[example utility test]
+```
 
-  test('should show error for invalid credentials', async ({ page }) => {
-    await page.goto('/login')
-    
-    await page.fill('[name="email"]', 'wrong@example.com')
-    await page.fill('[name="password"]', 'wrongpassword')
-    await page.click('button[type="submit"]')
-    
-    await expect(page.getByText('Invalid credentials')).toBeVisible()
-  })
-})
+### Testing Hooks
+
+```[language]
+[example hook test]
 ```
 
 ---
 
-## API Mocking (MSW)
+## Component Tests
 
-```typescript
-import { http, HttpResponse } from 'msw'
-import { setupServer } from 'msw/node'
+```[language]
+[example component test]
+```
 
-const handlers = [
-  http.get('/api/users/:id', ({ params }) => {
-    return HttpResponse.json({
-      id: params.id,
-      name: 'Test User',
-      email: 'test@example.com',
-    })
-  }),
-  
-  http.post('/api/users', async ({ request }) => {
-    const body = await request.json()
-    return HttpResponse.json({ id: '123', ...body }, { status: 201 })
-  }),
-]
+---
 
-export const server = setupServer(...handlers)
+## Integration Tests
+
+```[language]
+[example integration test]
+```
+
+---
+
+## E2E Tests
+
+```[language]
+[example e2e test]
+```
+
+---
+
+## Test Commands
+
+```bash
+# Run all tests
+[command]
+
+# Run with coverage
+[command]
+
+# Run specific file
+[command]
+
+# Run E2E tests
+[command]
 ```
 
 ---
 
 ## What to Test
 
-### DO Test
-
-- Business logic and calculations
-- User interactions
-- Error states and edge cases
-- Accessibility (a11y)
-- Critical user flows (E2E)
-
-### DON'T Test
-
-- Implementation details
-- Third-party libraries
-- Styles (unless critical)
-- Every possible edge case
-
----
-
-## Coverage Requirements
-
-| Type | Target |
-|------|--------|
-| New code | 80% minimum |
-| Critical paths | 100% |
-| Utils/helpers | 90%+ |
-
----
-
-## Running Tests
-
-```bash
-# Unit and component tests
-npm test
-
-# Watch mode
-npm test -- --watch
-
-# Coverage report
-npm test -- --coverage
-
-# E2E tests
-npm run test:e2e
-
-# E2E with UI
-npm run test:e2e -- --ui
-```
+| Priority | What | How |
+|----------|------|-----|
+| **High** | [Category] | [Test type] |
+| **High** | [Category] | [Test type] |
+| **Medium** | [Category] | [Test type] |
+| **Medium** | [Category] | [Test type] |
+| **Low** | [Category] | [Test type] |

@@ -1,11 +1,11 @@
 # GitHub Copilot Instructions
 
-> **EXAMPLE**: Adapt this for your project. Replace all [bracketed] content.
+> **TEMPLATE**: Copy this file to `.github/copilot-instructions.md` in your project.
+> Replace all `[bracketed]` placeholders with your project's values.
+> See `../examples/copilot-instructions.md` for a filled-in example.
 >
 > **What is this file?** GitHub Copilot reads `.github/copilot-instructions.md`
 > for project-specific context and coding guidelines.
->
-> **Location**: Save this as `.github/copilot-instructions.md` in your project.
 
 ---
 
@@ -13,57 +13,54 @@
 
 [Project name]: [Brief description - 1-2 sentences]
 
-**Example**: "StudioBook: A SaaS platform for booking creative workspaces."
-
 ---
 
 ## Tech Stack
 
-- **Language**: TypeScript (strict mode)
-- **Framework**: Next.js 15 (App Router)
-- **Database**: PostgreSQL with Prisma ORM
-- **Styling**: Tailwind CSS
-- **Testing**: Vitest + Playwright
+- **Language**: [Language]
+- **Framework**: [Framework + version]
+- **Database**: [Database + ORM]
+- **Styling**: [CSS framework]
+- **Testing**: [Test frameworks]
 
 ---
 
 ## Code Style Guidelines
 
-### TypeScript
-- Use strict TypeScript - no `any` types
-- Prefer `interface` for object shapes, `type` for unions
-- Always add explicit return types to functions
-- Use optional chaining (`?.`) and nullish coalescing (`??`)
+### [Language]
+- [Style rule 1]
+- [Style rule 2]
+- [Style rule 3]
+- [Style rule 4]
 
-### React/Next.js
-- Default to Server Components
-- Add `'use client'` only when hooks or interactivity needed
-- Use named exports for components
-- Props interfaces named `ComponentNameProps`
+### [Framework]
+- [Framework rule 1]
+- [Framework rule 2]
+- [Framework rule 3]
+- [Framework rule 4]
 
 ### Imports
-- Use `@/` path alias for all project imports
-- Order: external packages → internal modules → relative → types
-- No default exports except pages/layouts
+- [Import rule 1]
+- [Import rule 2]
+- [Import rule 3]
 
 ### Naming Conventions
-- Components: `PascalCase` (files and exports)
-- Functions/variables: `camelCase`
-- Constants: `SCREAMING_SNAKE_CASE`
-- Files: `kebab-case` (except React components)
+- Components: [Convention]
+- Functions/variables: [Convention]
+- Constants: [Convention]
+- Files: [Convention]
 
 ---
 
 ## Project Structure
 
 ```
-app/           → Next.js App Router pages and API routes
-components/    → Shared React components
-  ui/          → Base primitives (Button, Input, etc.)
-  common/      → Layout components (Header, Footer)
-features/      → Feature modules with collocated code
-lib/           → Utilities, API clients, database
-types/         → Shared TypeScript types
+[folder]/      → [Description]
+[folder]/      → [Description]
+  [subfolder]/ → [Description]
+  [subfolder]/ → [Description]
+[folder]/      → [Description]
+[folder]/      → [Description]
 docs/          → Project documentation
 ```
 
@@ -72,44 +69,44 @@ docs/          → Project documentation
 ## Patterns to Follow
 
 ### State Management
-- Server state: React Query (`@tanstack/react-query`)
-- Client state: Zustand (minimal stores)
-- Form state: React Hook Form + Zod
+- Server state: [Approach]
+- Client state: [Approach]
+- Form state: [Approach]
 
 ### Data Fetching
-- Use Server Components for initial data
-- Client-side mutations via React Query
-- API routes return typed responses
+- [Pattern 1]
+- [Pattern 2]
+- [Pattern 3]
 
 ### Error Handling
-- Use Error Boundaries for UI errors
-- try-catch in API routes with proper status codes
-- Zod for validation with helpful error messages
+- [Pattern 1]
+- [Pattern 2]
+- [Pattern 3]
 
 ### Testing
-- Unit tests next to source files (`*.test.ts`)
-- Integration tests in `__tests__/` directories
-- E2E tests in `e2e/` folder
+- Unit tests: [Location]
+- Integration tests: [Location]
+- E2E tests: [Location]
 
 ---
 
 ## Component Template
 
-When creating React components, follow this pattern:
+When creating components, follow this pattern:
 
-```tsx
-interface ComponentNameProps {
+```[language]
+interface [ComponentName]Props {
   // Required props first
-  title: string;
+  [prop]: [type];
   // Optional props after
-  className?: string;
+  [prop]?: [type];
 }
 
-export function ComponentName({ title, className }: ComponentNameProps) {
+export function [ComponentName]({ [props] }: [ComponentName]Props) {
   return (
-    <div className={className}>
-      {title}
-    </div>
+    <[element]>
+      {/* content */}
+    </[element]>
   );
 }
 ```
@@ -120,27 +117,18 @@ export function ComponentName({ title, className }: ComponentNameProps) {
 
 When creating API routes, follow this pattern:
 
-```ts
-import { NextResponse } from 'next/server';
-import { z } from 'zod';
+```[language]
+// Import statements
 
-const RequestSchema = z.object({
-  // Define expected shape
-});
+const RequestSchema = [validation schema]
 
-export async function POST(request: Request) {
+export async function [METHOD](request: Request) {
   try {
-    const body = await request.json();
-    const data = RequestSchema.parse(body);
-
+    // Parse and validate
     // Handle request
-
-    return NextResponse.json({ success: true, data: result });
+    // Return response
   } catch (error) {
-    if (error instanceof z.ZodError) {
-      return NextResponse.json({ error: error.errors }, { status: 400 });
-    }
-    return NextResponse.json({ error: 'Internal error' }, { status: 500 });
+    // Handle errors
   }
 }
 ```
@@ -149,11 +137,11 @@ export async function POST(request: Request) {
 
 ## Common Gotchas
 
-1. **Server Components**: Cannot use hooks or browser APIs
-2. **Client Components**: Must add `'use client'` directive
-3. **Path aliases**: Always use `@/` not relative paths
-4. **Prisma**: Run `npx prisma generate` after schema changes
-5. **Environment**: Check `.env.example` for required variables
+1. **[Gotcha 1]**: [Description]
+2. **[Gotcha 2]**: [Description]
+3. **[Gotcha 3]**: [Description]
+4. **[Gotcha 4]**: [Description]
+5. **[Gotcha 5]**: [Description]
 
 ---
 
@@ -170,6 +158,6 @@ export async function POST(request: Request) {
 
 1. Check if similar patterns exist in codebase
 2. Follow established naming conventions
-3. Consider Server vs Client Component requirements
-4. Add appropriate TypeScript types
+3. Consider [framework-specific] requirements
+4. Add appropriate types
 5. Include error handling

@@ -1,36 +1,34 @@
 ---
-description: Code style, TypeScript, and framework-specific patterns
+description: Code style, [language], and framework-specific patterns
 globs:
-  - "**/*.{ts,tsx,js,jsx}"
+  - "**/*.[extensions]"
 ---
 
 # Coding Patterns
 
-> **EXAMPLE**: Customize for your language/framework.
-> Place in: `/.cursor/rules/coding-patterns.mdc`
+> **TEMPLATE**: Copy this file to `/.cursor/rules/coding-patterns.mdc`.
+> Replace all `[bracketed]` placeholders with your project's values.
+> See `../../examples/cursor-rules/coding-patterns.mdc` for a filled-in example.
 
 ---
 
-## TypeScript Configuration
+## [Language] Configuration
 
 ### Key Settings
 
 ```json
 {
-  "compilerOptions": {
-    "strict": true,
-    "noUncheckedIndexedAccess": true,
-    "noImplicitReturns": true
-  }
+  "[setting1]": [value],
+  "[setting2]": [value]
 }
 ```
 
 ### Rules
 
-- Strict mode ON
-- Explicit return types for public functions
-- No `any` - use `unknown` when type is uncertain
-- Prefer `interface` over `type` for object shapes
+- [Rule 1]
+- [Rule 2]
+- [Rule 3]
+- [Rule 4]
 
 ---
 
@@ -40,92 +38,62 @@ globs:
 
 | Type | Convention | Example |
 |------|------------|---------|
-| Components | PascalCase | `UserProfile.tsx` |
-| Hooks | camelCase with `use` | `useAuth.ts` |
-| Utils | camelCase | `formatDate.ts` |
-| Types | PascalCase | `User.types.ts` |
-| Constants | SCREAMING_SNAKE | `API_ENDPOINTS.ts` |
-| Directories | kebab-case | `user-profile/` |
+| Components | [Convention] | `[Example].tsx` |
+| Hooks | [Convention] | `[Example].ts` |
+| Utils | [Convention] | `[Example].ts` |
+| Types | [Convention] | `[Example].ts` |
+| Constants | [Convention] | `[Example].ts` |
+| Directories | [Convention] | `[example]/` |
 
 ### Code
 
-```typescript
-// Variables - camelCase
-const userName = 'John'
+```[language]
+// Variables - [convention]
+[example]
 
-// Constants - SCREAMING_SNAKE_CASE
-const API_BASE_URL = 'https://api.example.com'
+// Constants - [convention]
+[example]
 
-// Functions - camelCase, verb prefix
-function getUserById(id: string) {}
-function handleSubmit() {}
+// Functions - [convention]
+[example]
 
-// Types/Interfaces - PascalCase
-interface UserProfile {}
-type ButtonVariant = 'primary' | 'secondary'
+// Types/Interfaces - [convention]
+[example]
 
-// Components - PascalCase
-function UserCard() {}
+// Components - [convention]
+[example]
 
-// Hooks - camelCase with use prefix
-function useUserData() {}
+// Hooks - [convention]
+[example]
 ```
 
 ---
 
 ## Component Patterns
 
-### Functional Components Only
+### [Component Type] Components
 
-```typescript
-// CORRECT - Functional component
-interface ButtonProps {
-  variant?: 'primary' | 'secondary'
-  children: React.ReactNode
-  onClick?: () => void
-}
-
-export function Button({ 
-  variant = 'primary', 
-  children, 
-  onClick 
-}: ButtonProps) {
-  return (
-    <button 
-      className={`btn btn-${variant}`}
-      onClick={onClick}
-    >
-      {children}
-    </button>
-  )
-}
-
-// WRONG - Class component (avoid)
-class Button extends React.Component {}
+```[language]
+// [Pattern description]
+[example code]
 ```
 
 ### Component Structure
 
-```typescript
-export function FeatureComponent({ prop1, prop2 }: Props) {
+```[language]
+export function [Component]({ [props] }: [Props]) {
   // 1. Hooks (always at the top)
-  const [state, setState] = useState()
-  const { data } = useQuery()
   
   // 2. Derived/computed values
-  const computedValue = useMemo(() => {}, [])
   
   // 3. Event handlers
-  const handleClick = useCallback(() => {}, [])
   
   // 4. Effects (if needed)
-  useEffect(() => {}, [])
   
   // 5. Early returns
-  if (!data) return <Loading />
   
   // 6. Render
-  return <div>{/* JSX */}</div>
+  return (/* JSX */)
 }
 ```
 
@@ -133,108 +101,50 @@ export function FeatureComponent({ prop1, prop2 }: Props) {
 
 ## Type Patterns
 
-### Interface vs Type
+### [Type Pattern 1]
 
-```typescript
-// Interface - for object shapes (preferred)
-interface User {
-  id: string
-  name: string
-  email: string
-}
-
-// Type - for unions, primitives, computed types
-type Status = 'pending' | 'approved' | 'rejected'
-type UserWithPosts = User & { posts: Post[] }
+```[language]
+[example]
 ```
 
-### Props Types
+### [Type Pattern 2]
 
-```typescript
-// Props interface naming
-interface ButtonProps {
-  variant?: 'primary' | 'secondary'
-  size?: 'sm' | 'md' | 'lg'
-  children: React.ReactNode
-  onClick?: () => void
-}
-
-// Extending native elements
-interface InputProps extends React.InputHTMLAttributes<HTMLInputElement> {
-  label: string
-  error?: string
-}
+```[language]
+[example]
 ```
 
 ---
 
 ## Error Handling
 
-```typescript
-async function fetchData() {
-  try {
-    const response = await api.get('/data')
-    return response.data
-  } catch (error) {
-    if (error instanceof ApiError) {
-      throw new Error(`API Error: ${error.message}`)
-    }
-    throw error
-  }
-}
+```[language]
+[error handling pattern example]
 ```
 
 ---
 
 ## Import/Export Patterns
 
-### Named Exports (Preferred)
+### [Pattern 1]
 
-```typescript
-// CORRECT - Named exports
-export function useAuth() {}
-export const AuthContext = createContext()
-export type { AuthState }
-
-// AVOID - Default exports (except pages)
-export default function useAuth() {}
+```[language]
+[example]
 ```
 
-### Re-exports
+### [Pattern 2]
 
-```typescript
-// features/auth/index.ts
-export { useAuth } from './hooks/useAuth'
-export { AuthProvider } from './components/AuthProvider'
-export type { User, AuthState } from './types'
+```[language]
+[example]
 ```
 
 ---
 
 ## Anti-Patterns to Avoid
 
-```typescript
-// WRONG - Mutating state directly
-state.items.push(newItem)
+```[language]
+// WRONG - [description]
+[bad example]
 
-// CORRECT - Create new reference
-setState(prev => [...prev.items, newItem])
-
-// WRONG - Conditional hooks
-if (condition) {
-  useEffect(() => {})
-}
-
-// CORRECT - Condition inside hook
-useEffect(() => {
-  if (condition) {
-    // do something
-  }
-}, [condition])
-
-// WRONG - Inline objects in deps
-useEffect(() => {}, [{ id }])
-
-// CORRECT - Primitive deps
-useEffect(() => {}, [id])
+// CORRECT - [description]
+[good example]
 ```

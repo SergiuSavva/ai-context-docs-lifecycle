@@ -1,10 +1,10 @@
 ---
 title: Existing Project Guide
-description: Add AI-First Dev Kit to an existing codebase
+description: Add AI Context Docs Lifecycle to an existing codebase
 head: []
 ---
 
-Adding AI-First Dev Kit to an existing codebase without disruption.
+Adding AI Context Docs Lifecycle to an existing codebase without disruption.
 
 ## Key Principle
 
@@ -16,7 +16,7 @@ For existing projects, your rules should capture existing patterns, not impose n
 
 ## Overview
 
-Adding the AI-First Dev Kit involves:
+Adding the AI Context Docs Lifecycle methodology involves:
 
 1. Assessing current state
 2. Creating AGENTS.md based on existing code
@@ -244,7 +244,7 @@ From this point forward, use the full workflow:
 Tell your AI assistant:
 
 ```
-Apply the AI-First Dev Kit methodology from https://ai-first-dev-kit.github.io to this existing project.
+Apply the AI Context Docs Lifecycle methodology from https://sergiusavva.github.io/ai-context-docs-lifecycle to this existing project.
 
 This is an existing [language/framework] project. 
 

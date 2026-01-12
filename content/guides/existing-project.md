@@ -1,12 +1,12 @@
-# Applying AI-First Dev Kit to an Existing Project
+# Applying AI Context Docs Lifecycle to an Existing Project
 
-> **For AI Agents**: Follow these steps when adding the kit to an existing codebase.
+> **For AI Agents**: Follow these steps when adding the methodology to an existing codebase.
 
 ---
 
 ## Overview
 
-Adding the AI-First Dev Kit to an existing project involves:
+Adding the AI Context Docs Lifecycle methodology to an existing project involves:
 
 1. Assessing current state
 2. Adding missing required files

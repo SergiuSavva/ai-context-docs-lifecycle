@@ -1,6 +1,8 @@
 # [Project Name] - Claude Code Instructions
 
-> **EXAMPLE**: Adapt this for your project. Replace all [bracketed] content.
+> **TEMPLATE**: Copy this file to your project root as `CLAUDE.md`.
+> Replace all `[bracketed]` placeholders with your project's values.
+> See `../examples/CLAUDE.md` for a filled-in example.
 >
 > **What is CLAUDE.md?** This file provides context to Claude Code (Anthropic's CLI agent).
 > Claude Code automatically reads this file when working in your project.
@@ -11,24 +13,22 @@
 
 [Brief description - 1-2 sentences]
 
-**Example**: "A SaaS platform for booking creative workspaces, connecting artists with studio owners."
-
 ---
 
 ## Quick Start
 
 ```bash
 # Install dependencies
-npm install
+[install command]
 
 # Run development server
-npm run dev
+[dev command]
 
 # Run tests
-npm test
+[test command]
 
 # Build for production
-npm run build
+[build command]
 ```
 
 ---
@@ -37,44 +37,35 @@ npm run build
 
 | Category | Technology |
 |----------|------------|
-| **Language** | TypeScript |
-| **Framework** | Next.js 15 (App Router) |
-| **Database** | PostgreSQL + Prisma |
-| **Styling** | Tailwind CSS |
-| **Auth** | NextAuth.js |
-| **Testing** | Vitest + Playwright |
+| **Language** | [Language] |
+| **Framework** | [Framework + version] |
+| **Database** | [Database + ORM] |
+| **Styling** | [CSS framework] |
+| **Auth** | [Auth solution] |
+| **Testing** | [Test frameworks] |
 
 ---
 
 ## Project Structure
 
 ```
-project/
-├── app/                    # Next.js App Router
-│   ├── (public)/          # Public routes
-│   ├── (protected)/       # Auth-required routes
-│   └── api/               # API routes
+[project-name]/
+├── [source-folder]/         # [Description]
+│   ├── [subfolder]/        # [Description]
+│   └── [subfolder]/        # [Description]
 │
-├── components/            # Shared UI components
-│   ├── ui/               # Base primitives (Button, Input)
-│   └── common/           # Common components (Header, Footer)
+├── [components-folder]/     # Shared UI components
 │
-├── features/             # Feature modules
-│   ├── auth/            # Authentication
-│   ├── bookings/        # Booking system
-│   └── spaces/          # Space management
+├── [features-folder]/       # Feature modules
 │
-├── lib/                  # Core utilities
-│   ├── api/             # API client
-│   ├── db/              # Database utilities
-│   └── utils/           # Helper functions
+├── [lib-folder]/            # Core utilities
 │
-├── docs/                 # Project documentation
-│   ├── specs/           # Feature specifications (PRD-lite)
-│   ├── features/        # Feature documentation
-│   └── decisions/       # Architecture Decision Records
+├── docs/                    # Project documentation
+│   ├── specs/              # Feature specifications
+│   ├── features/           # Feature documentation
+│   └── decisions/          # Architecture Decision Records
 │
-└── types/               # Shared TypeScript types
+└── [types-folder]/          # Shared types
 ```
 
 ---
@@ -82,57 +73,53 @@ project/
 ## Key Patterns
 
 ### State Management
-- **Server state**: React Query for all API data
-- **Client state**: Zustand for UI state
-- **Form state**: React Hook Form + Zod validation
+- **Server state**: [Approach]
+- **Client state**: [Approach]
+- **Form state**: [Approach]
 
 ### Components
-- Functional components only
-- Props interfaces for all components
-- Collocate styles with components
+- [Pattern 1]
+- [Pattern 2]
+- [Pattern 3]
 
 ### API Design
-- REST endpoints in `/app/api/`
-- Prisma for database access
-- Zod for request/response validation
+- [API pattern]
+- [Database pattern]
+- [Validation pattern]
 
 ### Testing
-- Unit tests: Vitest
-- Integration tests: Vitest + Testing Library
-- E2E tests: Playwright
+- Unit tests: [Tool]
+- Integration tests: [Tool]
+- E2E tests: [Tool]
 
 ---
 
 ## Code Style
 
-### TypeScript
-- Strict mode enabled
-- Explicit return types for functions
-- Use `interface` for objects, `type` for unions/primitives
+### [Language]
+- [Style rule 1]
+- [Style rule 2]
+- [Style rule 3]
 
 ### Imports
-- Use `@/` path alias for all imports
-- Group: external → internal → relative → types
+- [Import convention 1]
+- [Import convention 2]
 
 ### Naming
-- Components: PascalCase
-- Functions/variables: camelCase
-- Constants: SCREAMING_SNAKE_CASE
-- Files: kebab-case (except components)
+- Components: [Convention]
+- Functions/variables: [Convention]
+- Constants: [Convention]
+- Files: [Convention]
 
 ---
 
 ## Common Gotchas
 
-1. **Server vs Client Components**: Default to Server Components. Add `'use client'` only when needed (hooks, interactivity).
+1. **[Gotcha 1]**: [Description and solution]
 
-2. **Path Aliases**: Always use `@/` imports, never relative paths beyond the current directory.
+2. **[Gotcha 2]**: [Description and solution]
 
-3. **Auth**: Protected routes require session check in layout, not individual pages.
-
-4. **Database**: Always use Prisma transactions for multi-table operations.
-
-5. **Error Handling**: Use error boundaries for UI, try-catch for API routes.
+3. **[Gotcha 3]**: [Description and solution]
 
 ---
 
@@ -153,7 +140,7 @@ project/
 1. **Check for existing specs**: Look in `docs/specs/` for the feature specification
 2. **Read feature docs**: Check `docs/features/<name>/` for context
 3. **Review relevant ADRs**: Check `docs/decisions/` for architectural decisions
-4. **Run tests first**: `npm test` to ensure baseline is passing
+4. **Run tests first**: `[test command]` to ensure baseline is passing
 
 ---
 
