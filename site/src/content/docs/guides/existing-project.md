@@ -65,7 +65,7 @@ Create `/AGENTS.md` based on **ACTUAL** project state, not templates.
 
 ### Content
 
-Base on [AGENTS.md template](/templates/agents-md/), but customize heavily:
+Base on [AGENTS.md template](../templates/agents-md/), but customize heavily:
 
 ```markdown
 # [Actual Project Name] - AI Agent Instructions

@@ -9,8 +9,8 @@ The `CLAUDE.md` file provides project context to [Claude Code](https://docs.anth
 ## When to Use
 
 Use this template if you're using **Claude Code** as your AI assistant. For other tools:
-- **Cursor**: Use [AGENTS.md](/templates/agents-md/) + [Cursor Rules](/templates/cursor-rules/)
-- **GitHub Copilot**: Use [Copilot Instructions](/templates/copilot-instructions/)
+- **Cursor**: Use [AGENTS.md](../agents-md/) + [Cursor Rules](../cursor-rules/)
+- **GitHub Copilot**: Use [Copilot Instructions](../copilot-instructions/)
 
 ## Location
 

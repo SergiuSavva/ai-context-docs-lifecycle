@@ -170,7 +170,7 @@ Root-level AI context. First thing any AI agent reads.
 
 **Update when:** Architecture changes, patterns change, tech stack changes
 
-→ [Full template](/templates/agents-md/)
+→ [Full template](../agents-md/)
 
 ---
 
@@ -185,7 +185,7 @@ Index of all AI rules. Always loaded by Cursor.
 
 **Update when:** Adding or removing rules
 
-→ [Full template](/templates/cursor-rules/)
+→ [Full template](../cursor-rules/)
 
 ---
 
@@ -193,7 +193,7 @@ Index of all AI rules. Always loaded by Cursor.
 
 Navigation hub for all documentation.
 
-→ [Full template](/templates/docs-index/)
+→ [Full template](../docs-index/)
 
 ---
 
@@ -201,7 +201,7 @@ Navigation hub for all documentation.
 
 Global progress tracking across all features.
 
-→ [Full template](/templates/docs-index/)
+→ [Full template](../docs-index/)
 
 ---
 
@@ -231,7 +231,7 @@ docs/specs/
 └── _archive/
 ```
 
-→ [PRD-lite template](/templates/prd-lite/)
+→ [PRD-lite template](../prd-lite/)
 
 ---
 
@@ -249,7 +249,7 @@ docs/features/
     └── README.md
 ```
 
-→ [Feature docs template](/templates/feature-docs/)
+→ [Feature docs template](../feature-docs/)
 
 ---
 
@@ -265,7 +265,7 @@ docs/decisions/
 └── ADR-003-api.md
 ```
 
-→ [ADR template](/templates/adr/)
+→ [ADR template](../adr/)
 
 ---
 

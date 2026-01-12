@@ -100,13 +100,13 @@ Verify the AI Context Docs Lifecycle setup:
 
 ## Step 4: Start Building
 
-Setup complete! Now use the [Development Workflow](/workflow/) for day-to-day prompts:
+Setup complete! Now use the [Development Workflow](./workflow/) for day-to-day prompts:
 
 - **Before building** — Create specs and feature docs
 - **While building** — AI follows your rules automatically
 - **After completing** — Archive specs, update docs
 
-→ [View full workflow prompts](/workflow/)
+→ [View full workflow prompts](./workflow/)
 
 ---
 
@@ -123,10 +123,10 @@ Then create the structure based on what I paste.
 ```
 
 Then paste the relevant sections from:
-- [Methodology](/methodology/) — core concepts
-- [Project Structure](/templates/project-structure/) — folder layout
-- [AGENTS.md Template](/templates/agents-md/) — root context format
-- [Cursor Rules](/templates/cursor-rules/) — rule file format
+- [Methodology](./methodology/) — core concepts
+- [Project Structure](./templates/project-structure/) — folder layout
+- [AGENTS.md Template](./templates/agents-md/) — root context format
+- [Cursor Rules](./templates/cursor-rules/) — rule file format
 
 ---
 
@@ -143,7 +143,7 @@ Once set up, use these prompts for day-to-day development:
 | **New pattern** | "Add rule for [pattern] to .cursor/rules/" |
 | **Complete feature** | "Archive spec and update docs for [feature]" |
 
-See the full [Prompt Library](/prompts/) for more.
+See the full [Prompt Library](./prompts/) for more.
 
 ---
 
@@ -166,7 +166,7 @@ mkdir -p docs/decisions
 touch AGENTS.md
 ```
 
-Copy the template from [AGENTS.md template](/templates/agents-md/) and customize.
+Copy the template from [AGENTS.md template](./templates/agents-md/) and customize.
 
 ### Create rule index
 
@@ -174,7 +174,7 @@ Copy the template from [AGENTS.md template](/templates/agents-md/) and customize
 touch .cursor/rules/00-index.mdc
 ```
 
-Copy from [Cursor Rules template](/templates/cursor-rules/).
+Copy from [Cursor Rules template](./templates/cursor-rules/).
 
 ### Create docs index
 
@@ -188,8 +188,8 @@ touch docs/INDEX.md docs/TASKS.md
 
 | Scenario | Guide |
 |----------|-------|
-| Starting fresh | [New Project Guide](/guides/new-project/) |
-| Adding to existing code | [Existing Project Guide](/guides/existing-project/) |
+| Starting fresh | [New Project Guide](./guides/new-project/) |
+| Adding to existing code | [Existing Project Guide](./guides/existing-project/) |
 
 The key difference: for existing projects, document what IS, not what should be. Your rules should capture existing patterns, not impose new ones.
 
@@ -197,7 +197,7 @@ The key difference: for existing projects, document what IS, not what should be.
 
 ## Next Steps
 
-- Follow the [Development Workflow](/workflow/) for day-to-day prompts
-- Read the [full methodology](/methodology/) to understand the three pillars
-- Browse [templates](/templates/) to see all available files
-- Check [guides](/guides/) for detailed walkthroughs
+- Follow the [Development Workflow](./workflow/) for day-to-day prompts
+- Read the [full methodology](./methodology/) to understand the three pillars
+- Browse [templates](./templates/) to see all available files
+- Check [guides](./guides/) for detailed walkthroughs

@@ -4,7 +4,7 @@ description: Day-to-day prompts for building features with AI assistance
 head: []
 ---
 
-After [initial setup](/quick-start/), use these prompts to build features consistently.
+After [initial setup](./quick-start/), use these prompts to build features consistently.
 
 ---
 

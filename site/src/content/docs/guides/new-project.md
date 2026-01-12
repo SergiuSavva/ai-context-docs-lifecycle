@@ -21,7 +21,7 @@ For new projects, you have a clean slate. Set up the ideal structure from day on
 
 ## Step 1: Create Required Structure
 
-Based on [Project Structure template](/templates/project-structure/):
+Based on [Project Structure template](../templates/project-structure/):
 
 ```bash
 # Create documentation folders
@@ -43,7 +43,7 @@ touch docs/TASKS.md
 
 ## Step 2: Create AGENTS.md
 
-Create `/AGENTS.md` using [AGENTS.md template](/templates/agents-md/).
+Create `/AGENTS.md` using [AGENTS.md template](../templates/agents-md/).
 
 **Customize with:**
 - Actual project name
@@ -84,7 +84,7 @@ npm test
 
 ### 3.1 Create 00-index.mdc (REQUIRED)
 
-Create `/.cursor/rules/00-index.mdc` using [Cursor Rules template](/templates/cursor-rules/).
+Create `/.cursor/rules/00-index.mdc` using [Cursor Rules template](../templates/cursor-rules/).
 
 This file MUST exist and list all other rules.
 
@@ -105,7 +105,7 @@ Based on project needs, create additional rules:
 
 ### 4.1 Create docs/INDEX.md
 
-Use [Docs Index template](/templates/docs-index/).
+Use [Docs Index template](../templates/docs-index/).
 
 ### 4.2 Create docs/TASKS.md
 
