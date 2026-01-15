@@ -24,4 +24,4 @@ Thumbs.db
 *.log
 
 # custom expections
-_backup/
+_*

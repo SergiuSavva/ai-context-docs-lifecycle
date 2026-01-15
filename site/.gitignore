@@ -1,0 +1,37 @@
+# Build output
+dist/
+
+# Dependencies
+node_modules/
+
+# Generated docs from content/ - DO NOT EDIT DIRECTLY
+# These files are synced from source files via `npm run sync-docs`
+# Edit the source files in content/ or root METHODOLOGY.md instead
+src/content/docs/methodology.md
+src/content/docs/prompts.md
+src/content/docs/workflow.md
+src/content/docs/guides/existing-project.md
+src/content/docs/guides/new-project.md
+src/content/docs/templates/agents-md.md
+src/content/docs/templates/claude-md.md
+src/content/docs/templates/copilot-instructions.md
+src/content/docs/templates/prd-lite.md
+src/content/docs/templates/adr.md
+src/content/docs/templates/feature-docs.md
+src/content/docs/templates/docs-index.md
+src/content/docs/templates/project-structure.md
+src/content/docs/templates/cursor-rules.md
+
+# Environment
+.env
+.env.local
+
+# IDE
+.idea/
+.vscode/
+*.swp
+*.swo
+
+# OS
+.DS_Store
+Thumbs.db

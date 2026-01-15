@@ -1,3 +1,8 @@
+<!-- site:
+title: Existing Project Guide
+description: Add AI Context Docs Lifecycle to an existing codebase
+-->
+
 # Applying AI Context Docs Lifecycle to an Existing Project
 
 > **For AI Agents**: Follow these steps when adding the methodology to an existing codebase.

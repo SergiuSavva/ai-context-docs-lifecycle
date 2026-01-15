@@ -1,3 +1,8 @@
+<!-- site:
+title: Development Workflow
+description: Day-to-day prompts for building features with AI assistance
+-->
+
 # Required Workflow
 
 > **For AI Agents**: Every project using this kit MUST follow this docs-as-code workflow.
@@ -53,6 +58,16 @@ Skip detailed specs for:
 - Minor enhancements (< 1 hour work)
 - Well-understood features with clear scope
 
+### Definition of Done — Spec Ready
+
+- [ ] Problem statement clearly defines the WHY
+- [ ] Scope has explicit In/Out boundaries
+- [ ] User stories have acceptance criteria (Given/When/Then)
+- [ ] Tasks are broken down to actionable items
+- [ ] Risks identified with mitigations
+- [ ] Research completed (API docs, external refs gathered)
+- [ ] Human has approved spec for implementation
+
 ---
 
 ## Step 2: Rules Guide
@@ -97,6 +112,15 @@ When AI completes a task, it should:
 3. Update code touchpoints if files added/moved
 4. Note any decisions made
 
+### Definition of Done — Implementation Ready for Review
+
+- [ ] All tasks in tasks.md completed
+- [ ] Code follows patterns in `.cursor/rules/`
+- [ ] Tests written and passing
+- [ ] No linter errors or warnings
+- [ ] Code touchpoints updated in feature README
+- [ ] AI signals ready for human review
+
 ---
 
 ## Step 4: Review Together
@@ -120,6 +144,13 @@ Reviewers check:
 - Are docs accurate?
 - Are acceptance criteria met?
 - Is progress tracking updated?
+
+### Definition of Done — Ready to Complete
+
+- [ ] All acceptance criteria verified and passing
+- [ ] Code quality approved by human
+- [ ] No outstanding feedback or iteration needed
+- [ ] Human approves for merge
 
 ---
 
@@ -146,6 +177,16 @@ After feature is merged and verified:
 
 - PRD-lite specs (served their purpose)
 - Outdated task lists (after completion)
+
+### Definition of Done — Feature Complete
+
+- [ ] Code merged to main branch
+- [ ] Significant decisions extracted to ADRs
+- [ ] REFERENCE docs updated with new system state
+- [ ] Valuable diagrams preserved in docs
+- [ ] Spec archived to `docs/specs/_archive/`
+- [ ] AGENTS.md updated if architecture changed
+- [ ] Feature status updated in `docs/features/README.md`
 
 ---
 

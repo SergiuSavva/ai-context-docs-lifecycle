@@ -1,3 +1,11 @@
+<!-- site:
+title: AGENTS.md Template
+description: Root context file that gives AI instant understanding of your project
+purpose: AGENTS.md is the entry point for AI agents. It provides instant context about your project — what it does, how to run it, and where to find things.
+updateWhen: Architecture changes, new patterns emerge, or tech stack changes.
+wrapInCodeBlock: false
+-->
+
 # [Project Name] - AI Agent Instructions
 
 > **TEMPLATE**: Copy this file to your project root as `AGENTS.md`.

@@ -1,3 +1,11 @@
+<!-- site:
+title: PRD-lite Spec Template
+description: Lightweight product requirements document for features
+purpose: PRD-lite specs define what to build before any code is written. They capture the problem, success metrics, scope, and key user stories - just enough to build, not more.
+updateWhen: Feature requirements change or scope adjusts during development.
+wrapInCodeBlock: false
+-->
+
 # Feature: [Feature Name]
 
 > **TEMPLATE**: Copy this file to `/docs/specs/<feature-name>.md`.

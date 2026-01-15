@@ -1,3 +1,8 @@
+<!-- site:
+title: Prompt Library
+description: Ready-to-use prompts for AI Context Docs Lifecycle
+-->
+
 # AI Prompt Library
 
 > Ready-to-use prompts for AI Context Docs Lifecycle. Copy, paste, and customize.

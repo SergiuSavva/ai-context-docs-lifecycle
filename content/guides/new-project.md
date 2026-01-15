@@ -1,3 +1,8 @@
+<!-- site:
+title: New Project Guide
+description: Set up AI Context Docs Lifecycle for a new project
+-->
+
 # Applying AI Context Docs Lifecycle to a New Project
 
 > **For AI Agents**: Follow these steps when setting up the methodology for a brand new project.

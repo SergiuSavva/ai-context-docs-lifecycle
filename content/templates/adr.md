@@ -1,3 +1,11 @@
+<!-- site:
+title: ADR Template
+description: Architecture Decision Record template for documenting technical decisions
+purpose: ADRs capture significant technical decisions, their context, and rationale. They serve as a permanent record that explains why the codebase is the way it is.
+updateWhen: Status changes (Proposed → Accepted), or when a decision is superseded.
+wrapInCodeBlock: false
+-->
+
 # ADR-[NNN]: [Decision Title]
 
 > **TEMPLATE**: Copy this file to `/docs/decisions/NNN-title.md`.

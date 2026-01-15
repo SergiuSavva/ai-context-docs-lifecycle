@@ -1,3 +1,11 @@
+<!-- site:
+title: CLAUDE.md Template
+description: Context file for Claude Code AI assistant
+purpose: CLAUDE.md provides context to Claude Code (Anthropic's CLI agent). Claude Code automatically reads this file when working in your project.
+updateWhen: Architecture changes, key patterns change, or workflow conventions change.
+wrapInCodeBlock: false
+-->
+
 # [Project Name] - Claude Code Instructions
 
 > **TEMPLATE**: Copy this file to your project root as `CLAUDE.md`.

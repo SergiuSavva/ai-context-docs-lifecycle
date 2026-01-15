@@ -1,3 +1,11 @@
+<!-- site:
+title: Copilot Instructions Template
+description: Instructions file for GitHub Copilot
+purpose: GitHub Copilot reads .github/copilot-instructions.md for project-specific context and coding guidelines. This helps Copilot generate code that matches your project's conventions.
+updateWhen: Code style guidelines change, new patterns are adopted, or tech stack changes.
+wrapInCodeBlock: false
+-->
+
 # GitHub Copilot Instructions
 
 > **TEMPLATE**: Copy this file to `.github/copilot-instructions.md` in your project.

@@ -1,3 +1,11 @@
+<!-- site:
+title: Feature Documentation Template
+description: Documentation structure for feature folders
+purpose: Feature docs provide living documentation for each feature, including goals, code locations, and implementation status. Unlike specs (which are archived after completion), feature docs stay updated throughout the project lifecycle.
+updateWhen: Code locations change, implementation progresses, or feature scope evolves.
+wrapInCodeBlock: false
+-->
+
 # Feature: [Feature Name]
 
 > **TEMPLATE**: Copy this file to `/docs/features/<feature-name>/README.md`.

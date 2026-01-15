@@ -1,3 +1,8 @@
+<!-- site:
+title: Methodology
+description: A document lifecycle system for AI-assisted software development
+-->
+
 # AI Context Docs Lifecycle
 
 > **A document lifecycle methodology for AI-assisted software development**
@@ -313,6 +318,15 @@ Each document type flows through specific stages. Rules enforce these transition
 | Set scope boundaries | Human | In/Out of scope section |
 | Create initial task list | Human/AI | `docs/specs/<feature>/tasks.md` |
 
+**Definition of Done — Spec Ready:**
+- [ ] Problem statement clearly defines the WHY
+- [ ] Scope has explicit In/Out boundaries
+- [ ] User stories have acceptance criteria (Given/When/Then)
+- [ ] Tasks are broken down to actionable items
+- [ ] Risks identified with mitigations
+- [ ] Research completed (API docs, external refs gathered)
+- [ ] Human has approved spec for implementation
+
 ### Stage 2: BUILD (AI)
 
 **Trigger:** Spec package approved and ready for implementation
@@ -324,6 +338,14 @@ Each document type flows through specific stages. Rules enforce these transition
 | Follow RULES for patterns | AI | Consistent code |
 | Implement feature | AI | Code + tests |
 | Update task progress | AI | Tasks marked complete |
+
+**Definition of Done — Implementation Ready for Review:**
+- [ ] All tasks in tasks.md completed
+- [ ] Code follows patterns in `.cursor/rules/`
+- [ ] Tests written and passing
+- [ ] No linter errors or warnings
+- [ ] Code touchpoints updated in feature README
+- [ ] AI signals ready for human review
 
 ### Stage 3: REVIEW + ITERATE (Human ↔ AI)
 
@@ -339,6 +361,12 @@ Each document type flows through specific stages. Rules enforce these transition
 
 > **Iteration loop:** BUILD → REVIEW → feedback → BUILD → REVIEW... until approved. This is the normal flow, not an exception.
 
+**Definition of Done — Ready to Complete:**
+- [ ] All acceptance criteria verified and passing
+- [ ] Code quality approved by human
+- [ ] No outstanding feedback or iteration needed
+- [ ] Human approves for merge
+
 ### Stage 4: COMPLETE (Both)
 
 **Trigger:** Feature approved and merged
@@ -350,6 +378,15 @@ Each document type flows through specific stages. Rules enforce these transition
 | Move valuable diagrams to REFERENCE | Human | Copy Mermaid blocks to docs |
 | Archive or delete spec package | Human | `docs/specs/_archive/` |
 | Update AGENTS.md if needed | AI | Current context |
+
+**Definition of Done — Feature Complete:**
+- [ ] Code merged to main branch
+- [ ] Significant decisions extracted to ADRs
+- [ ] REFERENCE docs updated with new system state
+- [ ] Valuable diagrams preserved in docs
+- [ ] Spec archived to `docs/specs/_archive/`
+- [ ] AGENTS.md updated if architecture changed
+- [ ] Feature status updated in `docs/features/README.md`
 
 ---
 
@@ -477,6 +514,17 @@ RULES UPDATES:
 ├── Create/update rule file
 └── AI follows automatically going forward
 ```
+
+---
+
+## Quick Reference: Definitions of Done
+
+| Stage | Definition of Done |
+|-------|-------------------|
+| **Spec Ready** | Problem defined, scope bounded, acceptance criteria set, tasks listed, research done, human approved |
+| **Implementation Ready** | All tasks done, follows rules, tests passing, no linter errors, touchpoints updated, AI signals ready |
+| **Ready to Complete** | Acceptance criteria verified, code quality approved, no outstanding feedback, human approves merge |
+| **Feature Complete** | Code merged, ADRs extracted, REFERENCE updated, diagrams preserved, spec archived, AGENTS.md updated |
 
 ---
 
