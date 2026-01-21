@@ -1,0 +1,144 @@
+---
+description: Documentation style for SpaceBooker project
+globs:
+  - "**/*.md"
+  - "**/README*"
+  - "**/AGENTS*"
+  - "docs/**/*"
+alwaysApply: false
+---
+
+# Documentation Style - SpaceBooker
+
+> **Example**: This is a filled-in doc style rule for a project.
+
+## Principles
+
+1. **Minimal**: Don't document obvious things
+2. **Current**: Stale docs are worse than no docs
+3. **Scannable**: Headers, bullets, tables - no walls of text
+4. **For AI**: AGENTS.md is primary context for AI agents
+
+## File Types
+
+| File | Purpose | Location | Update When |
+|------|---------|----------|-------------|
+| AGENTS.md | AI context | Root | Patterns/stack change |
+| Feature README | How feature works | docs/features/ | Feature changes |
+| ADR | Why we decided | docs/decisions/ | Never (immutable) |
+| INDEX.md | Navigation | docs/ | New docs added |
+
+## AGENTS.md Structure
+
+Required sections:
+1. Quick Start (commands)
+2. Project Overview (1-2 sentences)
+3. Tech Stack (table)
+4. File Organization (tree)
+5. Key Patterns (bullets)
+6. Common Gotchas (numbered)
+
+## Feature README Structure
+
+```markdown
+# Feature: [Name]
+
+## Overview
+[What this feature does - 2-3 sentences]
+
+## How It Works
+[Brief explanation or diagram]
+
+## Code Touchpoints
+- `path/to/main/file.ts` - Main logic
+- `path/to/component.tsx` - UI component
+
+## Usage
+[Code example if applicable]
+
+## Related
+- [ADR-NNN](../decisions/NNN-title.md)
+- [Related feature](../features/related/)
+```
+
+## ADR Structure
+
+```markdown
+# ADR-NNN: [Title]
+
+## Status
+Accepted
+
+## Context
+[Problem and constraints]
+
+## Decision
+[What we chose]
+
+## Rationale
+[Why we chose it]
+
+## Consequences
+[Trade-offs]
+
+## Alternatives Considered
+[What we rejected and why]
+```
+
+## Formatting Rules
+
+### Code Blocks
+
+Always specify language:
+
+```typescript
+const user = await getUser(id);
+```
+
+Not:
+
+```
+const user = await getUser(id);
+```
+
+### Tables
+
+Keep to 3-4 columns max:
+
+| Good | Better | Best |
+|------|--------|------|
+| x | y | z |
+
+### Diagrams
+
+Use Mermaid, keep simple:
+
+```mermaid
+flowchart LR
+    User --> API --> DB
+```
+
+### Links
+
+Use relative paths:
+
+```markdown
+See [auth docs](../features/auth/README.md)
+```
+
+## Don't Document
+
+- Obvious code behavior
+- Things that change frequently
+- Implementation details
+- Duplicates of existing docs
+
+## When to Update
+
+| Event | Update |
+|-------|--------|
+| New pattern | AGENTS.md |
+| Feature complete | Feature README |
+| Architecture decision | ADR |
+| Files moved | Code touchpoints |
+| Tech stack change | AGENTS.md |

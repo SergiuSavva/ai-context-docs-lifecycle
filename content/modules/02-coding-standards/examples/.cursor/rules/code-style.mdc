@@ -1,0 +1,171 @@
+---
+description: TypeScript/React code style for SpaceBooker project
+globs:
+  - "**/*.ts"
+  - "**/*.tsx"
+alwaysApply: false
+---
+
+# Code Style - SpaceBooker
+
+> **Example**: This is a filled-in code style rule for a Next.js/TypeScript project.
+
+## Language
+
+- **Primary**: TypeScript (strict mode)
+- **Framework**: Next.js 15 (App Router)
+- **Target**: ES2022
+
+## Naming Conventions
+
+| Type | Convention | Example |
+|------|------------|---------|
+| Variables | camelCase | `userName`, `isLoading` |
+| Functions | camelCase | `getUserById`, `handleSubmit` |
+| Components | PascalCase | `BookingCard`, `SpaceGrid` |
+| Constants | UPPER_SNAKE_CASE | `MAX_BOOKING_DAYS`, `API_BASE_URL` |
+| Types/Interfaces | PascalCase | `User`, `Space`, `Booking` |
+| Hooks | camelCase with `use` prefix | `useBookings`, `useSpaceFilter` |
+| Server Actions | camelCase with action suffix | `createBookingAction`, `deleteSpaceAction` |
+
+## Component Patterns
+
+### Functional Components Only
+
+```typescript
+// Good
+interface SpaceCardProps {
+  space: Space;
+  onBook: (id: string) => void;
+}
+
+export function SpaceCard({ space, onBook }: SpaceCardProps) {
+  return (
+    <div className="space-card">
+      <h3>{space.name}</h3>
+      <button onClick={() => onBook(space.id)}>Book</button>
+    </div>
+  );
+}
+```
+
+### Props Interface
+
+Always define props interface directly above component:
+
+```typescript
+interface Props {
+  // props here
+}
+
+export function Component({ prop1, prop2 }: Props) {
+  // ...
+}
+```
+
+### Named Exports
+
+Prefer named exports over default exports:
+
+```typescript
+// Good
+export function SpaceCard() {}
+export function SpaceList() {}
+
+// Avoid
+export default function SpaceCard() {}
+```
+
+## Imports
+
+Order:
+1. React/Next.js
+2. External packages
+3. Internal (@/)
+4. Relative (./)
+5. Types
+
+```typescript
+import { useState, useEffect } from 'react';
+import { useRouter } from 'next/navigation';
+
+import { format } from 'date-fns';
+import { toast } from 'sonner';
+
+import { Button } from '@/components/ui/button';
+import { cn } from '@/lib/utils';
+
+import { useBookingForm } from './hooks';
+
+import type { Space, Booking } from '@/types';
+```
+
+## State Management
+
+- **Server state**: React Query (TanStack Query)
+- **Client state**: Zustand for UI state (modals, filters)
+- **Form state**: React Hook Form with Zod validation
+
+```typescript
+// Server state
+const { data: spaces } = useQuery({
+  queryKey: ['spaces'],
+  queryFn: fetchSpaces,
+});
+
+// Client state
+const { isModalOpen, openModal } = useUIStore();
+
+// Form state
+const form = useForm<BookingForm>({
+  resolver: zodResolver(bookingSchema),
+});
+```
+
+## Error Handling
+
+```typescript
+// API calls
+try {
+  const booking = await createBooking(data);
+  toast.success('Booking created!');
+  return booking;
+} catch (error) {
+  console.error('Failed to create booking:', error);
+  toast.error('Failed to create booking. Please try again.');
+  throw error;
+}
+```
+
+## Server Components vs Client Components
+
+- Default to Server Components
+- Add `'use client'` only when needed (hooks, interactivity)
+- Keep client components small and focused
+
+```typescript
+// Server Component (default)
+export async function SpaceList() {
+  const spaces = await getSpaces(); // Direct DB access
+  return <SpaceGrid spaces={spaces} />;
+}
+
+// Client Component (when needed)
+'use client';
+export function SpaceFilter() {
+  const [filter, setFilter] = useState(''); // Needs state
+  return <input value={filter} onChange={(e) => setFilter(e.target.value)} />;
+}
+```
+
+## Path Aliases
+
+Always use `@/` for imports from `src/`:
+
+```typescript
+// Good
+import { Button } from '@/components/ui/button';
+
+// Avoid
+import { Button } from '../../../components/ui/button';
+```

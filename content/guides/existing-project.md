@@ -1,259 +1,235 @@
-<!-- site:
-title: Existing Project Guide
-description: Add AI Context Docs Lifecycle to an existing codebase
--->
+# Existing Project Setup
 
-# Applying AI Context Docs Lifecycle to an Existing Project
-
-> **For AI Agents**: Follow these steps when adding the methodology to an existing codebase.
+> **Adding to an existing codebase?** Follow this guide to integrate AI Context Docs Lifecycle.
 
 ---
 
-## Overview
+## Assessment: What Do You Have?
 
-Adding the AI Context Docs Lifecycle methodology to an existing project involves:
+Before adding anything, check what exists:
 
-1. Assessing current state
-2. Adding missing required files
-3. Creating AGENTS.md based on existing code
-4. Setting up documentation incrementally
-5. Adopting the workflow gradually
+| Check | If Exists | Action |
+|-------|-----------|--------|
+| README.md | Keep it | AGENTS.md supplements, doesn't replace |
+| .cursor/rules/ | Review | Merge or replace rules |
+| docs/ folder | Review | Integrate new structure |
+| Existing specs | Keep | Add workflow to new specs |
 
 ---
 
-## Step 1: Assess Current State
+## Minimal Integration (5 minutes)
 
-### Check what exists
+### Just Add AGENTS.md
+
+If you only want AI context without changing your workflow:
+
+1. Create `AGENTS.md` at project root
+2. Fill in from [Module 1 template](../modules/01-quick-start/templates/AGENTS.md)
+3. Done!
 
 ```
-Does project have...?
-
-[ ] .cursor/rules/ folder
-[ ] Any AGENTS.md or similar AI context file
-[ ] docs/ folder
-[ ] README.md with project info
-[ ] Architecture documentation
+existing-project/
+├── README.md          # Keep existing
+├── AGENTS.md          # NEW - AI context
+├── src/
+└── ...
 ```
 
-### Understand the codebase
-
-Before creating docs, understand:
-
-- What framework/language is used?
-- What's the folder structure?
-- What are the main features?
-- What patterns are already in use?
-- What testing approach exists?
+AI agents will read AGENTS.md first for context.
 
 ---
 
-## Step 2: Create AGENTS.md (Priority 1)
+## Standard Integration (20 minutes)
 
-Create `/AGENTS.md` based on ACTUAL project state, not templates.
+### Step 1: Add AGENTS.md
 
-### Process
+Create at project root with:
+- Your actual Quick Start commands
+- Your tech stack
+- Your file organization
+- Your key patterns
+- Known gotchas
 
-1. Read existing README.md
-2. Examine folder structure
-3. Check package.json/requirements.txt for stack
-4. Look at existing code patterns
-
-### Content
-
-```markdown
-# [Actual Project Name] - AI Agent Instructions
-
-## Quick Start
-[Actual commands from package.json/Makefile/README]
-
-## Project Overview
-[What the project actually does]
-
-## Tech Stack
-[Actual technologies from dependencies]
-
-## File Organization
-[Actual folder structure]
-
-## Key Patterns
-[Patterns observed in existing code]
-
-## Need Help?
-[Links to existing docs or new .cursor/rules/]
-```
-
----
-
-## Step 3: Create Cursor Rules (Priority 2)
-
-### 3.1 Create 00-index.mdc (REQUIRED)
+### Step 2: Add Cursor Rules
 
 ```bash
 mkdir -p .cursor/rules
 ```
 
-Create `/.cursor/rules/00-index.mdc` listing rules that will exist.
+Add from Module 2 and 3:
+- `code-style.mdc` - Customized for your stack
+- `doc-style.mdc` - Your doc standards
+- `feature-workflow.mdc` - Feature workflow
 
-### 3.2 Document Existing Patterns
+**Tip**: If you already have `.cursor/rules/`, review existing rules and merge.
 
-Instead of using example templates directly, **document actual patterns**:
+### Step 3: Add Docs Structure
 
-```markdown
-# coding-patterns.mdc
-
-## Naming Conventions
-[What the project ACTUALLY uses, observed from code]
-
-## Component Patterns
-[How components ARE structured in this project]
-
-## Import Patterns
-[How imports ARE done in this project]
-```
-
-### Key principle: Describe what IS, not what SHOULD BE
-
-The goal is to help AI understand existing patterns, not impose new ones.
-
----
-
-## Step 4: Create Docs Structure (Priority 3)
-
-### 4.1 Create minimal structure
+If you don't have a `docs/` folder:
 
 ```bash
-mkdir -p docs/specs/_archive
-mkdir -p docs/features
-mkdir -p docs/decisions
+mkdir -p docs/{specs,features,decisions}
 ```
 
-### 4.2 Create docs/INDEX.md
+If you have existing docs, add these folders alongside.
 
-Include links to any EXISTING documentation plus new structure.
+### Step 4: Create INDEX.md
 
-### 4.3 Create docs/TASKS.md
+Add `docs/INDEX.md` that links to:
+- Your existing documentation
+- New feature docs
+- Decision records
 
-Start with current work, not historical tasks:
+---
+
+## Full Integration (1 hour)
+
+### Step 1: Audit Existing Documentation
+
+| Find | Action |
+|------|--------|
+| Architecture docs | Link from AGENTS.md |
+| API docs | Link from INDEX.md |
+| Old specs | Move to `docs/specs/_archive/` |
+| Decision history | Convert to ADRs |
+
+### Step 2: Document Existing Patterns
+
+Review your codebase and document in AGENTS.md:
+- Naming conventions actually used
+- State management approach
+- Error handling patterns
+- Testing patterns
+
+### Step 3: Create ADRs for Past Decisions
+
+For significant past decisions, create ADRs:
 
 ```markdown
-# [Project] - Task Index
+# ADR-001: [Past Decision]
 
-## Current Work
-| Feature | Status | Notes |
-|---------|--------|-------|
-| [Current feature] | In Progress | [Notes] |
+## Status
+Accepted (historical)
 
-## Upcoming
-[What's planned next]
+## Context
+[What led to this decision]
+
+## Decision
+[What was decided]
+
+## Rationale
+[Why, if known]
+```
+
+### Step 4: Document Key Features
+
+For existing features, create minimal READMEs:
+
+```
+docs/features/
+├── auth/
+│   └── README.md
+├── payments/
+│   └── README.md
+└── ...
+```
+
+Include:
+- What the feature does
+- Key files (code touchpoints)
+- How it works (brief)
+
+---
+
+## AI-Assisted Integration
+
+Tell your AI assistant:
+
+```
+Integrate AI Context Docs Lifecycle into this existing project.
+
+1. Analyze the current codebase structure
+2. Create AGENTS.md reflecting actual patterns
+3. Add .cursor/rules/ with appropriate conventions
+4. Set up docs/ structure for new features
+
+Don't modify existing code or documentation structure.
+Focus on adding AI context alongside what exists.
 ```
 
 ---
 
-## Step 5: Document Existing Features (Optional)
+## Handling Existing Patterns
 
-For major existing features, create minimal docs:
+### Different Naming Conventions?
+
+Document what actually exists in `code-style.mdc`:
+
+```yaml
+# Note: This project uses mixed conventions (historical)
+# New code should follow these patterns:
+```
+
+### Different Folder Structure?
+
+Document actual structure in AGENTS.md, don't reorganize:
+
+```markdown
+## File Organization
+
+Note: Historical structure. New features go in `features/`.
 
 ```
-docs/features/[feature]/
-└── README.md    # Just overview and code locations
-```
 
-Don't retroactively create user stories or tasks for completed features.
+### Incomplete Documentation?
 
----
-
-## Step 6: Adopt Workflow for NEW Work
-
-From this point forward, follow `rules/01-workflow.md`:
-
-### For new features:
-1. Write PRD-lite spec first
-2. Create feature docs
-3. Build following documented patterns
-4. Update docs during development
-
-### For bug fixes:
-1. Just fix (no spec needed)
-2. Follow existing patterns
-3. Update docs if behavior changes
-
-### For refactoring:
-1. Create ADR if significant
-2. Update affected docs
-3. Update AGENTS.md if structure changes
-
----
-
-## Migration Checklist
-
-### Minimum viable setup (do first):
-
-- [ ] `AGENTS.md` at root describing actual project
-- [ ] `.cursor/rules/00-index.mdc` exists
-- [ ] At least one rule file documenting key patterns
-
-### Full setup (do incrementally):
-
-- [ ] `docs/INDEX.md` navigation
-- [ ] `docs/TASKS.md` for current work
-- [ ] `docs/features/` for feature documentation
-- [ ] `docs/specs/` for new specs (with optional phase subfolders)
-- [ ] `docs/decisions/` for new ADRs
-
----
-
-## Common Scenarios
-
-### Project has existing README but no AGENTS.md
-
-1. Keep README.md for humans
-2. Create AGENTS.md for AI with:
-   - Quick commands (from README)
-   - Technical details (more detailed than README)
-   - Pattern references
-
-### Project has some docs but scattered
-
-1. Create `docs/INDEX.md` linking to existing docs
-2. Don't move existing docs initially
-3. Gradually consolidate as you update them
-
-### Project has many patterns not documented
-
-1. Start with AGENTS.md covering main patterns
-2. Create rule files as you encounter pattern questions
-3. Add patterns when AI generates inconsistent code
-
-### Project uses different folder structure
-
-1. Document ACTUAL structure, don't change it
-2. Use rules to tell AI where things go in THIS project
-3. Adapt examples to match project conventions
+Start fresh with AGENTS.md. Don't try to fix old docs.
 
 ---
 
 ## What NOT to Do
 
-- Don't reorganize existing code to match examples
-- Don't create docs for completed features retroactively
-- Don't change existing patterns to match templates
-- Don't create empty template files "for later"
+- ❌ Don't reorganize existing code to fit templates
+- ❌ Don't delete existing documentation
+- ❌ Don't convert all old specs to new format
+- ❌ Don't create ADRs for trivial past decisions
 
 ---
 
-## Incremental Adoption
+## Gradual Adoption
 
-### Week 1: Minimum Setup
-- Create AGENTS.md
-- Create 00-index.mdc
-- Create one pattern rule file
+You don't have to do everything at once:
 
-### Week 2-4: Documentation
-- Add docs/INDEX.md
-- Add docs/TASKS.md for current sprint
-- Document patterns as questions arise
+### Week 1: Foundation
+- Add AGENTS.md
+- Add basic cursor rules
 
-### Ongoing: Full Workflow
-- Use specs for new features
-- Create ADRs for decisions
-- Keep docs updated with changes
+### Week 2: New Features
+- Use Module 3 workflow for NEW features only
+- Don't retrofit existing features
+
+### Month 1: Documentation
+- Create feature READMEs for key features
+- Document major past decisions as ADRs
+
+### Ongoing
+- Update AGENTS.md when patterns change
+- Apply workflow to all new features
+- Document decisions as they happen
+
+---
+
+## Checklist
+
+- [ ] AGENTS.md created (reflects actual project)
+- [ ] .cursor/rules/ added with relevant rules
+- [ ] docs/ structure created (alongside existing)
+- [ ] INDEX.md links old and new docs
+- [ ] Team knows to use workflow for new features
+
+---
+
+## Next Steps
+
+- [Module 3: Feature Development](../modules/03-feature-development/) - Use for new features
+- [Getting Started](./getting-started.md) - Module overview

@@ -1,252 +1,164 @@
-<!-- site:
-title: New Project Guide
-description: Set up AI Context Docs Lifecycle for a new project
--->
+# New Project Setup
 
-# Applying AI Context Docs Lifecycle to a New Project
-
-> **For AI Agents**: Follow these steps when setting up the methodology for a brand new project.
+> **Starting from scratch?** Follow this guide to set up AI Context Docs Lifecycle.
 
 ---
 
-## Overview
+## Quick Setup (5 minutes)
 
-Setting up a new project with the AI Context Docs Lifecycle methodology involves:
-
-1. Creating the required folder structure
-2. Setting up AGENTS.md
-3. Creating initial cursor rules
-4. Setting up documentation structure
-5. Establishing the workflow
-
----
-
-## Step 1: Create Required Structure
-
-Based on `rules/00-structure.md`, create this structure:
+### Step 1: Create Project Structure
 
 ```bash
-# Create documentation folders
-mkdir -p docs/specs/_archive
-mkdir -p docs/features
-mkdir -p docs/decisions
+mkdir my-project
+cd my-project
+git init
+```
 
-# Create cursor rules folder
+### Step 2: Add AGENTS.md
+
+Copy the minimal template from [Module 1](../modules/01-quick-start/templates/AGENTS.md):
+
+```bash
+# Create AGENTS.md at project root
+touch AGENTS.md
+```
+
+Fill in:
+- Quick Start commands
+- Project Overview
+- Tech Stack
+- File Organization
+
+### Step 3: Done!
+
+AI agents can now understand your project.
+
+---
+
+## Full Setup (30 minutes)
+
+Want the complete setup? Follow these steps:
+
+### Step 1: Create Folder Structure
+
+```bash
 mkdir -p .cursor/rules
+mkdir -p docs/{specs,features,decisions}
 ```
 
----
+### Step 2: Add Core Files
 
-## Step 2: Create AGENTS.md
+| File | Source |
+|------|--------|
+| `AGENTS.md` | [Module 1 template](../modules/01-quick-start/templates/AGENTS.md) |
+| `.cursor/rules/code-style.mdc` | [Module 2 template](../modules/02-coding-standards/templates/.cursor/rules/code-style.mdc) |
+| `.cursor/rules/doc-style.mdc` | [Module 2 template](../modules/02-coding-standards/templates/.cursor/rules/doc-style.mdc) |
+| `.cursor/rules/feature-workflow.mdc` | [Module 3 rule](../modules/03-feature-development/rules/feature-workflow.mdc) |
+| `docs/INDEX.md` | [Module 4 template](../modules/04-reference-docs/templates/docs-index.md) |
 
-Create `/AGENTS.md` at the project root.
+### Step 3: Customize Templates
 
-**Use template:** `../templates/AGENTS.md`
-**See example:** `../examples/AGENTS.md`
+1. **AGENTS.md**: Fill in your actual tech stack and commands
+2. **code-style.mdc**: Adjust for your language/framework
+3. **doc-style.mdc**: Adjust for your doc preferences
 
-**Customize with:**
-- Actual project name
-- Real quick start commands
-- Actual tech stack
-- Real file organization
-
-```markdown
-# [Project Name] - AI Agent Instructions
-
-## Quick Start
-npm install
-npm run dev
-npm test
-
-## Project Overview
-[What this project does]
-
-## Tech Stack
-- Language: [X]
-- Framework: [X]
-- Database: [X]
-
-## File Organization
-[Actual structure]
-
-## Key Patterns
-[Important conventions]
-
-## Need Help?
-- Architecture: .cursor/rules/project-architecture.mdc
-- Patterns: .cursor/rules/coding-patterns.mdc
-```
-
----
-
-## Step 3: Create Cursor Rules
-
-### 3.1 Create 00-index.mdc (REQUIRED)
-
-Create `/.cursor/rules/00-index.mdc`.
-
-**Use template:** `../templates/cursor-rules/00-index.mdc`
-**See example:** `../examples/cursor-rules/00-index.mdc`
-
-This file MUST exist and list all other rules.
-
-### 3.2 Create Project-Specific Rules (Optional)
-
-Based on project needs, create additional rules:
-
-| If project has... | Use template... | See example... |
-|-------------------|-----------------|----------------|
-| Specific architecture | `templates/cursor-rules/project-architecture.mdc` | `examples/cursor-rules/project-architecture.mdc` |
-| Code conventions | `templates/cursor-rules/coding-patterns.mdc` | `examples/cursor-rules/coding-patterns.mdc` |
-| Data fetching | `templates/cursor-rules/state-management.mdc` | `examples/cursor-rules/state-management.mdc` |
-| Testing requirements | `templates/cursor-rules/testing-strategy.mdc` | `examples/cursor-rules/testing-strategy.mdc` |
-
----
-
-## Step 4: Create Documentation Structure
-
-### 4.1 Create docs/INDEX.md
-
-```markdown
-# [Project Name] Documentation
-
-## Quick Start
-[Installation and dev commands]
-
-## Documentation Map
-- docs/TASKS.md - Progress tracking
-- docs/features/ - Feature documentation
-- docs/specs/ - Specifications
-- docs/decisions/ - Architecture decisions
-
-## For AI Agents
-- AGENTS.md - Quick context
-- .cursor/rules/ - Detailed patterns
-```
-
-### 4.2 Create docs/TASKS.md
-
-```markdown
-# [Project Name] - Task Index
-
-## Quick Summary
-| Feature | Status | Tasks | Done | Progress |
-|---------|--------|-------|------|----------|
-| [Initial setup] | In Progress | 5 | 0 | 0% |
-
-## Status Legend
-| Symbol | Meaning |
-|--------|---------|
-| ⏳ | Not Started |
-| 🔄 | In Progress |
-| ✅ | Complete |
-```
-
-### 4.3 Create docs/specs/README.md
-
-```markdown
-# Specifications
-
-This folder contains PRD-lite specifications for features.
-
-## Current Phase
-[MVP | Phase 2 | v1.0 | Ongoing - describe current project phase]
-
-## Organization
-- Flat structure: `<feature>.md` files directly in this folder
-- OR phased: `phase-1/`, `phase-2/` subfolders
-- OR release-based: `v1.0/`, `v2.0/` subfolders
-- Completed specs: `_archive/`
-
-## Format
-Use template: ../templates/prd-lite.md
-See example: ../examples/prd-lite.md
-
-## Active Specs
-| Spec | Feature | Status |
-|------|---------|--------|
-| - | - | - |
-```
-
-### 4.4 Create docs/decisions/README.md
-
-```markdown
-# Architecture Decision Records
-
-## ADRs
-| ADR | Decision | Status |
-|-----|----------|--------|
-| - | - | - |
-
-## Template
-Use template: ../templates/adr.md
-See example: ../examples/adr.md
-```
-
----
-
-## Step 5: Verify Setup
-
-Run this checklist:
-
-- [ ] `AGENTS.md` exists at root with project-specific content
-- [ ] `.cursor/rules/00-index.mdc` exists
-- [ ] `docs/INDEX.md` exists
-- [ ] `docs/TASKS.md` exists
-- [ ] `docs/specs/README.md` exists
-- [ ] `docs/decisions/README.md` exists
-
----
-
-## Step 6: Establish Workflow
-
-From now on, follow `rules/01-workflow.md`:
-
-1. **Before building a feature:**
-   - Write PRD-lite spec in `docs/specs/<feature>.md` (or `docs/specs/<phase>/<feature>.md`)
-   - Create feature docs in `docs/features/<feature>/`
-   - Add tasks to `docs/TASKS.md`
-
-2. **While building:**
-   - Follow `.cursor/rules/` patterns
-   - Update docs as code is written
-   - Check off completed tasks
-
-3. **After completing:**
-   - Update feature status
-   - Archive specs if needed
-   - Add new patterns to rules
-
----
-
-## Final Structure
-
-After setup, project should look like:
+### Step 4: Verify Structure
 
 ```
-project/
-├── AGENTS.md                    # ✅ Root AI context
+my-project/
+├── AGENTS.md
 ├── .cursor/
 │   └── rules/
-│       └── 00-index.mdc        # ✅ Rule index
-├── docs/
-│   ├── INDEX.md                # ✅ Navigation
-│   ├── TASKS.md                # ✅ Progress
-│   ├── specs/
-│   │   ├── README.md           # ✅ Specs index + phase info
-│   │   └── _archive/           # ✅ Completed specs
-│   ├── features/
-│   │   └── README.md           # ✅ Feature index
-│   └── decisions/
-│       └── README.md           # ✅ ADR index
-└── [project source code]
+│       ├── code-style.mdc
+│       ├── doc-style.mdc
+│       └── feature-workflow.mdc
+└── docs/
+    ├── INDEX.md
+    ├── specs/
+    ├── features/
+    └── decisions/
 ```
+
+---
+
+## AI-Assisted Setup
+
+Tell your AI assistant:
+
+```
+Apply the AI Context Docs Lifecycle methodology to this new project.
+
+Read the getting-started guide at:
+https://github.com/sergiusavva/ai-context-docs-lifecycle/content/guides/getting-started.md
+
+Set up:
+1. AGENTS.md with project context
+2. .cursor/rules/ with coding standards
+3. docs/ folder structure
+
+My tech stack is: [YOUR TECH STACK]
+```
+
+The AI will:
+1. Create appropriate folder structure
+2. Generate customized templates
+3. Fill in project-specific details
+
+---
+
+## First Feature
+
+After setup, build your first feature:
+
+### Quick Flow (bug fix, config change)
+
+No spec needed. Just fix and commit.
+
+### Standard Flow (small feature)
+
+```bash
+# 1. Create spec
+mkdir -p docs/specs/my-feature
+# Copy feature-spec.md and tasks.md from Module 3 templates
+
+# 2. Tell AI
+"Build the feature specified in docs/specs/my-feature/"
+
+# 3. AI implements following workflow
+# 4. Review and approve
+# 5. Delete or archive spec
+```
+
+### Complex Flow (large feature)
+
+```bash
+# 1. Create research
+mkdir -p docs/specs/my-feature
+# Copy all templates from Module 3
+
+# 2. Tell AI
+"Research options for [feature] and create research.md"
+
+# 3. Review research, approve approach
+# 4. AI creates spec and implements
+# 5. Create ADR for decisions
+# 6. Archive spec
+```
+
+---
+
+## Checklist
+
+- [ ] `AGENTS.md` created at root
+- [ ] `.cursor/rules/` folder created
+- [ ] At least one `.mdc` rule file added
+- [ ] `docs/` folder structure created
+- [ ] `docs/INDEX.md` created
+- [ ] First feature spec ready (optional)
 
 ---
 
 ## Next Steps
 
-1. Start your first feature using the workflow
-2. Create ADRs for major technology decisions
-3. Add project-specific rules as patterns emerge
-4. Keep AGENTS.md updated as project evolves
+- [Module 3: Feature Development](../modules/03-feature-development/) - Learn the workflows
+- [Examples](../modules/03-feature-development/examples/) - See complete walkthroughs

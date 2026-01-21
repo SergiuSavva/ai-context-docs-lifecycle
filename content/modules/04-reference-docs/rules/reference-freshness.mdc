@@ -1,0 +1,105 @@
+---
+description: Documentation freshness enforcement - ensure docs stay current
+globs:
+  - "**/*.md"
+  - "docs/**/*"
+  - "AGENTS.md"
+alwaysApply: false
+---
+
+# Documentation Freshness
+
+## Core Rule: Update or Delete
+
+Stale documentation is worse than no documentation. Every reference doc must be current.
+
+## After Completing Standard or Complex Flow
+
+AI MUST check documentation freshness:
+
+### 1. AGENTS.md
+
+Check these sections for accuracy:
+
+| Section | Verify |
+|---------|--------|
+| Tech Stack | Any new tech added? |
+| File Organization | Any files moved/added? |
+| Key Patterns | Any new patterns established? |
+| Common Gotchas | Any new gotchas discovered? |
+
+If outdated: **Update immediately**
+
+### 2. Feature README
+
+If feature was modified:
+
+| Check | Action if Stale |
+|-------|-----------------|
+| Code Touchpoints | Update file paths |
+| How It Works | Update explanation |
+| Usage examples | Update code |
+
+If feature was deleted: **Delete README**
+
+### 3. INDEX.md
+
+| Check | Action |
+|-------|--------|
+| Feature links | Update or remove broken links |
+| ADR links | Add new ADRs |
+| Status table | Update feature status |
+
+## Update Triggers
+
+### AGENTS.md
+
+| Event | Update |
+|-------|--------|
+| New tech added | Tech Stack |
+| New pattern | Key Patterns |
+| Structure change | File Organization |
+| New gotcha | Common Gotchas |
+| Complex Flow done | Feature Status |
+
+### Feature README
+
+| Event | Update |
+|-------|--------|
+| Feature complete | Create README |
+| Behavior changed | How It Works |
+| Files moved | Code Touchpoints |
+| Feature removed | Delete README |
+
+## Document Types
+
+| Type | Location | Lifecycle |
+|------|----------|-----------|
+| AGENTS.md | Root | Evergreen (always current) |
+| Feature README | docs/features/ | Evergreen (update or delete) |
+| ADR | docs/decisions/ | Permanent (never modify) |
+| Specs | docs/specs/ | Ephemeral (delete when done) |
+
+## When Completing a Feature
+
+```
+AI Checklist:
+
+1. [ ] AGENTS.md is accurate
+2. [ ] Feature README exists and is accurate
+3. [ ] INDEX.md links are valid
+4. [ ] ADR created if significant decision
+5. [ ] Spec archived or deleted
+```
+
+## Signal When Docs Need Review
+
+If unsure about freshness:
+
+```
+"Documentation may need review:
+- AGENTS.md: [Section X may be outdated]
+- Feature README: [File Y referenced but may have moved]
+
+Please verify these sections are current."
+```

@@ -1,0 +1,121 @@
+---
+description: Code style and patterns for this project
+globs:
+  - "**/*.ts"
+  - "**/*.tsx"
+  - "**/*.js"
+  - "**/*.jsx"
+alwaysApply: false
+---
+
+# Code Style
+
+> **Template**: Customize this for your project's conventions.
+> Replace `[bracketed]` placeholders with your choices.
+
+## Language
+
+- **Primary**: [TypeScript / JavaScript]
+- **Strict mode**: [Yes / No]
+- **Target**: [ES2022 / ESNext]
+
+## Naming Conventions
+
+| Type | Convention | Example |
+|------|------------|---------|
+| Variables | camelCase | `userName`, `isLoading` |
+| Functions | camelCase | `getUserById`, `handleSubmit` |
+| Components | PascalCase | `UserProfile`, `LoginButton` |
+| Constants | UPPER_SNAKE_CASE | `MAX_RETRIES`, `API_URL` |
+| Types/Interfaces | PascalCase | `User`, `ApiResponse` |
+| Files (components) | PascalCase | `UserProfile.tsx` |
+| Files (utilities) | camelCase | `formatDate.ts` |
+
+## Component Patterns
+
+- **Style**: Functional components only (no class components)
+- **Props**: Define interface for all props
+- **Exports**: Named exports preferred over default exports
+
+```typescript
+// Good
+interface ButtonProps {
+  label: string;
+  onClick: () => void;
+  disabled?: boolean;
+}
+
+export function Button({ label, onClick, disabled = false }: ButtonProps) {
+  return (
+    <button onClick={onClick} disabled={disabled}>
+      {label}
+    </button>
+  );
+}
+```
+
+## Imports
+
+Order imports in this sequence:
+1. External packages (react, next, etc.)
+2. Internal packages (@/lib, @/components)
+3. Relative imports (./utils, ../hooks)
+4. Types (import type)
+
+```typescript
+// External
+import { useState, useEffect } from 'react';
+import { useRouter } from 'next/navigation';
+
+// Internal
+import { Button } from '@/components/ui';
+import { formatDate } from '@/lib/utils';
+
+// Relative
+import { useLocalState } from './hooks';
+
+// Types
+import type { User } from '@/types';
+```
+
+## Error Handling
+
+- Use try/catch for async operations
+- Provide meaningful error messages
+- Log errors appropriately
+
+```typescript
+// Good
+try {
+  const data = await fetchUser(id);
+  return data;
+} catch (error) {
+  console.error('Failed to fetch user:', error);
+  throw new Error(`Unable to load user ${id}`);
+}
+```
+
+## Async/Await
+
+- Prefer async/await over .then() chains
+- Always handle errors in async functions
+
+## Type Safety
+
+- Avoid `any` type - use `unknown` if type is truly unknown
+- Use type inference where obvious
+- Define explicit return types for public functions
+
+## Comments
+
+- Write comments for WHY, not WHAT
+- Use JSDoc for public functions
+- Avoid obvious comments
+
+```typescript
+// Bad: Increment counter
+counter++;
+
+// Good: Reset retry count after successful connection
+retryCount = 0;
+```
