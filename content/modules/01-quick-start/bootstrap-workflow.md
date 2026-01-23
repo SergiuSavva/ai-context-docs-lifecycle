@@ -15,11 +15,14 @@ Create or update `AGENTS.md` to give AI agents immediate context about the proje
 
 ```mermaid
 flowchart LR
+    subgraph ask [0. Ask User]
+        U1[Monorepo or Single App?]
+        U2[List subprojects if monorepo]
+    end
     subgraph detect [1. Detect]
         A1[Check AGENTS.md exists]
-        A2[Detect project type]
-        A3[Identify tech stack]
-        A4[Assess complexity]
+        A2[Identify tech stack]
+        A3[Assess complexity]
     end
     subgraph analyze [2. Analyze]
         B1[Scan structure]
@@ -35,8 +38,40 @@ flowchart LR
         D2[Write Ref Docs]
         D3[Suggest next modules]
     end
-    detect --> analyze --> preview --> create
+    ask --> detect --> analyze --> preview --> create
 ```
+
+---
+
+## Phase 0: User Selection (Interactive)
+
+**Start by asking the user** - don't try to auto-detect project type.
+
+### Step 1: Ask Project Type
+
+> "Is this a **monorepo** or **single app**?"
+>
+> 1. **Single App** - One deployable unit (web app, API, CLI, library)
+> 2. **Monorepo** - Multiple packages/services that could be separate repos
+>
+> Reply `1` or `2`.
+
+### Step 2: If Monorepo, Ask for Subprojects
+
+> "Which folders should have their own AGENTS.md?"
+>
+> - List them (e.g., `application/`, `services/aws/`, `packages/`)
+> - Or reply `scan` and I'll suggest based on structure
+
+### Why Ask Instead of Auto-Detect?
+
+| Auto-Detect | User Selection |
+|-------------|----------------|
+| Fails on unusual structures | Always correct |
+| Wastes tokens scanning | Zero overhead |
+| May miss nested subprojects | User knows their project |
+
+**After user responds, proceed to Phase 1.**
 
 ---
 
@@ -51,12 +86,34 @@ flowchart LR
 - **NOT EXISTS**: Enter "create mode"
   - Generate fresh from template
 
-### 1.2 Detect Project Type
+### 1.2 Detect Subprojects (If User Said "Scan")
 
-| Type | Signals |
-|------|---------|
-| **Monorepo** | `apps/` + `packages/`, `pnpm-workspace.yaml`, `lerna.json`, `turbo.json`, `nx.json` |
-| **Single App** | Single `package.json`, `src/` at root, no workspace config |
+If user selected monorepo but asked you to scan for subprojects:
+
+**Structural Analysis (not hardcoded names):**
+
+1. **Find package manifests** at different levels:
+   ```bash
+   find . -maxdepth 3 -name "package.json" -o -name "go.mod" -o -name "Cargo.toml" -o -name "pyproject.toml"
+   ```
+
+2. **Identify independent units** - folders that:
+   - Have their own package manifest
+   - Could be deployed separately
+   - Have distinct concerns (frontend, backend, services)
+
+3. **Check for orchestration configs**:
+   - `workspaces` field in root `package.json`
+   - `docker-compose.yml` with multiple services
+   - CI config building multiple artifacts
+
+4. **Common patterns** (examples, not requirements):
+   - `apps/`, `application/`, `projects/` - main applications
+   - `packages/`, `libs/`, `modules/` - shared code
+   - `services/`, `functions/` - backend services
+   - `tools/`, `scripts/` - utilities
+
+**Suggest subprojects to user for confirmation before proceeding.**
 
 ### 1.3 Identify Tech Stack
 
@@ -185,3 +242,26 @@ Create `AGENTS.md` in project root using the tiered structure:
 - `docs/architecture.md`: Explains monorepo structure
 - `docs/services.md`: Lists the 5 python services found
 - `docs/api.md`: Aggregates API endpoints
+
+### Scenario C: Any Monorepo
+**Key insight**: Monorepos have no standard structure. Folder names vary by team.
+
+**Result**: Ask the user which folders need their own `AGENTS.md`.
+Don't assume folder names - let the user define their subprojects.
+
+---
+
+## Quick Start Prompts
+
+### Single App
+```
+Bootstrap AGENTS.md for this single app project.
+Follow: https://raw.githubusercontent.com/sergiusavva/ai-context-docs-lifecycle/main/content/modules/01-quick-start/bootstrap-workflow.md
+```
+
+### Monorepo
+```
+Bootstrap AGENTS.md for this monorepo.
+Subprojects: [LIST YOUR FOLDERS]
+Follow: https://raw.githubusercontent.com/sergiusavva/ai-context-docs-lifecycle/main/content/modules/01-quick-start/bootstrap-workflow.md
+```
