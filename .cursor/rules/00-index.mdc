@@ -6,10 +6,17 @@ globs:
 
 # Cursor Rules Index
 
-## Rules
+## Universal Context
+
+For project overview, commands, and boundaries, read @AGENTS.md
+
+---
+
+## Cursor-Specific Rules
 
 | Rule | File | When to Load |
 |------|------|--------------|
+| **Feature Workflow** | `feature-workflow.mdc` | Building features (specs/) |
 | **Code Style** | `code-style.mdc` | Writing/editing any code |
 | **Doc Style** | `doc-style.mdc` | Writing/editing documentation |
 | **Project Context** | `project.mdc` | Understanding this project |
@@ -20,6 +27,24 @@ globs:
 
 | Task | Read First |
 |------|------------|
-| Editing examples | `code-style.mdc` + `doc-style.mdc` |
+| Project overview | @AGENTS.md |
+| Building a feature | `feature-workflow.mdc` + @decisions/001-implementation-flow.md |
+| Editing code/examples | `code-style.mdc` |
 | Writing docs | `doc-style.mdc` |
-| New contributor | `project.mdc` |
+| New contributor | `project.mdc` + @AGENTS.md |
+
+---
+
+## Architecture
+
+```
+AGENTS.md                    <- Universal (source of truth)
+decisions/                   <- Permanent ADRs
+specs/                       <- Ephemeral feature specs
+.cursor/rules/
+├── 00-index.mdc             <- This file (router)
+├── feature-workflow.mdc     <- Implementation process (glob: specs/**)
+├── code-style.mdc           <- Code patterns (glob: src/**)
+├── doc-style.mdc            <- Doc patterns (glob: content/**)
+└── project.mdc              <- Project-specific context
+```

@@ -1,6 +1,6 @@
-# Feature: Mark All Complete Button
+# Spec: Mark All Complete Button
 
-> **Example**: This is a filled-in feature spec demonstrating the Standard Flow.
+> **Example**: Filled-in spec demonstrating a simple feature.
 
 ---
 
@@ -16,10 +16,12 @@ Add a "Mark all as complete" button above the todo list that completes all pendi
 
 ---
 
-## Success Metrics
+## Acceptance Criteria
 
-- Users can complete all todos in 2 clicks (button + confirm)
-- No accidental completions (confirmation required)
+- [ ] AC-01: Button visible when 2+ incomplete todos exist
+- [ ] AC-02: Clicking button marks all todos as complete
+- [ ] AC-03: Button shows confirmation dialog before action
+- [ ] AC-04: Button is disabled when no incomplete todos
 
 ---
 
@@ -40,15 +42,6 @@ Add a "Mark all as complete" button above the todo list that completes all pendi
 
 ---
 
-## Acceptance Criteria
-
-- [ ] AC-01: Button visible when 2+ incomplete todos exist
-- [ ] AC-02: Clicking button marks all todos as complete
-- [ ] AC-03: Button shows confirmation dialog before action
-- [ ] AC-04: Button is disabled when no incomplete todos
-
----
-
 ## Technical Approach
 
 - Create new `MarkAllCompleteButton` component
@@ -58,12 +51,12 @@ Add a "Mark all as complete" button above the todo list that completes all pendi
 
 ---
 
-## Risks → Mitigations
+## Risks
 
-| Risk | Likelihood | Impact | Mitigation |
-|------|------------|--------|------------|
-| Accidental completion | Medium | High | Confirmation dialog required |
-| Performance with many todos | Low | Medium | Batch update in single state change |
+| Risk | Mitigation |
+|------|------------|
+| Accidental completion | Confirmation dialog required |
+| Performance with many todos | Batch update in single state change |
 
 ---
 
@@ -73,11 +66,10 @@ Add a "Mark all as complete" button above the todo list that completes all pendi
 
 ---
 
-## Tasks
+## Related Docs
 
-See [tasks.md](./tasks.md)
+- [tasks.md](./tasks.md)
 
 ---
 
-*Created: 2026-01-19*
 *Status: Implementing*

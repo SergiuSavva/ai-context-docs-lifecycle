@@ -11,6 +11,8 @@
 | [Getting Started](./getting-started.md) | Choose which modules to adopt |
 | [New Project](./new-project.md) | Set up from scratch |
 | [Existing Project](./existing-project.md) | Add to existing codebase |
+| [AGENTS.md Best Practices](./agents-md-best-practices.md) | Write effective AI context files |
+| [Tool Compatibility](./tool-compatibility.md) | Set up for Cursor, Claude Code, Copilot |
 
 ---
 
@@ -122,4 +124,6 @@ When asked to apply this methodology:
 |----------|---------|
 | [Modules Index](../modules/README.md) | Overview of all modules |
 | [Main README](../../README.md) | Project overview |
-| [Methodology](../../METHODOLOGY.md) | Full philosophy |
+| [Methodology](../methodology.md) | Full philosophy |
+| [AGENTS.md Best Practices](./agents-md-best-practices.md) | Research-backed writing guide |
+| [Tool Compatibility](./tool-compatibility.md) | Multi-tool setup |

@@ -1,6 +1,6 @@
 # AI Context Docs Lifecycle
 
-> **A document lifecycle methodology for AI-assisted software development**
+> **Modular workflows for AI-assisted software development**
 
 🌐 **Live Site:** [https://sergiusavva.github.io/ai-context-docs-lifecycle](https://sergiusavva.github.io/ai-context-docs-lifecycle)
 
@@ -8,21 +8,50 @@
 
 ## What is This?
 
-A document lifecycle methodology that gives AI coding assistants persistent context about your project — through structured documentation that flows from spec to build to record.
+A modular toolkit that gives AI coding assistants structured workflows for understanding your project and building features consistently.
 
 ### The Problem
 
-AI coding assistants lack memory and context about YOUR project:
+AI coding assistants lack memory and context:
 - Generic, inconsistent code
 - Constant re-explaining
-- Contradictory suggestions
+- No structured workflow
 
 ### The Solution
 
-**Documentation as AI memory.** This methodology provides:
-- **Templates** — Copy-paste ready files for AGENTS.md, cursor rules, specs, and more
-- **Guides** — Step-by-step instructions for new and existing projects
-- **Lifecycle Flow** — Spec → Build → Record with the three pillars: Specs, Rules, Reference
+**Pick the modules you need:**
+
+| Module | Purpose | Time |
+|--------|---------|------|
+| **1. Quick Start** | Minimal AI context (AGENTS.md) | 5 min |
+| **2. Coding Standards** | Code & doc style rules | 10 min |
+| **3. Feature Development** | Workflows for building features | 15 min |
+| **4. Reference Docs** | Documentation structure | 20 min |
+| **5. Project Planning** | Multi-feature management | 15 min |
+
+---
+
+## Quick Start
+
+### 5-Minute Setup (Module 1)
+
+1. Copy [`content/modules/01-quick-start/templates/AGENTS.md`](content/modules/01-quick-start/templates/AGENTS.md) to your project root
+2. Fill in your project details
+3. Done! AI agents now have context.
+
+### Full Setup
+
+Tell your AI assistant:
+
+```
+Apply AI Context Docs Lifecycle from https://github.com/sergiusavva/ai-context-docs-lifecycle
+
+I want:
+- Module 1 (Quick Start) - AGENTS.md
+- Module 3 (Feature Development) - workflows for building features
+
+My tech stack: [YOUR STACK]
+```
 
 ---
 
@@ -30,90 +59,141 @@ AI coding assistants lack memory and context about YOUR project:
 
 ```
 ai-context-docs-lifecycle/
-├── content/              # 📁 Raw methodology content (for AI agents)
-│   ├── templates/        #    Copy-paste templates
-│   ├── guides/           #    Step-by-step guides
-│   └── rules/            #    Required rules
-├── site/                 # 🌐 Documentation website (Astro + Starlight)
-│   ├── src/
-│   └── package.json
-├── METHODOLOGY.md        # Full methodology explanation
-└── README.md             # This file
+├── content/
+│   ├── modules/              # 5 independent modules
+│   │   ├── 01-quick-start/
+│   │   ├── 02-coding-standards/
+│   │   ├── 03-feature-development/
+│   │   ├── 04-reference-docs/
+│   │   └── 05-project-planning/
+│   └── guides/               # Adoption guides
+│       ├── getting-started.md
+│       ├── new-project.md
+│       └── existing-project.md
+├── site/                     # Documentation website
+├── METHODOLOGY.md            # Full methodology explanation
+└── README.md                 # This file
 ```
-
-### Two Ways to Use
-
-| Use Case | Access |
-|----------|--------|
-| **AI agents reading raw files** | `content/` folder |
-| **Humans browsing docs** | [sergiusavva.github.io/ai-context-docs-lifecycle](https://sergiusavva.github.io/ai-context-docs-lifecycle) |
 
 ---
 
-## Quick Start
+## Module Overview
 
-### Option 1: AI-Assisted Setup (Recommended)
+### Module 1: Quick Start
 
-Tell your AI coding assistant:
+**What you get**: `AGENTS.md` - AI context file
 
 ```
-Apply the AI Context Docs Lifecycle methodology from https://sergiusavva.github.io/ai-context-docs-lifecycle to this project.
-
-Read the quick-start guide and set up the required structure.
+project/
+└── AGENTS.md    # Quick start, tech stack, patterns
 ```
 
-Your AI will:
-1. Read the methodology from the site
-2. Analyze your project
-3. Create customized files (AGENTS.md, cursor rules, docs structure)
+[Go to Module 1 →](content/modules/01-quick-start/)
 
-### Option 2: Manual Setup
+### Module 2: Coding Standards
 
-1. Visit [sergiusavva.github.io/ai-context-docs-lifecycle](https://sergiusavva.github.io/ai-context-docs-lifecycle)
-2. Browse [Templates](https://sergiusavva.github.io/ai-context-docs-lifecycle/templates/)
-3. Copy templates to your project
-4. Customize for your tech stack
+**What you get**: `.cursor/rules/` with code and doc style rules
+
+```
+project/
+└── .cursor/rules/
+    ├── code-style.mdc
+    └── doc-style.mdc
+```
+
+[Go to Module 2 →](content/modules/02-coding-standards/)
+
+### Module 3: Feature Development (Core)
+
+**What you get**: Three-phase workflow + templates for building features
+
+```
+Research → Plan → Implement
+```
+
+| Situation | Docs Needed |
+|-----------|-------------|
+| **Bug fix** | None |
+| **Feature** | `spec.md` + `tasks.md` (minimum) |
+| **Complex** | All docs + ADR |
+
+```
+project/
+├── specs/[feature]/
+│   ├── spec.md
+│   └── tasks.md
+└── decisions/
+    └── NNN-[decision].md
+```
+
+[Go to Module 3 →](content/modules/03-feature-development/)
+
+### Module 4: Reference Docs
+
+**What you get**: Documentation structure + freshness rules
+
+```
+project/
+├── AGENTS.md              # Full version
+├── docs/
+│   ├── INDEX.md
+│   ├── features/
+│   └── decisions/         # ADRs
+└── .cursor/rules/
+    └── reference-freshness.mdc
+```
+
+[Go to Module 4 →](content/modules/04-reference-docs/)
+
+### Module 5: Project Planning (Optional)
+
+**What you get**: Multi-feature management
+
+```
+project/
+└── docs/
+    ├── PROJECT-PRD.md
+    ├── BACKLOG.md
+    ├── ROADMAP.md
+    └── TASKS.md
+```
+
+[Go to Module 5 →](content/modules/05-project-planning/)
 
 ---
 
-## The Three Pillars
+## Key Concepts
 
-| Pillar | Purpose | Lifecycle |
-|--------|---------|-----------|
-| **SPECS** | What to build | Ephemeral (archive when done) |
-| **RULES** | How to build | Stable (rarely changes) |
-| **REFERENCE** | What exists | Evergreen (always current) |
+### Three Document Types
+
+| Type | Lifecycle | Example |
+|------|-----------|---------|
+| **Specs** | Ephemeral (delete after) | spec.md, tasks.md |
+| **Reference** | Evergreen (always current) | AGENTS.md, feature README |
+| **Decisions** | Permanent (never change) | ADRs |
+
+### Core Rule: Update or Delete
+
+Stale documentation is worse than no documentation. Reference docs are either current or deleted.
+
+### AI Agent Workflow
+
+Three phases: **Research → Plan → Implement**
+
+1. **Research** (optional): Explore unknowns, evaluate options
+2. **Plan** (required): Create `spec.md` + `tasks.md`, validate with user
+3. **Implement**: Execute tasks, update progress, signal completion
+
+AI decides which optional docs (`research.md`, `design.md`, `plan.md`) are needed.
 
 ---
 
-## Content Overview
+## Examples
 
-### Templates (`content/templates/`)
+See complete walkthroughs:
 
-| Template | Purpose |
-|----------|---------|
-| `AGENTS.md` | Root AI context file |
-| `prd-lite.md` | Lightweight feature spec |
-| `feature-readme.md` | Feature documentation |
-| `user-stories.md` | Acceptance criteria |
-| `tasks.md` | Implementation checklist |
-| `adr.md` | Architecture decisions |
-| `cursor-rules/` | AI behavior rules |
-
-### Guides (`content/guides/`)
-
-| Guide | When to Use |
-|-------|-------------|
-| `new-project.md` | Starting from scratch |
-| `existing-project.md` | Adding to existing code |
-
-### Rules (`content/rules/`)
-
-| Rule | Purpose |
-|------|---------|
-| `00-structure.md` | Required folder structure |
-| `01-workflow.md` | Development workflow |
-| `02-code-style.md` | Code style principles |
+- [Simple Todo Feature](content/modules/03-feature-development/examples/simple-todo/) - Standard Flow
+- [OAuth Authentication](content/modules/03-feature-development/examples/complex-auth/) - Complex Flow
 
 ---
 
@@ -135,24 +215,11 @@ cd site
 npm run build
 ```
 
-### Deployment
-
-The site auto-deploys to GitHub Pages on push to `main` via GitHub Actions.
-
----
-
-## Tech Stack
-
-- **[Astro](https://astro.build)** — Static site generator
-- **[Starlight](https://starlight.astro.build)** — Documentation theme
-- **GitHub Pages** — Hosting
-- **GitHub Actions** — CI/CD
-
 ---
 
 ## Tool Agnostic
 
-While examples use Cursor's `.mdc` format, the methodology works with any AI tool:
+Works with any AI tool:
 
 | Tool | Configuration |
 |------|---------------|
@@ -170,11 +237,6 @@ Contributions welcome:
 1. Fork the repository
 2. Create a feature branch
 3. Submit a pull request
-
-Ideas:
-- Additional templates for specific stacks
-- Improved guides
-- Translations
 
 ---
 

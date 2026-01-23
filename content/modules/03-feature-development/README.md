@@ -1,123 +1,160 @@
 # Module 3: Feature Development
 
-> **Structured workflows for building features** - from bug fixes to complex systems.
+> **Structured workflows for building features** - three phases, AI decides which docs are needed.
 
 ---
 
 ## What This Module Does
 
-Provides three workflow tracks for AI agents to follow when building features, ensuring consistent specs, task tracking, and documentation.
+Provides a three-phase workflow for AI agents: **Research → Plan → Implement**. The AI decides which documents to create based on feature complexity.
 
 ## When to Use
 
-- Building any feature (small or large)
+- Building any feature (simple or complex)
 - Want structured task tracking
 - Need clear handoffs between AI and human review
 - Want decisions documented for future reference
 
-## What You Get
+---
+
+## Three Phases
 
 ```
-your-project/
-├── docs/
-│   ├── specs/                    # Active feature specs (ephemeral)
-│   │   ├── <feature>/
-│   │   │   ├── feature-spec.md  # Requirements
-│   │   │   ├── tasks.md         # Task checklist
-│   │   │   ├── research.md      # Research notes (complex flow)
-│   │   │   ├── design.md        # Architecture/API design (complex flow)
-│   │   │   └── user-stories.md  # Acceptance criteria (complex flow)
-│   │   └── _archive/            # Completed specs
-│   │
-│   └── decisions/               # ADRs (permanent)
-│       └── NNN-<decision>.md
+Research → Plan → Implement
+(optional)  (required)  (required)
+```
+
+Each phase includes validation checkpoints with the user.
+
+| Phase | Purpose | When |
+|-------|---------|------|
+| **Research** | Explore unknowns, evaluate options | Multiple approaches possible |
+| **Plan** | Define what to build, break into tasks | Always (for features) |
+| **Implement** | Execute step by step | Always |
+
+---
+
+## Document Catalog
+
+### Minimum Required (for any feature)
+
+| Document | Purpose |
+|----------|---------|
+| `spec.md` | What to build, acceptance criteria |
+| `tasks.md` | Execution checklist, progress tracking |
+
+### Optional (add as needed)
+
+| Document | Purpose | Add When |
+|----------|---------|----------|
+| `research.md` | Options explored, recommendation | Evaluating libraries, unfamiliar domain |
+| `design.md` | Architecture, APIs, data models | System design needed |
+| `plan.md` | Sequence, dependencies, risks | Complex dependencies |
+| `user-stories.md` | Test scenarios (Given/When/Then) | User-facing feature |
+
+### Decision Records (permanent)
+
+| Document | Purpose | Add When |
+|----------|---------|----------|
+| ADR | Record decisions and rationale | Significant technical choice |
+
+---
+
+## Folder Structure
+
+```
+project/
+├── specs/                        # EPHEMERAL - delete after feature done
+│   └── [feature-name]/
+│       ├── spec.md               # Required
+│       ├── tasks.md              # Required
+│       ├── research.md           # Optional
+│       ├── design.md             # Optional
+│       ├── plan.md               # Optional
+│       └── user-stories.md       # Optional
 │
-└── .cursor/rules/
-    └── feature-workflow.mdc     # AI workflow instructions
+├── decisions/                    # PERMANENT - never delete
+│   └── NNN-[decision].md
+│
+└── AGENTS.md                     # EVERGREEN - update or delete
 ```
 
 ---
 
-## Three Workflow Tracks
-
-Choose based on what you're building:
-
-| Trigger | Flow | Templates Needed |
-|---------|------|------------------|
-| Bug fix, typo, config change, single-file | **Quick** | None |
-| New component, endpoint, < 5 files | **Standard** | feature-spec, tasks |
-| New system, API integration, > 5 files | **Complex** | All templates |
-
-### Decision Tree
+## Decision Tree
 
 ```
-Does this require research or evaluating alternatives?
-├─ YES → Complex Flow
-└─ NO → Will this change more than 5 files?
-         ├─ YES → Complex Flow
-         └─ NO → Is this a bug fix, typo, or config change?
-                  ├─ YES → Quick Flow
-                  └─ NO → Standard Flow
+Is this a bug fix?
+├─ YES → Just fix it (no docs needed)
+└─ NO → Create spec.md + tasks.md
+
+    Do I need to evaluate options?
+    ├─ YES → Add research.md (Research phase)
+    └─ NO → Continue
+
+    Do I need architecture decisions?
+    ├─ YES → Add design.md
+    └─ NO → Continue
+
+    Are there complex dependencies?
+    ├─ YES → Add plan.md
+    └─ NO → Continue
+
+    Validate with user → Implement
 ```
 
 ---
 
-## Quick Flow
+## Quick Flow (Bug Fixes)
 
-**For**: Bug fixes, typos, config changes, single-file edits
+**For**: Bug fixes, typos, config changes
 
-**Process**:
-1. Understand the issue
-2. Fix code
-3. Commit with descriptive message
-4. Done
+**Process**: Find → Fix → Commit → Done
 
-**No templates needed** - just good commit messages.
+**No docs needed.**
 
 See: [`workflows/quick-flow.md`](./workflows/quick-flow.md)
 
 ---
 
-## Standard Flow
+## Standard Flow (Features)
 
-**For**: New components, endpoints, UI enhancements (< 5 files)
+**For**: Any feature that isn't a bug fix
 
 **Process**:
-1. Create `feature-spec.md` (problem + acceptance criteria)
-2. Create `tasks.md` with checklist
-3. Implement with task tracking
-4. Update docs
-5. Archive or delete spec
+1. Create `spec.md` + `tasks.md`
+2. Add optional docs if needed
+3. Validate with user
+4. Implement with task tracking
+5. Delete spec folder
 
 **Templates**:
-- [`templates/feature-spec.md`](./templates/feature-spec.md)
+- [`templates/spec.md`](./templates/spec.md)
 - [`templates/tasks.md`](./templates/tasks.md)
 
 See: [`workflows/standard-flow.md`](./workflows/standard-flow.md)
 
 ---
 
-## Complex Flow
+## Complex Flow (Research Required)
 
-**For**: New systems, API integrations, architecture changes (> 5 files)
+**For**: Features requiring research or evaluation
 
 **Process**:
-1. Research phase (gather options, create diagrams)
-2. Write detailed spec + user stories
-3. Create task breakdown
-4. Implement with progress tracking
-5. Review iterations
-6. Create ADR for key decisions
-7. Update AGENTS.md
-8. Archive spec
+1. Research phase with `research.md`
+2. Plan phase with all docs
+3. Validate with user
+4. Implement with task tracking
+5. Create ADR for key decisions
+6. Delete spec folder
 
 **Templates**:
-- [`templates/feature-spec.md`](./templates/feature-spec.md)
 - [`templates/research.md`](./templates/research.md)
-- [`templates/design.md`](./templates/design.md) - Architecture/API design
+- [`templates/spec.md`](./templates/spec.md)
+- [`templates/design.md`](./templates/design.md)
+- [`templates/plan.md`](./templates/plan.md)
 - [`templates/user-stories.md`](./templates/user-stories.md)
 - [`templates/tasks.md`](./templates/tasks.md)
-- [`templates/adr.md`](./templates/adr.md)
 
 See: [`workflows/complex-flow.md`](./workflows/complex-flow.md)
 
@@ -125,63 +162,34 @@ See: [`workflows/complex-flow.md`](./workflows/complex-flow.md)
 
 ## Task Markers
 
-Track progress with markdown checkboxes:
+| Marker | Status |
+|--------|--------|
+| `[ ]` | Pending |
+| `[~]` | In Progress (only ONE at a time) |
+| `[x]` | Completed |
+| `[B]` | Blocked (include reason) |
+| `[S]` | Skipped (include reason) |
 
-| Marker | Status | Meaning |
-|--------|--------|---------|
-| `[ ]` | Pending | Not started |
-| `[~]` | In Progress | Currently working (only ONE at a time) |
-| `[x]` | Completed | Done |
-| `[B]` | Blocked | Waiting on something (include reason) |
-| `[S]` | Skipped | Descoped (include reason) |
-
-**Progress calculation**: `(completed + skipped) / total * 100`
-
----
-
-## Definition of Done
-
-### Quick Flow
-
-- [ ] Code works
-- [ ] No linter errors
-- [ ] Commit message describes change
-
-### Standard Flow
-
-**Auto-verifiable:**
-- [ ] All tasks completed or skipped
-- [ ] No linter errors
-
-**Manual verification:**
-- [ ] Acceptance criteria met
-- [ ] Feature README updated (if applicable)
-
-### Complex Flow
-
-**Auto-verifiable:**
-- [ ] All tasks completed or skipped
-- [ ] No blocked tasks remaining
-
-**Manual verification:**
-- [ ] All acceptance criteria verified
-- [ ] Tests passing
-- [ ] ADR created for key decisions
-- [ ] AGENTS.md updated
-- [ ] Spec archived
+**Progress**: `(completed + skipped) / total * 100`
 
 ---
 
 ## Examples
 
-- [`examples/simple-todo/`](./examples/simple-todo/) - Standard flow walkthrough
-- [`examples/complex-auth/`](./examples/complex-auth/) - Complex flow walkthrough
+- [`examples/simple-todo/`](./examples/simple-todo/) - Simple feature walkthrough
+- [`examples/complex-auth/`](./examples/complex-auth/) - Complex feature walkthrough
 
 ---
 
-## Cursor Rule
+## Principle: AI Decides
 
-Copy [`rules/feature-workflow.mdc`](./rules/feature-workflow.mdc) to your project's `.cursor/rules/` folder to enable AI workflow guidance.
+The methodology provides structure. The AI agent decides specifics:
+
+| Methodology Provides | AI Agent Decides |
+|---------------------|------------------|
+| Three phases | Which optional docs to create |
+| Document catalog | Level of detail needed |
+| Task markers | Task granularity |
 
 ---
 

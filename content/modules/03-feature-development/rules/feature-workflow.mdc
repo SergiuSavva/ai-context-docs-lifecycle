@@ -1,7 +1,7 @@
 ---
-description: Feature development workflow for AI agents - guides workflow selection, task tracking, and completion signals
+description: Feature development workflow for AI agents - three phases, task tracking, and completion signals
 globs:
-  - "docs/specs/**/*"
+  - "specs/**/*"
   - "src/**/*"
   - "app/**/*"
 alwaysApply: false
@@ -9,26 +9,25 @@ alwaysApply: false
 
 # Feature Development Workflow
 
-## Workflow Selection
-
-Before starting any feature work, determine the appropriate workflow:
-
-| Trigger | Flow |
-|---------|------|
-| Bug fix, typo, config change, single-file | **Quick** |
-| New component, endpoint, < 5 files | **Standard** |
-| New system, API integration, > 5 files, needs research | **Complex** |
-
-### Decision Tree
+## Three Phases
 
 ```
-Does this require research or evaluating alternatives?
-├─ YES → Complex Flow
-└─ NO → Will this change more than 5 files?
-         ├─ YES → Complex Flow
-         └─ NO → Is this a bug fix, typo, or config change?
-                  ├─ YES → Quick Flow
-                  └─ NO → Standard Flow
+Research → Plan → Implement
+(optional)  (required)  (required)
+```
+
+## Decision Tree
+
+```
+Is this a bug fix?
+├─ YES → Just fix it (no docs needed)
+└─ NO → Create specs/[feature]/spec.md + tasks.md
+
+    Do I need to evaluate options?
+    ├─ YES → Add research.md (Research phase)
+    └─ NO → Continue to Plan
+
+    Validate with user → Implement
 ```
 
 ---
@@ -38,10 +37,10 @@ Does this require research or evaluating alternatives?
 Load files in this order before implementation:
 
 1. `AGENTS.md` - Project overview, tech stack, patterns
-2. `docs/specs/<feature>/feature-spec.md` - Requirements
-3. `docs/specs/<feature>/tasks.md` - Current task status
-4. `docs/specs/<feature>/research.md` - Research notes (Complex only)
-5. `.cursor/rules/<relevant>.mdc` - Relevant coding rules
+2. `specs/[feature]/spec.md` - Requirements
+3. `specs/[feature]/tasks.md` - Current task status
+4. `specs/[feature]/research.md` - Research notes (if exists)
+5. `.cursor/rules/*.mdc` - Relevant coding rules
 
 ---
 
@@ -50,16 +49,14 @@ Load files in this order before implementation:
 ```
 AI MUST check before implementing:
 
-1. Does docs/specs/<feature>/feature-spec.md exist?
+1. Does specs/[feature]/spec.md exist?
    ├─ YES → Read it, proceed to step 2
-   └─ NO → ASK USER: "Should I create a feature spec first?
-                      What workflow: quick (bug fix), standard (small feature),
-                      or complex (needs research)?"
+   └─ NO → Create spec.md with acceptance criteria
+          ASK USER to validate before implementing
 
-2. Does docs/specs/<feature>/tasks.md exist?
+2. Does specs/[feature]/tasks.md exist?
    ├─ YES → Find first task not [x], [S], or [B]
-   │        Mark it [~] before starting
-   └─ NO → Create tasks.md from feature-spec requirements
+   └─ NO → Create tasks.md from spec requirements
 
 3. Is there already a task marked [~]?
    ├─ YES → Continue that task OR ask if switching
@@ -70,13 +67,13 @@ AI MUST check before implementing:
 
 ## Task Markers
 
-| Marker | Status | Counts Toward Progress |
-|--------|--------|------------------------|
-| `[ ]` | Pending | No |
-| `[~]` | In progress (only ONE) | No |
-| `[x]` | Completed | Yes |
-| `[B]` | Blocked (include reason) | No |
-| `[S]` | Skipped (include reason) | Yes |
+| Marker | Status |
+|--------|--------|
+| `[ ]` | Pending |
+| `[~]` | In progress (only ONE) |
+| `[x]` | Completed |
+| `[B]` | Blocked (include reason) |
+| `[S]` | Skipped (include reason) |
 
 ---
 
@@ -87,7 +84,6 @@ AI MUST follow these rules:
 
 1. ONE task [~] at a time
    - Never have multiple tasks in progress
-   - Complete or block current task before starting next
 
 2. Update tasks.md after EACH task
    - Mark completed: [x]
@@ -101,7 +97,6 @@ AI MUST follow these rules:
 4. When blocked
    - Mark task [B] with clear reason
    - Ask user for guidance
-   - Do NOT skip to next task without acknowledgment
 ```
 
 ---
@@ -114,69 +109,36 @@ When all tasks are `[x]` or `[S]`:
 "Ready for review. Implementation complete.
 
 **DoD Checklist**:
-- [x] All tasks completed (X/Y) or skipped
+- [x] All tasks completed (X/Y)
 - [x] Acceptance criteria verified
 - [ ] Human review needed
 
 **Acceptance Criteria Status**:
 - AC-01: ✓ Implemented
 - AC-02: ✓ Implemented
-- AC-03: ⚠️ Partial (explain if needed)
 
 **Next steps**: Please review and provide feedback."
 ```
 
-For Complex Flow, also include:
+For complex features, also include:
 - ADR needed: Yes/No
 - AGENTS.md updates needed: [List sections]
 
 ---
 
+## After Approval
+
+1. **Create ADR** (if significant decision was made)
+2. **Update AGENTS.md** (if new patterns)
+3. **Delete spec folder**: `specs/[feature]/`
+
+---
+
 ## When to Create ADR
 
-Create an ADR when ANY of these are true:
+Create an ADR in `decisions/` when ANY of these are true:
 
 - Evaluated 2+ alternatives and chose one
 - Introduced a new architectural pattern
 - Made a breaking change
 - Chose a third-party library/service
-
----
-
-## Reference Docs Update
-
-After Standard/Complex Flow completion:
-
-1. Check AGENTS.md - update if patterns/stack changed
-2. Check Feature README - update code touchpoints
-3. Rule: **Update or Delete** - no stale docs allowed
-
-Update triggers:
-- New tech → Tech Stack section
-- New pattern → Key Patterns section
-- Files moved → File Organization section
-- Complex Flow complete → Always update AGENTS.md
-
----
-
-## Definition of Done
-
-### Quick Flow
-- [ ] Code works
-- [ ] No linter errors
-- [ ] Commit message describes change
-
-### Standard Flow
-- [ ] All tasks completed or skipped
-- [ ] Acceptance criteria met
-- [ ] Feature README updated (if applicable)
-- [ ] AGENTS.md updated (if new patterns)
-
-### Complex Flow
-- [ ] All tasks completed or skipped
-- [ ] All acceptance criteria verified
-- [ ] Tests passing
-- [ ] ADR created for key decisions
-- [ ] AGENTS.md updated (required)
-- [ ] Feature README created/updated
-- [ ] Spec archived

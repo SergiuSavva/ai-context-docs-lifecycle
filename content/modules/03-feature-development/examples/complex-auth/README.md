@@ -1,6 +1,6 @@
-# Example: OAuth Authentication (Complex Flow)
+# Example: OAuth Authentication (Complex Feature)
 
-> **Walkthrough** of the Complex Flow using a real feature example.
+> **Walkthrough** of a complex feature using the three-phase approach with all optional docs.
 
 ---
 
@@ -8,11 +8,19 @@
 
 You're building a workspace app and need to implement user authentication. This requires research (which OAuth provider?), multiple components, and architectural decisions.
 
-**Why Complex Flow?**
+**Why this is complex**:
 - Requires research (evaluating OAuth providers)
-- Changes > 5 files
 - Architectural decisions needed
 - External service integration
+- Multiple components and integrations
+
+**Docs needed**: All of them
+- `research.md` - evaluate options
+- `spec.md` - what to build
+- `design.md` - architecture (optional, covered in research here)
+- `user-stories.md` - test scenarios
+- `tasks.md` - implementation checklist
+- ADR - after completion
 
 ---
 
@@ -20,7 +28,7 @@ You're building a workspace app and need to implement user authentication. This 
 
 First, gather information and evaluate options.
 
-Create `docs/specs/oauth-auth/research.md`:
+Create `specs/oauth-auth/research.md`:
 
 See: [`research.md`](./research.md)
 
@@ -30,41 +38,40 @@ See: [`research.md`](./research.md)
 3. Creates comparison matrix
 4. Makes recommendation with rationale
 5. Creates data flow diagram
-6. **Asks user to approve** before proceeding
+6. **Validates with user** before proceeding
 
 ---
 
-## Phase 2: Specification
+## Phase 2: Plan
 
-After research approval, create detailed spec and user stories.
+After research approval, create spec and supporting docs.
 
-Create `docs/specs/oauth-auth/feature-spec.md`:
+### Create spec.md
 
-See: [`feature-spec.md`](./feature-spec.md)
+Create `specs/oauth-auth/spec.md`:
 
-Create `docs/specs/oauth-auth/user-stories.md`:
+See: [`spec.md`](./spec.md)
+
+### Create user-stories.md
+
+Create `specs/oauth-auth/user-stories.md`:
 
 See: [`user-stories.md`](./user-stories.md)
 
-**Key elements**:
-- Success metrics (measurable)
-- Explicit scope boundaries
-- User stories with Given/When/Then
-- Risks and mitigations
+### Create tasks.md
 
-**AI asks user to approve spec** before implementation.
-
----
-
-## Phase 3: Implementation
-
-Create task breakdown and implement.
-
-Create `docs/specs/oauth-auth/tasks.md`:
+Create `specs/oauth-auth/tasks.md`:
 
 See: [`tasks.md`](./tasks.md)
 
-**How AI works**:
+**AI validates plan with user** before implementing.
+
+---
+
+## Phase 3: Implement
+
+AI works through tasks:
+
 1. Groups tasks by category (Setup, Core, Testing, Docs)
 2. Works through ONE task at a time
 3. Updates tasks.md after each completion
@@ -72,7 +79,7 @@ See: [`tasks.md`](./tasks.md)
 
 ---
 
-## Phase 4: Review & Iterate
+## Completion
 
 AI signals ready for review:
 
@@ -92,19 +99,12 @@ Ready for review. Implementation complete.
 - NextAuth.js for implementation
 - Database sessions over JWT
 
-**Next steps**: Please review. After approval, I will create ADR and update reference docs.
+**Next steps**: Please review. After approval, I will create ADR.
 ```
-
-Human reviews:
-- Tests auth flow end-to-end
-- Checks security implementation
-- Provides feedback if needed
 
 ---
 
-## Phase 5: Documentation
-
-After approval, create permanent documentation.
+## After Approval
 
 ### Create ADR
 
@@ -122,24 +122,11 @@ See: [`adr.md`](./adr.md)
 - **Provider**: Google OAuth 2.0 via NextAuth.js
 - **Session**: Database sessions (Prisma)
 - **Protected routes**: Middleware in `middleware.ts`
-- **Pattern**: Wrap pages with `getServerSession()`
-
-See: `docs/features/auth/README.md`
 ```
 
-### Update Tech Stack
+### Delete spec folder
 
-```markdown
-| Auth | NextAuth.js + Google OAuth |
-```
-
----
-
-## Phase 6: Archive
-
-1. Move spec to `docs/specs/_archive/oauth-auth/`
-2. Update `docs-index.md` with new links
-3. Feature complete!
+`specs/oauth-auth/` → deleted (knowledge now in ADR + AGENTS.md)
 
 ---
 
@@ -165,24 +152,9 @@ src/
 └── prisma/
     └── schema.prisma          # MODIFIED
 
-docs/
-├── decisions/
-│   └── 015-oauth-google.md    # NEW (ADR)
-└── features/
-    └── auth/
-        └── README.md          # NEW
+decisions/
+└── 015-oauth-google.md        # NEW (ADR)
 ```
-
----
-
-## Time Spent
-
-- Research: ~2 hours
-- Specification: ~1 hour
-- Implementation: ~6 hours
-- Review + iteration: ~2 hours
-- Documentation: ~1 hour
-- **Total**: ~12 hours (2 days)
 
 ---
 
@@ -191,5 +163,4 @@ docs/
 1. **Research prevents rework** - Evaluated options upfront, no switching mid-implementation
 2. **User stories clarify acceptance** - Given/When/Then made testing straightforward
 3. **ADR preserves context** - Future devs know WHY Google was chosen
-4. **AGENTS.md update is mandatory** - AI agents now know how auth works
-5. **Complex Flow has checkpoints** - Human approval at research, spec, and completion
+4. **Spec is ephemeral** - Deleted after feature complete, knowledge lives in ADR

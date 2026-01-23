@@ -1,10 +1,12 @@
-# Standard Flow
+# Standard Flow (Features)
 
-> **For small-medium features and enhancements (< 5 files).**
+> **For features** - minimum docs: `spec.md` + `tasks.md`
 
 ---
 
 ## When to Use
+
+Any feature that isn't a bug fix:
 
 | Trigger | Example |
 |---------|---------|
@@ -14,99 +16,96 @@
 | Feature toggle | "Add dark mode toggle" |
 | Small feature | "Add 'mark all as complete' to todo list" |
 
-**Rule of thumb**: If it's not a bug fix AND doesn't need research, use Standard Flow.
+**Rule**: If it's not a bug fix, create `spec.md` + `tasks.md`.
 
 ---
 
-## Process
+## Three Phases
 
 ```
-1. Create feature-spec.md (problem + acceptance criteria)
-2. Create tasks.md with checklist
-3. Mark first task [~] and implement
-4. Update tasks.md after each task
-5. Verify acceptance criteria
-6. Signal "Ready for review"
-7. Archive or delete spec
+Research (optional) → Plan (required) → Implement (required)
 ```
+
+For simple features, skip Research and go straight to Plan.
 
 ---
 
-## File Structure
+## Phase 1: Plan
+
+Create minimum required docs:
+
+### spec.md
 
 ```
-docs/specs/<feature-name>/
-├── feature-spec.md    # Requirements + acceptance criteria
-└── tasks.md           # Implementation checklist
+specs/[feature-name]/spec.md
 ```
+
+Must include:
+- Problem statement
+- Solution summary
+- Acceptance criteria
+- Scope (in/out)
+
+### tasks.md
+
+```
+specs/[feature-name]/tasks.md
+```
+
+Must include:
+- Task breakdown by category
+- Progress tracking
+
+### Optional Docs
+
+Add if needed:
+- `design.md` - architecture decisions
+- `plan.md` - complex dependencies
+- `user-stories.md` - test scenarios
+
+**Validate with user before implementing.**
 
 ---
 
-## AI Agent Instructions
+## Phase 2: Implement
+
+### AI Agent Rules
+
+```
+1. ONE task [~] at a time
+2. Update tasks.md after EACH task
+3. Calculate progress: (completed + skipped) / total * 100
+4. When blocked: Mark [B], ask for guidance
+5. When done: Signal "Ready for review"
+```
+
+### Task Markers
+
+| Marker | Status |
+|--------|--------|
+| `[ ]` | Pending |
+| `[~]` | In Progress (only ONE) |
+| `[x]` | Completed |
+| `[B]` | Blocked (include reason) |
+| `[S]` | Skipped (include reason) |
 
 ### Context Loading Order
 
-```markdown
-1. AGENTS.md                              → Project context
-2. docs/specs/<feature>/feature-spec.md   → Requirements
-3. docs/specs/<feature>/tasks.md          → Current status
-4. .cursor/rules/*.mdc                    → Coding patterns
+```
+1. AGENTS.md              → Project context
+2. specs/[feature]/spec.md    → Requirements
+3. specs/[feature]/tasks.md   → Current status
+4. .cursor/rules/*.mdc        → Coding patterns
 ```
 
-### Before Starting
+---
 
-```markdown
-AI MUST check:
+## Completion
 
-1. Does feature-spec.md exist?
-   ├─ YES → Read it, proceed
-   └─ NO → Create it from template, ask user to review
+When all tasks are done:
 
-2. Does tasks.md exist?
-   ├─ YES → Find first uncompleted task
-   └─ NO → Create it from feature-spec requirements
-
-3. Is there a task marked [~]?
-   ├─ YES → Continue that task
-   └─ NO → Mark next pending task [~]
 ```
-
-### During Implementation
-
-```markdown
-AI MUST follow these rules:
-
-1. ONE task [~] at a time
-   - Never have multiple tasks in progress
-
-2. Update tasks.md after EACH task
-   - Mark completed: [x]
-   - Mark blocked: [B] with reason
-   - Mark skipped: [S] with reason
-   - Recalculate progress
-
-3. Progress calculation
-   progress = (completed + skipped) / total * 100
-```
-
-### When Blocked
-
-```markdown
-If blocked:
-1. Mark task [B] with reason
-2. Ask user for guidance
-3. Do NOT skip to next task without acknowledgment
-```
-
-### Signaling Completion
-
-```markdown
-When all tasks are [x] or [S]:
-
-1. Verify each acceptance criterion
-2. Output completion signal:
-
-"Ready for review. Implementation complete.
+Ready for review. Implementation complete.
 
 **DoD Checklist**:
 - [x] All tasks completed (X/Y)
@@ -117,91 +116,53 @@ When all tasks are [x] or [S]:
 - AC-01: ✓ Implemented
 - AC-02: ✓ Implemented
 
-**Next steps**: Please review and provide feedback."
+**Next steps**: Please review and provide feedback.
 ```
 
 ---
 
-## Templates
+## After Approval
 
-### feature-spec.md
-
-```markdown
-# Feature: [Name]
-
-## Problem
-[1-2 sentences: What problem does this solve?]
-
-## Solution
-[1-2 sentences: How will we solve it?]
-
-## Acceptance Criteria
-- [ ] AC-01: [Criterion]
-- [ ] AC-02: [Criterion]
-- [ ] AC-03: [Criterion]
-
-## Out of Scope
-- [What we're NOT building]
-
-## Tasks
-See [tasks.md](./tasks.md)
-```
-
-### tasks.md
-
-```markdown
-# Tasks: [Feature Name]
-
-## [Category 1]
-- [ ] T-01: [Task description]
-- [ ] T-02: [Task description]
-
-## [Category 2]
-- [ ] T-03: [Task description]
-- [ ] T-04: [Task description]
-
----
-**Progress**: 0/4 (0%)
-**Blocked**: None
-**In Progress**: None
-```
+1. **Delete spec folder**: `specs/[feature-name]/`
+2. **Create ADR** (only if significant decision was made)
+3. **Update AGENTS.md** (if new patterns added)
 
 ---
 
 ## Definition of Done
 
-### Auto-Verifiable (AI can confirm)
+### Auto-Verifiable
 
-- [ ] All tasks completed `[x]` or skipped `[S]`
+- [ ] All tasks `[x]` or `[S]`
 - [ ] No linter errors
 - [ ] Progress = 100%
 
-### Manual Verification (Human confirms)
+### Manual Verification
 
 - [ ] Acceptance criteria verified
 - [ ] Code quality acceptable
-- [ ] Feature README updated (if files added)
-- [ ] AGENTS.md updated (if new patterns)
 
 ---
 
-## When to Escalate to Complex Flow
+## When to Add More Docs
 
-Escalate if during implementation you discover:
+If during planning you discover:
 
-- Research is needed (API docs, comparing options)
-- More than 5 files affected
-- Architecture decisions required
-- External dependencies need evaluation
-
-**Action**: Create research.md, add user-stories.md, switch to Complex Flow.
+- Need to evaluate options → add `research.md`
+- Architecture decisions needed → add `design.md`
+- Complex dependencies → add `plan.md`
+- User-facing test scenarios → add `user-stories.md`
 
 ---
 
-## After Completion
+## File Structure
 
-1. **Human reviews** implementation
-2. **If approved**: Delete or archive spec folder
-3. **If changes needed**: AI iterates, updates tasks
-
-**Note**: Standard Flow does NOT require an ADR. Only create ADR if you made a significant decision with alternatives considered.
+```
+specs/
+└── [feature-name]/
+    ├── spec.md        # Required
+    ├── tasks.md       # Required
+    ├── design.md      # Optional
+    ├── plan.md        # Optional
+    └── user-stories.md # Optional
+```

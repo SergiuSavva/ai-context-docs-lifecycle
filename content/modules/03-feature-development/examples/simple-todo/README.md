@@ -1,6 +1,6 @@
-# Example: Mark All Complete (Standard Flow)
+# Example: Mark All Complete (Simple Feature)
 
-> **Walkthrough** of the Standard Flow using a real feature example.
+> **Walkthrough** of a simple feature implementation using the three-phase approach.
 
 ---
 
@@ -8,30 +8,32 @@
 
 You're building a todo app and want to add a "Mark all as complete" button that lets users complete all todos at once.
 
-**Why Standard Flow?**
-- Not a bug fix (not Quick Flow)
-- Doesn't require research (not Complex Flow)
-- Changes < 5 files
+**Why this is a simple feature**:
+- Not a bug fix
+- Approach is obvious (no research needed)
+- No complex dependencies
 - Clear scope
+
+**Docs needed**: `spec.md` + `tasks.md` (minimum)
 
 ---
 
-## Step 1: Create Feature Spec
+## Phase 1: Plan
 
-Create `docs/specs/mark-all-complete/feature-spec.md`:
+### Create spec.md
 
-See: [`feature-spec.md`](./feature-spec.md)
+Create `specs/mark-all-complete/spec.md`:
+
+See: [`spec.md`](./spec.md)
 
 **Key elements**:
 - Clear problem statement
 - Specific acceptance criteria
 - Explicit scope boundaries
 
----
+### Create tasks.md
 
-## Step 2: Create Tasks
-
-Create `docs/specs/mark-all-complete/tasks.md`:
+Create `specs/mark-all-complete/tasks.md`:
 
 See: [`tasks.md`](./tasks.md)
 
@@ -42,7 +44,7 @@ See: [`tasks.md`](./tasks.md)
 
 ---
 
-## Step 3: AI Implements
+## Phase 2: Implement
 
 AI reads the spec and tasks, then works through each task:
 
@@ -52,7 +54,7 @@ AI reads the spec and tasks, then works through each task:
 // components/MarkAllCompleteButton.tsx
 export function MarkAllCompleteButton({ onMarkAll, disabled }) {
   return (
-    <button 
+    <button
       onClick={onMarkAll}
       disabled={disabled}
       className="btn btn-secondary"
@@ -89,7 +91,7 @@ AI updates tasks.md and continues...
 
 ---
 
-## Step 4: AI Signals Completion
+## Completion
 
 When all tasks are done, AI outputs:
 
@@ -112,7 +114,7 @@ Ready for review. Implementation complete.
 
 ---
 
-## Step 5: Human Reviews
+## Human Review
 
 Human tests the feature:
 - Verifies button appears correctly
@@ -121,20 +123,16 @@ Human tests the feature:
 
 **If changes needed**: AI iterates and updates tasks
 
-**If approved**: Move to cleanup
+**If approved**: Delete spec folder
 
 ---
 
-## Step 6: Archive Spec
+## Cleanup
 
 After approval:
 
-1. Delete spec folder: `docs/specs/mark-all-complete/`
-   - OR move to `docs/specs/_archive/mark-all-complete/`
-
+1. Delete spec folder: `specs/mark-all-complete/`
 2. No ADR needed (no significant decisions made)
-
-3. Update Feature README if this is a major feature
 
 ---
 
@@ -151,15 +149,6 @@ src/
 └── tests/
     └── MarkAllComplete.test.tsx   # NEW
 ```
-
----
-
-## Time Spent
-
-- Spec creation: ~15 minutes
-- Implementation: ~2 hours
-- Review + iteration: ~30 minutes
-- **Total**: ~3 hours
 
 ---
 

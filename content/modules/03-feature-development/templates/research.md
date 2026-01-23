@@ -1,7 +1,7 @@
 # Research: [Feature Name]
 
-> **Template**: Copy to `docs/specs/<feature-name>/research.md` (Complex Flow only)
-> Replace all `[bracketed]` placeholders.
+> **Template**: Copy to `specs/[feature-name]/research.md`
+> Use when exploring options, evaluating libraries, or unfamiliar territory.
 
 ---
 
@@ -159,9 +159,9 @@ sequenceDiagram
 ## Next Steps
 
 After research approval:
-1. Create detailed feature-spec.md
-2. Write user stories
-3. Break down into tasks
+1. Create spec.md with acceptance criteria
+2. Create design.md if architecture decisions needed
+3. Create tasks.md with implementation breakdown
 
 ---
 

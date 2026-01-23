@@ -55,13 +55,17 @@ Start with [guides/getting-started.md](./guides/getting-started.md) to choose yo
 
 ## Key Concepts
 
-### Three Workflows
+### Three Phases
 
-| Flow | Use For | Templates |
-|------|---------|-----------|
-| **Quick** | Bug fixes, config changes | None |
-| **Standard** | Small features (< 5 files) | feature-spec, tasks |
-| **Complex** | Large features (research needed) | All templates |
+```
+Research → Plan → Implement
+```
+
+| Situation | Docs Needed |
+|-----------|-------------|
+| **Bug fix** | None |
+| **Feature** | spec.md + tasks.md |
+| **Complex** | All docs + ADR |
 
 ### Document Types
 

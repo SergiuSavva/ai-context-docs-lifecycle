@@ -1,6 +1,6 @@
-# Quick Flow
+# Quick Flow (Bug Fixes)
 
-> **For bug fixes, typos, config changes, and single-file edits.**
+> **For bug fixes, typos, config changes** - no spec needed.
 
 ---
 
@@ -14,7 +14,7 @@
 | Single-file edit | "Add missing import" |
 | Minor refactor | "Rename variable for clarity" |
 
-**Rule of thumb**: If it touches 1-2 files and requires no design decisions, use Quick Flow.
+**Rule**: If it's a fix with obvious solution, use Quick Flow.
 
 ---
 
@@ -25,30 +25,30 @@
 2. Fix code
 3. Verify fix works
 4. Commit with descriptive message
-5. Done ✅
+5. Done
 ```
 
-**No spec needed. No ADR needed. No task tracking needed.**
+**No spec needed. No tasks.md needed. No ADR needed.**
 
 ---
 
 ## AI Agent Instructions
 
-### Before Starting
+### Verify This is Quick Flow
 
-```markdown
-AI MUST verify this is Quick Flow:
+```
+Before starting, confirm:
 - [ ] Single issue to fix
-- [ ] 1-2 files affected
+- [ ] Solution is obvious
 - [ ] No design decisions required
 - [ ] No new patterns introduced
 
-If ANY of these are false → Use Standard or Complex Flow instead.
+If ANY are false → Use Plan phase with spec.md + tasks.md
 ```
 
-### During Implementation
+### Implementation
 
-```markdown
+```
 1. Read the issue/request
 2. Locate the affected code
 3. Make the fix
@@ -56,20 +56,19 @@ If ANY of these are false → Use Standard or Complex Flow instead.
 5. Verify no linter errors
 ```
 
-### Completion
+### Commit Message
 
-```markdown
-Commit message format:
-
+```
 fix: <what was fixed>
 
 or
 
 chore: <what was changed>
 
-Example:
+Examples:
 fix: handle null user in getProfile function
 chore: update API base URL in config
+fix: correct spelling in error message
 ```
 
 ---
@@ -78,21 +77,19 @@ chore: update API base URL in config
 
 - [ ] Code works as expected
 - [ ] No linter errors
-- [ ] Commit message describes what changed and why
-- [ ] Reference docs updated IF behavior changed (rare)
+- [ ] Commit message describes what changed
 
 ---
 
-## When to Escalate to Standard Flow
+## When to Escalate
 
-Escalate if during implementation you discover:
+If during implementation you discover:
 
-- More than 2 files need changes
+- More files need changes than expected
 - A design decision is required
 - New patterns need to be established
-- The fix scope is larger than expected
 
-**Action**: Stop, create a feature spec, switch to Standard Flow.
+**Action**: Stop, create `specs/[name]/spec.md` + `tasks.md`, continue with Plan phase.
 
 ---
 
@@ -100,7 +97,7 @@ Escalate if during implementation you discover:
 
 ### Bug Fix
 
-```markdown
+```
 Issue: "Login fails when username contains special characters"
 
 1. Find: src/auth/login.ts
@@ -111,21 +108,11 @@ Issue: "Login fails when username contains special characters"
 
 ### Config Change
 
-```markdown
+```
 Issue: "Update API timeout from 5s to 10s"
 
 1. Find: src/config/api.ts
 2. Change: API_TIMEOUT = 10000
 3. Verify: No tests affected
 4. Commit: "chore: increase API timeout to 10s"
-```
-
-### Typo Fix
-
-```markdown
-Issue: "Error message says 'recieved' instead of 'received'"
-
-1. Find: src/components/ErrorDisplay.tsx
-2. Fix: "recieved" → "received"
-3. Commit: "fix: correct spelling in error message"
 ```

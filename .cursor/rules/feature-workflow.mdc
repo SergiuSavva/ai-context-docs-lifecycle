@@ -1,0 +1,96 @@
+---
+description: Implementation workflow - Research → Plan → Implement with task tracking
+globs:
+  - "specs/**/*"
+  - "content/**/*"
+alwaysApply: false
+---
+
+# Implementation Workflow
+
+> Reference: @decisions/001-implementation-flow.md
+
+## Three Phases
+
+```
+Research → Plan → Implement
+(optional)  (required)  (required)
+```
+
+## Decision Tree
+
+```
+Is this a bug fix?
+├─ YES → Just fix it (no docs needed)
+└─ NO → Create specs/[feature]/spec.md + tasks.md
+
+    Do I need to evaluate options?
+    ├─ YES → Add research.md
+    └─ NO → Continue
+
+    Do I need architecture decisions?
+    ├─ YES → Add design.md
+    └─ NO → Continue
+
+    Validate with user → Implement
+```
+
+---
+
+## Before Starting
+
+```
+1. Does specs/[feature]/spec.md exist?
+   ├─ YES → Read it
+   └─ NO → Create it, validate with user
+
+2. Does specs/[feature]/tasks.md exist?
+   ├─ YES → Find first non-complete task
+   └─ NO → Create it from spec
+
+3. Is there a task marked [~]?
+   ├─ YES → Continue that task
+   └─ NO → Mark next pending [~]
+```
+
+---
+
+## Task Markers
+
+| Marker | Status |
+|--------|--------|
+| `[ ]` | Pending |
+| `[~]` | In Progress (only ONE) |
+| `[x]` | Completed |
+| `[B]` | Blocked (include reason) |
+| `[S]` | Skipped (include reason) |
+
+---
+
+## During Implementation
+
+1. **ONE task [~] at a time**
+2. **Update tasks.md after EACH task**
+3. **Progress**: `(completed + skipped) / total * 100`
+4. **When blocked**: Mark `[B]`, ask user
+
+---
+
+## Completion Signal
+
+```
+Ready for review. Implementation complete.
+
+**Progress**: X/Y tasks (100%)
+**Acceptance Criteria**: All verified
+
+**Next steps**: Please review.
+```
+
+---
+
+## After Approval
+
+1. Create ADR in `decisions/` (if significant decision)
+2. Update AGENTS.md (if new patterns)
+3. Delete `specs/[feature]/` folder

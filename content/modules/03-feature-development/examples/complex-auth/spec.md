@@ -1,6 +1,6 @@
-# Feature: OAuth Authentication
+# Spec: OAuth Authentication
 
-> **Example**: This is a filled-in feature spec demonstrating the Complex Flow.
+> **Example**: Filled-in spec demonstrating a complex feature.
 
 ---
 
@@ -19,12 +19,13 @@ Implement Google OAuth 2.0 authentication using NextAuth.js, with database-backe
 
 ---
 
-## Success Metrics
+## Acceptance Criteria
 
-- 95%+ of login attempts succeed
-- Auth flow completes in < 5 seconds
-- Zero password storage (all OAuth)
-- Session persists across page refreshes
+- [ ] AC-01: User can log in with Google
+- [ ] AC-02: User can log out
+- [ ] AC-03: Protected routes redirect to login
+- [ ] AC-04: Session persists across page refreshes
+- [ ] AC-05: User profile (avatar, name) displays correctly
 
 ---
 
@@ -37,7 +38,6 @@ Implement Google OAuth 2.0 authentication using NextAuth.js, with database-backe
 - Protected route middleware
 - Login/logout UI components
 - User profile display (avatar, name)
-- Session persistence across refreshes
 
 ### Out of Scope
 
@@ -45,13 +45,6 @@ Implement Google OAuth 2.0 authentication using NextAuth.js, with database-backe
 - Additional OAuth providers - GitHub, Twitter (phase 3)
 - Email/password fallback (phase 2)
 - Account linking (phase 3)
-- Admin role management (phase 2)
-
----
-
-## User Stories
-
-See [user-stories.md](./user-stories.md)
 
 ---
 
@@ -61,18 +54,16 @@ See [user-stories.md](./user-stories.md)
 - **OAuth Provider**: Google OAuth 2.0
 - **Session Storage**: Database via Prisma adapter
 - **Protected Routes**: Next.js middleware
-- **User Data**: Prisma with PostgreSQL
 
 ---
 
-## Risks → Mitigations
+## Risks
 
-| Risk | Likelihood | Impact | Mitigation |
-|------|------------|--------|------------|
-| Google OAuth downtime | Low | High | Graceful error handling, retry logic |
-| Token expiry mid-session | Medium | Medium | Automatic token refresh via NextAuth |
-| CSRF attacks | Low | High | Built-in NextAuth CSRF protection |
-| Session fixation | Low | High | Regenerate session on login |
+| Risk | Mitigation |
+|------|------------|
+| Google OAuth downtime | Graceful error handling, retry logic |
+| Token expiry mid-session | Automatic token refresh via NextAuth |
+| CSRF attacks | Built-in NextAuth CSRF protection |
 
 ---
 
@@ -84,17 +75,13 @@ See [user-stories.md](./user-stories.md)
 
 ---
 
-## Research
+## Related Docs
 
-See [research.md](./research.md)
-
----
-
-## Tasks
-
-See [tasks.md](./tasks.md)
+- [research.md](./research.md) - Options evaluated
+- [user-stories.md](./user-stories.md) - Test scenarios
+- [tasks.md](./tasks.md) - Implementation checklist
+- [adr.md](./adr.md) - Decision record
 
 ---
 
-*Created: 2026-01-19*
 *Status: Complete*

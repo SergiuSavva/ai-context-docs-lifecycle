@@ -1,0 +1,11 @@
+{
+  "permissions": {
+    "allow": [
+      "WebFetch(domain:agents.md)",
+      "WebSearch",
+      "WebFetch(domain:github.com)",
+      "WebFetch(domain:martinfowler.com)",
+      "WebFetch(domain:www.thoughtworks.com)"
+    ]
+  }
+}

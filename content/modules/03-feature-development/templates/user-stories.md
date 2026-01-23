@@ -1,7 +1,7 @@
 # User Stories: [Feature Name]
 
-> **Template**: Copy to `docs/specs/<feature-name>/user-stories.md` (Complex Flow only)
-> Replace all `[bracketed]` placeholders.
+> **Template**: Copy to `specs/[feature-name]/user-stories.md`
+> Use for user-facing features when clear test scenarios are needed.
 
 ---
 

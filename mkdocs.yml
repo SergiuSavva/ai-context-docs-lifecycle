@@ -1,0 +1,67 @@
+site_name: AI Context Docs Lifecycle
+site_url: https://sergiusavva.github.io/ai-context-docs-lifecycle/
+repo_url: https://github.com/SergiuSavva/ai-context-docs-lifecycle
+repo_name: SergiuSavva/ai-context-docs-lifecycle
+
+docs_dir: content
+site_dir: site
+
+theme:
+  name: material
+  palette:
+    - scheme: default
+      primary: indigo
+      accent: indigo
+      toggle:
+        icon: material/brightness-7
+        name: Switch to dark mode
+    - scheme: slate
+      primary: indigo
+      accent: indigo
+      toggle:
+        icon: material/brightness-4
+        name: Switch to light mode
+  features:
+    - navigation.sections
+    - navigation.expand
+    - navigation.top
+    - search.highlight
+    - search.suggest
+    - content.code.copy
+    - content.tabs.link
+
+markdown_extensions:
+  - admonition
+  - pymdownx.details
+  - pymdownx.superfences:
+      custom_fences:
+        - name: mermaid
+          class: mermaid
+          format: !!python/name:pymdownx.superfences.fence_code_format
+  - pymdownx.tabbed:
+      alternate_style: true
+  - pymdownx.highlight:
+      anchor_linenums: true
+  - pymdownx.inlinehilite
+  - tables
+  - toc:
+      permalink: true
+
+nav:
+  - Home: index.md
+  - Quick Start: quick-start.md
+  - Guides:
+      - Overview: guides/README.md
+      - Getting Started: guides/getting-started.md
+      - New Project: guides/new-project.md
+      - Existing Project: guides/existing-project.md
+      - AGENTS.md Best Practices: guides/agents-md-best-practices.md
+      - Tool Compatibility: guides/tool-compatibility.md
+  - Modules:
+      - Overview: modules/README.md
+      - 1. Quick Start: modules/01-quick-start/README.md
+      - 2. Coding Standards: modules/02-coding-standards/README.md
+      - 3. Feature Development: modules/03-feature-development/README.md
+      - 4. Reference Docs: modules/04-reference-docs/README.md
+      - 5. Project Planning: modules/05-project-planning/README.md
+  - Methodology: methodology.md

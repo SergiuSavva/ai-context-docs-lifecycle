@@ -1,7 +1,7 @@
 # Design: [Feature Name]
 
-> **Template**: Copy to `docs/specs/<feature-name>/design.md` (Complex Flow only)
-> Use after research.md to document HOW to build the chosen approach.
+> **Template**: Copy to `specs/[feature-name]/design.md`
+> Use when architecture decisions, API contracts, or data models need to be defined.
 
 ---
 
@@ -186,8 +186,9 @@ features/<feature>/
 
 ## Related Documents
 
-- [feature-spec.md](./feature-spec.md) - Requirements
+- [spec.md](./spec.md) - Requirements
 - [research.md](./research.md) - Options evaluated
+- [plan.md](./plan.md) - Sequence & dependencies
 - [tasks.md](./tasks.md) - Implementation tasks
 
 ---

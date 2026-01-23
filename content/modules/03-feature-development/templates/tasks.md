@@ -1,7 +1,6 @@
 # Tasks: [Feature Name]
 
-> **Template**: Copy to `docs/specs/<feature-name>/tasks.md`
-> Replace all `[bracketed]` placeholders.
+> **Template**: Copy to `specs/[feature-name]/tasks.md`
 
 ---
 
