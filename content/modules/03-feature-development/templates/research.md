@@ -28,8 +28,8 @@
 **Effort**: Low / Medium / High
 
 **Links**:
-- [Documentation](URL)
-- [Example](URL)
+- Documentation: `<paste URL here>`
+- Example: `<paste URL here>`
 
 ---
 
@@ -48,8 +48,8 @@
 **Effort**: Low / Medium / High
 
 **Links**:
-- [Documentation](URL)
-- [Example](URL)
+- Documentation: `<paste URL here>`
+- Example: `<paste URL here>`
 
 ---
 
@@ -136,12 +136,12 @@ sequenceDiagram
 ## Resources
 
 ### Documentation
-- [Official docs](URL)
-- [API reference](URL)
+- Official docs: `<paste URL here>`
+- API reference: `<paste URL here>`
 
 ### Examples
-- [Example repo](URL)
-- [Tutorial](URL)
+- Example repo: `<paste URL here>`
+- Tutorial: `<paste URL here>`
 
 ### Related
 - `decisions/NNN-[related].md` (if applicable)

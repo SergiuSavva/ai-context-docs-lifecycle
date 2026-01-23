@@ -24,7 +24,7 @@ Before adding anything, check what exists:
 If you only want AI context without changing your workflow:
 
 1. Create `AGENTS.md` at project root
-2. Fill in from [Module 1 templates](../modules/01-quick-start/templates/)
+2. Fill in from [Module 1 templates](../modules/01-quick-start/README.md#templates)
 3. Done!
 
 ```
@@ -231,5 +231,5 @@ You don't have to do everything at once:
 
 ## Next Steps
 
-- [Module 3: Feature Development](../modules/03-feature-development/) - Use for new features
+- [Module 3: Feature Development](../modules/03-feature-development/README.md) - Use for new features
 - [Getting Started](./getting-started.md) - Module overview

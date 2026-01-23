@@ -188,8 +188,8 @@ See: [`workflows/complex-flow.md`](./workflows/complex-flow.md)
 
 ## Examples
 
-- [`examples/simple-todo/`](./examples/simple-todo/) - Simple feature walkthrough
-- [`examples/complex-auth/`](./examples/complex-auth/) - Complex feature walkthrough
+- [`examples/simple-todo/`](./examples/simple-todo/README.md) - Simple feature walkthrough
+- [`examples/complex-auth/`](./examples/complex-auth/README.md) - Complex feature walkthrough
 
 ---
 
@@ -229,14 +229,14 @@ Copy the workflow rule to your project:
 cp templates/.cursor/rules/feature-workflow.mdc .cursor/rules/
 ```
 
-See: [`templates/.cursor/rules/feature-workflow.mdc`](./templates/.cursor/rules/feature-workflow.mdc)
+See: `templates/.cursor/rules/feature-workflow.mdc`
 
 ---
 
 ## Prerequisites
 
-- [Module 1: Quick Start](../01-quick-start/) - AGENTS.md for project context
+- [Module 1: Quick Start](../01-quick-start/README.md) - AGENTS.md for project context
 
 ## What's Next?
 
-- [Module 4: Reference Docs](../04-reference-docs/) - Documentation structure and freshness rules
+- [Module 4: Reference Docs](../04-reference-docs/README.md) - Documentation structure and freshness rules

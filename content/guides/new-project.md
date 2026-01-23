@@ -51,9 +51,9 @@ mkdir -p docs/{specs,features,decisions}
 | File | Source |
 |------|--------|
 | `AGENTS.md` | [Module 1 template](../modules/01-quick-start/templates/AGENTS-single-app.md) |
-| `.cursor/rules/code-style.mdc` | [Module 2 template](../modules/02-coding-standards/templates/.cursor/rules/code-style.mdc) |
-| `.cursor/rules/doc-style.mdc` | [Module 2 template](../modules/02-coding-standards/templates/.cursor/rules/doc-style.mdc) |
-| `.cursor/rules/feature-workflow.mdc` | [Module 3 template](../modules/03-feature-development/templates/) |
+| `.cursor/rules/code-style.mdc` | Module 2: `templates/.cursor/rules/code-style.mdc` |
+| `.cursor/rules/doc-style.mdc` | Module 2: `templates/.cursor/rules/doc-style.mdc` |
+| `.cursor/rules/feature-workflow.mdc` | Module 3: `templates/.cursor/rules/feature-workflow.mdc` |
 | `docs/INDEX.md` | [Module 4 template](../modules/04-reference-docs/templates/docs-index.md) |
 
 ### Step 3: Customize Templates
@@ -160,5 +160,5 @@ mkdir -p docs/specs/my-feature
 
 ## Next Steps
 
-- [Module 3: Feature Development](../modules/03-feature-development/) - Learn the workflows
-- [Examples](../modules/03-feature-development/examples/) - See complete walkthroughs
+- [Module 3: Feature Development](../modules/03-feature-development/README.md) - Learn the workflows
+- [Examples](../modules/03-feature-development/README.md#examples) - See complete walkthroughs

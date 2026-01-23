@@ -139,8 +139,8 @@ See: [`templates/TASKS.md`](./templates/TASKS.md)
 
 ## Prerequisites
 
-- [Module 1: Quick Start](../01-quick-start/) - AGENTS.md
-- [Module 3: Feature Development](../03-feature-development/) - For building features
+- [Module 1: Quick Start](../01-quick-start/README.md) - AGENTS.md
+- [Module 3: Feature Development](../03-feature-development/README.md) - For building features
 
 ---
 

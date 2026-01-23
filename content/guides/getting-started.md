@@ -16,7 +16,7 @@ your-project/
 └── AGENTS.md    # AI context file
 ```
 
-[Go to Module 1: Quick Start →](../modules/01-quick-start/)
+[Go to Module 1: Quick Start →](../modules/01-quick-start/README.md)
 
 ---
 
@@ -33,7 +33,7 @@ your-project/
     └── feature-workflow.mdc
 ```
 
-[Go to Module 3: Feature Development →](../modules/03-feature-development/)
+[Go to Module 3: Feature Development →](../modules/03-feature-development/README.md)
 
 ---
 
@@ -50,7 +50,7 @@ your-project/
     └── doc-style.mdc
 ```
 
-[Go to Module 2: Coding Standards →](../modules/02-coding-standards/)
+[Go to Module 2: Coding Standards →](../modules/02-coding-standards/README.md)
 
 ---
 
@@ -70,7 +70,7 @@ your-project/
     └── reference-freshness.mdc
 ```
 
-[Go to Module 4: Reference Docs →](../modules/04-reference-docs/)
+[Go to Module 4: Reference Docs →](../modules/04-reference-docs/README.md)
 
 ---
 
@@ -88,7 +88,7 @@ your-project/
     └── TASKS.md
 ```
 
-[Go to Module 5: Project Planning →](../modules/05-project-planning/)
+[Go to Module 5: Project Planning →](../modules/05-project-planning/README.md)
 
 ---
 
@@ -124,11 +124,11 @@ Best for: Team projects, products with roadmaps
 
 | # | Module | Purpose | Time |
 |---|--------|---------|------|
-| 1 | [Quick Start](../modules/01-quick-start/) | Minimal AI context | 5 min |
-| 2 | [Coding Standards](../modules/02-coding-standards/) | Code & doc style | 10 min |
-| 3 | [Feature Development](../modules/03-feature-development/) | Build workflows | 15 min |
-| 4 | [Reference Docs](../modules/04-reference-docs/) | Documentation | 20 min |
-| 5 | [Project Planning](../modules/05-project-planning/) | Multi-feature mgmt | 15 min |
+| 1 | [Quick Start](../modules/01-quick-start/README.md) | Minimal AI context | 5 min |
+| 2 | [Coding Standards](../modules/02-coding-standards/README.md) | Code & doc style | 10 min |
+| 3 | [Feature Development](../modules/03-feature-development/README.md) | Build workflows | 15 min |
+| 4 | [Reference Docs](../modules/04-reference-docs/README.md) | Documentation | 20 min |
+| 5 | [Project Planning](../modules/05-project-planning/README.md) | Multi-feature mgmt | 15 min |
 
 ---
 

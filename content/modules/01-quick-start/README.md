@@ -91,7 +91,7 @@ The AI will:
 ### Single App (5 minutes)
 
 1. Copy [`templates/AGENTS-single-app.md`](./templates/AGENTS-single-app.md) to project root as `AGENTS.md`
-2. Copy [`templates/.acdl/`](./templates/.acdl/) folder to project root
+2. Copy `templates/.acdl/` folder to project root
 3. Fill in Overview, Stack, Commands
 4. Add references to your docs in "Context Loading" section
 5. Done!
@@ -99,7 +99,7 @@ The AI will:
 ### Monorepo (10-15 minutes)
 
 1. Copy [`templates/AGENTS-monorepo-root.md`](./templates/AGENTS-monorepo-root.md) to monorepo root as `AGENTS.md`
-2. Copy [`templates/.acdl/`](./templates/.acdl/) folder to monorepo root
+2. Copy `templates/.acdl/` folder to monorepo root
 3. Fill in structure and subproject routing table
 4. For each package/service:
    - Copy [`templates/AGENTS-monorepo-subproject.md`](./templates/AGENTS-monorepo-subproject.md)
@@ -115,9 +115,9 @@ Once you have Quick Start working, consider adding:
 
 | Module | When to Add |
 |--------|-------------|
-| [Module 2: Coding Standards](../02-coding-standards/) | When you want consistent code style |
-| [Module 3: Feature Development](../03-feature-development/) | When building features with specs + tasks |
-| [Module 4: Reference Docs](../04-reference-docs/) | When you need comprehensive documentation |
+| [Module 2: Coding Standards](../02-coding-standards/README.md) | When you want consistent code style |
+| [Module 3: Feature Development](../03-feature-development/README.md) | When building features with specs + tasks |
+| [Module 4: Reference Docs](../04-reference-docs/README.md) | When you need comprehensive documentation |
 
 ---
 
@@ -133,7 +133,7 @@ Once you have Quick Start working, consider adding:
 
 ### Supporting Templates
 
-- [`templates/docs/`](./templates/docs/) - Detailed reference doc templates
+- `templates/docs/` - Detailed reference doc templates (see [api.md](./templates/docs/api.md), [architecture.md](./templates/docs/architecture.md), [components.md](./templates/docs/components.md))
 
 ---
 

@@ -384,6 +384,6 @@ Start with a minimal AGENTS.md. When the AI makes a mistake, add a rule to preve
 
 ## See Also
 
-- [Module 1: Quick Start](../modules/01-quick-start/) - AGENTS.md template
-- [Module 2: Coding Standards](../modules/02-coding-standards/) - Tool-specific rules
+- [Module 1: Quick Start](../modules/01-quick-start/README.md) - AGENTS.md template
+- [Module 2: Coding Standards](../modules/02-coding-standards/README.md) - Tool-specific rules
 - [Getting Started Guide](./getting-started.md) - Choose your modules

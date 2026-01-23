@@ -362,5 +362,5 @@ ln -s AGENTS.md CLAUDE.md
 ## See Also
 
 - [AGENTS.md Best Practices](./agents-md-best-practices.md) - Writing effective content
-- [Module 2: Coding Standards](../modules/02-coding-standards/) - Rule templates
+- [Module 2: Coding Standards](../modules/02-coding-standards/README.md) - Rule templates
 - [Getting Started](./getting-started.md) - Choose your setup

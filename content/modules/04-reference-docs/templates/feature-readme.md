@@ -117,7 +117,7 @@ function MyComponent() {
 
 - **ADR**: `decisions/NNN-[title].md` - [Why we built it this way]
 - **Feature**: `docs/features/[related]/` - [How they connect]
-- **External**: [Documentation link](URL) - [What it explains]
+- **External**: `<documentation URL>` - [What it explains]
 
 ---
 

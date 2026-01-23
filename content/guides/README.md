@@ -51,11 +51,11 @@ When asked to apply this methodology:
    - Existing project: [existing-project.md](./existing-project.md)
 
 3. **Read relevant modules**
-   - [Module 1: Quick Start](../modules/01-quick-start/) - AGENTS.md template
-   - [Module 2: Coding Standards](../modules/02-coding-standards/) - .cursor/rules/
-   - [Module 3: Feature Development](../modules/03-feature-development/) - Workflows
-   - [Module 4: Reference Docs](../modules/04-reference-docs/) - Documentation
-   - [Module 5: Project Planning](../modules/05-project-planning/) - Multi-feature
+   - [Module 1: Quick Start](../modules/01-quick-start/README.md) - AGENTS.md template
+   - [Module 2: Coding Standards](../modules/02-coding-standards/README.md) - `.cursor/rules/`
+   - [Module 3: Feature Development](../modules/03-feature-development/README.md) - Workflows
+   - [Module 4: Reference Docs](../modules/04-reference-docs/README.md) - Documentation
+   - [Module 5: Project Planning](../modules/05-project-planning/README.md) - Multi-feature
 
 4. **Use templates from modules**
    - Each module has a `templates/` folder
@@ -110,11 +110,11 @@ When asked to apply this methodology:
 
 | Module | Templates | Examples |
 |--------|-----------|----------|
-| [01-quick-start](../modules/01-quick-start/) | `templates/AGENTS.md` | - |
-| [02-coding-standards](../modules/02-coding-standards/) | `templates/.cursor/rules/` | `examples/.cursor/rules/` |
-| [03-feature-development](../modules/03-feature-development/) | `templates/` (5 files) | `examples/simple-todo/`, `examples/complex-auth/` |
-| [04-reference-docs](../modules/04-reference-docs/) | `templates/` (3 files) | - |
-| [05-project-planning](../modules/05-project-planning/) | `templates/` (4 files) | - |
+| [01-quick-start](../modules/01-quick-start/README.md) | `templates/AGENTS.md` | - |
+| [02-coding-standards](../modules/02-coding-standards/README.md) | `templates/.cursor/rules/` | `examples/.cursor/rules/` |
+| [03-feature-development](../modules/03-feature-development/README.md) | `templates/` (5 files) | `examples/simple-todo/`, `examples/complex-auth/` |
+| [04-reference-docs](../modules/04-reference-docs/README.md) | `templates/` (3 files) | - |
+| [05-project-planning](../modules/05-project-planning/README.md) | `templates/` (4 files) | - |
 
 ---
 

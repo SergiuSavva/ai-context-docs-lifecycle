@@ -90,7 +90,7 @@ The primary context file for AI agents. Should be readable in < 2 minutes.
 | New boundary rules | Boundaries |
 | Complex Flow complete | Feature map (if present) |
 
-See: [Module 1 AGENTS.md Templates](../01-quick-start/templates/)
+See: [Module 1 AGENTS.md Templates](../01-quick-start/README.md#templates)
 
 ---
 
@@ -186,15 +186,15 @@ Key rules:
 
 ## Cursor Rule
 
-Copy [`templates/.cursor/rules/reference-freshness.mdc`](./templates/.cursor/rules/reference-freshness.mdc) to enforce freshness during AI workflows.
+Copy `templates/.cursor/rules/reference-freshness.mdc` to enforce freshness during AI workflows.
 
 ---
 
 ## Prerequisites
 
-- [Module 1: Quick Start](../01-quick-start/) - Basic AGENTS.md
-- [Module 3: Feature Development](../03-feature-development/) - For ADR creation
+- [Module 1: Quick Start](../01-quick-start/README.md) - Basic AGENTS.md
+- [Module 3: Feature Development](../03-feature-development/README.md) - For ADR creation
 
 ## What's Next?
 
-- [Module 5: Project Planning](../05-project-planning/) - Backlog and roadmap management
+- [Module 5: Project Planning](../05-project-planning/README.md) - Backlog and roadmap management

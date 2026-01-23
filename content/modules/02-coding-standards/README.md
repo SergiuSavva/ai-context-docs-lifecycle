@@ -72,7 +72,7 @@ Defines code patterns and conventions:
 - Error handling approach
 - Import organization
 
-See: [`templates/.cursor/rules/code-style.mdc`](./templates/.cursor/rules/code-style.mdc)
+See: `templates/.cursor/rules/code-style.mdc`
 
 ### doc-style.mdc
 
@@ -83,7 +83,7 @@ Defines documentation standards:
 - Inline documentation
 - When to document
 
-See: [`templates/.cursor/rules/doc-style.mdc`](./templates/.cursor/rules/doc-style.mdc)
+See: `templates/.cursor/rules/doc-style.mdc`
 
 ---
 
@@ -142,8 +142,8 @@ Create package-specific rules:
 
 ## Prerequisites
 
-- [Module 1: Quick Start](../01-quick-start/) - AGENTS.md (optional but recommended)
+- [Module 1: Quick Start](../01-quick-start/README.md) - AGENTS.md (optional but recommended)
 
 ## What's Next?
 
-- [Module 3: Feature Development](../03-feature-development/) - Workflows for building features
+- [Module 3: Feature Development](../03-feature-development/README.md) - Workflows for building features
