@@ -16,7 +16,7 @@ git init
 
 ### Step 2: Add AGENTS.md
 
-Copy the minimal template from [Module 1](../modules/01-quick-start/templates/AGENTS.md):
+Copy the minimal template from [Module 1](../modules/01-quick-start/templates/AGENTS-single-app.md):
 
 ```bash
 # Create AGENTS.md at project root
@@ -50,10 +50,10 @@ mkdir -p docs/{specs,features,decisions}
 
 | File | Source |
 |------|--------|
-| `AGENTS.md` | [Module 1 template](../modules/01-quick-start/templates/AGENTS.md) |
+| `AGENTS.md` | [Module 1 template](../modules/01-quick-start/templates/AGENTS-single-app.md) |
 | `.cursor/rules/code-style.mdc` | [Module 2 template](../modules/02-coding-standards/templates/.cursor/rules/code-style.mdc) |
 | `.cursor/rules/doc-style.mdc` | [Module 2 template](../modules/02-coding-standards/templates/.cursor/rules/doc-style.mdc) |
-| `.cursor/rules/feature-workflow.mdc` | [Module 3 rule](../modules/03-feature-development/rules/feature-workflow.mdc) |
+| `.cursor/rules/feature-workflow.mdc` | [Module 3 template](../modules/03-feature-development/templates/) |
 | `docs/INDEX.md` | [Module 4 template](../modules/04-reference-docs/templates/docs-index.md) |
 
 ### Step 3: Customize Templates

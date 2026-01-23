@@ -8,7 +8,7 @@
 
 ## Status
 
-**Proposed** | **Accepted** | **Deprecated** | **Superseded by ADR-XXX**
+**Proposed** | **Accepted** | **Deprecated** | **Superseded by [ADR-XXX](./XXX-title.md)**
 
 ---
 
@@ -83,9 +83,9 @@
 
 ## References
 
-- Research doc: `specs/_archive/[feature]/research.md` (if applicable)
-- External resources: [URLs]
-- Related ADRs: `decisions/NNN-[related].md`
+- [Research doc](../specs/_archive/<feature>/research.md) (if applicable)
+- [External resource](URL)
+- [Related ADR](./XXX-related.md)
 
 ---
 

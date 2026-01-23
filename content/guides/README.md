@@ -123,7 +123,7 @@ When asked to apply this methodology:
 | Resource | Purpose |
 |----------|---------|
 | [Modules Index](../modules/README.md) | Overview of all modules |
-| [Main README](../../README.md) | Project overview |
+| Main README | Project overview (root of repo) |
 | [Methodology](../methodology.md) | Full philosophy |
 | [AGENTS.md Best Practices](./agents-md-best-practices.md) | Research-backed writing guide |
 | [Tool Compatibility](./tool-compatibility.md) | Multi-tool setup |

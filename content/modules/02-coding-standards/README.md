@@ -4,6 +4,17 @@
 
 ---
 
+## The Problem
+
+AI generates code in its own style, not yours. Without guidance:
+- Naming varies: `getUserById` vs `fetchUser` vs `get_user`
+- Patterns differ: functional vs class components, default vs named exports
+- Documentation inconsistent: some files documented, others not
+
+**The solution**: Give AI explicit rules it reads before generating code.
+
+---
+
 ## What This Module Does
 
 Provides Cursor rule templates (`.mdc` files) that tell AI agents how to write code and documentation consistently in your project.

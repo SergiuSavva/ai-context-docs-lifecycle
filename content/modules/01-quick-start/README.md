@@ -4,9 +4,20 @@
 
 ---
 
+## The Problem
+
+AI coding assistants have no memory. Every session starts fresh, leading to:
+- Generic code that doesn't match your patterns
+- Repeated explanations of your tech stack
+- Suggestions that conflict with past decisions
+
+**The solution**: Give AI a context file it reads first.
+
+---
+
 ## What This Module Does
 
-Provides a compact `AGENTS.md` file that AI coding assistants read first to understand your project. Uses the **router pattern** - a lean file (~50-70 lines) that references detailed docs dynamically.
+Provides a compact `AGENTS.md` file that AI coding assistants read first to understand your project. Uses the **router pattern** - a lean file (50-80 lines, 150 max) that references detailed docs dynamically.
 
 **Why the router pattern?**
 - Token efficiency: Load only relevant context
@@ -80,19 +91,21 @@ The AI will:
 ### Single App (5 minutes)
 
 1. Copy [`templates/AGENTS-single-app.md`](./templates/AGENTS-single-app.md) to project root as `AGENTS.md`
-2. Fill in Overview, Stack, Commands
-3. Add references to your docs in "Context Loading" section
-4. Done!
+2. Copy [`templates/.acdl/`](./templates/.acdl/) folder to project root
+3. Fill in Overview, Stack, Commands
+4. Add references to your docs in "Context Loading" section
+5. Done!
 
 ### Monorepo (10-15 minutes)
 
 1. Copy [`templates/AGENTS-monorepo-root.md`](./templates/AGENTS-monorepo-root.md) to monorepo root as `AGENTS.md`
-2. Fill in structure and subproject routing table
-3. For each package/service:
+2. Copy [`templates/.acdl/`](./templates/.acdl/) folder to monorepo root
+3. Fill in structure and subproject routing table
+4. For each package/service:
    - Copy [`templates/AGENTS-monorepo-subproject.md`](./templates/AGENTS-monorepo-subproject.md)
    - Place as `packages/[name]/AGENTS.md` or `services/[name]/AGENTS.md`
    - Fill in package-specific details
-4. Done!
+5. Done!
 
 ---
 
@@ -128,3 +141,4 @@ Once you have Quick Start working, consider adding:
 
 - [AGENTS.md Best Practices](../../guides/agents-md-best-practices.md) - Research-backed writing guide
 - [Tool Compatibility](../../guides/tool-compatibility.md) - Setup for Cursor, Claude Code, Copilot
+- **Example**: This project's `AGENTS.md` at repo root - See the router pattern in action

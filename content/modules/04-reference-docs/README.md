@@ -4,6 +4,17 @@
 
 ---
 
+## The Problem
+
+Documentation rots. Within weeks of writing, docs become:
+- Outdated (code changed, docs didn't)
+- Misleading (worse than no docs)
+- Ignored (developers stop trusting them)
+
+**The solution**: Every doc is either current or deleted. No stale docs allowed.
+
+---
+
 ## What This Module Does
 
 Provides templates and rules for maintaining documentation that AI agents and humans can rely on. Documents are either **current** or **deleted** - no stale docs allowed.
@@ -60,26 +71,26 @@ If a doc is not current, either **update it** or **delete it**.
 
 The primary context file for AI agents. Should be readable in < 2 minutes.
 
-### Required Sections
+### Core Sections
 
-1. **Quick Start** - Install, dev, test commands
-2. **Project Overview** - What this does (1-2 sentences)
-3. **Tech Stack** - Main technologies (table)
-4. **File Organization** - Where things live (tree)
-5. **Key Patterns** - How things are done (bullets)
-6. **Common Gotchas** - What to avoid (numbered)
+1. **Overview** - What this does (1-2 sentences)
+2. **Tech Stack** - Technologies and versions (table)
+3. **Commands** - Install, dev, test, build
+4. **Structure** - File organization (tree)
+5. **Context Loading** - References to detailed docs
+6. **Boundaries** - Always / Ask First / Never rules
 
 ### Update Triggers
 
 | Event | Update Section |
 |-------|----------------|
 | New tech added | Tech Stack |
-| New pattern established | Key Patterns |
-| File structure changed | File Organization |
-| New gotcha discovered | Common Gotchas |
+| File structure changed | Structure |
+| New context sources | Context Loading |
+| New boundary rules | Boundaries |
 | Complex Flow complete | Feature map (if present) |
 
-See: [`templates/AGENTS.md`](./templates/AGENTS.md)
+See: [Module 1 AGENTS.md Templates](../01-quick-start/templates/)
 
 ---
 
@@ -175,7 +186,7 @@ Key rules:
 
 ## Cursor Rule
 
-Copy [`rules/reference-freshness.mdc`](./rules/reference-freshness.mdc) to enforce freshness during AI workflows.
+Copy [`templates/.cursor/rules/reference-freshness.mdc`](./templates/.cursor/rules/reference-freshness.mdc) to enforce freshness during AI workflows.
 
 ---
 

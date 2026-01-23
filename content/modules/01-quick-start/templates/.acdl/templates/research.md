@@ -144,8 +144,8 @@ sequenceDiagram
 - [Tutorial](URL)
 
 ### Related
-- `decisions/NNN-[related].md` (if applicable)
-- `docs/features/[related]/` (if applicable)
+- [Related ADR](../decisions/NNN-related.md)
+- [Related feature](../features/related/)
 
 ---
 

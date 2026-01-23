@@ -4,6 +4,18 @@
 
 ---
 
+## The Problem
+
+Without structure, AI builds features chaotically:
+- No clear starting point or validation checkpoints
+- Progress invisible (is it 20% done or 80%?)
+- Decisions made and forgotten
+- No way to resume after interruption
+
+**The solution**: A three-phase workflow with task tracking and user validation.
+
+---
+
 ## What This Module Does
 
 Provides a three-phase workflow for AI agents: **Research → Plan → Implement**. The AI decides which documents to create based on feature complexity.
@@ -190,6 +202,34 @@ The methodology provides structure. The AI agent decides specifics:
 | Three phases | Which optional docs to create |
 | Document catalog | Level of detail needed |
 | Task markers | Task granularity |
+
+---
+
+## AGENTS.md Integration
+
+Add feature specs to your Context Loading section:
+
+```markdown
+## Context Loading
+
+| Task | Read First |
+|------|------------|
+| Current feature | @specs/[feature]/spec.md |
+| Task status | @specs/[feature]/tasks.md |
+| Feature workflow | @.cursor/rules/feature-workflow.mdc |
+```
+
+---
+
+## Cursor Rule
+
+Copy the workflow rule to your project:
+
+```bash
+cp templates/.cursor/rules/feature-workflow.mdc .cursor/rules/
+```
+
+See: [`templates/.cursor/rules/feature-workflow.mdc`](./templates/.cursor/rules/feature-workflow.mdc)
 
 ---
 

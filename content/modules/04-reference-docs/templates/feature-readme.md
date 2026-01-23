@@ -115,8 +115,8 @@ function MyComponent() {
 
 ## Related
 
-- **ADR**: [ADR-NNN](../../decisions/NNN-title.md) - [Why we built it this way]
-- **Feature**: [Related Feature](../related-feature/) - [How they connect]
+- **ADR**: `decisions/NNN-[title].md` - [Why we built it this way]
+- **Feature**: `docs/features/[related]/` - [How they connect]
 - **External**: [Documentation link](URL) - [What it explains]
 
 ---

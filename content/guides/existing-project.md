@@ -24,7 +24,7 @@ Before adding anything, check what exists:
 If you only want AI context without changing your workflow:
 
 1. Create `AGENTS.md` at project root
-2. Fill in from [Module 1 template](../modules/01-quick-start/templates/AGENTS.md)
+2. Fill in from [Module 1 templates](../modules/01-quick-start/templates/)
 3. Done!
 
 ```

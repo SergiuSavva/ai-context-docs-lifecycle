@@ -10,7 +10,7 @@
 | State | Meaning |
 |-------|---------|
 | 💡 Idea | Concept, not yet specified |
-| 📋 Specified | Has feature spec in `docs/specs/` |
+| 📋 Specified | Has feature spec in `specs/` |
 | ✅ Ready | Spec approved, ready to build |
 | 🔨 In Progress | Currently being implemented |
 | ✓ Complete | Shipped and documented |
@@ -24,9 +24,9 @@ Features to build first.
 
 | Feature | State | Spec | Notes |
 |---------|-------|------|-------|
-| [User Authentication] | 🔨 In Progress | [specs/auth/](./specs/auth/) | OAuth with Google |
-| [Dashboard] | 📋 Specified | [specs/dashboard/](./specs/dashboard/) | User home page |
-| [Feature 3] | ✅ Ready | [specs/feature3/](./specs/feature3/) | |
+| [Feature Name] | 🔨 In Progress | `specs/[feature]/` | [Notes] |
+| [Feature Name] | 📋 Specified | `specs/[feature]/` | [Notes] |
+| [Feature Name] | ✅ Ready | `specs/[feature]/` | |
 
 ---
 
@@ -36,9 +36,9 @@ Build after high priority complete.
 
 | Feature | State | Spec | Notes |
 |---------|-------|------|-------|
-| [Feature 4] | 💡 Idea | - | Needs research |
-| [Feature 5] | 💡 Idea | - | |
-| [Feature 6] | 📋 Specified | [specs/feature6/](./specs/feature6/) | |
+| [Feature Name] | 💡 Idea | - | Needs research |
+| [Feature Name] | 💡 Idea | - | |
+| [Feature Name] | 📋 Specified | `specs/[feature]/` | |
 
 ---
 
@@ -57,8 +57,8 @@ Nice to have, build if time permits.
 
 | Feature | Completed | Docs |
 |---------|-----------|------|
-| [Core Setup] | 2026-01-15 | [features/setup/](./features/setup/) |
-| [Feature 0] | 2026-01-18 | [features/feature0/](./features/feature0/) |
+| [Feature Name] | [Date] | `docs/features/[feature]/` |
+| [Feature Name] | [Date] | `docs/features/[feature]/` |
 
 ---
 
@@ -76,7 +76,7 @@ Nice to have, build if time permits.
 
 1. Add to appropriate priority section
 2. State: 💡 Idea
-3. When ready to spec, create `docs/specs/<feature>/`
+3. When ready to spec, create `specs/<feature>/`
 4. Update state to 📋 Specified
 
 ### Starting a Feature

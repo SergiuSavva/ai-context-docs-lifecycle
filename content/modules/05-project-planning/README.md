@@ -4,6 +4,19 @@
 
 ---
 
+## The Problem
+
+When you have multiple features to build:
+- "What should I build next?" - No clear priorities
+- "How far along is the project?" - Progress scattered across feature specs
+- "What's the vision?" - No single source of truth
+
+**The solution**: Project-level documents that AI agents can read to understand priorities and progress.
+
+**Note**: If you use Jira, Linear, or GitHub Projects, you may not need this module. Its value is keeping planning docs in-repo where AI can read them.
+
+---
+
 ## What This Module Does
 
 Provides templates for tracking multiple features, prioritizing work, and maintaining a project-level vision. This is the only module where a project-level PRD (Product Requirements Document) lives.
@@ -89,7 +102,7 @@ See: [`templates/TASKS.md`](./templates/TASKS.md)
 | Aspect | Feature Spec | Project PRD |
 |--------|--------------|-------------|
 | **Scope** | Single feature | Entire product |
-| **Location** | `docs/specs/<feature>/` | `docs/PROJECT-PRD.md` |
+| **Location** | `specs/<feature>/` | `docs/PROJECT-PRD.md` |
 | **Lifecycle** | Ephemeral (delete after) | Evergreen (keep updated) |
 | **Content** | Problem, scope, tasks | Vision, users, metrics |
 | **When Created** | Before each feature | Once per project |
@@ -107,7 +120,7 @@ See: [`templates/TASKS.md`](./templates/TASKS.md)
 ### Adding Features
 
 1. Add to BACKLOG.md as "Idea"
-2. When ready to spec, create `docs/specs/<feature>/`
+2. When ready to spec, create `specs/<feature>/`
 3. Update BACKLOG.md status to "Specified"
 
 ### Building Features

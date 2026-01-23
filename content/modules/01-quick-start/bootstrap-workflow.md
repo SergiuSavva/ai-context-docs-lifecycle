@@ -7,7 +7,7 @@
 ## Goal
 
 Create or update `AGENTS.md` to give AI agents immediate context about the project.
-**Strategy**: Keep `AGENTS.md` concise (< 150 lines) and generate detailed reference docs only if needed.
+**Strategy**: Keep `AGENTS.md` concise (50-80 lines, 150 max) and generate detailed reference docs only if needed.
 
 ---
 

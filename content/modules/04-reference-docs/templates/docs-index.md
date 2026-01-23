@@ -7,7 +7,7 @@
 
 ## Quick Links
 
-- [AGENTS.md](../AGENTS.md) - AI context and quick reference
+- `AGENTS.md` (project root) - AI context and quick reference
 - [Getting Started](#getting-started)
 - [Architecture](#architecture)
 
@@ -44,7 +44,7 @@ npm run dev
 
 ## Architecture
 
-See [AGENTS.md](../AGENTS.md) for tech stack and patterns.
+See `AGENTS.md` (project root) for tech stack and patterns.
 
 ```mermaid
 flowchart TB
@@ -69,21 +69,21 @@ flowchart TB
 
 | Feature | Status | Documentation |
 |---------|--------|---------------|
-| [Auth] | Complete | [docs/features/auth/](./features/auth/) |
-| [Feature 2] | Complete | [docs/features/feature2/](./features/feature2/) |
-| [Feature 3] | In Progress | [docs/specs/feature3/](./specs/feature3/) |
+| [Feature Name] | Complete | `docs/features/[feature]/` |
+| [Feature Name] | Complete | `docs/features/[feature]/` |
+| [Feature Name] | In Progress | `specs/[feature]/` |
 
-### [Auth]
+### [Feature Name]
 
-[Brief description of auth feature]
+[Brief description of feature]
 
-See: [Auth Documentation](./features/auth/README.md)
+See: `docs/features/[feature]/README.md`
 
-### [Feature 2]
+### [Feature Name]
 
 [Brief description]
 
-See: [Feature 2 Documentation](./features/feature2/README.md)
+See: `docs/features/[feature]/README.md`
 
 ---
 
@@ -93,9 +93,11 @@ Architecture Decision Records document why we made significant choices.
 
 | # | Decision | Status |
 |---|----------|--------|
-| [001](./decisions/001-database-choice.md) | [Database Choice] | Accepted |
-| [002](./decisions/002-auth-provider.md) | [Auth Provider] | Accepted |
-| [003](./decisions/003-state-management.md) | [State Management] | Accepted |
+| 001 | [Decision Title] | Accepted |
+| 002 | [Decision Title] | Accepted |
+| 003 | [Decision Title] | Accepted |
+
+Location: `decisions/NNN-[title].md`
 
 ---
 
@@ -105,7 +107,7 @@ Current work in progress:
 
 | Feature | Spec | Status |
 |---------|------|--------|
-| [Feature Name] | [docs/specs/feature/](./specs/feature/) | [In Progress] |
+| [Feature Name] | `specs/[feature]/` | [In Progress] |
 
 ---
 
@@ -113,7 +115,7 @@ Current work in progress:
 
 ### Before You Start
 
-1. Read [AGENTS.md](../AGENTS.md) for context
+1. Read `AGENTS.md` (project root) for context
 2. Check [Active Development](#active-development) for current work
 3. Review relevant [ADRs](#decisions-adrs)
 

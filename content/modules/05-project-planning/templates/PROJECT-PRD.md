@@ -131,7 +131,7 @@
 
 ### Key Technical Decisions
 
-See `docs/decisions/` for ADRs.
+See `decisions/` for ADRs.
 
 ---
 
@@ -156,9 +156,9 @@ See `docs/decisions/` for ADRs.
 
 ## Related Documents
 
-- [ROADMAP.md](./ROADMAP.md) - Phase planning
-- [BACKLOG.md](./BACKLOG.md) - Feature prioritization
-- [AGENTS.md](../AGENTS.md) - AI context
+- `docs/ROADMAP.md` - Phase planning
+- `docs/BACKLOG.md` - Feature prioritization  
+- `AGENTS.md` - AI context (project root)
 
 ---
 

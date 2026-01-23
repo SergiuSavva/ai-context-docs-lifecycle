@@ -14,7 +14,7 @@ A standardized markdown file that serves as **"a README for AI agents"**. It pro
 
 ## The Router Pattern (Recommended)
 
-Keep AGENTS.md **compact (~50-80 lines)** and reference detailed docs dynamically.
+Keep AGENTS.md **compact (50-80 lines, 150 max)** and reference detailed docs dynamically.
 
 ### Why?
 
@@ -29,7 +29,7 @@ Keep AGENTS.md **compact (~50-80 lines)** and reference detailed docs dynamicall
 
 ```
 project/
-├── AGENTS.md                 # Compact router (50-80 lines)
+├── AGENTS.md                 # Compact router (50-80 lines, 150 max)
 ├── docs/
 │   ├── architecture.md       # Detailed architecture
 │   ├── testing.md            # Testing guidelines
@@ -122,7 +122,7 @@ The `@path/to/file` syntax works in Claude Code. Other tools use hierarchical di
 
 ### 5. Keep It Concise
 
-- Aim for **50-80 lines** in root AGENTS.md
+- Aim for **50-80 lines (150 max)** in root AGENTS.md
 - Move detailed content to referenced docs
 - Every line should earn its place
 
@@ -169,7 +169,7 @@ monorepo/
 
 ### Root AGENTS.md (Router Pattern)
 
-The root file should be **minimal (~50 lines)** - just routing:
+The root file should be **minimal (50-80 lines)** - just routing:
 
 ```markdown
 # Acme Monorepo

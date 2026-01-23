@@ -9,6 +9,9 @@ alwaysApply: false
 
 # Feature Development Workflow
 
+> **Template**: Copy to `.cursor/rules/feature-workflow.mdc`
+> This rule activates when working in specs/ or source code directories.
+
 ## Three Phases
 
 ```
@@ -142,3 +145,21 @@ Create an ADR in `decisions/` when ANY of these are true:
 - Introduced a new architectural pattern
 - Made a breaking change
 - Chose a third-party library/service
+
+---
+
+## Templates Reference
+
+Templates location: `.acdl/templates/`
+
+| Template | Required | Copy To |
+|----------|----------|---------|
+| `spec.md` | Yes | `specs/[feature]/spec.md` |
+| `tasks.md` | Yes | `specs/[feature]/tasks.md` |
+| `research.md` | No | `specs/[feature]/research.md` |
+| `design.md` | No | `specs/[feature]/design.md` |
+| `plan.md` | No | `specs/[feature]/plan.md` |
+| `user-stories.md` | No | `specs/[feature]/user-stories.md` |
+| `adr.md` | No | `decisions/NNN-[title].md` |
+
+Quick reference: `.acdl/README.md`

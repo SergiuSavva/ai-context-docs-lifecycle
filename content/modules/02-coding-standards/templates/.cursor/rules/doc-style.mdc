@@ -1,144 +1,127 @@
 ---
-description: Documentation style and standards
+description: Documentation style - minimal, valuable, structured
 globs:
   - "**/*.md"
-  - "**/README*"
-  - "**/AGENTS*"
-alwaysApply: false
+  - "docs/**/*"
 ---
 
-# Documentation Style
+# Doc Style
 
-> **Template**: Customize this for your project's documentation standards.
+> **Template**: Copy to `.cursor/rules/doc-style.mdc`
+> These rules apply when AI generates or edits documentation.
 
-## Principles
+---
 
-1. **Minimal**: Only document what provides value
-2. **Current**: Update or delete - no stale docs
-3. **Scannable**: Use headers, bullets, tables
-4. **Actionable**: Tell readers what to DO
+## Three Rules
 
-## File Types
+1. **Value only** - Include only information that helps someone
+2. **Mermaid for diagrams** - Visual > text for complex flows
+3. **Structure over prose** - Tables and bullets, not paragraphs
 
-| File | Purpose | Update Frequency |
-|------|---------|------------------|
-| README.md | Project overview | When structure changes |
-| AGENTS.md | AI context | When patterns/stack changes |
-| Feature README | How feature works | When feature changes |
-| ADR | Why decisions made | Once (immutable) |
+---
 
-## Structure
+## Value Only
 
-### README Files
+Ask: "Does this help someone do something?"
 
-```markdown
-# [Name]
-
-> One-line description
-
-## Quick Start
-[How to get running]
-
-## Overview
-[What this does]
-
-## [Main Sections]
-[Details]
-```
-
-### AGENTS.md
+| Include | Skip |
+|---------|------|
+| How to do X | History of X |
+| What to avoid | Obvious statements |
+| Quick reference | Verbose explanations |
 
 ```markdown
-# [Project] - AI Agent Instructions
+# Good: Actionable
+Run `npm install` then `npm run dev`
 
-## Quick Start
-## Project Overview
-## Tech Stack
-## File Organization
-## Key Patterns
-## Common Gotchas
+# Bad: No value added
+This project uses npm for package management.
 ```
 
-## Formatting
+---
 
-### Headers
+## Diagrams vs Tables
 
-- Use sentence case: "Getting started" not "Getting Started"
-- Max 3 levels deep (##, ###, ####)
-- Don't skip levels
+| Context | Use |
+|---------|-----|
+| **AI-read files** (AGENTS.md, .mdc rules) | Tables - fewer tokens, AI parses text not visuals |
+| **Human-read docs** (READMEs, guides) | Mermaid - visual clarity for complex flows |
 
-### Lists
+### When to Use Mermaid
 
-- Use `-` for unordered lists
-- Use `1.` for ordered lists
-- Keep items parallel in structure
-
-### Code Blocks
-
-- Always specify language
-- Keep examples minimal but complete
-- Use comments sparingly
-
-```typescript
-// Good - minimal, complete example
-const user = await getUser(id);
-```
-
-### Tables
-
-- Use for comparisons or structured data
-- Keep columns to 3-4 max
-- Align text left
-
-### Links
-
-- Use relative links for internal docs
-- Use descriptive link text
-- Check links work
-
-```markdown
-// Good
-See [the setup guide](./setup.md)
-
-// Bad
-Click [here](./setup.md)
-```
-
-## When to Document
-
-### Always Document
-
-- Setup/installation steps
-- Environment variables
-- API endpoints
-- Architecture decisions (ADR)
-- Non-obvious patterns
-
-### Don't Document
-
-- Obvious code behavior
-- Implementation details that change often
-- Things better shown by tests
-- Duplicates of other docs
-
-## Diagrams
-
-- Use Mermaid for diagrams (docs as code)
-- Keep diagrams simple
-- Include alt text description
-
-```markdown
-## Data Flow
+- Workflows with 4+ steps
+- Architecture with multiple components
+- Sequence diagrams (interactions)
 
 ```mermaid
 flowchart LR
-    A[User] --> B[API]
-    B --> C[Database]
-```
+    Spec --> Build --> Review --> Deploy
 ```
 
-## Maintenance
+### When to Use Tables
 
-- Review docs when changing related code
-- Delete outdated docs immediately
-- Keep AGENTS.md as source of truth
+- Simple relationships (A references B)
+- Lists of items with attributes
+- AGENTS.md Context Loading section
+
+```markdown
+| Module 1 | → | Module 2 |
+|----------|---|----------|
+| AGENTS.md | references | .cursor/rules |
+```
+
+Keep diagrams simple. If it needs explanation, simplify it.
+
+---
+
+## Structure Over Prose
+
+| Instead of... | Use... |
+|---------------|--------|
+| Long paragraphs | Bullet points |
+| Inline lists | Tables |
+| Narrative | Headers + short sections |
+
+```markdown
+# Good: Scannable
+| Command | Purpose |
+|---------|---------|
+| `dev` | Start server |
+| `test` | Run tests |
+
+# Bad: Wall of text
+To start the development server you can run the dev command.
+If you want to run tests instead, use the test command.
+```
+
+---
+
+## Customization
+
+Add your project-specific documentation patterns below:
+
+### README Structure
+
+```markdown
+# [Project Name]
+
+## Quick Start
+## Overview
+## Installation
+## Usage
+## API Reference
+## Contributing
+```
+
+### Code Comments
+
+```
+# When to comment:
+- Complex algorithms
+- Non-obvious business logic
+- Workarounds with context
+
+# When NOT to comment:
+- Self-explanatory code
+- Obvious variable assignments
+```

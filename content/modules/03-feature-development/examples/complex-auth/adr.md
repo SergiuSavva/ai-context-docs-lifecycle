@@ -110,7 +110,7 @@ Use **Google OAuth 2.0** via **NextAuth.js** with **database-backed sessions**.
 
 ## References
 
-- [Research document](../specs/_archive/oauth-auth/research.md)
+- Research document: `specs/_archive/oauth-auth/research.md`
 - [NextAuth.js Documentation](https://next-auth.js.org/)
 - [Google OAuth Documentation](https://developers.google.com/identity/protocols/oauth2)
 

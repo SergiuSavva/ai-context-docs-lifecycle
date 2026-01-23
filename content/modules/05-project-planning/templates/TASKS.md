@@ -21,21 +21,21 @@
 
 | Feature | Completed | ADR |
 |---------|-----------|-----|
-| Core Setup | 2026-01-15 | - |
-| Database Schema | 2026-01-16 | [ADR-001](./decisions/001-database.md) |
+| [Core Setup] | [Date] | - |
+| [Database Schema] | [Date] | `decisions/001-database.md` |
 
 ### 🔨 In Progress
 
 | Feature | Progress | Spec | Blocked |
 |---------|----------|------|---------|
-| User Auth | 60% | [specs/auth/](./specs/auth/) | No |
+| [Feature Name] | [X]% | `specs/[feature]/` | No |
 
 ### 📋 Up Next
 
 | Feature | Priority | Spec |
 |---------|----------|------|
-| Dashboard | High | [specs/dashboard/](./specs/dashboard/) |
-| Profile | Medium | Not started |
+| [Feature Name] | High | `specs/[feature]/` |
+| [Feature Name] | Medium | Not started |
 
 ---
 

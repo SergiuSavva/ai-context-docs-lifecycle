@@ -1,4 +1,4 @@
-# ADR-001: AGENTS.md Router Pattern with Dynamic Context Loading
+# ADR-002: AGENTS.md Router Pattern with Dynamic Context Loading
 
 ## Status
 
@@ -26,7 +26,7 @@ Research was conducted analyzing 2,500+ repositories and official documentation 
 
 Adopt the **Router Pattern** for AGENTS.md files:
 
-1. **Compact root file** (~50-80 lines) that routes to detailed docs
+1. **Compact root file** (50-80 lines, 150 max) that routes to detailed docs
 2. **Dynamic context loading** via `@path/to/file.md` references
 3. **Three-tier boundaries** (Always / Ask First / Never)
 4. **Separate templates** for single apps vs monorepos
