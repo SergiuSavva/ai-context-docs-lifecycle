@@ -240,6 +240,19 @@ Contributions welcome:
 
 ---
 
+## Inspired By
+
+This methodology draws from several Spec-Driven Development (SDD) approaches:
+
+| Project | Inspiration |
+|---------|-------------|
+| [Spec-Kit](https://github.com/github/spec-kit) | Structured spec workflow, Constitution concept |
+| [cc-sdd](https://github.com/ultrawideturbodev/cc-sdd) | Kiro-style SDD, EARS requirements format |
+| [Spec-Flow](https://github.com/ChrisLally/Spec-Flow) | Work sizing, quality gates |
+| [OpenSpec](https://github.com/openspec-ai/openspec) | Delta format for changes |
+
+---
+
 ## License
 
 MIT License — Use freely in your projects.
