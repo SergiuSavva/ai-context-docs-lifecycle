@@ -1,0 +1,88 @@
+---
+description: Universal quality principles for code, docs, architecture, and planning
+globs:
+  - "**/*"
+---
+
+# Quality Principles
+
+> **For AI Agents**: Apply these principles to all work - code, documentation, architecture decisions, and planning. They are universal quality standards.
+
+---
+
+## Core Quality Principles
+
+| Keyword | Description |
+|---------|-------------|
+| **Robust** | Handle edge cases, validate inputs, graceful error handling |
+| **Reliable** | Consistent behavior, predictable outcomes, well-tested |
+| **Maintainable** | Easy to read, modify, and extend by others |
+| **Pragmatic** | Solve real problems, no over-engineering |
+| **Flexible** | Adapts to changing requirements without major rewrites |
+| **Testable** | Structured for easy verification and validation |
+
+---
+
+## Quality Directives
+
+| Directive | Meaning |
+|-----------|---------|
+| **Self-documenting** | Names and structure reveal intent |
+| **Explicit over implicit** | No magic, clear flow and reasoning |
+| **Fail fast** | Validate early, surface issues loudly |
+| **Defensive** | Assume inputs/assumptions can be wrong |
+| **Idiomatic** | Follow established conventions |
+| **Consistent** | Same patterns throughout the project |
+
+---
+
+## Principles in Practice
+
+### Robust
+
+- Validate inputs and assumptions at boundaries
+- Handle edge cases explicitly
+- Fail gracefully with useful feedback
+
+### Reliable
+
+- Predictable behavior, no surprises
+- Well-tested with clear contracts
+- No hidden side effects or dependencies
+
+### Maintainable
+
+- Clear structure and naming
+- Small, focused units (functions, sections, decisions)
+- Comments/rationale explain "why", content explains "what"
+
+### Pragmatic
+
+- Solve real problems, not hypothetical ones
+- No premature abstraction or over-engineering
+- Right-size solutions for current needs
+
+### Flexible
+
+- Composition over rigid hierarchies
+- Easy to modify without breaking other parts
+- Configuration over hardcoding
+
+### Testable
+
+- Pure functions and clear boundaries where possible
+- Dependencies injectable/replaceable
+- Clear inputs, outputs, and success criteria
+
+---
+
+## Quick Reference
+
+When working on anything, ask:
+
+1. **Robust?** — What if inputs/assumptions are wrong?
+2. **Reliable?** — Is the behavior/outcome predictable?
+3. **Maintainable?** — Will someone else understand this?
+4. **Pragmatic?** — Am I solving a real problem or a hypothetical one?
+5. **Flexible?** — Can this change without breaking other things?
+6. **Testable?** — Can this be verified/validated easily?
