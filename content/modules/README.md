@@ -8,7 +8,7 @@
 
 | # | Module | Purpose | Time |
 |---|--------|---------|------|
-| 1 | [Quick Start](./01-quick-start/README.md) | Minimal AI context (AGENTS.md) | 5 min |
+| 1 | [Core Init](./01-quick-start/README.md) | Comprehensive AI context (AGENTS.md) | - |
 | 2 | [Coding Standards](./02-coding-standards/README.md) | Code & doc style rules | 10 min |
 | 3 | [Feature Development](./03-feature-development/README.md) | Workflows for building features | 15 min |
 | 4 | [Reference Docs](./04-reference-docs/README.md) | Documentation structure | 20 min |

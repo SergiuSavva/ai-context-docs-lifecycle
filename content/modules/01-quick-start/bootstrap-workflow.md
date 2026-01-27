@@ -1,6 +1,6 @@
 # AGENTS.md Bootstrap Workflow
 
-> **Workflow for AI agents to analyze a project and generate/update context files.**
+> **Comprehensive workflow for AI agents to analyze a project and generate/update context files.**
 
 ---
 
@@ -8,6 +8,8 @@
 
 Create or update `AGENTS.md` to give AI agents immediate context about the project.
 **Strategy**: Keep `AGENTS.md` concise (50-80 lines, 150 max) and generate detailed reference docs only if needed.
+
+**This is a full core initialization** - thorough analysis and setup, not a quick template copy.
 
 ---
 
@@ -22,7 +24,9 @@ flowchart LR
     subgraph detect [1. Detect]
         A1[Check AGENTS.md exists]
         A2[Identify tech stack]
-        A3[Assess complexity]
+        A3[Assess complexity + gather initial data]
+        A4[Create docs/ folder]
+        A5[Write Reference Docs with initial data]
     end
     subgraph analyze [2. Analyze]
         B1[Scan structure]
@@ -35,7 +39,7 @@ flowchart LR
     end
     subgraph create [4. Create]
         D1[Write AGENTS.md]
-        D2[Write Ref Docs]
+        D2[Enhance Ref Docs]
         D3[Suggest next modules]
     end
     ask --> detect --> analyze --> preview --> create
@@ -76,6 +80,17 @@ flowchart LR
 ---
 
 ## Phase 1: Detection
+
+### 1.0 Inventory Existing Docs
+
+Before writing anything, check what already exists:
+
+1. **Inventory** existing docs (paths + purpose)
+2. **Assess** each doc: keep / update / replace / delete
+3. **Map** usable docs into the `AGENTS.md` context loading table
+4. **Plan** only missing docs needed for coverage
+
+If inventory is empty, proceed to create from templates. If docs exist, integrate them.
 
 ### 1.1 Check if AGENTS.md exists
 
@@ -127,14 +142,44 @@ If user selected monorepo but asked you to scan for subprojects:
 
 ### 1.4 Assess Complexity (Tier Selection)
 
-Determine which additional docs are needed based on thresholds:
+Determine which additional docs are needed based on thresholds AND gather initial data for those docs:
 
-| Signal | Threshold | Generated Doc | Template |
-|--------|-----------|---------------|----------|
-| **Monorepo** | Detected | `docs/architecture.md` | `templates/docs/architecture.md` |
-| **Components** | > 20 files in `components/` | `docs/components.md` | `templates/docs/components.md` |
-| **API** | `routes/` or `api/` folder exists | `docs/api.md` | `templates/docs/api.md` |
-| **Structure** | > 10 top-level folders | `docs/structure.md` | (Auto-generated tree) |
+| Signal | Threshold | Generated Doc | Template | Initial Data to Gather |
+|--------|-----------|---------------|----------|------------------------|
+| **Monorepo** | Detected | `docs/architecture.md` | `templates/docs/architecture.md` | Top-level folder structure, service names |
+| **Components** | > 20 files in `components/` | `docs/components.md` | `templates/docs/components.md` | List of component file names (first 20-30) |
+| **API** | `routes/` or `api/` folder exists | `docs/api.md` | `templates/docs/api.md` | Route file names, endpoint patterns |
+| **Structure** | > 10 top-level folders | `docs/structure.md` | (Auto-generated tree) | Directory tree structure |
+
+**During scan, capture:**
+- File names and paths (for components, API routes)
+- Folder structure (for architecture, structure docs)
+- Basic patterns detected (naming conventions, organization style)
+
+**Store this initial data** to populate docs in Phase 1.5.
+
+### 1.5 Create Reference Docs (Conditional)
+
+**Purpose**: Create docs immediately after complexity assessment WITH initial data from Phase 1.4 scan. This ensures docs exist with useful content when AGENTS.md references them, enabling AGENTS.md to offload large context into separate docs.
+
+Follow these steps in order:
+
+1. **Check if reference docs are needed**: Review Phase 1.4 assessment to determine which docs to generate (e.g., `docs/architecture.md`, `docs/components.md`, `docs/api.md`).
+
+2. **Create `docs/` folder FIRST** (if any reference docs are needed):
+   - **REQUIRED**: Create the `docs/` folder at project root before writing any reference doc files
+   - If the folder already exists, skip this step
+   - This step MUST be completed before proceeding to step 3
+
+3. **Generate specific docs with initial data**: For each doc identified in Phase 1.4:
+   - Create the file in `docs/` using the appropriate template from `templates/docs/`
+   - Populate with initial data gathered during Phase 1.4 scan:
+     - `docs/components.md`: List component file names discovered
+     - `docs/api.md`: List route files/endpoints found
+     - `docs/architecture.md`: Add folder structure and service names
+     - `docs/structure.md`: Add directory tree
+
+4. **Note**: These docs will be enhanced with detailed analysis in Phase 4.2, but they already contain useful initial content from the Phase 1.4 scan.
 
 ---
 
@@ -194,7 +239,7 @@ Create `AGENTS.md` in project root using the tiered structure:
 ```markdown
 # [Project Name] - AI Agent Instructions
 
-## Quick Start
+## Commands
 [Detected commands]
 
 ## Project Overview
@@ -216,11 +261,18 @@ Create `AGENTS.md` in project root using the tiered structure:
 | API | [docs/api.md] | working on endpoints |
 ```
 
-### 4.2 Write Reference Docs (Conditional)
+### 4.2 Enhance Reference Docs (Conditional)
 
-- Create `docs/` folder if needed
-- Generate specific docs based on Phase 1.4 assessment
-- Populate with initial scan data (e.g., list top 10 components in `components.md`)
+**Note**: Reference docs were already created in Phase 1.5 with initial data from Phase 1.4 scan. This phase enhances them with detailed analysis results from Phase 2.
+
+- Review docs created in Phase 1.5
+- Enhance each doc with detailed scan data from Phase 2 analysis:
+  - `docs/components.md`: Add component descriptions, props, usage patterns
+  - `docs/api.md`: Document full API endpoints with methods, params, responses
+  - `docs/architecture.md`: Add detailed architecture diagrams, data flows, integration points
+  - `docs/structure.md`: Add explanations for folder organization patterns
+- Update docs with any additional patterns discovered during Phase 2 analysis
+- Refine and expand initial data with deeper insights
 
 ### 4.3 Suggest Next Steps
 
@@ -231,12 +283,12 @@ Create `AGENTS.md` in project root using the tiered structure:
 
 ## Example Output Scenarios
 
-### Scenario A: Greenfield React App (Simple)
+### Scenario A: Simple React App
 **Result**: Single `AGENTS.md` file.
 - Complexity low (no extra docs needed)
 - Contains all context inline
 
-### Scenario B: Brownfield Python Monorepo (Complex)
+### Scenario B: Complex Python Monorepo
 **Result**: `AGENTS.md` + 3 Reference Docs
 - `AGENTS.md`: Links to architecture and service docs
 - `docs/architecture.md`: Explains monorepo structure
@@ -251,7 +303,7 @@ Don't assume folder names - let the user define their subprojects.
 
 ---
 
-## Quick Start Prompts
+## Bootstrap Prompts
 
 ### Single App
 ```

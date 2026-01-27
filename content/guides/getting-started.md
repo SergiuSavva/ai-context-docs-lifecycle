@@ -6,7 +6,7 @@
 
 ## Quick Decision: Which Modules?
 
-### Just Starting? (5 minutes)
+### Just Starting?
 
 **Start with Module 1 only.**
 
@@ -16,7 +16,7 @@ your-project/
 └── AGENTS.md    # AI context file
 ```
 
-[Go to Module 1: Quick Start →](../modules/01-quick-start/README.md)
+[Go to Module 1: Core Init →](../modules/01-quick-start/README.md)
 
 ---
 
@@ -97,7 +97,7 @@ your-project/
 ### Solo Developer (Minimal)
 
 ```
-Module 1 (Quick Start) + Module 3 (Feature Development)
+Module 1 (Core Init) + Module 3 (Feature Development)
 ```
 
 Best for: Personal projects, prototypes, small apps
@@ -124,7 +124,7 @@ Best for: Team projects, products with roadmaps
 
 | # | Module | Purpose | Time |
 |---|--------|---------|------|
-| 1 | [Quick Start](../modules/01-quick-start/README.md) | Minimal AI context | 5 min |
+| 1 | [Core Init](../modules/01-quick-start/README.md) | Comprehensive AI context | - |
 | 2 | [Coding Standards](../modules/02-coding-standards/README.md) | Code & doc style | 10 min |
 | 3 | [Feature Development](../modules/03-feature-development/README.md) | Build workflows | 15 min |
 | 4 | [Reference Docs](../modules/04-reference-docs/README.md) | Documentation | 20 min |

@@ -9,7 +9,7 @@
 ```
 content/
 ├── modules/                    # Independent modules (pick what you need)
-│   ├── 01-quick-start/        # 5-min setup, minimal AGENTS.md
+│   ├── 01-quick-start/        # Core initialization, comprehensive AGENTS.md
 │   ├── 02-coding-standards/   # Code & doc style rules
 │   ├── 03-feature-development/# Workflows: Quick/Standard/Complex
 │   ├── 04-reference-docs/     # Documentation structure
@@ -45,7 +45,7 @@ Start with [guides/getting-started.md](./guides/getting-started.md) to choose yo
 
 | Module | You Get | Best For |
 |--------|---------|----------|
-| **1. Quick Start** | AGENTS.md template | Every project |
+| **1. Core Init** | AGENTS.md template | Every project |
 | **2. Coding Standards** | .cursor/rules/ templates | Consistent code |
 | **3. Feature Development** | Workflows + templates | Building features |
 | **4. Reference Docs** | docs/ structure | Documentation |

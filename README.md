@@ -23,7 +23,7 @@ AI coding assistants lack memory and context:
 
 | Module | Purpose | Time |
 |--------|---------|------|
-| **1. Quick Start** | Minimal AI context (AGENTS.md) | 5 min |
+| **1. Core Init** | Comprehensive AI context (AGENTS.md) | - |
 | **2. Coding Standards** | Code & doc style rules | 10 min |
 | **3. Feature Development** | Workflows for building features | 15 min |
 | **4. Reference Docs** | Documentation structure | 20 min |
@@ -33,11 +33,22 @@ AI coding assistants lack memory and context:
 
 ## Quick Start
 
-### 5-Minute Setup (Module 1)
+### Manual Setup (Module 1)
 
-1. Copy [`content/modules/01-quick-start/templates/AGENTS.md`](content/modules/01-quick-start/templates/AGENTS.md) to your project root
+1. Copy [`content/modules/01-quick-start/templates/AGENTS-single-app.md`](content/modules/01-quick-start/templates/AGENTS-single-app.md) to your project root as `AGENTS.md`
 2. Fill in your project details
 3. Done! AI agents now have context.
+
+### Interactive Bootstrap (Module 1)
+
+Tell your AI assistant:
+
+```
+Bootstrap AGENTS.md for this project.
+Follow: https://raw.githubusercontent.com/sergiusavva/ai-context-docs-lifecycle/main/content/modules/01-quick-start/bootstrap-workflow.md
+```
+
+This runs a comprehensive analysis and generates `AGENTS.md` with detected tech stack, commands, and structure.
 
 ### Full Setup
 
@@ -47,7 +58,7 @@ Tell your AI assistant:
 Apply AI Context Docs Lifecycle from https://github.com/sergiusavva/ai-context-docs-lifecycle
 
 I want:
-- Module 1 (Quick Start) - AGENTS.md
+- Module 1 (Core Init) - AGENTS.md
 - Module 3 (Feature Development) - workflows for building features
 
 My tech stack: [YOUR STACK]
@@ -79,13 +90,13 @@ ai-context-docs-lifecycle/
 
 ## Module Overview
 
-### Module 1: Quick Start
+### Module 1: Core Init
 
-**What you get**: `AGENTS.md` - AI context file
+**What you get**: `AGENTS.md` - Comprehensive AI context file
 
 ```
 project/
-└── AGENTS.md    # Quick start, tech stack, patterns
+└── AGENTS.md    # Core context, tech stack, patterns, structure
 ```
 
 [Go to Module 1 →](content/modules/01-quick-start/)

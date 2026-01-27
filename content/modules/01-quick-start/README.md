@@ -1,6 +1,6 @@
-# Module 1: Quick Start
+# Module 1: Core Init
 
-> **5-minute setup** to give AI agents instant context about your project.
+> **Comprehensive initialization** to give AI agents complete context about your project.
 
 ---
 
@@ -17,7 +17,7 @@ AI coding assistants have no memory. Every session starts fresh, leading to:
 
 ## What This Module Does
 
-Provides a compact `AGENTS.md` file that AI coding assistants read first to understand your project. Uses the **router pattern** - a lean file (50-80 lines, 150 max) that references detailed docs dynamically.
+Provides a compact `AGENTS.md` file that AI coding assistants read first to understand your project, plus a `docs/` folder for deeper reference. Uses the **router pattern** - a lean file (50-80 lines, 150 max) that references detailed docs dynamically.
 
 **Why the router pattern?**
 - Token efficiency: Load only relevant context
@@ -88,7 +88,7 @@ The AI will:
 
 ## Setup Steps
 
-### Single App (5 minutes)
+### Single App
 
 1. Copy [`templates/AGENTS-single-app.md`](./templates/AGENTS-single-app.md) to project root as `AGENTS.md`
 2. Copy `templates/.acdl/` folder to project root
@@ -96,7 +96,7 @@ The AI will:
 4. Add references to your docs in "Context Loading" section
 5. Done!
 
-### Monorepo (10-15 minutes)
+### Monorepo
 
 1. Copy [`templates/AGENTS-monorepo-root.md`](./templates/AGENTS-monorepo-root.md) to monorepo root as `AGENTS.md`
 2. Copy `templates/.acdl/` folder to monorepo root
@@ -111,7 +111,7 @@ The AI will:
 
 ## What's Next?
 
-Once you have Quick Start working, consider adding:
+Once you have Core Init working, consider adding:
 
 | Module | When to Add |
 |--------|-------------|
