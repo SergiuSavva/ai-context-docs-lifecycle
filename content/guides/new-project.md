@@ -4,7 +4,7 @@
 
 ---
 
-## Quick Setup (5 minutes)
+## Quick Setup
 
 ### Step 1: Create Project Structure
 
@@ -35,7 +35,7 @@ AI agents can now understand your project.
 
 ---
 
-## Full Setup (30 minutes)
+## Full Setup
 
 Want the complete setup? Follow these steps:
 

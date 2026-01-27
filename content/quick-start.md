@@ -1,8 +1,8 @@
 # Quick Start
 
-Get AI context for your project in 5 minutes. Choose your setup level:
+Get AI context for your project. Choose your setup level:
 
-## Option 1: Minimal (5 minutes)
+## Option 1: Minimal
 
 Just need AI context? Use **Module 1** only.
 
@@ -71,7 +71,7 @@ AI agents will read this file automatically and have context about your project.
 
 ---
 
-## Option 2: Standard (30 minutes)
+## Option 2: Standard
 
 Want workflows for building features? Add **Modules 1 + 2 + 3**.
 

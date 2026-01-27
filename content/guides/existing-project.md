@@ -17,7 +17,7 @@ Before adding anything, check what exists:
 
 ---
 
-## Minimal Integration (5 minutes)
+## Minimal Integration
 
 ### Just Add AGENTS.md
 
@@ -39,7 +39,7 @@ AI agents will read AGENTS.md first for context.
 
 ---
 
-## Standard Integration (20 minutes)
+## Standard Integration
 
 ### Step 1: Add AGENTS.md
 
@@ -82,7 +82,7 @@ Add `docs/INDEX.md` that links to:
 
 ---
 
-## Full Integration (1 hour)
+## Full Integration
 
 ### Step 1: Audit Existing Documentation
 

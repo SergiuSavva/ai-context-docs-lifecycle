@@ -6,13 +6,13 @@
 
 ## Overview
 
-| # | Module | Purpose | Time |
-|---|--------|---------|------|
-| 1 | [Core Init](./01-quick-start/README.md) | Comprehensive AI context (AGENTS.md) | - |
-| 2 | [Coding Standards](./02-coding-standards/README.md) | Code & doc style rules | 10 min |
-| 3 | [Feature Development](./03-feature-development/README.md) | Workflows for building features | 15 min |
-| 4 | [Reference Docs](./04-reference-docs/README.md) | Documentation structure | 20 min |
-| 5 | [Project Planning](./05-project-planning/README.md) | Multi-feature management | 15 min |
+| # | Module | Purpose |
+|---|--------|---------|
+| 1 | [Core Init](./01-quick-start/README.md) | Comprehensive AI context (AGENTS.md) |
+| 2 | [Coding Standards](./02-coding-standards/README.md) | Code & doc style rules |
+| 3 | [Feature Development](./03-feature-development/README.md) | Workflows for building features |
+| 4 | [Reference Docs](./04-reference-docs/README.md) | Documentation structure |
+| 5 | [Project Planning](./05-project-planning/README.md) | Multi-feature management |
 
 ---
 
@@ -34,7 +34,7 @@ graph LR
 
 ## Recommended Combinations
 
-### Minimal (5 minutes)
+### Minimal
 
 ```
 Module 1 only
@@ -42,7 +42,7 @@ Module 1 only
 
 Just AGENTS.md for basic AI context.
 
-### Standard (30 minutes)
+### Standard
 
 ```
 Modules 1 + 2 + 3
@@ -50,7 +50,7 @@ Modules 1 + 2 + 3
 
 AI context + coding standards + feature workflows.
 
-### Complete (1 hour)
+### Complete
 
 ```
 All modules (1-5)

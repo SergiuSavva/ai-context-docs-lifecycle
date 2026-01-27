@@ -20,7 +20,7 @@ your-project/
 
 ---
 
-### Building Features? (15 minutes)
+### Building Features?
 
 **Add Module 3 for feature workflows.**
 
@@ -37,7 +37,7 @@ your-project/
 
 ---
 
-### Want Consistent Code? (10 minutes)
+### Want Consistent Code?
 
 **Add Module 2 for coding standards.**
 
@@ -54,7 +54,7 @@ your-project/
 
 ---
 
-### Need Full Documentation? (20 minutes)
+### Need Full Documentation?
 
 **Add Module 4 for reference docs.**
 
@@ -74,7 +74,7 @@ your-project/
 
 ---
 
-### Managing Multiple Features? (15 minutes)
+### Managing Multiple Features?
 
 **Add Module 5 for project planning.**
 
@@ -122,13 +122,13 @@ Best for: Team projects, products with roadmaps
 
 ## Module Overview
 
-| # | Module | Purpose | Time |
-|---|--------|---------|------|
-| 1 | [Core Init](../modules/01-quick-start/README.md) | Comprehensive AI context | - |
-| 2 | [Coding Standards](../modules/02-coding-standards/README.md) | Code & doc style | 10 min |
-| 3 | [Feature Development](../modules/03-feature-development/README.md) | Build workflows | 15 min |
-| 4 | [Reference Docs](../modules/04-reference-docs/README.md) | Documentation | 20 min |
-| 5 | [Project Planning](../modules/05-project-planning/README.md) | Multi-feature mgmt | 15 min |
+| # | Module | Purpose |
+|---|--------|---------|
+| 1 | [Core Init](../modules/01-quick-start/README.md) | Comprehensive AI context |
+| 2 | [Coding Standards](../modules/02-coding-standards/README.md) | Code & doc style |
+| 3 | [Feature Development](../modules/03-feature-development/README.md) | Build workflows |
+| 4 | [Reference Docs](../modules/04-reference-docs/README.md) | Documentation |
+| 5 | [Project Planning](../modules/05-project-planning/README.md) | Multi-feature mgmt |
 
 ---
 
