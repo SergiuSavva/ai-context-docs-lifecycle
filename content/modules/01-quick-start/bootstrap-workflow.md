@@ -151,6 +151,12 @@ Determine which additional docs are needed based on thresholds AND gather initia
 | **API** | `routes/` or `api/` folder exists | `docs/api.md` | `templates/docs/api.md` | Route file names, endpoint patterns |
 | **Structure** | > 10 top-level folders | `docs/structure.md` | (Auto-generated tree) | Directory tree structure |
 
+> **Threshold rationale**: These numbers are starting points, not strict rules. The goal is to identify when inline documentation in AGENTS.md becomes unwieldy:
+> - **20 components**: Beyond this, listing in AGENTS.md consumes too many tokens and creates noise
+> - **10 folders**: More than this makes the structure hard to scan inline
+>
+> Adjust thresholds based on your project's complexity. A project with 15 highly complex components may benefit from `docs/components.md`, while one with 30 simple icons may not.
+
 **During scan, capture:**
 - File names and paths (for components, API routes)
 - Folder structure (for architecture, structure docs)
@@ -304,6 +310,8 @@ Don't assume folder names - let the user define their subprojects.
 ---
 
 ## Bootstrap Prompts
+
+> **Note**: If you've forked this repo or the branch changes, update the URLs below to match your fork's raw URL.
 
 ### Single App
 ```

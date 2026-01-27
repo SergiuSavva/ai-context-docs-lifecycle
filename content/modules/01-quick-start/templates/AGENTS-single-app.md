@@ -1,35 +1,35 @@
-# [Project Name]
+# {{project-name}}
 
 > **AI Agent Instructions** - Compact context with dynamic loading.
-> Copy to project root as `AGENTS.md`.
+> Copy to project root as `AGENTS.md` and commit to version control.
 
 ## Overview
 
-[One sentence: What does this project do?]
+{{One sentence describing what this project does}}
 
 ## Stack
 
 | Tech | Version |
 |------|---------|
-| Language | [e.g., TypeScript 5.3] |
-| Framework | [e.g., Next.js 15] |
-| Database | [e.g., PostgreSQL 16] |
-| Styling | [e.g., Tailwind CSS 3.4] |
+| Language | {{e.g., TypeScript 5.3}} |
+| Framework | {{e.g., Next.js 15}} |
+| Database | {{e.g., PostgreSQL 16}} |
+| Styling | {{e.g., Tailwind CSS 3.4}} |
 
 ## Commands
 
 ```bash
-[package-manager] install   # Install dependencies
-[package-manager] dev       # Start dev server
-[package-manager] test      # Run tests (must pass before commit)
-[package-manager] lint      # Lint code
-[package-manager] build     # Production build
+{{package-manager}} install   # Install dependencies
+{{package-manager}} dev       # Start dev server
+{{package-manager}} test      # Run tests (must pass before commit)
+{{package-manager}} lint      # Lint code
+{{package-manager}} build     # Production build
 ```
 
 ## Structure
 
 ```
-[project]/
+{{project-name}}/
 ├── src/           # Application code
 ├── tests/         # Test files
 └── docs/          # Documentation
@@ -68,8 +68,12 @@ Load detailed docs based on your task:
 
 ## Tool Compatibility
 
-This file works with all AI coding tools. For tool-specific features:
+This file works with all AI coding tools. Each tool discovers context files differently:
 
-- **Claude Code**: Symlink `ln -s AGENTS.md CLAUDE.md`
-- **Cursor**: Use `.cursor/rules/*.mdc` for glob-based auto-attach
-- **Copilot**: Use `.github/copilot-instructions.md` for GitHub-specific rules
+| Tool | Discovery Method | Extra Setup |
+|------|------------------|-------------|
+| **Cursor** | Auto-reads `AGENTS.md` at project root | Use `.cursor/rules/*.mdc` for glob-based rules that auto-attach to specific file types |
+| **Claude Code** | Reads `CLAUDE.md` at project root | Create symlink: `ln -s AGENTS.md CLAUDE.md` |
+| **GitHub Copilot** | Reads `.github/copilot-instructions.md` | Copy AGENTS.md content there, or keep separate GitHub-specific rules |
+| **Windsurf** | Auto-reads `AGENTS.md` or `.windsurfrules` | No extra setup needed |
+| **Other tools** | Most read `AGENTS.md` or `README.md` | Check tool docs for context file location |

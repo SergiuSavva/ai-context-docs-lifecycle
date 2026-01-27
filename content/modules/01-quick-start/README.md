@@ -111,13 +111,16 @@ The AI will:
 
 ## What's Next?
 
-Once you have Core Init working, consider adding:
+Once you have Core Init working, consider adding more modules. Here's how to know when:
 
-| Module | When to Add |
-|--------|-------------|
-| [Module 2: Coding Standards](../02-coding-standards/README.md) | When you want consistent code style |
-| [Module 3: Feature Development](../03-feature-development/README.md) | When building features with specs + tasks |
-| [Module 4: Reference Docs](../04-reference-docs/README.md) | When you need comprehensive documentation |
+| Signal | What It Means | Add Module |
+|--------|---------------|------------|
+| AGENTS.md exceeds 150 lines | Too much inline content | Split into reference docs |
+| Repeating style guidance to AI | No persistent standards | [Module 2: Coding Standards](../02-coding-standards/README.md) |
+| Building features > 3 files | Need structured workflow | [Module 3: Feature Development](../03-feature-development/README.md) |
+| Onboarding new contributors | Need comprehensive docs | [Module 4: Reference Docs](../04-reference-docs/README.md) |
+
+**Rule of thumb**: If you're explaining the same thing to AI twice, it belongs in a rule or doc.
 
 ---
 
