@@ -142,25 +142,22 @@ If user selected monorepo but asked you to scan for subprojects:
 
 ### 1.4 Assess Complexity (Tier Selection)
 
-Determine which additional docs are needed based on thresholds AND gather initial data for those docs:
+Determine which additional docs are needed based on project signals and gather initial data for those docs:
 
-| Signal | Threshold | Generated Doc | Template | Initial Data to Gather |
+| Signal | Detection | Generated Doc | Template | Initial Data to Gather |
 |--------|-----------|---------------|----------|------------------------|
-| **Monorepo** | Detected | `docs/architecture.md` | `templates/docs/architecture.md` | Top-level folder structure, service names |
-| **Components** | > 20 files in `components/` | `docs/components.md` | `templates/docs/components.md` | List of component file names (first 20-30) |
-| **API** | `routes/` or `api/` folder exists | `docs/api.md` | `templates/docs/api.md` | Route file names, endpoint patterns |
-| **Structure** | > 10 top-level folders | `docs/structure.md` | (Auto-generated tree) | Directory tree structure |
+| **Monorepo / multi-service** | Multiple independent packages or services | `docs/architecture.md` | `templates/docs/architecture.md` | Top-level folder structure, service names, boundaries |
+| **Database present** | Schema, migrations, ORM models, SQL files | `docs/data-model.md` | `templates/docs/data-model.md` | Core entities, relationships, key fields, access patterns |
+| **API or Server Actions present** | `api/`, `routes/`, `route.ts`, action modules | `docs/api.md` | `templates/docs/api.md` | Endpoint/action list, auth requirements, error patterns |
+| **Auth present** | Auth middleware, provider config, login flows | `docs/auth.md` | `templates/docs/auth.md` | Protected routes, auth flow, roles/permissions |
 
-> **Threshold rationale**: These numbers are starting points, not strict rules. The goal is to identify when inline documentation in AGENTS.md becomes unwieldy:
-> - **20 components**: Beyond this, listing in AGENTS.md consumes too many tokens and creates noise
-> - **10 folders**: More than this makes the structure hard to scan inline
->
-> Adjust thresholds based on your project's complexity. A project with 15 highly complex components may benefit from `docs/components.md`, while one with 30 simple icons may not.
+> **Signal-based rule**: Prefer creating a doc when the concern exists in the project. AGENTS.md stays compact and routes to these docs.
 
 **During scan, capture:**
-- File names and paths (for components, API routes)
-- Folder structure (for architecture, structure docs)
-- Basic patterns detected (naming conventions, organization style)
+- Folder structure and service boundaries (for architecture)
+- Entities, schema patterns, and key relationships (for data model)
+- Route/action files and endpoint patterns (for API)
+- Auth middleware, protected routes, and role patterns (for auth)
 
 **Store this initial data** to populate docs in Phase 1.5.
 
@@ -170,7 +167,7 @@ Determine which additional docs are needed based on thresholds AND gather initia
 
 Follow these steps in order:
 
-1. **Check if reference docs are needed**: Review Phase 1.4 assessment to determine which docs to generate (e.g., `docs/architecture.md`, `docs/components.md`, `docs/api.md`).
+1. **Check if reference docs are needed**: Review Phase 1.4 assessment to determine which docs to generate (e.g., `docs/architecture.md`, `docs/data-model.md`, `docs/api.md`, `docs/auth.md`).
 
 2. **Create `docs/` folder FIRST** (if any reference docs are needed):
    - **REQUIRED**: Create the `docs/` folder at project root before writing any reference doc files
@@ -180,10 +177,10 @@ Follow these steps in order:
 3. **Generate specific docs with initial data**: For each doc identified in Phase 1.4:
    - Create the file in `docs/` using the appropriate template from `templates/docs/`
    - Populate with initial data gathered during Phase 1.4 scan:
-     - `docs/components.md`: List component file names discovered
-     - `docs/api.md`: List route files/endpoints found
      - `docs/architecture.md`: Add folder structure and service names
-     - `docs/structure.md`: Add directory tree
+     - `docs/data-model.md`: Add core entities, relationships, and schema notes
+     - `docs/api.md`: List route files/endpoints or server actions found
+     - `docs/auth.md`: Add auth flow, protected routes, and role model
 
 4. **Note**: These docs will be enhanced with detailed analysis in Phase 4.2, but they already contain useful initial content from the Phase 1.4 scan.
 
@@ -226,8 +223,9 @@ Present findings to the user before writing files.
 > - Test: `npm run test`
 >
 > **Complexity Check**:
-> - High component count (45 detected) → Generating `docs/components.md`
+> - Database schema detected → Generating `docs/data-model.md`
 > - API routes found → Generating `docs/api.md`
+> - Auth middleware found → Generating `docs/auth.md`
 >
 > **Proposed AGENTS.md**:
 > [Preview of content...]
@@ -263,8 +261,9 @@ Create `AGENTS.md` in project root using the tiered structure:
 ## Need More Context?
 | Topic | Document | When to Read |
 |-------|----------|--------------|
-| Components | [docs/components.md] | modifying UI |
+| Data model | [docs/data-model.md] | changing schema or queries |
 | API | [docs/api.md] | working on endpoints |
+| Auth | [docs/auth.md] | working on login, middleware, roles |
 ```
 
 ### 4.2 Enhance Reference Docs (Conditional)
@@ -273,17 +272,17 @@ Create `AGENTS.md` in project root using the tiered structure:
 
 - Review docs created in Phase 1.5
 - Enhance each doc with detailed scan data from Phase 2 analysis:
-  - `docs/components.md`: Add component descriptions, props, usage patterns
-  - `docs/api.md`: Document full API endpoints with methods, params, responses
   - `docs/architecture.md`: Add detailed architecture diagrams, data flows, integration points
-  - `docs/structure.md`: Add explanations for folder organization patterns
+  - `docs/data-model.md`: Add entities, relationships, constraints, and access patterns
+  - `docs/api.md`: Document API endpoints/actions with methods, params, responses
+  - `docs/auth.md`: Add auth flow details, middleware behavior, route protection matrix
 - Update docs with any additional patterns discovered during Phase 2 analysis
 - Refine and expand initial data with deeper insights
 
 ### 4.3 Suggest Next Steps
 
 - If project has many features → Suggest **Module 3 (Feature Development)**
-- If code style is mixed → Suggest **Module 2 (Coding Standards)**
+- If deep stack patterns repeat often → Suggest **Module 2 (Skills)**
 
 ---
 
@@ -296,10 +295,10 @@ Create `AGENTS.md` in project root using the tiered structure:
 
 ### Scenario B: Complex Python Monorepo
 **Result**: `AGENTS.md` + 3 Reference Docs
-- `AGENTS.md`: Links to architecture and service docs
+- `AGENTS.md`: Links to architecture and reference docs
 - `docs/architecture.md`: Explains monorepo structure
-- `docs/services.md`: Lists the 5 python services found
-- `docs/api.md`: Aggregates API endpoints
+- `docs/data-model.md`: Captures schema and key entities
+- `docs/api.md`: Aggregates API endpoints/actions
 
 ### Scenario C: Any Monorepo
 **Key insight**: Monorepos have no standard structure. Folder names vary by team.

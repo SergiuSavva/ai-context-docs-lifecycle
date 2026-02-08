@@ -58,10 +58,9 @@ Load detailed docs based on your task:
 | Task | Read First |
 |------|------------|
 | Architecture decisions | @docs/architecture.md |
-| Component patterns | @docs/components.md |
+| Data model / schema | @docs/data-model.md |
 | API integration | @docs/api.md |
-| Code style | @.cursor/rules/code-style.mdc |
-| Testing | @docs/testing.md |
+| Auth flows / route protection | @docs/auth.md |
 
 ## Boundaries
 

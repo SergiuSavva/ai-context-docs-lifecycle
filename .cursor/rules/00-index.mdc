@@ -17,8 +17,6 @@ For project overview, commands, and boundaries, read @AGENTS.md
 | Rule | File | When to Load |
 |------|------|--------------|
 | **Feature Workflow** | `feature-workflow.mdc` | Building features (specs/) |
-| **Code Style** | `code-style.mdc` | Writing/editing any code |
-| **Doc Style** | `doc-style.mdc` | Writing/editing documentation |
 | **Project Context** | `project.mdc` | Understanding this project |
 
 ---
@@ -28,10 +26,9 @@ For project overview, commands, and boundaries, read @AGENTS.md
 | Task | Read First |
 |------|------------|
 | Project overview | @AGENTS.md |
-| Building a feature | `feature-workflow.mdc` + @decisions/001-implementation-flow.md |
-| Editing code/examples | `code-style.mdc` |
-| Writing docs | `doc-style.mdc` |
-| New contributor | `project.mdc` + @AGENTS.md |
+| Building a feature | `feature-workflow.mdc` + @specs/ |
+| Module templates | @content/modules/[module]/templates/ |
+| Demo example | @content/modules/01-project-context/examples/demo-taskflow/ |
 
 ---
 
@@ -39,12 +36,10 @@ For project overview, commands, and boundaries, read @AGENTS.md
 
 ```
 AGENTS.md                    <- Universal (source of truth)
-decisions/                   <- Permanent ADRs
+docs/decisions/              <- Permanent ADRs
 specs/                       <- Ephemeral feature specs
 .cursor/rules/
 ├── 00-index.mdc             <- This file (router)
 ├── feature-workflow.mdc     <- Implementation process (glob: specs/**)
-├── code-style.mdc           <- Code patterns (glob: src/**)
-├── doc-style.mdc            <- Doc patterns (glob: content/**)
 └── project.mdc              <- Project-specific context
 ```

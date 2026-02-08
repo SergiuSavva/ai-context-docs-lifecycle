@@ -1,6 +1,6 @@
 # Feature Backlog
 
-> **Template**: Copy to `docs/BACKLOG.md`
+> **Template**: Copy to `BACKLOG.md`
 > Prioritized list of features to build.
 
 ---
@@ -55,10 +55,10 @@ Nice to have, build if time permits.
 
 ## Completed
 
-| Feature | Completed | Docs |
-|---------|-----------|------|
-| [Feature Name] | [Date] | `docs/features/[feature]/` |
-| [Feature Name] | [Date] | `docs/features/[feature]/` |
+| Feature | Completed | References |
+|---------|-----------|------------|
+| [Feature Name] | [Date] | `docs/decisions/NNN-[decision].md` |
+| [Feature Name] | [Date] | `docs/decisions/NNN-[decision].md` |
 
 ---
 

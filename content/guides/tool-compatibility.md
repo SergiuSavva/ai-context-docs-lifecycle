@@ -29,11 +29,10 @@ AI coding tools each have their own configuration formats. This guide shows how 
 
 ### Minimal (Any Tool)
 
-```bash
-# Just create AGENTS.md at project root
-cp templates/AGENTS.md ./AGENTS.md
-# Edit with your project details
-```
+1. Create `AGENTS.md` at your project root.
+2. Start from the Module 1 single-app template:
+   `content/modules/01-project-context/templates/AGENTS-single-app.md`
+3. Fill in your project-specific stack, commands, structure, and boundaries.
 
 Works with: Cursor, Copilot, Zed, OpenAI Codex, Windsurf, and 20+ other tools.
 
@@ -41,7 +40,8 @@ Works with: Cursor, Copilot, Zed, OpenAI Codex, Windsurf, and 20+ other tools.
 
 ```bash
 # 1. Create AGENTS.md (source of truth)
-cp templates/AGENTS.md ./AGENTS.md
+# Start from:
+# content/modules/01-project-context/templates/AGENTS-single-app.md
 
 # 2. Symlink for Claude Code
 ln -s AGENTS.md CLAUDE.md

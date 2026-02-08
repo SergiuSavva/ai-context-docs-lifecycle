@@ -222,7 +222,7 @@ This gives you glob-based auto-loading while keeping the knowledge in portable `
 
 ## Template
 
-Use the [SKILL.md template](./templates/.agents/skills/skill-template/SKILL.md) to create new skills.
+Use the template at `content/modules/02-skills/templates/.agents/skills/skill-template/SKILL.md` to create new skills.
 
 ---
 

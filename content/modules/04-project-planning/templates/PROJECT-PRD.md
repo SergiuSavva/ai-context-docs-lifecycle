@@ -1,6 +1,6 @@
 # [Project Name] - Product Requirements Document
 
-> **Template**: Copy to `docs/PROJECT-PRD.md`
+> **Template**: Copy to `PROJECT-PRD.md`
 > This is the project-level vision, NOT a feature spec.
 > Replace all `[bracketed]` placeholders.
 
@@ -156,8 +156,8 @@ See `docs/decisions/` for ADRs.
 
 ## Related Documents
 
-- `docs/ROADMAP.md` - Phase planning
-- `docs/BACKLOG.md` - Feature prioritization  
+- `ROADMAP.md` - Phase planning
+- `BACKLOG.md` - Feature prioritization
 - `AGENTS.md` - AI context (project root)
 
 ---

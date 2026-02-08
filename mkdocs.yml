@@ -47,6 +47,9 @@ markdown_extensions:
   - toc:
       permalink: true
 
+validation:
+  omitted_files: ignore
+
 nav:
   - Home: index.md
   - Quick Start: quick-start.md

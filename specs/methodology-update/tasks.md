@@ -34,7 +34,7 @@
 
 - [x] T-19: Rewrite Module 3 README with three phases
 - [x] T-20: Update doc catalog section
-- [x] T-21: Update folder structure to show `specs/` and `decisions/`
+- [x] T-21: Update folder structure to show `specs/` and `docs/decisions/`
 - [x] T-22: Remove "5 files" decision tree
 
 ## Main Project Docs

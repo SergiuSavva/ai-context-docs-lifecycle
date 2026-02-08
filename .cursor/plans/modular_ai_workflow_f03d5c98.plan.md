@@ -365,9 +365,9 @@ Before starting ANY feature work, AI agents must load context in this order:
 ```markdown
 1. AGENTS.md                           → Project overview, tech stack, patterns
 2. .cursor/rules/feature-workflow.mdc  → This workflow (if not already loaded)
-3. docs/specs/<feature>/feature-spec.md → Requirements for current feature
-4. docs/specs/<feature>/tasks.md       → Current task status
-5. docs/specs/<feature>/research.md    → Research notes (complex flow only)
+3. specs/<feature>/feature-spec.md → Requirements for current feature
+4. specs/<feature>/tasks.md       → Current task status
+5. specs/<feature>/research.md    → Research notes (complex flow only)
 6. .cursor/rules/<relevant>.mdc        → Relevant coding rules
 ```
 
@@ -376,13 +376,13 @@ Before starting ANY feature work, AI agents must load context in this order:
 ```markdown
 AI MUST check before implementing:
 
-1. Does docs/specs/<feature>/feature-spec.md exist?
+1. Does specs/<feature>/feature-spec.md exist?
    ├─ YES → Read it, proceed to step 2
    └─ NO → ASK USER: "Should I create a feature spec first? 
                       What workflow: quick (bug fix), standard (small feature), 
                       or complex (needs research)?"
 
-2. Does docs/specs/<feature>/tasks.md exist?
+2. Does specs/<feature>/tasks.md exist?
    ├─ YES → Find first task not [x], [S], or [B]
    │        Mark it [~] before starting
    └─ NO → Create tasks.md from feature-spec requirements
@@ -537,7 +537,7 @@ This is the content for `modules/03-feature-development/rules/feature-workflow.m
 ---
 description: Feature development workflow for AI agents
 globs:
-  - "docs/specs/**/*"
+  - "specs/**/*"
   - "src/**/*"
   - "app/**/*"
 alwaysApply: false
@@ -559,8 +559,8 @@ Before starting, determine the workflow:
 
 Load in order:
 1. `AGENTS.md` - Project context
-2. `docs/specs/<feature>/feature-spec.md` - Requirements
-3. `docs/specs/<feature>/tasks.md` - Task status
+2. `specs/<feature>/feature-spec.md` - Requirements
+3. `specs/<feature>/tasks.md` - Task status
 
 ## Task Rules
 
@@ -654,7 +654,7 @@ For each workflow track:
 
 **Scenario**: Add "Mark all as complete" button to todo app
 
-**Step 1: Create Spec** (`docs/specs/mark-all-complete.md`)
+**Step 1: Create Spec** (`specs/mark-all-complete.md`)
 
 ```markdown
 # Feature: Mark All Complete Button
@@ -679,7 +679,7 @@ Add "Mark all as complete" button above todo list.
 See [tasks.md](./tasks.md)
 ```
 
-**Step 2: Create Tasks** (`docs/specs/mark-all-complete-tasks.md`)
+**Step 2: Create Tasks** (`specs/mark-all-complete-tasks.md`)
 
 ```markdown
 # Tasks: Mark All Complete
@@ -732,7 +732,7 @@ Once all tasks done:
 
 **Scenario**: Implement OAuth authentication for workspace app
 
-**Step 1: Research** (`docs/specs/oauth-auth/research.md`)
+**Step 1: Research** (`specs/oauth-auth/research.md`)
 
 ```markdown
 # OAuth Authentication Research
@@ -777,7 +777,7 @@ sequenceDiagram
 \`\`\`
 ```
 
-**Step 2: Detailed Spec** (`docs/specs/oauth-auth/spec.md`)
+**Step 2: Detailed Spec** (`specs/oauth-auth/spec.md`)
 
 ```markdown
 # Feature: OAuth Authentication
@@ -827,7 +827,7 @@ See [user-stories.md](./user-stories.md)
 See [research.md](./research.md)
 ```
 
-**Step 3: User Stories** (`docs/specs/oauth-auth/user-stories.md`)
+**Step 3: User Stories** (`specs/oauth-auth/user-stories.md`)
 
 ```markdown
 # User Stories: OAuth Authentication
@@ -876,7 +876,7 @@ See [research.md](./research.md)
 - [ ] AC-10: Redirect to homepage after logout
 ```
 
-**Step 4: Task Breakdown** (`docs/specs/oauth-auth/tasks.md`)
+**Step 4: Task Breakdown** (`specs/oauth-auth/tasks.md`)
 
 ```markdown
 # Tasks: OAuth Authentication
@@ -1015,7 +1015,7 @@ See: `docs/features/auth/README.md`
 
 **Step 9: Archive Spec**
 
-Move to `docs/specs/_archive/oauth-auth/` or delete (ADR captures the decision).
+Move to `specs/_archive/oauth-auth/` or delete (ADR captures the decision).
 
 **Total time**: 2-3 days
 

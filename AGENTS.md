@@ -1,10 +1,10 @@
 # AI Context Docs Lifecycle
 
-> Modular toolkit for giving AI coding assistants structured project context.
+> Docs-first methodology kit for AI-assisted development.
 
 ## Overview
 
-Documentation-as-memory methodology with 4 progressive modules. Users adopt what they need — from minimal AGENTS.md to full project planning.
+Docs-first, documentation-as-memory methodology with 4 progressive modules. Users adopt what they need — from minimal AGENTS.md context to full project planning.
 
 ## Stack
 

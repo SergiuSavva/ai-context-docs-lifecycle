@@ -37,11 +37,11 @@ Fill in:
 mkdir -p docs/decisions
 ```
 
-Create docs from [Module 1 templates](../modules/01-project-context/templates/docs/):
-- `docs/architecture.md` — System overview
-- `docs/data-model.md` — Database schema (if applicable)
-- `docs/api.md` — API surface (if applicable)
-- `docs/auth.md` — Auth flows (if applicable)
+Create docs from the [Module 1 templates](../modules/01-project-context/README.md):
+- [`docs/architecture.md`](../modules/01-project-context/templates/docs/architecture.md) — System overview
+- [`docs/data-model.md`](../modules/01-project-context/templates/docs/data-model.md) — Database schema (if applicable)
+- [`docs/api.md`](../modules/01-project-context/templates/docs/api.md) — API surface (if applicable)
+- [`docs/auth.md`](../modules/01-project-context/templates/docs/auth.md) — Auth flows (if applicable)
 
 ### Step 4: Done!
 

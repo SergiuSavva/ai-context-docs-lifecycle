@@ -1,6 +1,6 @@
 # Product Roadmap
 
-> **Template**: Copy to `docs/ROADMAP.md`
+> **Template**: Copy to `ROADMAP.md`
 > High-level phase or release planning.
 
 ---

@@ -1,6 +1,6 @@
 # Global Progress
 
-> **Template**: Copy to `docs/TASKS.md`
+> **Template**: Copy to `TASKS.md`
 > High-level progress tracking across all features.
 
 ---

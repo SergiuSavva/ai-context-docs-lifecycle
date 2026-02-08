@@ -1,6 +1,6 @@
 # AI Context Docs Lifecycle Content
 
-> **Raw methodology content** for AI agents and developers.
+> **Raw docs-first methodology content** for AI-assisted development.
 
 ---
 
@@ -19,7 +19,7 @@ content/
 │   ├── new-project.md            # Starting from scratch
 │   └── existing-project.md       # Adding to existing code
 │
-└── README.md                      # This file
+└── content-overview.md            # This file
 ```
 
 ---
@@ -28,11 +28,12 @@ content/
 
 ### For AI Agents
 
-Read modules in order based on what you need:
+Read modules in this default order:
 
-1. **Always read**: [`modules/01-project-context/`](./modules/01-project-context/) — AGENTS.md + docs/
-2. **For patterns**: [`modules/02-skills/`](./modules/02-skills/) — On-demand skills
-3. **For features**: [`modules/03-feature-development/`](./modules/03-feature-development/) — Workflows
+1. **Always read**: [`modules/01-project-context/README.md`](./modules/01-project-context/README.md) — AGENTS.md + docs/
+2. **For feature execution**: [`modules/03-feature-development/README.md`](./modules/03-feature-development/README.md) — Workflow selection + templates
+3. **For task-specific patterns**: [`modules/02-skills/README.md`](./modules/02-skills/README.md) — On-demand skills
+4. **For multi-feature coordination**: [`modules/04-project-planning/README.md`](./modules/04-project-planning/README.md) — Optional planning layer
 
 ### For Humans
 

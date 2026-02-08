@@ -1,22 +1,21 @@
 # AI Context Docs Lifecycle
 
-> Modular workflows for AI-assisted software development
+> Docs-first methodology kit for AI-assisted development
 
 ---
 
 ## What Is This?
 
-**AI Context Docs Lifecycle** is a modular toolkit that gives AI coding assistants structured workflows for understanding your project and building features consistently.
+**AI Context Docs Lifecycle** is a docs-first methodology kit for AI-assisted development. It gives AI coding assistants structured context and workflows for understanding your project and building features consistently.
 
 Pick the modules you need:
 
 | # | Module | Purpose | Time |
 |---|--------|---------|------|
-| 1 | **Quick Start** | Minimal AI context (AGENTS.md) | 5 min |
-| 2 | **Coding Standards** | Code and doc style rules | 10 min |
+| 1 | **Project Context** | AGENTS.md + docs/ (always-loaded context + reference) | 10 min |
+| 2 | **Skills** | On-demand instruction packages (.agents/skills/) | 10 min |
 | 3 | **Feature Development** | Workflows for building features | 15 min |
-| 4 | **Reference Docs** | Documentation structure | 20 min |
-| 5 | **Project Planning** | Multi-feature management | 15 min |
+| 4 | **Project Planning** | Multi-feature management (optional) | 15 min |
 
 ---
 
@@ -43,6 +42,18 @@ AI coding assistants have a memory problem:
 
 ---
 
+## AI Agent Workflow (Default)
+
+For feature work, agents should follow this order:
+
+1. Read `AGENTS.md` for project constraints and routing.
+2. Read current feature docs in `specs/<feature>/` (`spec.md` + `tasks.md` minimum).
+3. Load only relevant skills from `.agents/skills/`.
+4. Pull targeted reference docs from `docs/` when implementation needs them.
+5. Implement, then update reference docs and add an ADR for significant decisions.
+
+---
+
 ## Quick Start
 
 ### 5-Minute Setup (Module 1)
@@ -52,7 +63,7 @@ Copy `AGENTS.md` to your project root and fill in your project details. Done!
 ```
 Apply AI Context Docs Lifecycle from https://github.com/SergiuSavva/ai-context-docs-lifecycle
 
-I want Module 1 (Quick Start) - just AGENTS.md for now.
+I want Module 1 (Project Context) - AGENTS.md + docs/ only for now.
 My tech stack: [YOUR STACK]
 ```
 
@@ -73,13 +84,13 @@ No templates needed. Just fix and commit.
 
 ### Standard Flow
 
-**For**: Small features (less than 5 files)
+**For**: Any feature that is not a bug fix
 
 Feature spec + task tracking.
 
 ### Complex Flow
 
-**For**: Large features, new systems
+**For**: New systems, external integrations, or research-heavy work
 
 Research, spec, tasks, ADR.
 

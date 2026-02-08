@@ -195,7 +195,7 @@ sequenceDiagram
 ## Next Steps
 
 After research approval:
-1. ✅ Create detailed feature-spec.md
+1. ✅ Create detailed spec.md
 2. ✅ Write user stories with acceptance criteria
 3. ✅ Break down into implementation tasks
 

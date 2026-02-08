@@ -8,7 +8,7 @@ alwaysApply: false
 
 # Implementation Workflow
 
-> Reference: @decisions/001-implementation-flow.md
+> Reference: @docs/decisions/001-implementation-flow.md
 
 ## Three Phases
 
@@ -91,6 +91,6 @@ Ready for review. Implementation complete.
 
 ## After Approval
 
-1. Create ADR in `decisions/` (if significant decision)
+1. Create ADR in `docs/decisions/` (if significant decision)
 2. Update AGENTS.md (if new patterns)
 3. Delete `specs/[feature]/` folder

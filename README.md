@@ -1,6 +1,6 @@
 # AI Context Docs Lifecycle
 
-> **Modular workflows for AI-assisted software development**
+> **Docs-first methodology kit for AI-assisted development**
 
 **Live Site:** [https://sergiusavva.github.io/ai-context-docs-lifecycle](https://sergiusavva.github.io/ai-context-docs-lifecycle)
 
@@ -8,7 +8,7 @@
 
 ## What is This?
 
-A modular toolkit that gives AI coding assistants structured context and workflows for understanding your project and building features consistently.
+AI Context Docs Lifecycle is a docs-first methodology kit for AI-assisted development. It gives AI coding assistants structured context and workflows for understanding your project and building features consistently.
 
 ### The Problem
 
@@ -169,6 +169,18 @@ AGENTS.md is always loaded (~700 tokens). Skills and docs load on-demand when th
 ### Core Rule: Update or Delete
 
 Stale documentation is worse than no documentation. Reference docs are either current or deleted.
+
+---
+
+## AI Agent Workflow (Default)
+
+For non-trivial feature work, run this sequence:
+
+1. Read `AGENTS.md` for constraints, stack, and routing.
+2. Create or open `specs/<feature>/spec.md` and `specs/<feature>/tasks.md`.
+3. Load only relevant skills from `.agents/skills/` when the task matches.
+4. Pull targeted references from `docs/` as implementation requires.
+5. Ship code, update affected reference docs, and add an ADR for significant decisions.
 
 ---
 

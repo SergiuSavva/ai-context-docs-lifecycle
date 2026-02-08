@@ -106,7 +106,7 @@ See: [`templates/TASKS.md`](./templates/TASKS.md)
 | Aspect | Feature Spec | Project PRD |
 |--------|--------------|-------------|
 | **Scope** | Single feature | Entire product |
-| **Location** | `specs/<feature>/` | `docs/PROJECT-PRD.md` |
+| **Location** | `specs/<feature>/` | `PROJECT-PRD.md` |
 | **Lifecycle** | Ephemeral (delete after) | Evergreen (keep updated) |
 | **Content** | Problem, scope, tasks | Vision, users, metrics |
 | **When Created** | Before each feature | Once per project |
