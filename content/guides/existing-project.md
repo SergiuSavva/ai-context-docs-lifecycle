@@ -11,31 +11,34 @@ Before adding anything, check what exists:
 | Check | If Exists | Action |
 |-------|-----------|--------|
 | README.md | Keep it | AGENTS.md supplements, doesn't replace |
-| .cursor/rules/ | Review | Merge or replace rules |
-| docs/ folder | Review | Integrate new structure |
+| .cursor/rules/ | Review | Keep useful rules, add skills for deep patterns |
+| docs/ folder | Review | Integrate reference doc structure |
 | Existing specs | Keep | Add workflow to new specs |
 
 ---
 
 ## Minimal Integration
 
-### Just Add AGENTS.md
+### Just Add AGENTS.md + docs/
 
 If you only want AI context without changing your workflow:
 
-1. Create `AGENTS.md` at project root
-2. Fill in from [Module 1 templates](../modules/01-quick-start/README.md#templates)
+1. Create `AGENTS.md` at project root from [Module 1 templates](../modules/01-project-context/README.md)
+2. Create `docs/` with reference docs describing what exists
 3. Done!
 
 ```
 existing-project/
 ├── README.md          # Keep existing
-├── AGENTS.md          # NEW - AI context
+├── AGENTS.md          # NEW — AI context (~80 lines)
+├── docs/              # NEW — Reference knowledge
+│   ├── architecture.md
+│   └── decisions/
 ├── src/
 └── ...
 ```
 
-AI agents will read AGENTS.md first for context.
+AI agents will read AGENTS.md first for context, then load docs/ on-demand.
 
 ---
 
@@ -44,41 +47,45 @@ AI agents will read AGENTS.md first for context.
 ### Step 1: Add AGENTS.md
 
 Create at project root with:
-- Your actual Quick Start commands
-- Your tech stack
+- Your actual commands (dev, build, test)
+- Your tech stack and versions
 - Your file organization
-- Your key patterns
-- Known gotchas
+- Your conventions (short, inline)
+- Context Loading table pointing to docs/ and skills
+- Boundaries (always/ask/never)
 
-### Step 2: Add Cursor Rules
-
-```bash
-mkdir -p .cursor/rules
-```
-
-Add from Module 2 and 3:
-- `code-style.mdc` - Customized for your stack
-- `doc-style.mdc` - Your doc standards
-- `feature-workflow.mdc` - Feature workflow
-
-**Tip**: If you already have `.cursor/rules/`, review existing rules and merge.
-
-### Step 3: Add Docs Structure
-
-If you don't have a `docs/` folder:
+### Step 2: Add Reference Docs
 
 ```bash
-mkdir -p docs/{specs,features,decisions}
+mkdir -p docs/decisions
 ```
 
-If you have existing docs, add these folders alongside.
+Document what exists:
+- `docs/architecture.md` — Current system overview
+- `docs/data-model.md` — Current database schema
+- `docs/api.md` — Current API surface
 
-### Step 4: Create INDEX.md
+### Step 3: Add Skills (Optional)
 
-Add `docs/INDEX.md` that links to:
-- Your existing documentation
-- New feature docs
-- Decision records
+For deep tech patterns that AI needs to follow:
+
+```bash
+mkdir -p .agents/skills
+```
+
+Create skills for your specific tech stack. See [Module 2](../modules/02-skills/README.md).
+
+**Tip**: If you have existing `.cursor/rules/`, you can keep them as lightweight bridges that point to skills for deeper content.
+
+### Step 4: Add Feature Workflow
+
+For new features going forward:
+
+```bash
+mkdir -p specs
+```
+
+Use [Module 3](../modules/03-feature-development/README.md) workflow for new features only.
 
 ---
 
@@ -88,10 +95,10 @@ Add `docs/INDEX.md` that links to:
 
 | Find | Action |
 |------|--------|
-| Architecture docs | Link from AGENTS.md |
-| API docs | Link from INDEX.md |
-| Old specs | Move to `docs/specs/_archive/` |
-| Decision history | Convert to ADRs |
+| Architecture docs | Consolidate into `docs/architecture.md` |
+| API docs | Consolidate into `docs/api.md` |
+| Old specs | Move to `specs/_archive/` |
+| Decision history | Convert to ADRs in `docs/decisions/` |
 
 ### Step 2: Document Existing Patterns
 
@@ -108,11 +115,9 @@ For significant past decisions, create ADRs:
 ```markdown
 # ADR-001: [Past Decision]
 
-## Status
-Accepted (historical)
-
-## Context
-[What led to this decision]
+**Status:** Accepted (historical)
+**Date:** [approximate date]
+**Context:** [What led to this decision]
 
 ## Decision
 [What was decided]
@@ -120,24 +125,6 @@ Accepted (historical)
 ## Rationale
 [Why, if known]
 ```
-
-### Step 4: Document Key Features
-
-For existing features, create minimal READMEs:
-
-```
-docs/features/
-├── auth/
-│   └── README.md
-├── payments/
-│   └── README.md
-└── ...
-```
-
-Include:
-- What the feature does
-- Key files (code touchpoints)
-- How it works (brief)
 
 ---
 
@@ -150,8 +137,8 @@ Integrate AI Context Docs Lifecycle into this existing project.
 
 1. Analyze the current codebase structure
 2. Create AGENTS.md reflecting actual patterns
-3. Add .cursor/rules/ with appropriate conventions
-4. Set up docs/ structure for new features
+3. Create docs/ with reference documentation
+4. Optionally create .agents/skills/ for deep patterns
 
 Don't modify existing code or documentation structure.
 Focus on adding AI context alongside what exists.
@@ -163,11 +150,11 @@ Focus on adding AI context alongside what exists.
 
 ### Different Naming Conventions?
 
-Document what actually exists in `code-style.mdc`:
+Document what actually exists in AGENTS.md conventions:
 
-```yaml
-# Note: This project uses mixed conventions (historical)
-# New code should follow these patterns:
+```markdown
+## Conventions
+- **Naming** — camelCase (new code). Legacy code uses snake_case in some modules.
 ```
 
 ### Different Folder Structure?
@@ -175,24 +162,22 @@ Document what actually exists in `code-style.mdc`:
 Document actual structure in AGENTS.md, don't reorganize:
 
 ```markdown
-## File Organization
-
+## Structure
 Note: Historical structure. New features go in `features/`.
-
 ```
 
 ### Incomplete Documentation?
 
-Start fresh with AGENTS.md. Don't try to fix old docs.
+Start fresh with AGENTS.md and docs/. Don't try to fix old docs.
 
 ---
 
 ## What NOT to Do
 
-- ❌ Don't reorganize existing code to fit templates
-- ❌ Don't delete existing documentation
-- ❌ Don't convert all old specs to new format
-- ❌ Don't create ADRs for trivial past decisions
+- Don't reorganize existing code to fit templates
+- Don't delete existing documentation
+- Don't convert all old specs to new format
+- Don't create ADRs for trivial past decisions
 
 ---
 
@@ -202,34 +187,35 @@ You don't have to do everything at once:
 
 ### Week 1: Foundation
 - Add AGENTS.md
-- Add basic cursor rules
+- Create docs/architecture.md
 
-### Week 2: New Features
+### Week 2: Skills + New Features
+- Add skills for your tech stack
 - Use Module 3 workflow for NEW features only
-- Don't retrofit existing features
 
 ### Month 1: Documentation
-- Create feature READMEs for key features
+- Complete docs/ reference layer
 - Document major past decisions as ADRs
 
 ### Ongoing
 - Update AGENTS.md when patterns change
+- Update docs/ when code changes
 - Apply workflow to all new features
-- Document decisions as they happen
 
 ---
 
 ## Checklist
 
 - [ ] AGENTS.md created (reflects actual project)
-- [ ] .cursor/rules/ added with relevant rules
-- [ ] docs/ structure created (alongside existing)
-- [ ] INDEX.md links old and new docs
+- [ ] docs/ with reference documentation
+- [ ] docs/decisions/ for ADRs
+- [ ] .agents/skills/ for deep patterns (optional)
+- [ ] specs/ folder for new feature work
 - [ ] Team knows to use workflow for new features
 
 ---
 
 ## Next Steps
 
-- [Module 3: Feature Development](../modules/03-feature-development/README.md) - Use for new features
-- [Getting Started](./getting-started.md) - Module overview
+- [Module 3: Feature Development](../modules/03-feature-development/README.md) — Use for new features
+- [Getting Started](./getting-started.md) — Module overview

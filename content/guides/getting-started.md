@@ -13,10 +13,30 @@
 ```bash
 # What you get:
 your-project/
-└── AGENTS.md    # AI context file
+├── AGENTS.md    # AI context file (~80 lines)
+└── docs/        # Reference docs (architecture, data model, API, auth)
 ```
 
-[Go to Module 1: Core Init →](../modules/01-quick-start/README.md)
+[Go to Module 1: Project Context →](../modules/01-project-context/README.md)
+
+---
+
+### Need Deep Coding Patterns?
+
+**Add Module 2 for on-demand skills.**
+
+```bash
+# What you get:
+your-project/
+├── AGENTS.md
+├── .agents/skills/          # On-demand instruction packages
+│   ├── database/SKILL.md
+│   ├── testing/SKILL.md
+│   └── ui-components/SKILL.md
+└── docs/
+```
+
+[Go to Module 2: Skills →](../modules/02-skills/README.md)
 
 ---
 
@@ -28,67 +48,33 @@ your-project/
 # What you get:
 your-project/
 ├── AGENTS.md
-├── docs/specs/           # Feature specifications
-└── .cursor/rules/
-    └── feature-workflow.mdc
+├── .agents/skills/
+├── specs/           # Feature specifications (ephemeral)
+└── docs/
 ```
 
 [Go to Module 3: Feature Development →](../modules/03-feature-development/README.md)
 
 ---
 
-### Want Consistent Code?
+### Managing Multiple Features?
 
-**Add Module 2 for coding standards.**
+**Add Module 4 for project planning.**
 
 ```bash
 # What you get:
 your-project/
 ├── AGENTS.md
-└── .cursor/rules/
-    ├── code-style.mdc
-    └── doc-style.mdc
-```
-
-[Go to Module 2: Coding Standards →](../modules/02-coding-standards/README.md)
-
----
-
-### Need Full Documentation?
-
-**Add Module 4 for reference docs.**
-
-```bash
-# What you get:
-your-project/
-├── AGENTS.md              # Enhanced
-├── docs/
-│   ├── INDEX.md
-│   ├── features/
-│   └── decisions/
-└── .cursor/rules/
-    └── reference-freshness.mdc
-```
-
-[Go to Module 4: Reference Docs →](../modules/04-reference-docs/README.md)
-
----
-
-### Managing Multiple Features?
-
-**Add Module 5 for project planning.**
-
-```bash
-# What you get:
-your-project/
+├── PROJECT-PRD.md   # Project vision
+├── BACKLOG.md       # Feature priorities
+├── ROADMAP.md       # Phase planning
+├── TASKS.md         # Global progress
+├── .agents/skills/
+├── specs/
 └── docs/
-    ├── PROJECT-PRD.md
-    ├── BACKLOG.md
-    ├── ROADMAP.md
-    └── TASKS.md
 ```
 
-[Go to Module 5: Project Planning →](../modules/05-project-planning/README.md)
+[Go to Module 4: Project Planning →](../modules/04-project-planning/README.md)
 
 ---
 
@@ -97,26 +83,34 @@ your-project/
 ### Solo Developer (Minimal)
 
 ```
-Module 1 (Core Init) + Module 3 (Feature Development)
+Module 1 (Project Context)
 ```
 
 Best for: Personal projects, prototypes, small apps
 
-### Solo Developer (Full)
+### Solo Developer (Standard)
 
 ```
-Modules 1 + 2 + 3 + 4
+Modules 1 + 2 (Project Context + Skills)
 ```
 
-Best for: Production apps, open source projects
+Best for: Production apps with specific tech stack patterns
 
 ### Team Project
 
 ```
-All modules (1-5)
+Modules 1 + 2 + 3 (Project Context + Skills + Feature Dev)
 ```
 
-Best for: Team projects, products with roadmaps
+Best for: Team projects building multiple features
+
+### Enterprise
+
+```
+All modules (1 + 2 + 3 + 4)
+```
+
+Best for: Products with roadmaps, multiple teams
 
 ---
 
@@ -124,15 +118,14 @@ Best for: Team projects, products with roadmaps
 
 | # | Module | Purpose |
 |---|--------|---------|
-| 1 | [Core Init](../modules/01-quick-start/README.md) | Comprehensive AI context |
-| 2 | [Coding Standards](../modules/02-coding-standards/README.md) | Code & doc style |
-| 3 | [Feature Development](../modules/03-feature-development/README.md) | Build workflows |
-| 4 | [Reference Docs](../modules/04-reference-docs/README.md) | Documentation |
-| 5 | [Project Planning](../modules/05-project-planning/README.md) | Multi-feature mgmt |
+| 1 | [Project Context](../modules/01-project-context/README.md) | AGENTS.md + docs/ (always-loaded context + reference) |
+| 2 | [Skills](../modules/02-skills/README.md) | On-demand instruction packages (.agents/skills/) |
+| 3 | [Feature Development](../modules/03-feature-development/README.md) | Workflows for building features (specs/) |
+| 4 | [Project Planning](../modules/04-project-planning/README.md) | Multi-feature management (optional) |
 
 ---
 
 ## Next Steps
 
-- [New Project Setup](./new-project.md) - Starting from scratch
-- [Existing Project Setup](./existing-project.md) - Adding to existing code
+- [New Project Setup](./new-project.md) — Starting from scratch
+- [Existing Project Setup](./existing-project.md) — Adding to existing code

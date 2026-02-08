@@ -144,7 +144,7 @@ sequenceDiagram
 - Tutorial: `<paste URL here>`
 
 ### Related
-- `decisions/NNN-[related].md` (if applicable)
+- `docs/decisions/NNN-[related].md` (if applicable)
 - `docs/features/[related]/` (if applicable)
 
 ---

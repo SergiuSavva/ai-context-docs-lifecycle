@@ -152,7 +152,7 @@ src/
 └── prisma/
     └── schema.prisma          # MODIFIED
 
-decisions/
+docs/decisions/
 └── 015-oauth-google.md        # NEW (ADR)
 ```
 

@@ -2,13 +2,13 @@
 
 > **Modular workflows for AI-assisted software development**
 
-🌐 **Live Site:** [https://sergiusavva.github.io/ai-context-docs-lifecycle](https://sergiusavva.github.io/ai-context-docs-lifecycle)
+**Live Site:** [https://sergiusavva.github.io/ai-context-docs-lifecycle](https://sergiusavva.github.io/ai-context-docs-lifecycle)
 
 ---
 
 ## What is This?
 
-A modular toolkit that gives AI coding assistants structured workflows for understanding your project and building features consistently.
+A modular toolkit that gives AI coding assistants structured context and workflows for understanding your project and building features consistently.
 
 ### The Problem
 
@@ -21,13 +21,12 @@ AI coding assistants lack memory and context:
 
 **Pick the modules you need:**
 
-| Module | Purpose | Time |
-|--------|---------|------|
-| **1. Core Init** | Comprehensive AI context (AGENTS.md) | - |
-| **2. Coding Standards** | Code & doc style rules | 10 min |
-| **3. Feature Development** | Workflows for building features | 15 min |
-| **4. Reference Docs** | Documentation structure | 20 min |
-| **5. Project Planning** | Multi-feature management | 15 min |
+| Module | Purpose |
+|--------|---------|
+| **1. Project Context** | AGENTS.md + docs/ (always-loaded context + reference) |
+| **2. Skills** | On-demand instruction packages (.agents/skills/) |
+| **3. Feature Development** | Workflows for building features (specs/) |
+| **4. Project Planning** | Multi-feature management (optional) |
 
 ---
 
@@ -35,9 +34,10 @@ AI coding assistants lack memory and context:
 
 ### Manual Setup (Module 1)
 
-1. Copy [`content/modules/01-quick-start/templates/AGENTS-single-app.md`](content/modules/01-quick-start/templates/AGENTS-single-app.md) to your project root as `AGENTS.md`
-2. Fill in your project details
-3. Done! AI agents now have context.
+1. Copy [`content/modules/01-project-context/templates/AGENTS-single-app.md`](content/modules/01-project-context/templates/AGENTS-single-app.md) to your project root as `AGENTS.md`
+2. Create `docs/` with reference doc templates from [`content/modules/01-project-context/templates/docs/`](content/modules/01-project-context/templates/docs/)
+3. Fill in your project details
+4. Done! AI agents now have context.
 
 ### Interactive Bootstrap (Module 1)
 
@@ -45,7 +45,7 @@ Tell your AI assistant:
 
 ```
 Bootstrap AGENTS.md for this project.
-Follow: https://raw.githubusercontent.com/sergiusavva/ai-context-docs-lifecycle/main/content/modules/01-quick-start/bootstrap-workflow.md
+Follow: https://raw.githubusercontent.com/sergiusavva/ai-context-docs-lifecycle/main/content/modules/01-project-context/bootstrap-workflow.md
 ```
 
 This runs a comprehensive analysis and generates `AGENTS.md` with detected tech stack, commands, and structure.
@@ -58,7 +58,8 @@ Tell your AI assistant:
 Apply AI Context Docs Lifecycle from https://github.com/sergiusavva/ai-context-docs-lifecycle
 
 I want:
-- Module 1 (Core Init) - AGENTS.md
+- Module 1 (Project Context) - AGENTS.md + docs/
+- Module 2 (Skills) - on-demand coding patterns
 - Module 3 (Feature Development) - workflows for building features
 
 My tech stack: [YOUR STACK]
@@ -71,18 +72,17 @@ My tech stack: [YOUR STACK]
 ```
 ai-context-docs-lifecycle/
 ├── content/
-│   ├── modules/              # 5 independent modules
-│   │   ├── 01-quick-start/
-│   │   ├── 02-coding-standards/
-│   │   ├── 03-feature-development/
-│   │   ├── 04-reference-docs/
-│   │   └── 05-project-planning/
+│   ├── modules/              # 4 independent modules
+│   │   ├── 01-project-context/    # AGENTS.md + docs/ + demo example
+│   │   ├── 02-skills/             # SKILL.md template + guide
+│   │   ├── 03-feature-development/# Workflows, templates, examples
+│   │   └── 04-project-planning/   # PRD, backlog, roadmap (optional)
 │   └── guides/               # Adoption guides
 │       ├── getting-started.md
 │       ├── new-project.md
 │       └── existing-project.md
-├── site/                     # Documentation website
-├── METHODOLOGY.md            # Full methodology explanation
+├── specs/                    # Active feature specs (this repo)
+├── docs/                     # Reference documentation (this repo)
 └── README.md                 # This file
 ```
 
@@ -90,31 +90,37 @@ ai-context-docs-lifecycle/
 
 ## Module Overview
 
-### Module 1: Core Init
+### Module 1: Project Context
 
-**What you get**: `AGENTS.md` - Comprehensive AI context file
-
-```
-project/
-└── AGENTS.md    # Core context, tech stack, patterns, structure
-```
-
-[Go to Module 1 →](content/modules/01-quick-start/)
-
-### Module 2: Coding Standards
-
-**What you get**: `.cursor/rules/` with code and doc style rules
+**What you get**: `AGENTS.md` (~80 lines, always loaded) + `docs/` (on-demand reference)
 
 ```
 project/
-└── .cursor/rules/
-    ├── code-style.mdc
-    └── doc-style.mdc
+├── AGENTS.md              # Layer 1: Always loaded
+└── docs/                  # Layer 3: On-demand reference
+    ├── architecture.md
+    ├── data-model.md
+    ├── api.md
+    └── decisions/
 ```
 
-[Go to Module 2 →](content/modules/02-coding-standards/)
+[Go to Module 1 →](content/modules/01-project-context/)
 
-### Module 3: Feature Development (Core)
+### Module 2: Skills
+
+**What you get**: `.agents/skills/` with on-demand instruction packages
+
+```
+project/
+└── .agents/skills/        # Layer 2: Loaded when task matches
+    ├── database/SKILL.md
+    ├── testing/SKILL.md
+    └── ui-components/SKILL.md
+```
+
+[Go to Module 2 →](content/modules/02-skills/)
+
+### Module 3: Feature Development
 
 **What you get**: Three-phase workflow + templates for building features
 
@@ -128,48 +134,21 @@ Research → Plan → Implement
 | **Feature** | `spec.md` + `tasks.md` (minimum) |
 | **Complex** | All docs + ADR |
 
-```
-project/
-├── specs/[feature]/
-│   ├── spec.md
-│   └── tasks.md
-└── decisions/
-    └── NNN-[decision].md
-```
-
 [Go to Module 3 →](content/modules/03-feature-development/)
 
-### Module 4: Reference Docs
-
-**What you get**: Documentation structure + freshness rules
-
-```
-project/
-├── AGENTS.md              # Full version
-├── docs/
-│   ├── INDEX.md
-│   ├── features/
-│   └── decisions/         # ADRs
-└── .cursor/rules/
-    └── reference-freshness.mdc
-```
-
-[Go to Module 4 →](content/modules/04-reference-docs/)
-
-### Module 5: Project Planning (Optional)
+### Module 4: Project Planning (Optional)
 
 **What you get**: Multi-feature management
 
 ```
 project/
-└── docs/
-    ├── PROJECT-PRD.md
-    ├── BACKLOG.md
-    ├── ROADMAP.md
-    └── TASKS.md
+├── PROJECT-PRD.md     # Project vision
+├── BACKLOG.md         # Feature priorities
+├── ROADMAP.md         # Phase planning
+└── TASKS.md           # Global progress
 ```
 
-[Go to Module 5 →](content/modules/05-project-planning/)
+[Go to Module 4 →](content/modules/04-project-planning/)
 
 ---
 
@@ -180,22 +159,16 @@ project/
 | Type | Lifecycle | Example |
 |------|-----------|---------|
 | **Specs** | Ephemeral (delete after) | spec.md, tasks.md |
-| **Reference** | Evergreen (always current) | AGENTS.md, feature README |
+| **Reference** | Evergreen (always current) | AGENTS.md, docs/ |
 | **Decisions** | Permanent (never change) | ADRs |
+
+### Progressive Disclosure
+
+AGENTS.md is always loaded (~700 tokens). Skills and docs load on-demand when the task requires them. Minimal context upfront, deep knowledge available when needed.
 
 ### Core Rule: Update or Delete
 
 Stale documentation is worse than no documentation. Reference docs are either current or deleted.
-
-### AI Agent Workflow
-
-Three phases: **Research → Plan → Implement**
-
-1. **Research** (optional): Explore unknowns, evaluate options
-2. **Plan** (required): Create `spec.md` + `tasks.md`, validate with user
-3. **Implement**: Execute tasks, update progress, signal completion
-
-AI decides which optional docs (`research.md`, `design.md`, `plan.md`) are needed.
 
 ---
 
@@ -203,41 +176,27 @@ AI decides which optional docs (`research.md`, `design.md`, `plan.md`) are neede
 
 See complete walkthroughs:
 
-- [Simple Todo Feature](content/modules/03-feature-development/examples/simple-todo/) - Standard Flow
-- [OAuth Authentication](content/modules/03-feature-development/examples/complex-auth/) - Complex Flow
+- [Demo: AGENTS.md + Skills + Docs](content/modules/01-project-context/examples/demo-taskflow/) — Full three-layer example
+- [Simple Todo Feature](content/modules/03-feature-development/examples/simple-todo/) — Standard Flow
+- [OAuth Authentication](content/modules/03-feature-development/examples/complex-auth/) — Complex Flow
 
 ---
 
-## Development
+## Tool Compatibility
 
-### Local Development
+Works with every AI coding agent:
 
-```bash
-cd site
-npm install
-npm run dev
-# Open http://localhost:4321
-```
+| Agent | AGENTS.md | Skills | @docs/ refs |
+|-------|-----------|--------|-------------|
+| **Cursor** | Auto-reads | `@skill-name` | `@docs/file.md` |
+| **Claude Code** | `CLAUDE.md` symlink | `/skill-name` | Direct read |
+| **GitHub Copilot** | Auto-reads | Auto-discovered | Direct read |
+| **Cline** | Via `.clinerules` | Auto-discovered | Direct read |
+| **OpenCode** | Auto-reads | Via `skill` tool | Direct read |
+| **Windsurf** | Auto-reads | Via UI | Direct read |
+| **Aider** | Via `/read` | Not supported | Via `/read` |
 
-### Build
-
-```bash
-cd site
-npm run build
-```
-
----
-
-## Tool Agnostic
-
-Works with any AI tool:
-
-| Tool | Configuration |
-|------|---------------|
-| **Cursor** | `.cursor/rules/*.mdc` |
-| **Claude Code** | `CLAUDE.md` |
-| **GitHub Copilot** | `.github/copilot-instructions.md` |
-| **Any AI** | Standard `.md` files |
+**Zero tool-specific files required.** Optional bridges available (e.g., `.mdc` rules that point to skills).
 
 ---
 

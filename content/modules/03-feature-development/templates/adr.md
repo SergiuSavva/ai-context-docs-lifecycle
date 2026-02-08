@@ -85,7 +85,7 @@
 
 - Research doc: `specs/_archive/[feature]/research.md` (if applicable)
 - External resources: [URLs]
-- Related ADRs: `decisions/NNN-[related].md`
+- Related ADRs: `docs/decisions/NNN-[related].md`
 
 ---
 

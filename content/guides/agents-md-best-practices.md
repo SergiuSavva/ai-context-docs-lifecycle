@@ -230,8 +230,8 @@ make migrate            # Run migrations
 ### Templates
 
 Use the monorepo templates from Module 1:
-- [Monorepo Root Template](../modules/01-quick-start/templates/AGENTS-monorepo-root.md)
-- [Subproject Template](../modules/01-quick-start/templates/AGENTS-monorepo-subproject.md)
+- [Monorepo Root Template](../modules/01-project-context/templates/AGENTS-monorepo-root.md)
+- [Subproject Template](../modules/01-project-context/templates/AGENTS-monorepo-subproject.md)
 
 ---
 
@@ -384,6 +384,6 @@ Start with a minimal AGENTS.md. When the AI makes a mistake, add a rule to preve
 
 ## See Also
 
-- [Module 1: Quick Start](../modules/01-quick-start/README.md) - AGENTS.md template
-- [Module 2: Coding Standards](../modules/02-coding-standards/README.md) - Tool-specific rules
+- [Module 1: Project Context](../modules/01-project-context/README.md) - AGENTS.md + docs/ templates
+- [Module 2: Skills](../modules/02-skills/README.md) - On-demand instruction packages
 - [Getting Started Guide](./getting-started.md) - Choose your modules

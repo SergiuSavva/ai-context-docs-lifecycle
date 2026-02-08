@@ -11,6 +11,7 @@ alwaysApply: false
 
 > **Template**: Copy to `.cursor/rules/feature-workflow.mdc`
 > This rule activates when working in specs/ or source code directories.
+> **Alternative**: This can also be a portable skill at `.agents/skills/feature-workflow/SKILL.md`
 
 ## Three Phases
 
@@ -43,7 +44,7 @@ Load files in this order before implementation:
 2. `specs/[feature]/spec.md` - Requirements
 3. `specs/[feature]/tasks.md` - Current task status
 4. `specs/[feature]/research.md` - Research notes (if exists)
-5. `.cursor/rules/*.mdc` - Relevant coding rules
+5. Relevant skills or `.cursor/rules/*.mdc` - Coding patterns
 
 ---
 
@@ -131,15 +132,16 @@ For complex features, also include:
 
 ## After Approval
 
-1. **Create ADR** (if significant decision was made)
-2. **Update AGENTS.md** (if new patterns)
-3. **Delete spec folder**: `specs/[feature]/`
+1. **Update docs/** (if code changes affect schema, API, auth, or architecture)
+2. **Create ADR** (if significant decision was made)
+3. **Update AGENTS.md** (if new patterns)
+4. **Delete spec folder**: `specs/[feature]/`
 
 ---
 
 ## When to Create ADR
 
-Create an ADR in `decisions/` when ANY of these are true:
+Create an ADR in `docs/decisions/` when ANY of these are true:
 
 - Evaluated 2+ alternatives and chose one
 - Introduced a new architectural pattern
@@ -160,6 +162,6 @@ Templates location: `.acdl/templates/`
 | `design.md` | No | `specs/[feature]/design.md` |
 | `plan.md` | No | `specs/[feature]/plan.md` |
 | `user-stories.md` | No | `specs/[feature]/user-stories.md` |
-| `adr.md` | No | `decisions/NNN-[title].md` |
+| `adr.md` | No | `docs/decisions/NNN-[title].md` |
 
 Quick reference: `.acdl/README.md`

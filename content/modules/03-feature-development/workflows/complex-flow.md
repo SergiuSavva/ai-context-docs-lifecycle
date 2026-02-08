@@ -113,7 +113,8 @@ Execute with structured task tracking.
 3. specs/[feature]/spec.md      → Requirements
 4. specs/[feature]/plan.md      → Dependencies
 5. specs/[feature]/tasks.md     → Current status
-6. .cursor/rules/*.mdc          → Coding patterns
+6. Relevant skills              → Coding patterns (on-demand)
+7. @docs/ references            → System knowledge (on-demand)
 ```
 
 ---
@@ -146,7 +147,7 @@ Ready for review. Implementation complete.
 ### 1. Create ADR
 
 ```
-decisions/NNN-[decision-name].md
+docs/decisions/NNN-[decision-name].md
 ```
 
 ADR captures:
@@ -165,7 +166,7 @@ specs/[feature-name]/ → deleted
 ```
 
 Knowledge now lives in:
-- `decisions/` (permanent)
+- `docs/decisions/` (permanent)
 - `AGENTS.md` (evergreen)
 
 ---
@@ -199,7 +200,7 @@ specs/
     ├── plan.md          # Recommended
     └── user-stories.md  # Recommended
 
-decisions/
+docs/decisions/
 └── NNN-[decision].md    # Created after approval
 ```
 

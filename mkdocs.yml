@@ -59,9 +59,8 @@ nav:
       - Tool Compatibility: guides/tool-compatibility.md
   - Modules:
       - Overview: modules/README.md
-      - 1. Quick Start: modules/01-quick-start/README.md
-      - 2. Coding Standards: modules/02-coding-standards/README.md
+      - 1. Project Context: modules/01-project-context/README.md
+      - 2. Skills: modules/02-skills/README.md
       - 3. Feature Development: modules/03-feature-development/README.md
-      - 4. Reference Docs: modules/04-reference-docs/README.md
-      - 5. Project Planning: modules/05-project-planning/README.md
+      - 4. Project Planning: modules/04-project-planning/README.md
   - Methodology: methodology.md

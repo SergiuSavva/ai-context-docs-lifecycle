@@ -85,8 +85,9 @@ project/
 │       ├── plan.md               # Optional
 │       └── user-stories.md       # Optional
 │
-├── decisions/                    # PERMANENT - never delete
-│   └── NNN-[decision].md
+├── docs/                         # PERMANENT - never delete
+│   └── decisions/
+│       └── NNN-[decision].md
 │
 └── AGENTS.md                     # EVERGREEN - update or delete
 ```
@@ -205,6 +206,21 @@ The methodology provides structure. The AI agent decides specifics:
 
 ---
 
+## Doc Freshness Rule
+
+After implementation, update any `docs/` files affected by the change:
+
+| When | Update |
+|------|--------|
+| New table added | `docs/data-model.md` |
+| New API endpoint / Server Action | `docs/api.md` |
+| Architecture change | `docs/architecture.md` + create ADR |
+| Auth flow change | `docs/auth.md` |
+
+This keeps Module 1's reference layer fresh. Docs update in the same PR as the code change.
+
+---
+
 ## AGENTS.md Integration
 
 Add feature specs to your Context Loading section:
@@ -216,27 +232,30 @@ Add feature specs to your Context Loading section:
 |------|------------|
 | Current feature | @specs/[feature]/spec.md |
 | Task status | @specs/[feature]/tasks.md |
-| Feature workflow | @.cursor/rules/feature-workflow.mdc |
 ```
 
 ---
 
-## Cursor Rule
+## Workflow as a Skill or Rule
 
-Copy the workflow rule to your project:
+You can set up the feature workflow in two ways:
+
+**Option A: Cursor Rule** (Cursor-specific, auto-loads on `specs/**`):
 
 ```bash
 cp templates/.cursor/rules/feature-workflow.mdc .cursor/rules/
 ```
 
-See: `templates/.cursor/rules/feature-workflow.mdc`
+**Option B: Agent Skill** (portable, works with any AI agent):
+
+Create `.agents/skills/feature-workflow/SKILL.md` with the three-phase workflow, task markers, and spec templates. See [Module 2: Skills](../02-skills/README.md) for the SKILL.md format.
 
 ---
 
 ## Prerequisites
 
-- [Module 1: Quick Start](../01-quick-start/README.md) - AGENTS.md for project context
+- [Module 1: Project Context](../01-project-context/README.md) — AGENTS.md + docs/ for project context
 
 ## What's Next?
 
-- [Module 4: Reference Docs](../04-reference-docs/README.md) - Documentation structure and freshness rules
+- [Module 4: Project Planning](../04-project-planning/README.md) — Multi-feature management and roadmaps

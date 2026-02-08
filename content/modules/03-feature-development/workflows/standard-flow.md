@@ -92,10 +92,11 @@ Add if needed:
 ### Context Loading Order
 
 ```
-1. AGENTS.md              → Project context
-2. specs/[feature]/spec.md    → Requirements
-3. specs/[feature]/tasks.md   → Current status
-4. .cursor/rules/*.mdc        → Coding patterns
+1. AGENTS.md                   → Project context
+2. specs/[feature]/spec.md     → Requirements
+3. specs/[feature]/tasks.md    → Current status
+4. Relevant skills             → Coding patterns (on-demand)
+5. @docs/ references           → System knowledge (on-demand)
 ```
 
 ---

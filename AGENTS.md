@@ -4,7 +4,7 @@
 
 ## Overview
 
-Documentation-as-memory methodology with 5 progressive modules. Users adopt what they need - from minimal AGENTS.md to full project planning.
+Documentation-as-memory methodology with 4 progressive modules. Users adopt what they need — from minimal AGENTS.md to full project planning.
 
 ## Stack
 
@@ -17,35 +17,34 @@ Documentation-as-memory methodology with 5 progressive modules. Users adopt what
 ## Commands
 
 ```bash
-pip install -r requirements.txt   # Install deps
-mkdocs serve                      # Dev server (localhost:8000)
-mkdocs build                      # Build to site/
+pip install -r requirements.txt # Install deps
+mkdocs serve                    # Dev server (localhost:8000)
+mkdocs build                    # Build to site/
 ```
 
 ## Structure
 
 ```
 content/
-├── modules/           # 5 core modules with templates
-│   ├── 01-quick-start/
-│   ├── 02-coding-standards/
-│   ├── 03-feature-development/
-│   ├── 04-reference-docs/
-│   └── 05-project-planning/
+├── modules/           # 4 core modules with templates
+│   ├── 01-project-context/    # AGENTS.md + docs/ (Layer 1 + Layer 3)
+│   ├── 02-skills/             # .agents/skills/ (Layer 2)
+│   ├── 03-feature-development/# Workflows, specs, tasks
+│   └── 04-project-planning/   # Backlog, roadmap (optional)
 └── guides/            # Adoption guides
 specs/                 # Active feature specs (ephemeral)
-decisions/             # Architecture decisions (permanent)
+docs/                  # Reference documentation
+└── decisions/         # Architecture decisions (permanent)
 ```
 
 ## Context Loading
 
 | Task | Read First |
 |------|------------|
-| Implementation workflow | @decisions/001-implementation-flow.md |
+| Module restructure design | @specs/methodology-update/design-module-restructure.md |
 | Module templates | @content/modules/[module]/templates/ |
 | Writing guides | @content/guides/README.md |
-| Code style | @.cursor/rules/code-style.mdc |
-| Doc style | @.cursor/rules/doc-style.mdc |
+| Demo example | @content/modules/01-project-context/examples/demo-taskflow/ |
 
 ## Boundaries
 

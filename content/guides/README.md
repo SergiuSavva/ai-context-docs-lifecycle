@@ -20,7 +20,7 @@
 
 ### Start with [Getting Started](./getting-started.md) to:
 
-- Understand the 5 modules available
+- Understand the 4 modules available
 - Choose which modules fit your needs
 - See recommended combinations
 
@@ -51,18 +51,17 @@ When asked to apply this methodology:
    - Existing project: [existing-project.md](./existing-project.md)
 
 3. **Read relevant modules**
-   - [Module 1: Quick Start](../modules/01-quick-start/README.md) - AGENTS.md template
-   - [Module 2: Coding Standards](../modules/02-coding-standards/README.md) - `.cursor/rules/`
-   - [Module 3: Feature Development](../modules/03-feature-development/README.md) - Workflows
-   - [Module 4: Reference Docs](../modules/04-reference-docs/README.md) - Documentation
-   - [Module 5: Project Planning](../modules/05-project-planning/README.md) - Multi-feature
+   - [Module 1: Project Context](../modules/01-project-context/README.md) — AGENTS.md + docs/
+   - [Module 2: Skills](../modules/02-skills/README.md) — On-demand instruction packages
+   - [Module 3: Feature Development](../modules/03-feature-development/README.md) — Workflows
+   - [Module 4: Project Planning](../modules/04-project-planning/README.md) — Multi-feature management
 
 4. **Use templates from modules**
    - Each module has a `templates/` folder
    - Copy and customize for the project
 
 5. **Reference examples**
-   - Module 2: `examples/.cursor/rules/`
+   - Module 1: `examples/demo-taskflow/` — Complete AGENTS.md + Skills + Docs example
    - Module 3: `examples/simple-todo/` and `examples/complex-auth/`
 
 ---
@@ -72,17 +71,18 @@ When asked to apply this methodology:
 ### Adding AI context to any project (5 min)
 
 ```
-1. Copy AGENTS.md from modules/01-quick-start/templates/
-2. Fill in project details (commands, stack, patterns)
-3. Done!
+1. Copy AGENTS.md from modules/01-project-context/templates/
+2. Fill in project details (commands, stack, conventions)
+3. Create docs/ with reference doc templates
+4. Done!
 ```
 
-### Setting up coding standards (10 min)
+### Adding deep coding patterns (10 min)
 
 ```
-1. Create .cursor/rules/ folder
-2. Copy code-style.mdc and doc-style.mdc from modules/02-coding-standards/templates/
-3. Customize for your language/framework
+1. Create .agents/skills/ folder
+2. Create a SKILL.md for each tech domain (see Module 2)
+3. Add cross-references to @docs/ files
 ```
 
 ### Building a feature
@@ -90,16 +90,16 @@ When asked to apply this methodology:
 ```
 1. Determine workflow: Quick, Standard, or Complex
    - See modules/03-feature-development/README.md for decision tree
-2. Create docs/specs/<feature>/ if Standard or Complex
+2. Create specs/<feature>/ if Standard or Complex
 3. Copy relevant templates from modules/03-feature-development/templates/
 4. Follow workflow guide
-5. Update reference docs when complete
+5. Update docs/ when complete
 ```
 
 ### Making an architecture decision
 
 ```
-1. Create ADR from modules/03-feature-development/templates/adr.md
+1. Create ADR from modules/01-project-context/templates/docs/decisions/adr.md
 2. Place in docs/decisions/NNN-title.md
 3. Document context, decision, rationale, consequences
 ```
@@ -110,11 +110,10 @@ When asked to apply this methodology:
 
 | Module | Templates | Examples |
 |--------|-----------|----------|
-| [01-quick-start](../modules/01-quick-start/README.md) | `templates/AGENTS.md` | - |
-| [02-coding-standards](../modules/02-coding-standards/README.md) | `templates/.cursor/rules/` | `examples/.cursor/rules/` |
-| [03-feature-development](../modules/03-feature-development/README.md) | `templates/` (5 files) | `examples/simple-todo/`, `examples/complex-auth/` |
-| [04-reference-docs](../modules/04-reference-docs/README.md) | `templates/` (3 files) | - |
-| [05-project-planning](../modules/05-project-planning/README.md) | `templates/` (4 files) | - |
+| [01-project-context](../modules/01-project-context/README.md) | `templates/AGENTS-*.md`, `templates/docs/` | `examples/demo-taskflow/` |
+| [02-skills](../modules/02-skills/README.md) | `templates/.agents/skills/skill-template/` | Referenced from Module 1 example |
+| [03-feature-development](../modules/03-feature-development/README.md) | `templates/` (7 files) | `examples/simple-todo/`, `examples/complex-auth/` |
+| [04-project-planning](../modules/04-project-planning/README.md) | `templates/` (4 files) | — |
 
 ---
 

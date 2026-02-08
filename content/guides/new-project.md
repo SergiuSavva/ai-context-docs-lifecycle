@@ -16,7 +16,7 @@ git init
 
 ### Step 2: Add AGENTS.md
 
-Copy the minimal template from [Module 1](../modules/01-quick-start/templates/AGENTS-single-app.md):
+Copy the template from [Module 1](../modules/01-project-context/templates/AGENTS-single-app.md):
 
 ```bash
 # Create AGENTS.md at project root
@@ -24,59 +24,69 @@ touch AGENTS.md
 ```
 
 Fill in:
-- Quick Start commands
-- Project Overview
-- Tech Stack
-- File Organization
+- Stack and versions
+- Commands (dev, build, test)
+- Project structure
+- Conventions (short, inline)
+- Context Loading table (references to docs/ and skills)
+- Boundaries (always/ask/never)
 
-### Step 3: Done!
+### Step 3: Add Reference Docs
+
+```bash
+mkdir -p docs/decisions
+```
+
+Create docs from [Module 1 templates](../modules/01-project-context/templates/docs/):
+- `docs/architecture.md` — System overview
+- `docs/data-model.md` — Database schema (if applicable)
+- `docs/api.md` — API surface (if applicable)
+- `docs/auth.md` — Auth flows (if applicable)
+
+### Step 4: Done!
 
 AI agents can now understand your project.
 
 ---
 
-## Full Setup
+## Full Setup (with Skills)
 
-Want the complete setup? Follow these steps:
+Want the complete setup with on-demand skills? Add these steps:
 
-### Step 1: Create Folder Structure
+### Step 5: Add Skills
 
 ```bash
-mkdir -p .cursor/rules
-mkdir -p docs/{specs,features,decisions}
+mkdir -p .agents/skills
 ```
 
-### Step 2: Add Core Files
+Create skills for your tech stack domains. See [Module 2](../modules/02-skills/README.md) for the SKILL.md format and template.
 
-| File | Source |
-|------|--------|
-| `AGENTS.md` | [Module 1 template](../modules/01-quick-start/templates/AGENTS-single-app.md) |
-| `.cursor/rules/code-style.mdc` | Module 2: `templates/.cursor/rules/code-style.mdc` |
-| `.cursor/rules/doc-style.mdc` | Module 2: `templates/.cursor/rules/doc-style.mdc` |
-| `.cursor/rules/feature-workflow.mdc` | Module 3: `templates/.cursor/rules/feature-workflow.mdc` |
-| `docs/INDEX.md` | [Module 4 template](../modules/04-reference-docs/templates/docs-index.md) |
+### Step 6: Add Feature Workflow
 
-### Step 3: Customize Templates
+Copy the workflow template from [Module 3](../modules/03-feature-development/README.md):
 
-1. **AGENTS.md**: Fill in your actual tech stack and commands
-2. **code-style.mdc**: Adjust for your language/framework
-3. **doc-style.mdc**: Adjust for your doc preferences
+```bash
+mkdir -p specs
+```
 
-### Step 4: Verify Structure
+**Option A** (Cursor-specific): Copy `feature-workflow.mdc` to `.cursor/rules/`
+**Option B** (Portable): Create `.agents/skills/feature-workflow/SKILL.md`
+
+### Step 7: Verify Structure
 
 ```
 my-project/
-├── AGENTS.md
-├── .cursor/
-│   └── rules/
-│       ├── code-style.mdc
-│       ├── doc-style.mdc
-│       └── feature-workflow.mdc
-└── docs/
-    ├── INDEX.md
-    ├── specs/
-    ├── features/
-    └── decisions/
+├── AGENTS.md                          # Layer 1: Always loaded
+├── .agents/skills/                    # Layer 2: On-demand skills
+│   ├── database/SKILL.md
+│   └── testing/SKILL.md
+├── docs/                              # Layer 3: Reference docs
+│   ├── architecture.md
+│   ├── data-model.md
+│   ├── api.md
+│   └── decisions/
+├── specs/                             # Feature work (ephemeral)
+└── src/
 ```
 
 ---
@@ -93,16 +103,16 @@ https://github.com/sergiusavva/ai-context-docs-lifecycle/content/guides/getting-
 
 Set up:
 1. AGENTS.md with project context
-2. .cursor/rules/ with coding standards
-3. docs/ folder structure
+2. docs/ with reference documentation
+3. .agents/skills/ for tech stack patterns
 
 My tech stack is: [YOUR TECH STACK]
 ```
 
 The AI will:
 1. Create appropriate folder structure
-2. Generate customized templates
-3. Fill in project-specific details
+2. Generate customized AGENTS.md
+3. Create reference docs and skills for your stack
 
 ---
 
@@ -118,22 +128,23 @@ No spec needed. Just fix and commit.
 
 ```bash
 # 1. Create spec
-mkdir -p docs/specs/my-feature
-# Copy feature-spec.md and tasks.md from Module 3 templates
+mkdir -p specs/my-feature
+# Copy spec.md and tasks.md from Module 3 templates
 
 # 2. Tell AI
-"Build the feature specified in docs/specs/my-feature/"
+"Build the feature specified in specs/my-feature/"
 
 # 3. AI implements following workflow
 # 4. Review and approve
-# 5. Delete or archive spec
+# 5. Update docs/ if needed
+# 6. Delete spec folder
 ```
 
 ### Complex Flow (large feature)
 
 ```bash
 # 1. Create research
-mkdir -p docs/specs/my-feature
+mkdir -p specs/my-feature
 # Copy all templates from Module 3
 
 # 2. Tell AI
@@ -142,7 +153,8 @@ mkdir -p docs/specs/my-feature
 # 3. Review research, approve approach
 # 4. AI creates spec and implements
 # 5. Create ADR for decisions
-# 6. Archive spec
+# 6. Update docs/
+# 7. Delete spec folder
 ```
 
 ---
@@ -150,15 +162,15 @@ mkdir -p docs/specs/my-feature
 ## Checklist
 
 - [ ] `AGENTS.md` created at root
-- [ ] `.cursor/rules/` folder created
-- [ ] At least one `.mdc` rule file added
-- [ ] `docs/` folder structure created
-- [ ] `docs/INDEX.md` created
+- [ ] `docs/` folder with reference docs
+- [ ] `docs/decisions/` for ADRs
+- [ ] `.agents/skills/` with relevant skills (optional)
+- [ ] `specs/` folder for feature work (optional)
 - [ ] First feature spec ready (optional)
 
 ---
 
 ## Next Steps
 
-- [Module 3: Feature Development](../modules/03-feature-development/README.md) - Learn the workflows
-- [Examples](../modules/03-feature-development/README.md#examples) - See complete walkthroughs
+- [Module 3: Feature Development](../modules/03-feature-development/README.md) — Learn the workflows
+- [Examples](../modules/01-project-context/examples/demo-taskflow/README.md) — See complete demo

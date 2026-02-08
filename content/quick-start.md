@@ -6,94 +6,96 @@ Get AI context for your project. Choose your setup level:
 
 Just need AI context? Use **Module 1** only.
 
-### Step 1: Copy AGENTS.md
+### Step 1: Create AGENTS.md
 
-Create `AGENTS.md` at your project root with:
+Create `AGENTS.md` at your project root (~80 lines):
 
 ```markdown
-# [Project Name] - AI Agent Instructions
+# [Project Name]
 
-> Quick context for AI coding assistants.
+> [One-line description]
 
----
+## Stack
 
-## Quick Start
-
-```bash
-# Install
-npm install
-
-# Dev
-npm run dev
-
-# Test
-npm test
-```
-
----
-
-## Project Overview
-
-[1-2 sentences: What does this project do?]
-
----
-
-## Tech Stack
-
-| Category | Technology |
-|----------|------------|
+| Tech | Version |
+|------|---------|
 | Framework | [Your framework] |
 | Language | [Your language] |
 | Database | [Your database] |
 
----
+## Commands
 
-## File Organization
+```bash
+npm run dev     # Dev server
+npm run build   # Production build
+npm run test    # Run tests
+```
+
+## Structure
 
 ```
 src/
-├── components/    # UI components
-├── lib/          # Utilities
-└── app/          # Routes/pages
+├── app/           # Routes/pages
+├── features/      # Feature modules
+└── shared/        # Shared utilities
 ```
 
----
+## Conventions
 
-## Key Patterns
+- [Convention 1]
+- [Convention 2]
 
-- [Pattern 1]
-- [Pattern 2]
+## Context Loading
+
+| Task | Read |
+|------|------|
+| Architecture | @docs/architecture.md |
+| Database | @docs/data-model.md |
+
+## Boundaries
+
+### Always
+- [Rule 1]
+
+### Never
+- [Anti-pattern 1]
 ```
 
-### Step 2: Done!
-
-AI agents will read this file automatically and have context about your project.
-
----
-
-## Option 2: Standard
-
-Want workflows for building features? Add **Modules 1 + 2 + 3**.
-
-### Step 1: Create Structure
+### Step 2: Add Reference Docs
 
 ```bash
-mkdir -p .cursor/rules
-mkdir -p docs/{specs,features,decisions}
+mkdir -p docs/decisions
 ```
 
-### Step 2: Add Files
+Create `docs/architecture.md` with your system overview.
 
-| File | Purpose |
-|------|---------|
-| `AGENTS.md` | AI context (from Module 1) |
-| `.cursor/rules/code-style.mdc` | Code conventions |
-| `.cursor/rules/doc-style.mdc` | Doc standards |
-| `.cursor/rules/feature-workflow.mdc` | Workflow guidance |
+### Step 3: Done!
 
-### Step 3: Customize
+AI agents will read AGENTS.md automatically and load docs/ on-demand.
 
-Edit each `.mdc` file to match your project's conventions.
+---
+
+## Option 2: Standard (with Skills)
+
+Want on-demand coding patterns? Add **Modules 1 + 2**.
+
+### Step 1: Add AGENTS.md + docs/ (see above)
+
+### Step 2: Add Skills
+
+```bash
+mkdir -p .agents/skills
+```
+
+Create `SKILL.md` files for your tech stack domains:
+
+| Skill | Covers |
+|-------|--------|
+| `database/SKILL.md` | ORM patterns, migrations, queries |
+| `testing/SKILL.md` | Test strategy, which tool for what |
+| `ui-components/SKILL.md` | Component library, theming |
+
+See [Module 2](modules/02-skills/README.md) for the SKILL.md format.
 
 ---
 
@@ -109,8 +111,8 @@ https://github.com/SergiuSavva/ai-context-docs-lifecycle/content/guides/getting-
 
 Set up:
 1. AGENTS.md with project context
-2. .cursor/rules/ with coding standards
-3. docs/ folder structure
+2. docs/ with reference documentation
+3. .agents/skills/ for tech stack patterns
 
 My tech stack is: [YOUR TECH STACK]
 ```
@@ -125,26 +127,30 @@ The AI will:
 
 ## What You Get
 
-### Module 1: Quick Start
+### Module 1: Project Context
 
 ```
 project/
-└── AGENTS.md    # AI reads this first
+├── AGENTS.md          # Always loaded (~80 lines)
+└── docs/              # On-demand reference
+    ├── architecture.md
+    ├── data-model.md
+    ├── api.md
+    └── decisions/
 ```
 
 ### Modules 1 + 2 + 3
 
 ```
 project/
-├── AGENTS.md
-├── .cursor/rules/
-│   ├── code-style.mdc
-│   ├── doc-style.mdc
-│   └── feature-workflow.mdc
-└── docs/
-    ├── specs/           # Feature specifications
-    ├── features/        # Feature documentation
-    └── decisions/       # ADRs
+├── AGENTS.md              # Layer 1: Always loaded
+├── .agents/skills/        # Layer 2: On-demand skills
+│   ├── database/SKILL.md
+│   └── testing/SKILL.md
+├── docs/                  # Layer 3: Reference docs
+│   ├── architecture.md
+│   └── decisions/
+└── specs/                 # Feature work (ephemeral)
 ```
 
 ---
@@ -156,32 +162,8 @@ Once set up, use these workflows for building features:
 | Flow | Use For | Templates |
 |------|---------|-----------|
 | **Quick** | Bug fixes, config changes | None |
-| **Standard** | Small features (< 5 files) | feature-spec, tasks |
-| **Complex** | Large features, research needed | All templates |
-
-### Decision Tree
-
-```
-Does this require research or evaluating alternatives?
-├─ YES → Complex Flow
-└─ NO → Will this change more than 5 files?
-         ├─ YES → Complex Flow
-         └─ NO → Is this a bug fix, typo, or config change?
-                  ├─ YES → Quick Flow
-                  └─ NO → Standard Flow
-```
-
----
-
-## Common Prompts
-
-| Task | Prompt |
-|------|--------|
-| **New feature** | "Create feature spec for [feature] in docs/specs/" |
-| **Start building** | "Implement the feature in docs/specs/[feature]/" |
-| **Track progress** | "Update tasks.md with current progress" |
-| **Record decision** | "Create ADR for choosing [X] over [Y]" |
-| **Complete feature** | "Archive spec and update docs for [feature]" |
+| **Standard** | Features | spec.md + tasks.md |
+| **Complex** | Research needed | All templates + ADR |
 
 ---
 
@@ -190,6 +172,7 @@ Does this require research or evaluating alternatives?
 - [View all modules](modules/README.md) — Browse templates and examples
 - [New project guide](guides/new-project.md) — Detailed setup walkthrough
 - [Existing project guide](guides/existing-project.md) — Add to existing code
+- [Demo example](modules/01-project-context/examples/demo-taskflow/README.md) — See it all in action
 
 ---
 
