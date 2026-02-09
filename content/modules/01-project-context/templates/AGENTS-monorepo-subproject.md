@@ -18,21 +18,33 @@
 | Runtime | {{e.g., Node.js 20}} |
 | Database | {{e.g., PostgreSQL 16}} |
 
-## Commands
+## Discovery -> Activation -> Execution
 
-Run from this directory or use workspace commands:
+Use this flow for context loading:
 
-```bash
-# From this directory
-{{package-manager}} dev        # Start dev server
-{{package-manager}} test       # Run tests
-{{package-manager}} build      # Build package
-{{package-manager}} lint       # Lint code
+1. **Discovery (always loaded)**
+   - This file: local stack, structure, dependencies, boundaries
+2. **Activation (load only if task needs it)**
+   - Local `@docs/` references and relevant shared docs
+3. **Execution (load before running commands)**
+   - Canonical command catalog in local `@docs/scripts.md`
 
-# From monorepo root
-{{package-manager}} --filter {{package-name}} dev
-{{package-manager}} --filter {{package-name}} test
-```
+## Command Policy
+
+- Package manager: `{{package-manager}}`
+- Canonical runnable commands live in local `@docs/scripts.md`
+- Workspace-level commands may also exist in root `@docs/scripts.md`
+- Do not invent commands not present in project config/docs
+- Load command docs only for implementation, verification, or release tasks
+- Skip command docs for pure research, design, and planning tasks
+
+## Task Mode Routing
+
+| Task Mode | Load by Default | Command Docs |
+|-----------|-----------------|--------------|
+| Research / Design / Plan | This file + relevant domain docs | Skip unless user asks |
+| Implement / Fix | This file + relevant domain docs | Load local `@docs/scripts.md` first |
+| Verify / Release | This file + test/build/release docs | Load local `@docs/scripts.md` |
 
 ## Structure
 
@@ -73,7 +85,7 @@ Run from this directory or use workspace commands:
 | Package patterns | @src/README.md |
 | API endpoints | @src/routes/README.md |
 | Data models | @src/models/README.md |
-| Global patterns | @../../.cursor/rules/code-style.mdc |
+| Package commands / verification scripts | @docs/scripts.md |
 
 ## Integration Points
 
@@ -86,7 +98,7 @@ Run from this directory or use workspace commands:
 ## Boundaries
 
 ### Always
-- Run tests: `{{package-manager}} test`
+- Use verified commands from `@docs/scripts.md` when executing tasks
 - Use shared types from `@{{scope}}/types`
 - Follow patterns in existing code
 
@@ -94,20 +106,15 @@ Run from this directory or use workspace commands:
 - Adding external dependencies
 - Changing API contracts
 - Database schema changes
+- Running destructive commands (reset/drop/force operations)
 
 ### Never
 - Import from other packages without declaring dependency
 - Hardcode environment values (use config)
 - Modify shared packages without checking dependents
 
----
-
 ## Deployment
 
 **Environment**: {{Lambda | Container | VM | Serverless}}
 **Trigger**: {{HTTP | Queue | Cron | Event}}
-
-```bash
-# Deploy (if applicable)
-{{deploy-command}}
-```
+**Command Source**: @docs/scripts.md

@@ -7,6 +7,17 @@
 
 {{One sentence describing what this monorepo contains}}
 
+## Discovery -> Activation -> Execution
+
+Use this flow for context loading:
+
+1. **Discovery (always loaded)**
+   - Root topology, subproject routing, global boundaries
+2. **Activation (load only if task needs it)**
+   - Subproject `AGENTS.md` + relevant `@docs/` references
+3. **Execution (load before running commands)**
+   - Command catalogs from `@docs/scripts.md` and the active subproject docs
+
 ## Structure
 
 ```
@@ -32,14 +43,22 @@
 | `packages/shared` | Common utilities | TypeScript |
 | `packages/types` | Shared interfaces | TypeScript |
 
-## Global Commands
+## Command Policy
 
-```bash
-{{package-manager}} install          # Install all deps
-{{package-manager}} build            # Build all packages
-{{package-manager}} test             # Test all packages
-{{package-manager}} lint             # Lint all packages
-```
+- Workspace package manager: `{{package-manager}}`
+- Canonical workspace commands live in `@docs/scripts.md`
+- Canonical package/service commands live in each subproject command docs
+- Do not invent commands; prefer verified entries only
+- Load command docs only for implementation, verification, or release tasks
+- Skip command docs for pure research, design, and planning tasks
+
+## Task Mode Routing
+
+| Task Mode | Load by Default | Command Docs |
+|-----------|-----------------|--------------|
+| Research / Design / Plan | Root `AGENTS.md` + relevant subproject `AGENTS.md` + topic docs | Skip unless user asks |
+| Implement / Fix | Relevant subproject `AGENTS.md` + topic docs | Load workspace + subproject command docs |
+| Verify / Release | Relevant subproject + CI/release docs | Load workspace + subproject command docs |
 
 ## Subproject Routing
 
@@ -58,10 +77,10 @@
 
 | Topic | Read |
 |-------|------|
-| Code style | @.cursor/rules/code-style.mdc |
 | Git workflow | @docs/git-workflow.md |
 | CI/CD | @docs/ci-cd.md |
 | Architecture | @docs/architecture.md |
+| Workspace commands | @docs/scripts.md |
 
 ## Global Boundaries
 
@@ -69,24 +88,15 @@
 - Run affected tests before committing
 - Follow package-specific patterns (read its AGENTS.md)
 - Use workspace dependencies, not external duplicates
+- Use verified commands from command docs when executing tasks
 
 ### Ask First
 - Adding new packages/services
 - Cross-package breaking changes
 - Shared dependency version bumps
+- Running destructive commands (reset/drop/force operations)
 
 ### Never
 - Commit secrets or .env files
 - Modify another package without reading its AGENTS.md
 - Push directly to main branch
-
----
-
-## Tool Compatibility
-
-| Tool | Discovery Method | Extra Setup |
-|------|------------------|-------------|
-| **Cursor** | Auto-reads `AGENTS.md` at project root | Nested `.cursor/rules/` per package for glob-based rules |
-| **Claude Code** | Reads `CLAUDE.md` at project root | Create symlink: `ln -s AGENTS.md CLAUDE.md` |
-| **GitHub Copilot** | Reads `.github/copilot-instructions.md` | Use for repo-wide rules |
-| **Windsurf** | Auto-reads `AGENTS.md` or `.windsurfrules` | No extra setup needed |

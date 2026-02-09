@@ -44,12 +44,12 @@
 
 ## Cleanup
 
-- [ ] T-25: Search for remaining "feature-spec" references
-- [ ] T-26: Search for remaining "< 5 files" or "> 5 files" references
-- [ ] T-27: Delete this spec folder after merge
+- [x] T-25: Search for remaining "feature-spec" references
+- [x] T-26: Search for remaining "< 5 files" or "> 5 files" references
+- [B] T-27: Delete this spec folder after merge (blocked: waiting for merge)
 
 ---
 
-**Progress**: 24/27 (89%)
-**Blocked**: None
-**In Progress**: T-25 (Cleanup)
+**Progress**: 26/27 (96%)
+**Blocked**: T-27 (awaiting merge)
+**In Progress**: None

@@ -78,6 +78,32 @@ your-project/
 
 ---
 
+## AI-Assisted Bootstrap (Plan Mode First)
+
+Use a two-pass flow for safer setup:
+
+1. **Plan mode** - analyze and propose files, commands, and assumptions (no writes)
+2. **Apply mode** - generate approved files from templates
+
+Use this prompt:
+
+```text
+Bootstrap this project with AI Context Docs Lifecycle.
+
+Follow:
+https://raw.githubusercontent.com/SergiuSavva/ai-context-docs-lifecycle/main/content/modules/01-project-context/bootstrap-workflow.md
+
+Start in plan mode only. Output:
+1) Project type (single app or monorepo)
+2) Files to create/update
+3) Commands with verified/inferred status + source
+4) Assumptions and open questions
+
+Wait for my approval before apply mode.
+```
+
+---
+
 ## Recommended Combinations
 
 ### Solo Developer (Minimal)

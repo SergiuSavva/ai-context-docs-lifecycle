@@ -99,29 +99,32 @@ See [Module 2](modules/02-skills/README.md) for the SKILL.md format.
 
 ---
 
-## Option 3: AI-Assisted Setup
+## Option 3: AI-Assisted Setup (Plan Mode First)
 
 Tell your AI assistant:
 
 ```
 Apply the AI Context Docs Lifecycle methodology to this project.
 
-Read the guide at:
-https://github.com/SergiuSavva/ai-context-docs-lifecycle/content/guides/getting-started.md
+Follow this workflow:
+https://raw.githubusercontent.com/SergiuSavva/ai-context-docs-lifecycle/main/content/modules/01-project-context/bootstrap-workflow.md
 
-Set up:
+Start in plan mode only and output:
 1. AGENTS.md with project context
 2. docs/ with reference documentation
-3. .agents/skills/ for tech stack patterns
+3. .agents/skills/ for tech stack patterns (if needed)
+4. Commands list with verified/inferred status + source
+5. Assumptions and open questions
 
-My tech stack is: [YOUR TECH STACK]
+Wait for my approval before apply mode.
+My tech stack: [YOUR TECH STACK]
 ```
 
 The AI will:
 
-1. Analyze your project
-2. Create appropriate structure
-3. Fill in project-specific details
+1. Analyze your project without writing files first
+2. Propose a safe, reviewable plan
+3. Generate approved files in apply mode
 
 ---
 

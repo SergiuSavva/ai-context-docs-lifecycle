@@ -16,15 +16,32 @@
 | Database | {{e.g., PostgreSQL 16}} |
 | Styling | {{e.g., Tailwind CSS 3.4}} |
 
-## Commands
+## Discovery -> Activation -> Execution
 
-```bash
-{{package-manager}} install   # Install dependencies
-{{package-manager}} dev       # Start dev server
-{{package-manager}} test      # Run tests (must pass before commit)
-{{package-manager}} lint      # Lint code
-{{package-manager}} build     # Production build
-```
+Use this flow for context loading:
+
+1. **Discovery (always loaded)**
+   - This file: stack, structure, boundaries, routing hints
+2. **Activation (load only if task needs it)**
+   - Domain docs in `@docs/` (architecture, data model, API, auth)
+3. **Execution (load before running commands)**
+   - Canonical command catalog in `@docs/scripts.md`
+
+## Command Policy
+
+- Package manager: `{{package-manager}}`
+- Canonical runnable commands live in `@docs/scripts.md`
+- Do not invent commands not present in project config/docs
+- Load command docs only for implementation, verification, or release tasks
+- Skip command loading for pure research, design, and planning tasks
+
+## Task Mode Routing
+
+| Task Mode | Load by Default | Command Docs |
+|-----------|-----------------|--------------|
+| Research / Design / Plan | This file + relevant domain docs | Skip unless user asks |
+| Implement / Fix | This file + relevant domain docs | Load `@docs/scripts.md` before running commands |
+| Verify / Release | This file + test/build docs | Load `@docs/scripts.md` |
 
 ## Structure
 
@@ -61,11 +78,12 @@ Load detailed docs based on your task:
 | Data model / schema | @docs/data-model.md |
 | API integration | @docs/api.md |
 | Auth flows / route protection | @docs/auth.md |
+| Running commands / CI checks / release steps | @docs/scripts.md |
 
 ## Boundaries
 
 ### Always
-- Run tests before committing
+- Use verified commands from `@docs/scripts.md` when executing tasks
 - Follow existing patterns in codebase
 - Use types from `src/types/`
 
@@ -73,22 +91,9 @@ Load detailed docs based on your task:
 - Adding new dependencies
 - Database schema changes
 - Breaking API changes
+- Running destructive commands (reset/drop/force operations)
 
 ### Never
 - Commit `.env` files or secrets
 - Modify `/generated` or `/vendor` directories
 - Push directly to main branch
-
----
-
-## Tool Compatibility
-
-This file works with all AI coding tools. Each tool discovers context files differently:
-
-| Tool | Discovery Method | Extra Setup |
-|------|------------------|-------------|
-| **Cursor** | Auto-reads `AGENTS.md` at project root | Use `.cursor/rules/*.mdc` for glob-based rules that auto-attach to specific file types |
-| **Claude Code** | Reads `CLAUDE.md` at project root | Create symlink: `ln -s AGENTS.md CLAUDE.md` |
-| **GitHub Copilot** | Reads `.github/copilot-instructions.md` | Copy AGENTS.md content there, or keep separate GitHub-specific rules |
-| **Windsurf** | Auto-reads `AGENTS.md` or `.windsurfrules` | No extra setup needed |
-| **Other tools** | Most read `AGENTS.md` or `README.md` | Check tool docs for context file location |

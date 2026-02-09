@@ -30,13 +30,15 @@ Keep AGENTS.md **compact (50-80 lines, 150 max)** and reference detailed docs dy
 ```
 project/
 ├── AGENTS.md                 # Compact router (50-80 lines, 150 max)
+├── .agents/skills/           # On-demand skills (task-specific)
+│   ├── database/SKILL.md
+│   └── testing/SKILL.md
 ├── docs/
 │   ├── architecture.md       # Detailed architecture
 │   ├── testing.md            # Testing guidelines
-│   └── api.md                # API patterns
-└── .cursor/rules/            # Tool-specific rules
-    ├── code-style.mdc
-    └── doc-style.mdc
+│   ├── api.md                # API patterns
+│   └── decisions/            # Permanent decision history (ADRs)
+│       └── 001-example.md
 ```
 
 ---
@@ -50,7 +52,7 @@ Top-performing AGENTS.md files cover:
 | **Commands** | Build, test, lint with exact flags |
 | **Testing** | How to run, coverage requirements |
 | **Project Structure** | Where files belong |
-| **Code Style** | Key patterns (or reference to rules) |
+| **Patterns** | Inline conventions + routes to skills/docs |
 | **Git Workflow** | Branch naming, commit format |
 | **Boundaries** | What AI should never touch |
 
@@ -153,11 +155,11 @@ Load based on your task:
 |------|------------|
 | Architecture | @docs/architecture.md |
 | Components | @docs/components.md |
-| Code style | @.cursor/rules/code-style.mdc |
+| Database changes | load skill `database` |
 | Testing | @docs/testing.md |
 ```
 
-The `@path/to/file` syntax works in Claude Code. Other tools use hierarchical discovery (nearest file wins).
+Keep AGENTS.md tool-agnostic: route to `@docs/...` and skills by name. Tool-specific invocation syntax belongs in optional tool bridge files.
 
 ### 5. Keep It Concise
 
@@ -189,13 +191,16 @@ Use **nested AGENTS.md files** - the nearest file to edited code takes precedenc
 ```
 monorepo/
 ├── AGENTS.md                    # Router (minimal, routes to subprojects)
+├── .agents/skills/              # Shared cross-project skills
+│   ├── database/SKILL.md
+│   └── testing/SKILL.md
 ├── packages/
 │   ├── web/
 │   │   ├── AGENTS.md           # Web-specific (React patterns)
-│   │   └── .cursor/rules/      # Web-specific rules
+│   │   └── .agents/skills/     # Optional package-local skills
 │   ├── api/
 │   │   ├── AGENTS.md           # API-specific (Go/Node patterns)
-│   │   └── .cursor/rules/      # API-specific rules
+│   │   └── .agents/skills/     # Optional package-local skills
 │   └── shared/
 │       └── AGENTS.md           # Shared libraries
 ├── services/
@@ -203,7 +208,7 @@ monorepo/
 │   │   └── AGENTS.md           # Lambda-specific
 │   └── email-worker/
 │       └── AGENTS.md           # Worker-specific
-└── .cursor/rules/               # Global rules (inherited by all)
+└── docs/                         # Shared reference docs
 ```
 
 ### Root AGENTS.md (Router Pattern)
@@ -264,7 +269,7 @@ make migrate            # Run migrations
 1. **Root = Router**: Minimal routing, not detailed content
 2. **Subproject = Full Context**: Each package has complete instructions
 3. **Nearest Wins**: AI uses closest AGENTS.md to current file
-4. **Inheritance**: Global `.cursor/rules/` inherited by all packages
+4. **Shared Skills + Local Overrides**: Keep shared skills at root, add package-local skills only when needed
 
 ### Templates
 
@@ -276,19 +281,15 @@ Use the monorepo templates from Module 1:
 
 ## Tool Compatibility
 
-### The Fragmentation Problem
+### Recommended Baseline
 
-Every tool created its own format:
+Use this portable stack first:
 
-| Tool | File |
-|------|------|
-| Cursor | `.cursorrules` → `.cursor/rules/*.mdc` |
-| Claude Code | `CLAUDE.md` + `.claude/rules/*.md` |
-| GitHub Copilot | `.github/copilot-instructions.md` |
-| Windsurf | `.windsurfrules` |
-| Cline | `.clinerules` |
+1. `AGENTS.md` for always-on project routing
+2. `.agents/skills/*/SKILL.md` for deep task-specific patterns
+3. `docs/` for reference context and ADR history
 
-**AGENTS.md** emerged as a vendor-neutral standard (Linux Foundation, 2025).
+This works across tools and minimizes lock-in.
 
 ### Two-Layer Architecture
 
@@ -301,43 +302,40 @@ Every tool created its own format:
                         │
                         ▼
 ┌─────────────────────────────────────────────────────┐
-│  Tool-Specific Rules (Advanced Features)            │
-│  .cursor/rules/*.mdc  - Glob patterns, auto-attach  │
-│  .claude/rules/*.md   - Path-scoped rules           │
+│  Skills + Docs (Portable, on-demand)                │
+│  .agents/skills/*/SKILL.md                          │
+│  @docs/*.md                                          │
 └─────────────────────────────────────────────────────┘
 ```
 
-### Setup for Multiple Tools
+### Optional Tool Bridges
 
 ```bash
-# Create AGENTS.md as source of truth
-# Then symlink/reference for other tools:
+# Keep AGENTS.md + skills + docs as source of truth.
+# Add tool-specific bridges only if your team needs advanced features.
 
 # Claude Code
 ln -s AGENTS.md CLAUDE.md
-
-# Or in CLAUDE.md:
-# Read @AGENTS.md for project context.
 ```
 
 ---
 
 ## What Goes Where
 
-| Content | AGENTS.md | Tool Rules |
-|---------|-----------|------------|
-| Project overview | Yes | No |
-| Commands | Yes | No |
-| Boundaries | Yes | No |
-| Tech stack | Yes | No |
-| Skill routing (what to load) | Yes | No |
-| Skill invocation syntax (tool-specific) | No | Yes |
-| **File-specific patterns** | No | Yes |
-| **Auto-attach by glob** | No | Yes (Cursor) |
-| **Activation modes** | No | Yes (Cursor) |
+| Content | AGENTS.md | SKILL.md | Tool Rules (Optional) |
+|---------|-----------|----------|------------------------|
+| Project overview | Yes | No | No |
+| Commands | Yes | No | No |
+| Boundaries | Yes | No | No |
+| Tech stack | Yes | Sometimes | No |
+| Skill routing (what to load) | Yes | No | No |
+| Deep domain procedures | No | Yes | Sometimes |
+| Skill invocation syntax (tool-specific) | No | No | Yes |
+| File glob auto-attach behavior | No | No | Yes |
 
-**AGENTS.md = What** (project facts)
-**Rules = How** (tool-specific behavior)
+**AGENTS.md = Router**
+**SKILL.md = Deep patterns**
+**Tool rules = Optional bridges**
 
 ---
 
@@ -385,7 +383,8 @@ src/
 | Architecture | @docs/architecture.md |
 | Components | @docs/components.md |
 | Payments | @docs/stripe-integration.md |
-| Code style | @.cursor/rules/code-style.mdc |
+| Database migrations | load skill `database` |
+| Testing strategy | load skill `testing` |
 
 ## Boundaries
 
@@ -409,7 +408,7 @@ src/
 
 > "The best agent files grow through iteration, not upfront planning."
 
-Start with a minimal AGENTS.md. When the AI makes a mistake, add a rule to prevent it. Your file evolves from real patterns, not theoretical ideals.
+Start with a minimal AGENTS.md. When the AI makes a mistake, add a routing hint, skill checklist item, or reference doc update to prevent repeat drift.
 
 ---
 

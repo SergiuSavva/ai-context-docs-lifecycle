@@ -1,333 +1,241 @@
 # Tool Compatibility Guide
 
-> **Set up AI context docs** for Cursor, Claude Code, GitHub Copilot, and other tools.
+> **Use ACDL across tools** with a portable baseline first, then optional tool-specific bridges.
 
 ---
 
 ## Overview
 
-AI coding tools each have their own configuration formats. This guide shows how to use AGENTS.md as a single source of truth while leveraging tool-specific features.
+AI coding tools vary in config formats, but the same core context can stay portable:
 
 ```
 ┌─────────────────────────────────────────────────────┐
-│  AGENTS.md (Universal - works everywhere)           │
+│  AGENTS.md (always-on project router)               │
+├─────────────────────────────────────────────────────┤
+│  .agents/skills/*/SKILL.md (on-demand patterns)     │
+├─────────────────────────────────────────────────────┤
+│  docs/* (reference knowledge + ADR history)         │
 └─────────────────────────────────────────────────────┘
                         │
-        ┌───────────────┼───────────────┐
-        ▼               ▼               ▼
-┌─────────────┐ ┌─────────────┐ ┌─────────────┐
-│   Cursor    │ │ Claude Code │ │   Copilot   │
-│ .cursor/    │ │ .claude/    │ │  .github/   │
-│ rules/*.mdc │ │ rules/*.md  │ │ copilot-    │
-│             │ │ CLAUDE.md   │ │ instructions│
-└─────────────┘ └─────────────┘ └─────────────┘
+                        ▼
+         Optional tool bridges (Cursor / Claude / Copilot)
 ```
+
+Use tool-specific files for extra ergonomics (globs, UI actions), not as your primary source of truth.
 
 ---
 
 ## Quick Setup
 
-### Minimal (Any Tool)
+### Recommended Baseline (Any Tool)
 
-1. Create `AGENTS.md` at your project root.
-2. Start from the Module 1 single-app template:
+1. Create `AGENTS.md` at project root from:
    `content/modules/01-project-context/templates/AGENTS-single-app.md`
-3. Fill in your project-specific stack, commands, structure, and boundaries.
+2. Create `docs/` from Module 1 templates (architecture, data-model, api, auth, decisions).
+3. Create `.agents/skills/` from Module 2 template for deep domain patterns.
+4. Keep feature workflow templates in `specs/` (Module 3).
 
-Works with: Cursor, Copilot, Zed, OpenAI Codex, Windsurf, and 20+ other tools.
+Works with every agent that can read markdown files.
 
-### Full Setup (All Tools)
+### Optional Bridge Setup (Multi-Tool Teams)
 
 ```bash
-# 1. Create AGENTS.md (source of truth)
-# Start from:
-# content/modules/01-project-context/templates/AGENTS-single-app.md
-
-# 2. Symlink for Claude Code
+# Claude Code compatibility
 ln -s AGENTS.md CLAUDE.md
 
-# 3. Create tool-specific rules
+# Optional tool folders
 mkdir -p .cursor/rules
 mkdir -p .claude/rules
 mkdir -p .github
-
-# 4. Add tool-specific features (optional)
 ```
 
 ---
 
-## Tool-Specific Setup
+## Tool-Specific Bridges
 
-### Cursor
+### Cursor (Optional)
 
-**Files:**
+**Portable baseline files:**
+
 ```
 project/
-├── AGENTS.md                    # Universal context
+├── AGENTS.md
+├── .agents/skills/
+└── docs/
+```
+
+**Optional Cursor bridge files:**
+
+```
+project/
 └── .cursor/
     └── rules/
-        ├── 00-index.mdc         # Rules router
-        ├── code-style.mdc       # Code patterns
-        └── doc-style.mdc        # Documentation style
+        └── 00-index.mdc
 ```
 
-**Features:**
-- `.mdc` files support YAML frontmatter with globs
-- Auto-attach rules based on file patterns
-- Activation modes: Always, Auto, Agent Requested, Manual
+Use `.mdc` for Cursor-only conveniences:
+- glob-based auto-attach
+- activation modes
+- path-targeted reminders
 
-**Example `.cursor/rules/code-style.mdc`:**
+**Example `.cursor/rules/00-index.mdc`:**
+
 ```markdown
 ---
-description: TypeScript and React code patterns
-globs:
-  - "src/**/*.ts"
-  - "src/**/*.tsx"
----
-
-# Code Style
-
-## TypeScript
-- Use strict mode
-- Prefer `type` over `interface` for simple types
-- Use explicit return types for exported functions
-
-## React
-- Functional components only
-- Custom hooks in `src/hooks/`
-- Co-locate tests as `*.test.tsx`
-```
-
-**Reference AGENTS.md from rules:**
-```markdown
----
-description: Project context router
+description: Cursor bridge to universal ACDL context
 globs:
   - "**/*"
 ---
 
-# Project Context
-
-For universal project context, read @AGENTS.md
-
-## Cursor-Specific Rules
-| File Pattern | Rule |
-|--------------|------|
-| `src/**/*.ts` | @.cursor/rules/code-style.mdc |
-| `docs/**/*.md` | @.cursor/rules/doc-style.mdc |
+Read @AGENTS.md first.
+Use `@docs/...` references and load relevant skills from `.agents/skills/`.
 ```
 
----
+### Claude Code (Optional)
 
-### Claude Code
+**Recommended bridge:**
 
-**Files:**
-```
-project/
-├── AGENTS.md                    # Universal context
-├── CLAUDE.md -> AGENTS.md       # Symlink (or reference)
-└── .claude/
-    └── rules/
-        ├── security.md          # Security rules
-        └── testing.md           # Testing rules
-```
-
-**Features:**
-- `@path/to/file.md` syntax for dynamic loading
-- Recursive imports (up to 5 levels)
-- Directory-aware context loading
-- Path-scoped rules with YAML frontmatter
-
-**Option 1: Symlink**
 ```bash
 ln -s AGENTS.md CLAUDE.md
 ```
 
-**Option 2: Reference**
-```markdown
-# CLAUDE.md
+Optional `.claude/rules/*.md` can hold Claude-specific behavior, but keep project facts and deep patterns in universal files.
 
+**Example `CLAUDE.md`:**
+
+```markdown
 Read @AGENTS.md for project context.
-
-## Claude-Specific Instructions
-
-- Use the TodoWrite tool for multi-step tasks
-- Prefer Edit over Write for existing files
+For task-specific patterns, load relevant SKILL.md files from `.agents/skills/`.
 ```
 
-**Path-scoped rules in `.claude/rules/`:**
+### GitHub Copilot (Optional)
+
+Use `.github/copilot-instructions.md` as a thin pointer:
+
 ```markdown
----
-paths:
-  - "src/api/**"
-  - "src/server/**"
----
-
-# API Development Rules
-
-- All endpoints must have input validation
-- Use Zod schemas from `src/schemas/`
-- Return consistent error format
+For project context, read /AGENTS.md.
+For deep task patterns, use .agents/skills/*/SKILL.md.
+For system reference, use /docs/*.
 ```
 
----
-
-### GitHub Copilot
-
-**Files:**
-```
-project/
-├── AGENTS.md                           # Universal context
-└── .github/
-    └── copilot-instructions.md         # Copilot-specific
-```
-
-**Features:**
-- Workspace-level instructions
-- GitHub Actions integration
-- Custom agents via `agents.md` files (new feature)
-
-**Example `.github/copilot-instructions.md`:**
-```markdown
-# Copilot Instructions
-
-For full project context, see /AGENTS.md
-
-## Additional Context
-
-- This is a GitHub-hosted project
-- Use conventional commits
-- PRs require passing CI checks
-
-## Preferred Patterns
-
-- Use GitHub Actions for CI/CD
-- Store secrets in GitHub Secrets
-- Use Dependabot for updates
-```
-
----
+Keep detailed procedures in `SKILL.md` and `docs/`, not duplicated in Copilot instructions.
 
 ### Other Tools
 
-| Tool | Config File | Notes |
-|------|------------|-------|
-| **Zed** | `AGENTS.md` | Native support |
-| **Windsurf** | `.windsurfrules` | Symlink to AGENTS.md |
-| **Cline** | `.clinerules` | Symlink to AGENTS.md |
-| **OpenAI Codex** | `AGENTS.md` | Native support |
-| **Aider** | `.aider.conf.yml` | Reference AGENTS.md in read |
-
-**Symlink approach for legacy tools:**
-```bash
-# For tools that don't support AGENTS.md natively
-ln -s AGENTS.md .windsurfrules
-ln -s AGENTS.md .clinerules
-```
+| Tool | Baseline Support | Optional Bridge |
+|------|------------------|-----------------|
+| **OpenAI Codex** | `AGENTS.md` + markdown docs | None required |
+| **Zed** | `AGENTS.md` | None required |
+| **Windsurf** | Markdown context files | `.windsurfrules` pointer to `AGENTS.md` |
+| **Cline** | Markdown context files | `.clinerules` pointer to `AGENTS.md` |
+| **Aider** | Read files manually | Add `/read AGENTS.md` in workflow |
 
 ---
 
 ## Recommended Project Structure
 
-### Simple Project (Single Tool)
+### Simple Project (Portable Default)
 
 ```
 project/
-├── AGENTS.md              # Universal context
-└── .cursor/rules/         # If using Cursor
-    └── code-style.mdc
+├── AGENTS.md
+├── .agents/
+│   └── skills/
+│       ├── database/SKILL.md
+│       └── testing/SKILL.md
+├── docs/
+│   ├── architecture.md
+│   ├── data-model.md
+│   ├── api.md
+│   └── decisions/
+└── specs/
 ```
 
 ### Multi-Tool Team
 
 ```
 project/
-├── AGENTS.md                           # Universal (source of truth)
-├── CLAUDE.md -> AGENTS.md              # Claude Code symlink
-├── .cursor/
-│   └── rules/
-│       ├── 00-index.mdc               # References AGENTS.md
-│       ├── code-style.mdc
-│       └── doc-style.mdc
-├── .claude/
-│   └── rules/
-│       └── testing.md                 # Claude-specific
-└── .github/
-    └── copilot-instructions.md        # Copilot-specific
+├── AGENTS.md                            # Source of truth
+├── CLAUDE.md -> AGENTS.md               # Optional bridge
+├── .agents/skills/                      # Shared deep patterns
+├── docs/                                # Shared reference context
+├── .cursor/rules/00-index.mdc           # Optional Cursor bridge
+├── .claude/rules/                       # Optional Claude-only notes
+└── .github/copilot-instructions.md      # Optional Copilot bridge
 ```
 
 ### Monorepo
 
 ```
 monorepo/
-├── AGENTS.md                           # Global context
-├── CLAUDE.md -> AGENTS.md
+├── AGENTS.md                            # Root router
+├── .agents/skills/                      # Shared cross-project skills
+├── docs/                                # Shared reference docs
 ├── packages/
-│   ├── api/
-│   │   ├── AGENTS.md                  # API-specific
-│   │   └── .cursor/rules/
-│   └── web/
-│       ├── AGENTS.md                  # Web-specific
-│       └── .cursor/rules/
-└── .cursor/
-    └── rules/                         # Global rules
+│   ├── api/AGENTS.md                    # Local context (nearest wins)
+│   └── web/AGENTS.md
+└── specs/
 ```
 
 ---
 
 ## Migration Guide
 
-### From `.cursorrules` to AGENTS.md
+### From Tool-Only Rules to ACDL Baseline
+
+1. Consolidate universal instructions into `AGENTS.md`.
+2. Move deep procedures into `.agents/skills/*/SKILL.md`.
+3. Move architecture/API/data/auth truth into `docs/`.
+4. Reduce tool-specific files to thin pointers.
+
+### From `.cursorrules` to ACDL
 
 ```bash
-# 1. Rename to AGENTS.md
+# 1. Promote to universal file
 mv .cursorrules AGENTS.md
 
-# 2. Create symlink for backward compatibility (optional)
+# 2. (Optional) keep backwards compatibility
 ln -s AGENTS.md .cursorrules
 
-# 3. Extract tool-specific rules to .cursor/rules/
+# 3. Keep Cursor-only behavior in .cursor/rules/
 mkdir -p .cursor/rules
-# Move glob-based rules to .mdc files
 ```
 
-### From `CLAUDE.md` to AGENTS.md
+### From `CLAUDE.md` to ACDL
 
 ```bash
-# 1. Rename to AGENTS.md
+# 1. Promote to universal file
 mv CLAUDE.md AGENTS.md
 
-# 2. Create symlink for Claude Code
+# 2. Keep Claude bridge
 ln -s AGENTS.md CLAUDE.md
-
-# 3. Keep Claude-specific content in .claude/rules/
 ```
 
 ---
 
 ## Best Practices
 
-### 1. Single Source of Truth
+### 1. Keep Universal Content Portable
 
-Keep universal content in AGENTS.md only. Don't duplicate across tool files.
+Put project facts, boundaries, commands, and routing in `AGENTS.md`.
 
-### 2. Tool-Specific Features in Tool Files
+### 2. Put Deep Procedures in Skills
 
-Use `.cursor/rules/*.mdc` for:
-- Glob-based auto-attach
-- Activation modes
-- File-pattern-specific rules
+Keep multi-step implementation knowledge in `.agents/skills/*/SKILL.md`.
 
-Use `.claude/rules/*.md` for:
-- Path-scoped rules
-- Claude-specific instructions
+### 3. Keep System Truth in docs/
 
-### 3. Test with Multiple Tools
+Architecture, data model, API, auth, and ADRs belong in `docs/`.
 
-After setup, verify each tool reads the context correctly:
-- Cursor: Check rules load in agent mode
-- Claude Code: Run `/memory` to see loaded files
-- Copilot: Verify instructions appear in completions
+### 4. Use Tool Files as Bridges
+
+Tool files should mostly point to universal files, not duplicate them.
+
+### 5. Verify Behavior in Each Tool
+
+- Confirm `AGENTS.md` is loaded
+- Confirm skills are discoverable
+- Confirm `docs/` references resolve
 
 ---
 
@@ -335,32 +243,27 @@ After setup, verify each tool reads the context correctly:
 
 ### AGENTS.md Not Loaded
 
-- Ensure file is at project root
-- Check file name is exactly `AGENTS.md` (case-sensitive)
-- Verify no `.gitignore` rules excluding it
+- Ensure filename is exactly `AGENTS.md`
+- Ensure file is in project root
+- Ensure no ignore rule excludes it
 
-### Symlink Issues
+### Skills Not Used
 
-```bash
-# Check symlink is correct
-ls -la CLAUDE.md
-# Should show: CLAUDE.md -> AGENTS.md
+- Ensure `SKILL.md` files exist under `.agents/skills/<name>/SKILL.md`
+- Add explicit routing hints in `AGENTS.md` Context Loading table
+- Keep skill descriptions specific so routing is obvious
 
-# Fix broken symlink
-rm CLAUDE.md
-ln -s AGENTS.md CLAUDE.md
-```
+### Bridge Drift Across Tools
 
-### Rules Not Auto-Attaching (Cursor)
-
-- Check YAML frontmatter syntax
-- Verify glob patterns match your files
-- Ensure `.mdc` extension (not `.md`)
+- Remove duplicated instructions from tool files
+- Keep only pointers in tool-specific files
+- Update universal files first (`AGENTS.md`, skills, docs)
 
 ---
 
 ## See Also
 
-- [AGENTS.md Best Practices](./agents-md-best-practices.md) - Writing effective content
-- [Module 2: Skills](../modules/02-skills/README.md) - On-demand instruction packages
-- [Getting Started](./getting-started.md) - Choose your setup
+- [AGENTS.md Best Practices](./agents-md-best-practices.md)
+- [Module 1: Project Context](../modules/01-project-context/README.md)
+- [Module 2: Skills](../modules/02-skills/README.md)
+- [Getting Started](./getting-started.md)
