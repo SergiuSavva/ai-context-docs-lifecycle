@@ -12,6 +12,7 @@
 | [New Project](./new-project.md) | Set up from scratch |
 | [Existing Project](./existing-project.md) | Add to existing codebase |
 | [AGENTS.md Best Practices](./agents-md-best-practices.md) | Write effective AI context files |
+| [Skill Routing Policy](./skill-routing.md) | Decide when agents should load skills |
 | [Tool Compatibility](./tool-compatibility.md) | Set up for Cursor, Claude Code, Copilot |
 
 ---
@@ -35,6 +36,12 @@
 - Adding the methodology to an existing codebase
 - Migrating a project to use this methodology
 - Incrementally adopting the approach
+
+### Use [Skill Routing Policy](./skill-routing.md) when:
+
+- You want consistent skill activation behavior across agents
+- You need clear thresholds for "load skill" vs "skip"
+- You want a measurable policy with precision/recall targets
 
 ---
 
@@ -125,4 +132,5 @@ When asked to apply this methodology:
 | Main README | Project overview (root of repo) |
 | [Methodology](../methodology.md) | Full philosophy |
 | [AGENTS.md Best Practices](./agents-md-best-practices.md) | Research-backed writing guide |
+| [Skill Routing Policy](./skill-routing.md) | Score-based skill activation rules |
 | [Tool Compatibility](./tool-compatibility.md) | Multi-tool setup |

@@ -10,12 +10,12 @@
 
 Pick the modules you need:
 
-| # | Module | Purpose | Time |
-|---|--------|---------|------|
-| 1 | **Project Context** | AGENTS.md + docs/ (always-loaded context + reference) | 10 min |
-| 2 | **Skills** | On-demand instruction packages (.agents/skills/) | 10 min |
-| 3 | **Feature Development** | Workflows for building features | 15 min |
-| 4 | **Project Planning** | Multi-feature management (optional) | 15 min |
+| # | Module | Purpose |
+|---|--------|---------|
+| 1 | **Project Context** | AGENTS.md + docs/ (always-loaded context + reference) |
+| 2 | **Skills** | On-demand instruction packages (.agents/skills/) |
+| 3 | **Feature Development** | Workflows for building features |
+| 4 | **Project Planning** | Multi-feature management (optional) |
 
 ---
 
@@ -56,7 +56,7 @@ For feature work, agents should follow this order:
 
 ## Quick Start
 
-### 5-Minute Setup (Module 1)
+### Quick Setup (Module 1)
 
 Copy `AGENTS.md` to your project root and fill in your project details. Done!
 

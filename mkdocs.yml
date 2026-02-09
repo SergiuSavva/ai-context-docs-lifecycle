@@ -59,6 +59,7 @@ nav:
       - New Project: guides/new-project.md
       - Existing Project: guides/existing-project.md
       - AGENTS.md Best Practices: guides/agents-md-best-practices.md
+      - Skill Routing Policy: guides/skill-routing.md
       - Tool Compatibility: guides/tool-compatibility.md
   - Modules:
       - Overview: modules/README.md

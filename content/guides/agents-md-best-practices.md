@@ -56,6 +56,45 @@ Top-performing AGENTS.md files cover:
 
 ---
 
+## Commands, References, and Skills
+
+### How important is the `Commands` section?
+
+High importance. Missing commands force AI to guess and guesses are often wrong.
+
+Include at least:
+
+- one install/setup command
+- one local run command
+- one test command
+- one lint/typecheck command
+- one build command
+
+Keep this section short and executable. Prefer stable wrapper commands (for example `pnpm test`, `make test`, `just test`) over long one-off CLI flags.
+
+### Should AGENTS.md reference docs or config files?
+
+Use both, with clear roles:
+
+- `AGENTS.md`: quick, runnable commands and routing hints
+- docs in `docs/`: human explanation and workflow context
+- config files (`package.json`, `Makefile`, `pyproject.toml`, etc.): machine source of truth
+
+Practical rule: put the command in `AGENTS.md`, then point to the owning doc/config when details are needed.
+
+### Should we include skill commands?
+
+Usually no in the `Commands` section. Skill *invocation syntax* is tool-specific.
+
+What to include instead:
+
+- skill routing in `Context Loading` (when to read which skill)
+- skill file paths (for example `@.agents/skills/database/SKILL.md`)
+
+Put tool-specific invocation examples (for example slash commands or UI actions) in tool-specific rule/docs, not in universal AGENTS.md.
+
+---
+
 ## Best Practices
 
 ### 1. Be Specific, Not Vague
@@ -291,6 +330,8 @@ ln -s AGENTS.md CLAUDE.md
 | Commands | Yes | No |
 | Boundaries | Yes | No |
 | Tech stack | Yes | No |
+| Skill routing (what to load) | Yes | No |
+| Skill invocation syntax (tool-specific) | No | Yes |
 | **File-specific patterns** | No | Yes |
 | **Auto-attach by glob** | No | Yes (Cursor) |
 | **Activation modes** | No | Yes (Cursor) |
