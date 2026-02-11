@@ -1,0 +1,48 @@
+{
+  "name": "@acdl/cli",
+  "version": "0.1.1",
+  "description": "Initialize and maintain AI Context Docs in any project",
+  "type": "module",
+  "bin": {
+    "acdl": "./dist/bin.js"
+  },
+  "files": [
+    "dist/",
+    "templates/"
+  ],
+  "scripts": {
+    "prebuild": "node scripts/bundle-templates.js",
+    "build": "tsup",
+    "test": "vitest run",
+    "test:watch": "vitest",
+    "prepublishOnly": "npm run build"
+  },
+  "keywords": [
+    "ai",
+    "agents",
+    "context",
+    "docs",
+    "cli",
+    "acdl"
+  ],
+  "license": "MIT",
+  "publishConfig": {
+    "access": "public"
+  },
+  "engines": {
+    "node": ">=18"
+  },
+  "dependencies": {
+    "@iarna/toml": "^2.2.5",
+    "chalk": "^5.4.1",
+    "commander": "^13.1.0",
+    "diff": "^7.0.0"
+  },
+  "devDependencies": {
+    "@types/diff": "^7.0.2",
+    "@types/node": "^22.13.1",
+    "tsup": "^8.3.6",
+    "typescript": "^5.7.3",
+    "vitest": "^3.0.5"
+  }
+}
