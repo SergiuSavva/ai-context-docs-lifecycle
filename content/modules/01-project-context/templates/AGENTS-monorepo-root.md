@@ -81,6 +81,9 @@ Use this flow for context loading:
 | CI/CD | @docs/ci-cd.md |
 | Architecture | @docs/architecture.md |
 | Workspace commands | @docs/scripts.md |
+| Building a feature | load skill `feature-workflow` |
+| Creating / updating AGENTS.md | load skill `agents-md` |
+| Writing specs or tasks | load skill `spec-writing` |
 
 ## Global Boundaries
 

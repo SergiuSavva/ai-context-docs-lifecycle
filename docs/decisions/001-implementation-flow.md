@@ -5,6 +5,7 @@
 ## Context
 
 The original approach used file count as a heuristic (< 5 files = Standard, > 5 files = Complex). This doesn't reflect actual complexity.
+This reference is historical context only and is not part of the active workflow.
 
 ## Decision
 

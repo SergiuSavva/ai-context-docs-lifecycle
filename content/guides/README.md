@@ -12,6 +12,7 @@
 | [New Project](./new-project.md) | Set up from scratch |
 | [Existing Project](./existing-project.md) | Add to existing codebase |
 | [AGENTS.md Best Practices](./agents-md-best-practices.md) | Write effective AI context files |
+| [Skills Catalog](./skills-catalog.md) | What skills exist and when to use each one |
 | [Skill Routing Policy](./skill-routing.md) | Decide when agents should load skills |
 | [Tool Compatibility](./tool-compatibility.md) | Set up for Cursor, Claude Code, Copilot |
 
@@ -36,6 +37,12 @@
 - Adding the methodology to an existing codebase
 - Migrating a project to use this methodology
 - Incrementally adopting the approach
+
+### Use [Skills Catalog](./skills-catalog.md) when:
+
+- Looking for available skills and what they cover
+- Deciding which skill to load for a specific task
+- Learning how to create new skills
 
 ### Use [Skill Routing Policy](./skill-routing.md) when:
 
@@ -118,7 +125,7 @@ When asked to apply this methodology:
 | Module | Templates | Examples |
 |--------|-----------|----------|
 | [01-project-context](../modules/01-project-context/README.md) | `templates/AGENTS-*.md`, `templates/docs/` | `examples/demo-taskflow/` |
-| [02-skills](../modules/02-skills/README.md) | `templates/.agents/skills/skill-template/` | Referenced from Module 1 example |
+| [02-skills](../modules/02-skills/README.md) | `templates/.agents/skills/` (3 methodology + 1 template) | Referenced from Module 1 example |
 | [03-feature-development](../modules/03-feature-development/README.md) | `templates/` (7 files) | `examples/simple-todo/`, `examples/complex-auth/` |
 | [04-project-planning](../modules/04-project-planning/README.md) | `templates/` (4 files) | — |
 
@@ -132,5 +139,6 @@ When asked to apply this methodology:
 | Main README | Project overview (root of repo) |
 | [Methodology](../methodology.md) | Full philosophy |
 | [AGENTS.md Best Practices](./agents-md-best-practices.md) | Research-backed writing guide |
+| [Skills Catalog](./skills-catalog.md) | Available skills and usage guide |
 | [Skill Routing Policy](./skill-routing.md) | Score-based skill activation rules |
 | [Tool Compatibility](./tool-compatibility.md) | Multi-tool setup |
