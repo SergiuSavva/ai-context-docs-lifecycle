@@ -79,6 +79,9 @@ Load detailed docs based on your task:
 | API integration | @docs/api.md |
 | Auth flows / route protection | @docs/auth.md |
 | Running commands / CI checks / release steps | @docs/scripts.md |
+| Building a feature | load skill `feature-workflow` |
+| Creating / updating AGENTS.md | load skill `agents-md` |
+| Writing specs or tasks | load skill `spec-writing` |
 
 ## Boundaries
 

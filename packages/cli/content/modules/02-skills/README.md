@@ -20,6 +20,12 @@ A **Skill** is a `SKILL.md` file that teaches an AI agent how to do something sp
 
 ```
 .agents/skills/
+├── feature-workflow/
+│   └── SKILL.md          # Research → Plan → Implement phases
+├── agents-md/
+│   └── SKILL.md          # AGENTS.md authoring and maintenance
+├── spec-writing/
+│   └── SKILL.md          # Spec and task file authoring
 ├── database/
 │   └── SKILL.md          # Supabase patterns, migrations, RLS
 ├── testing/
@@ -156,7 +162,21 @@ Create a skill when:
 3. A workflow has multiple steps with code examples (e.g., "how to add a new database table")
 4. You want the AI to follow project-specific patterns that differ from defaults
 
-### Common Skills
+### Methodology Skills
+
+These skills teach AI agents how to use the ACDL workflow itself. They ship as templates and are tool-agnostic.
+
+| Skill | Covers |
+|-------|--------|
+| `feature-workflow` | Three-phase workflow (Research → Plan → Implement), task markers, progress tracking |
+| `agents-md` | AGENTS.md authoring — section anatomy, token budget, router pattern, update triggers |
+| `spec-writing` | Spec and task authoring — problem framing, acceptance criteria, scoping, task breakdown |
+
+Templates: `content/modules/02-skills/templates/.agents/skills/`
+
+### Stack Skills
+
+These skills teach project-specific tech stack patterns. Users author them for their own project.
 
 | Skill | Covers |
 |-------|--------|
@@ -166,7 +186,6 @@ Create a skill when:
 | `nextjs-app-router` | Pages, layouts, server actions, streaming |
 | `api-design` | Endpoint conventions, error handling, validation |
 | `deployment` | CI/CD, environment config, release process |
-| `feature-workflow` | Research → Plan → Implement phases |
 
 ---
 
@@ -226,9 +245,18 @@ Use the template at `content/modules/02-skills/templates/.agents/skills/skill-te
 
 ---
 
-## Example
+## Examples
 
-See the [demo-taskflow](../01-project-context/examples/demo-taskflow/README.md) example for 4 complete skills in action:
+### Methodology Skills (templates)
+
+See `content/modules/02-skills/templates/.agents/skills/` for 3 methodology skills:
+- `feature-workflow` — Three-phase workflow, task markers, progress tracking
+- `agents-md` — AGENTS.md authoring and maintenance
+- `spec-writing` — Spec and task file authoring
+
+### Stack Skills (demo)
+
+See the [demo-taskflow](../01-project-context/examples/demo-taskflow/README.md) example for 4 stack skills in action:
 - `nextjs-app-router` — Pages, layouts, server actions
 - `database` — Supabase, migrations, RLS, React Query
 - `testing` — Vitest + Storybook + Playwright
