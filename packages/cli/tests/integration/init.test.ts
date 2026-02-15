@@ -90,6 +90,20 @@ describe("acdl init", () => {
     ).toBe(false);
   });
 
+  it("does not create docs by default", () => {
+    run(["init", "--yes"], FIXTURE_DIR);
+
+    expect(existsSync(resolve(FIXTURE_DIR, "docs", "architecture.md"))).toBe(
+      false
+    );
+    expect(existsSync(resolve(FIXTURE_DIR, "docs", "api.md"))).toBe(false);
+    expect(existsSync(resolve(FIXTURE_DIR, "docs", "auth.md"))).toBe(false);
+    expect(existsSync(resolve(FIXTURE_DIR, "docs", "data-model.md"))).toBe(
+      false
+    );
+    expect(existsSync(resolve(FIXTURE_DIR, "docs", "scripts.md"))).toBe(false);
+  });
+
   it("copies templates to .acdl/templates/", () => {
     run(["init", "--yes"], FIXTURE_DIR);
 
@@ -100,6 +114,18 @@ describe("acdl init", () => {
     ).toBe(true);
     expect(
       existsSync(resolve(templatesDir, "docs", "architecture.md"))
+    ).toBe(true);
+  });
+
+  it("copies full content/ scaffold to .acdl/content/ during init", () => {
+    run(["init", "--yes"], FIXTURE_DIR);
+
+    expect(existsSync(resolve(FIXTURE_DIR, ".acdl", "content"))).toBe(true);
+    expect(
+      existsSync(resolve(FIXTURE_DIR, ".acdl", "content", "index.md"))
+    ).toBe(true);
+    expect(
+      existsSync(resolve(FIXTURE_DIR, ".acdl", "content", "methodology.md"))
     ).toBe(true);
   });
 

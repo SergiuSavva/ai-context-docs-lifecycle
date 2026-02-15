@@ -4,11 +4,12 @@ import {
   existsSync,
   mkdirSync,
   cpSync,
+  rmSync,
 } from "node:fs";
 import { resolve, dirname } from "node:path";
 import type { AcdlConfig, RenderEntry } from "../types.js";
 import { wrapWithMarkers } from "./ownership.js";
-import { getBundledTemplatesDir } from "./paths.js";
+import { getBundledTemplatesDir, getBundledContentDir } from "./paths.js";
 import { getProjectTemplatesDir } from "./config.js";
 
 /**
@@ -87,6 +88,28 @@ export function copyTemplatesToProject(projectDir: string): void {
 
   mkdirSync(projectTemplatesDir, { recursive: true });
   cpSync(bundledDir, projectTemplatesDir, { recursive: true });
+}
+
+/**
+ * Copy the full methodology content/ scaffold to .acdl/content/.
+ */
+export function copyMethodologyContentToProject(
+  projectDir: string
+): void {
+  const bundledContentDir = getBundledContentDir();
+  const projectContentDir = resolve(projectDir, ".acdl", "content");
+
+  if (!existsSync(bundledContentDir)) {
+    throw new Error(
+      `Bundled methodology content not found at ${bundledContentDir}. Package may be corrupted.`
+    );
+  }
+
+  if (existsSync(projectContentDir)) {
+    rmSync(projectContentDir, { recursive: true, force: true });
+  }
+
+  cpSync(bundledContentDir, projectContentDir, { recursive: true });
 }
 
 /**

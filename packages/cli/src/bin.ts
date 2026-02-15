@@ -24,12 +24,12 @@ program
 program
   .command("init")
   .description(
-    "Initialize .acdl/ control plane and render AGENTS.md + docs/ from templates"
+    "Initialize .acdl/ control plane and copy methodology content"
   )
   .option(
     "--with-docs <docs>",
     "Comma-separated list of docs to enable (architecture,api,auth,data_model,scripts)",
-    "architecture,api,auth,data_model,scripts"
+    ""
   )
   .option("--force", "Re-initialize over existing .acdl/", false)
   .option("--yes", "Skip confirmation prompts and use defaults", false)

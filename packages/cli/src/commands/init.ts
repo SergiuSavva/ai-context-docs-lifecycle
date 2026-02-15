@@ -10,6 +10,7 @@ import {
 import {
   buildRenderPlan,
   copyTemplatesToProject,
+  copyMethodologyContentToProject,
   materializeFile,
 } from "../lib/renderer.js";
 import { getCliVersion } from "../lib/version.js";
@@ -55,6 +56,12 @@ export async function initCommand(options: InitOptions): Promise<void> {
     copyTemplatesToProject(projectDir);
     console.log(`  ${chalk.green("✓")} Copied templates to .acdl/templates/`);
 
+    // 5b. Copy the full methodology content/ scaffold into .acdl/content/
+    copyMethodologyContentToProject(projectDir);
+    console.log(
+      `  ${chalk.green("✓")} Copied methodology scaffold to .acdl/content/`
+    );
+
     // 6. Build render plan and materialize files
     const plan = buildRenderPlan(config);
     const created: string[] = [];
@@ -77,7 +84,8 @@ export async function initCommand(options: InitOptions): Promise<void> {
 function parseDocsOption(withDocs: string): AcdlDocs {
   const requested = withDocs
     .split(",")
-    .map((s) => s.trim().toLowerCase());
+    .map((s) => s.trim().toLowerCase())
+    .filter((s) => s.length > 0);
 
   const docs: AcdlDocs = {
     architecture: false,
@@ -110,21 +118,33 @@ function printSummary(created: string[], config: ReturnType<typeof createDefault
   console.log("");
   console.log(`  Project type:      ${config.project_type}`);
   console.log(`  Template version:  ${config.template_version}`);
-  console.log(`  Docs enabled:      ${enabledDocs.join(", ")}`);
+  console.log(`  Docs enabled:      ${enabledDocs.join(", ") || "(none)"}`);
   console.log(`  Files created:     ${created.length}`);
   console.log("");
   console.log(chalk.dim("  Created files are wrapped in managed markers."));
-  console.log(
-    chalk.dim("  Fill in {{placeholders}} in AGENTS.md and docs/ with your project details.")
-  );
+  if (enabledDocs.length > 0) {
+    console.log(
+      chalk.dim("  Fill in {{placeholders}} in AGENTS.md and docs/ with your project details.")
+    );
+  } else {
+    console.log(
+      chalk.dim("  Fill in {{placeholders}} in AGENTS.md, then let your AI agent create docs as needed.")
+    );
+  }
   console.log("");
   console.log("Next steps:");
   console.log(
     `  1. Edit ${chalk.bold("AGENTS.md")} — fill in project name, stack, structure`
   );
-  console.log(
-    `  2. Edit ${chalk.bold("docs/")} — fill in architecture, data model, etc.`
-  );
+  if (enabledDocs.length > 0) {
+    console.log(
+      `  2. Edit ${chalk.bold("docs/")} — fill in architecture, data model, etc.`
+    );
+  } else {
+    console.log(
+      `  2. Use ${chalk.bold(".acdl/content/guides/")} to let your AI agent generate docs smartly`
+    );
+  }
   console.log(
     `  3. Run ${chalk.bold("acdl doctor")} to verify integrity`
   );

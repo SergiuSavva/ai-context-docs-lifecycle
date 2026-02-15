@@ -20,13 +20,19 @@ const TEMPLATES_SRC = resolve(
   REPO_ROOT,
   "content/modules/01-project-context/templates"
 );
+const CONTENT_SRC = resolve(REPO_ROOT, "content");
 const TEMPLATES_DEST = resolve(CLI_ROOT, "templates");
+const CONTENT_DEST = resolve(CLI_ROOT, "content");
 
 // Clean previous bundle
 if (existsSync(TEMPLATES_DEST)) {
   rmSync(TEMPLATES_DEST, { recursive: true });
 }
+if (existsSync(CONTENT_DEST)) {
+  rmSync(CONTENT_DEST, { recursive: true });
+}
 mkdirSync(TEMPLATES_DEST, { recursive: true });
+mkdirSync(CONTENT_DEST, { recursive: true });
 
 // Copy single-app AGENTS template
 const singleAppSrc = resolve(TEMPLATES_SRC, "AGENTS-single-app.md");
@@ -45,6 +51,14 @@ if (existsSync(docsSrc)) {
   console.log("  Copied docs/ templates");
 } else {
   console.warn(`  WARN: docs/ directory not found at ${docsSrc}`);
+}
+
+// Copy full methodology content/ scaffold
+if (existsSync(CONTENT_SRC)) {
+  cpSync(CONTENT_SRC, CONTENT_DEST, { recursive: true });
+  console.log("  Copied full content/ scaffold");
+} else {
+  console.warn(`  WARN: content/ directory not found at ${CONTENT_SRC}`);
 }
 
 console.log("Templates bundled successfully.");
