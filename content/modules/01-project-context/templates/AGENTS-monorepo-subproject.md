@@ -1,22 +1,24 @@
-# {{package-or-service-name}}
+# {{subproject-name}}
 
 > **AI Agent Instructions** - Subproject context.
-> Copy to `packages/{{name}}/AGENTS.md` or `services/{{name}}/AGENTS.md` and commit to version control.
+> Copy to the subproject root (e.g., `packages/{{name}}/AGENTS.md`) and commit to version control.
 
 ## Overview
 
 {{One sentence describing what this package/service does}}
 
-**Type**: {{package | service | lambda | worker | library}}
+**Type**: {{package | service | lambda | worker | library | app}}
 
 ## Stack
 
 | Tech | Version |
 |------|---------|
-| Language | {{e.g., TypeScript 5.3}} |
-| Framework | {{e.g., Express 4.x}} |
-| Runtime | {{e.g., Node.js 20}} |
-| Database | {{e.g., PostgreSQL 16}} |
+| Language | {{e.g., TypeScript 5.3, Python 3.12, Go 1.22}} |
+| Framework | {{e.g., Express 4.x, FastAPI 0.100, none}} |
+| Runtime | {{e.g., Node.js 20, Python 3.12}} |
+| {{other relevant tech}} | {{version}} |
+
+<!-- Add rows for database, ORM, or other key technologies only if applicable -->
 
 ## Discovery -> Activation -> Execution
 
@@ -49,72 +51,77 @@ Use this flow for context loading:
 ## Structure
 
 ```
-{{package-name}}/
-├── src/
-│   ├── routes/       # API endpoints / route handlers
-│   ├── services/     # Business logic layer
-│   ├── models/       # Data models, schemas
-│   ├── utils/        # Package-specific utilities
-│   └── types/        # Local TypeScript types
-├── tests/            # Test files (mirrors src/)
-└── package.json      # Package config
+{{subproject-name}}/
+├── {{source-dir}}/
+│   ├── {{area-1}}/    # {{description}}
+│   ├── {{area-2}}/    # {{description}}
+│   └── {{area-3}}/    # {{description}}
+├── {{test-dir}}/      # Test files
+└── {{config-file}}    # {{e.g., package.json, pyproject.toml, Cargo.toml}}
 ```
+
+<!-- Replace with the actual subproject directory tree. -->
 
 **Key Areas**:
 
 | Area | Path | Contains |
 |------|------|----------|
-| Entry | `src/routes/` | Route handlers, controllers |
-| Logic | `src/services/` | Business rules, orchestration |
-| Data | `src/models/` | Schemas, database models |
+| {{area-name}} | `{{path}}` | {{what this area contains}} |
+| {{area-name}} | `{{path}}` | {{what this area contains}} |
+| {{area-name}} | `{{path}}` | {{what this area contains}} |
 
 ## Dependencies
 
 ### Internal (from this monorepo)
-- `@{{scope}}/shared` - Common utilities
-- `@{{scope}}/types` - Shared TypeScript types
+- `{{scope/package-1}}` - {{what it provides}}
+- `{{scope/package-2}}` - {{what it provides}}
 
 ### Key External
-- {{dependency-1}} - {{What it's used for}}
-- {{dependency-2}} - {{What it's used for}}
+- {{dependency-1}} - {{what it's used for}}
+- {{dependency-2}} - {{what it's used for}}
 
 ## Context Loading
 
 | Task | Read |
 |------|------|
-| Package patterns | @src/README.md |
-| API endpoints | @src/routes/README.md |
-| Data models | @src/models/README.md |
-| Package commands / verification scripts | @docs/scripts.md |
+| {{task description}} | @docs/{{doc-name}}.md |
+| {{task description}} | @docs/{{doc-name}}.md |
+| Subproject commands / verification scripts | @docs/scripts.md |
+
+<!-- Only include entries for docs that exist in this subproject.
+     Add project-specific docs as needed. -->
 
 ## Integration Points
 
 | Connects To | How |
 |-------------|-----|
-| {{Other service}} | {{REST API / gRPC / Events}} |
-| {{Database}} | {{Prisma / direct SQL}} |
-| {{Queue}} | {{SQS / Redis}} |
+| {{other subproject or service}} | {{REST API / gRPC / events / shared types}} |
+| {{external dependency}} | {{client library / direct connection}} |
+
+<!-- List the key integration boundaries. Remove this section if the subproject is self-contained. -->
 
 ## Boundaries
 
 ### Always
 - Use verified commands from `@docs/scripts.md` when executing tasks
-- Use shared types from `@{{scope}}/types`
+- Use shared types from `{{scope/types-package}}`
 - Follow patterns in existing code
 
 ### Ask First
 - Adding external dependencies
 - Changing API contracts
-- Database schema changes
+- {{project-specific ask-first rule}}
 - Running destructive commands (reset/drop/force operations)
 
 ### Never
-- Import from other packages without declaring dependency
+- Import from other subprojects without declaring dependency
 - Hardcode environment values (use config)
 - Modify shared packages without checking dependents
 
 ## Deployment
 
-**Environment**: {{Lambda | Container | VM | Serverless}}
-**Trigger**: {{HTTP | Queue | Cron | Event}}
+**Environment**: {{e.g., container, serverless, static, library (not deployed)}}
+**Trigger**: {{e.g., HTTP, queue, cron, event, npm publish}}
 **Command Source**: @docs/scripts.md
+
+<!-- Remove this section for libraries or packages that are not independently deployed. -->

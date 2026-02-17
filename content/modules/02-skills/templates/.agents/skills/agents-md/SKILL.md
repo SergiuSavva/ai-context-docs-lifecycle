@@ -59,15 +59,12 @@ Route tasks to the right context:
 
 | Task | Read First |
 |------|------------|
-| Architecture decisions | @docs/architecture.md |
-| Data model / schema | @docs/data-model.md |
-| Building pages / layouts | load skill `nextjs-app-router` |
-| Database / auth / storage | load skill `database` |
-| Writing tests | load skill `testing` |
+| {{task relevant to your project}} | @docs/{{relevant-doc}}.md |
+| {{task relevant to your project}} | load skill `{{relevant-skill}}` |
 | Building a feature | load skill `feature-workflow` |
 ```
 
-Keep entries specific. Vague routing ("general development") wastes context.
+Only include entries for docs and skills that exist in the project. Keep entries specific — vague routing ("general development") wastes context.
 
 ---
 

@@ -31,8 +31,8 @@ If you only want AI context without changing your workflow:
 existing-project/
 ├── README.md          # Keep existing
 ├── AGENTS.md          # NEW — AI context (~80 lines)
-├── docs/              # NEW — Reference knowledge
-│   ├── architecture.md
+├── docs/              # NEW — Reference docs (only what your project needs)
+│   ├── {relevant docs}.md
 │   └── decisions/
 ├── src/
 └── ...
@@ -60,10 +60,12 @@ Create at project root with:
 mkdir -p docs/decisions
 ```
 
-Document what exists:
-- `docs/architecture.md` — Current system overview
-- `docs/data-model.md` — Current database schema
-- `docs/api.md` — Current API surface
+Document what exists — only create docs that match your project:
+- `docs/architecture.md` — if project has multiple layers or services
+- `docs/data-model.md` — if project has a database
+- `docs/api.md` — if project exposes or consumes APIs
+- `docs/auth.md` — if project has authentication
+- `docs/scripts.md` — if project has runnable commands
 
 ### Step 3: Add Skills (Optional)
 
@@ -95,8 +97,8 @@ Use [Module 3](../modules/03-feature-development/README.md) workflow for new fea
 
 | Find | Action |
 |------|--------|
-| Architecture docs | Consolidate into `docs/architecture.md` |
-| API docs | Consolidate into `docs/api.md` |
+| Architecture docs | Consolidate into `docs/architecture.md` (if applicable) |
+| API docs | Consolidate into `docs/api.md` (if applicable) |
 | Old specs | Move to `specs/_archive/` |
 | Decision history | Convert to ADRs in `docs/decisions/` |
 
@@ -187,7 +189,7 @@ You don't have to do everything at once:
 
 ### Week 1: Foundation
 - Add AGENTS.md
-- Create docs/architecture.md
+- Create the reference docs that match your project (see [template catalog](../modules/01-project-context/README.md#choose-your-template))
 
 ### Week 2: Skills + New Features
 - Add skills for your tech stack

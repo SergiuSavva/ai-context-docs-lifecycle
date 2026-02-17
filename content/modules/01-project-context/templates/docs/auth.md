@@ -1,44 +1,56 @@
 # Authentication
 
-> Auth provider, session management, and route protection.
+> Auth provider, session management, and route/resource protection.
 
 ## Auth Flow
 
 ```mermaid
 sequenceDiagram
-    participant B as Browser
-    participant M as Middleware
-    participant S as Auth Provider
+    participant C as {{Client}}
+    participant G as {{Gateway / Middleware}}
+    participant A as {{Auth Provider}}
 
-    Note over B,S: Sign In
-    B->>S: {{sign in method}}
-    S-->>B: Session + redirect
+    Note over C,A: Sign In
+    C->>A: {{sign in method}}
+    A-->>C: {{session / token}} + redirect
 
-    Note over B,S: Authenticated Request
-    B->>M: Request (with session)
-    M->>S: Validate session
-    S-->>M: Valid
-    M-->>B: Allow
+    Note over C,A: Authenticated Request
+    C->>G: Request (with {{session / token}})
+    G->>A: Validate
+    A-->>G: Valid
+    G-->>C: Allow
 
-    Note over B,S: Unauthenticated
-    B->>M: Request (no session)
-    M-->>B: Redirect to /login
+    Note over C,A: Unauthenticated
+    C->>G: Request (no credentials)
+    G-->>C: {{Redirect / 401 / error}}
 ```
 
-## Protected Routes
+<!-- Replace participants and flow with your actual auth architecture.
+     Adapt for: session cookies, JWT, API keys, OAuth, mTLS, etc. -->
 
-| Route Pattern | Auth Required | Redirect |
-|---------------|--------------|----------|
-| `/` | No | — |
-| `/login`, `/signup` | No (redirect if logged in) | → `/dashboard` |
-| `/dashboard/**` | Yes | → `/login` |
+## Protected Routes / Resources
+
+| Route / Resource | Auth Required | Behavior |
+|------------------|--------------|----------|
+| `{{public-path}}` | No | — |
+| `{{auth-pages}}` | No (redirect if logged in) | → `{{redirect-target}}` |
+| `{{protected-path}}` | Yes | → `{{redirect-or-error}}` |
+
+<!-- Adapt for your routing model:
+     - Web apps: URL patterns and redirects
+     - APIs: endpoint paths and HTTP status codes
+     - CLI tools: command permissions
+     Remove this section if auth is API-only with no route protection. -->
 
 ## Auth Provider
 
-| Context | Client | Why |
-|---------|--------|-----|
-| {{Server}} | {{client type}} | {{reason}} |
-| {{Client}} | {{client type}} | {{reason}} |
+| Context | Client / Method | Why |
+|---------|----------------|-----|
+| {{context, e.g., server-side}} | {{client or method}} | {{reason}} |
+| {{context, e.g., client-side}} | {{client or method}} | {{reason}} |
+
+<!-- Describe how auth is accessed in different parts of the application.
+     Examples: server client vs browser client, middleware vs handler, etc. -->
 
 ## Role-Based Access
 
@@ -48,7 +60,10 @@ sequenceDiagram
 | `{{role_2}}` | {{Description}} |
 | `{{role_3}}` | {{Description}} |
 
+<!-- Remove this section if the project has no role differentiation. -->
+
 ## Related
 
-- Server Actions catalog: @docs/api.md
-- Data model (roles table): @docs/data-model.md
+<!-- Link to other project docs that exist. Remove entries for docs not in this project. -->
+- {{@docs/api.md — API endpoints that require auth}}
+- {{@docs/data-model.md — user/role data model}}

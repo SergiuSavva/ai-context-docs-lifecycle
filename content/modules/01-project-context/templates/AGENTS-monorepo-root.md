@@ -22,32 +22,37 @@ Use this flow for context loading:
 
 ```
 {{monorepo-name}}/
-├── packages/                # Shared, publishable packages
-│   ├── web/                # Frontend app (Next.js/React)
-│   ├── api/                # Backend API (Express/Fastify)
-│   ├── shared/             # Shared utilities, helpers
-│   └── types/              # Shared TypeScript types
-├── services/               # Deployable microservices
-│   ├── {{service-1}}/      # {{Description}}
-│   └── {{service-2}}/      # {{Description}}
-├── infrastructure/         # IaC, CI/CD configs
-└── docs/                   # Cross-project documentation
+├── {{subproject-dir-1}}/
+│   ├── {{subproject-1}}/    # {{description}}
+│   ├── {{subproject-2}}/    # {{description}}
+│   └── {{subproject-3}}/    # {{description}}
+├── {{subproject-dir-2}}/
+│   ├── {{subproject-4}}/    # {{description}}
+│   └── {{subproject-5}}/    # {{description}}
+├── {{shared-dir}}/          # {{description, e.g., shared config, IaC}}
+└── docs/                    # Cross-project documentation
 ```
 
-**Package Overview** (what each does):
+<!-- Replace with the actual monorepo directory tree. Common patterns:
+     - packages/ + services/ (Node.js workspaces)
+     - cmd/ + internal/ + pkg/ (Go)
+     - crates/ (Rust)
+     - apps/ + libs/ (Nx)
+     Adapt to match your project's actual topology. -->
 
-| Package | Purpose | Tech |
-|---------|---------|------|
-| `packages/web` | User-facing frontend | Next.js, React |
-| `packages/api` | REST/GraphQL backend | Express, Prisma |
-| `packages/shared` | Common utilities | TypeScript |
-| `packages/types` | Shared interfaces | TypeScript |
+**Subproject Overview** (what each does):
+
+| Subproject | Purpose | Tech |
+|------------|---------|------|
+| `{{path/name}}` | {{description}} | {{stack}} |
+| `{{path/name}}` | {{description}} | {{stack}} |
+| `{{path/name}}` | {{description}} | {{stack}} |
 
 ## Command Policy
 
 - Workspace package manager: `{{package-manager}}`
 - Canonical workspace commands live in `@docs/scripts.md`
-- Canonical package/service commands live in each subproject command docs
+- Canonical subproject commands live in each subproject's command docs
 - Do not invent commands; prefer verified entries only
 - Load command docs only for implementation, verification, or release tasks
 - Skip command docs for pure research, design, and planning tasks
@@ -66,40 +71,42 @@ Use this flow for context loading:
 
 | Working On | Read First |
 |------------|------------|
-| Web frontend | @packages/web/AGENTS.md |
-| API backend | @packages/api/AGENTS.md |
-| Shared libraries | @packages/shared/AGENTS.md |
-| {{Service 1}} | @services/{{service-1}}/AGENTS.md |
-| {{Service 2}} | @services/{{service-2}}/AGENTS.md |
-| Infrastructure | @infrastructure/AGENTS.md |
+| {{subproject-1 description}} | @{{path}}/AGENTS.md |
+| {{subproject-2 description}} | @{{path}}/AGENTS.md |
+| {{subproject-3 description}} | @{{path}}/AGENTS.md |
+
+<!-- Add a row for each subproject that has its own AGENTS.md -->
 
 ## Cross-Cutting Concerns
 
 | Topic | Read |
 |-------|------|
-| Git workflow | @docs/git-workflow.md |
-| CI/CD | @docs/ci-cd.md |
-| Architecture | @docs/architecture.md |
+| {{topic, e.g., Git workflow}} | @docs/{{doc-name}}.md |
+| {{topic, e.g., CI/CD}} | @docs/{{doc-name}}.md |
 | Workspace commands | @docs/scripts.md |
 | Building a feature | load skill `feature-workflow` |
 | Creating / updating AGENTS.md | load skill `agents-md` |
 | Writing specs or tasks | load skill `spec-writing` |
 
+<!-- Only include entries for docs that exist in this project.
+     Common cross-cutting docs: git-workflow, ci-cd, architecture, scripts.
+     Add project-specific docs as needed. -->
+
 ## Global Boundaries
 
 ### Always
 - Run affected tests before committing
-- Follow package-specific patterns (read its AGENTS.md)
+- Follow subproject-specific patterns (read its AGENTS.md)
 - Use workspace dependencies, not external duplicates
 - Use verified commands from command docs when executing tasks
 
 ### Ask First
-- Adding new packages/services
-- Cross-package breaking changes
+- Adding new subprojects
+- Cross-subproject breaking changes
 - Shared dependency version bumps
 - Running destructive commands (reset/drop/force operations)
 
 ### Never
 - Commit secrets or .env files
-- Modify another package without reading its AGENTS.md
+- Modify another subproject without reading its AGENTS.md
 - Push directly to main branch

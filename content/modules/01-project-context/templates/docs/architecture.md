@@ -15,32 +15,39 @@ graph TD
     API --> DB[("{{Database}}")]
 ```
 
+<!-- Replace with the actual system diagram. Adjust nodes to match your architecture
+     (e.g., remove Database if not applicable, add message queues, caches, etc.) -->
+
 ## Layers
 
 | Layer | Technology | Purpose |
 |-------|------------|---------|
-| {{Presentation}} | {{e.g. Next.js}} | User interface |
-| {{Business}} | {{e.g. Server Actions}} | Business logic |
-| {{Data}} | {{e.g. PostgreSQL}} | Data storage |
+| {{layer-name}} | {{technology}} | {{purpose}} |
+| {{layer-name}} | {{technology}} | {{purpose}} |
+| {{layer-name}} | {{technology}} | {{purpose}} |
 
 ## Dependency Rules
 
 ```mermaid
 flowchart TD
-    app["app/ (pages)"]
-    features["features/ (domain)"]
-    shared["shared/ (ui, lib)"]
-    data["{{Database}}"]
+    layer_a["{{top-level layer}}"]
+    layer_b["{{mid-level layer}}"]
+    layer_c["{{foundational layer}}"]
 
-    app --> features
-    app --> shared
-    features --> shared
-    shared --> data
+    layer_a --> layer_b
+    layer_b --> layer_c
 ```
 
-- `app/` depends on `features/` and `shared/`
-- `features/` depends on `shared/` only
-- `shared/` never depends on `app/` or `features/`
+<!-- Replace with your project's actual directory/module dependency rules.
+     Examples:
+     - Python: views/ → services/ → models/
+     - Go: cmd/ → internal/ → pkg/
+     - React: pages/ → features/ → shared/
+     - Rust: bin/ → lib/ modules -->
+
+- `{{top-level}}` depends on `{{mid-level}}` and `{{foundational}}`
+- `{{mid-level}}` depends on `{{foundational}}` only
+- `{{foundational}}` has no internal dependencies
 
 ## Key Decisions
 
@@ -50,6 +57,7 @@ flowchart TD
 
 ## Related
 
-- Data model: @docs/data-model.md
-- API surface: @docs/api.md
-- Auth flows: @docs/auth.md
+<!-- Link to other project docs that exist. Remove entries for docs not in this project. -->
+- {{@docs/data-model.md — if project has a database}}
+- {{@docs/api.md — if project has an API}}
+- {{@docs/auth.md — if project has authentication}}

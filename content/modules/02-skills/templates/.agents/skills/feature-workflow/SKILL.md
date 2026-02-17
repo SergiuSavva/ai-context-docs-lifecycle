@@ -106,16 +106,16 @@ Ready for review. Implementation complete.
 
 ## Doc Freshness Rule
 
-After implementation, update any `docs/` files affected by the change:
+After implementation, update any `docs/` files affected by the change (only applicable for docs that exist in the project):
 
-| Change | Update |
-|--------|--------|
-| New table added | `docs/data-model.md` |
-| New API endpoint / Server Action | `docs/api.md` |
+| Change | Update (if doc exists) |
+|--------|------------------------|
+| Data schema/model change | `docs/data-model.md` |
+| API/action surface change | `docs/api.md` |
 | Architecture change | `docs/architecture.md` + create ADR |
 | Auth flow change | `docs/auth.md` |
 
-Update docs in the same PR as the code change.
+Not every project has every doc. Update only the docs your project maintains. Update docs in the same PR as the code change.
 
 ---
 

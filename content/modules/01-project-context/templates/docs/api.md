@@ -18,24 +18,25 @@
 |----------------|-----------------|-------------|------|
 | {{Method}} | {{Path}} | {{Description}} | {{Yes/No}} |
 
+<!-- Adapt the table format to match your API style:
+     - REST: Method + Path
+     - GraphQL: Query/Mutation + Signature
+     - gRPC: Service.Method
+     - Server Actions: function signature
+     Group by resource or domain area. -->
+
 ## Error Handling
 
 {{Describe error return pattern: thrown exceptions, error objects, HTTP codes, etc.}}
 
-```typescript
+```{{language}}
 // Example error pattern
 {{code example}}
 ```
 
-## Revalidation / Caching
-
-| Mutation | Revalidates |
-|----------|-------------|
-| {{Create item}} | {{/items path}} |
-| {{Update item}} | {{/items path + item-detail tag}} |
-
 ## Related
 
-- Data model: @docs/data-model.md
-- Auth flows: @docs/auth.md
-- Architecture: @docs/architecture.md
+<!-- Link to other project docs that exist. Remove entries for docs not in this project. -->
+- {{@docs/data-model.md — data model backing these endpoints}}
+- {{@docs/auth.md — authentication and authorization rules}}
+- {{@docs/architecture.md — system overview}}

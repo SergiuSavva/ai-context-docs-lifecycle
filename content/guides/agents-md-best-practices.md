@@ -31,12 +31,11 @@ Keep AGENTS.md **compact (50-80 lines, 150 max)** and reference detailed docs dy
 project/
 ├── AGENTS.md                 # Compact router (50-80 lines, 150 max)
 ├── .agents/skills/           # On-demand skills (task-specific)
-│   ├── database/SKILL.md
-│   └── testing/SKILL.md
-├── docs/
-│   ├── architecture.md       # Detailed architecture
-│   ├── testing.md            # Testing guidelines
-│   ├── api.md                # API patterns
+│   ├── {skill}/SKILL.md
+│   └── {skill}/SKILL.md
+├── docs/                     # Only the docs your project needs
+│   ├── {relevant docs}.md    # e.g., architecture.md, api.md, testing.md
+│   ├── scripts.md            # Canonical commands
 │   └── decisions/            # Permanent decision history (ADRs)
 │       └── 001-example.md
 ```
