@@ -165,14 +165,16 @@ Do not create ADRs for routine bug fixes and straightforward local refactors.
 
 ## Reference Freshness Rules
 
-Update reference docs in the same PR as code changes:
+Update reference docs in the same PR as code changes. Only applicable for docs that exist in the project:
 
-| Change Type | Update |
-|-------------|--------|
+| Change Type | Update (if doc exists) |
+|-------------|------------------------|
 | Data schema/model change | `docs/data-model.md` |
 | API/action surface change | `docs/api.md` |
 | Auth flow/guards change | `docs/auth.md` |
 | System boundary/structure change | `docs/architecture.md` + ADR if significant |
+
+Not every project has every doc. Update only the docs your project maintains.
 
 ---
 

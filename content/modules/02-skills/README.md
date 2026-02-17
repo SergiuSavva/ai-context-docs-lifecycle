@@ -80,26 +80,26 @@ description: Supabase integration patterns — migrations, RLS, React Query, and
 
 # Database Patterns
 
-> **References:** Data model → @docs/data-model.md | Auth → @docs/auth.md
+> **References:** Data model → @docs/data-model.md (if exists) | Auth → @docs/auth.md (if exists)
 
 ## Migrations
 
 {{Detailed patterns with code examples}}
 
-## RLS Policies
+## Query Patterns
 
 {{Patterns}}
 
 ## Quick Checklist
 
-- [ ] Run `npm run db:types` after schema changes
-- [ ] Every table has RLS policies
+- [ ] Run type generation after schema changes
+- [ ] Verify access control on new tables
 
 ## Related Docs
 
-- @docs/data-model.md
-- @docs/decisions/002-react-query.md
-- load skill `nextjs-app-router`
+- @docs/data-model.md (if exists)
+- @docs/decisions/002-react-query.md (if exists)
+- load skill `{{related-skill}}`
 ```
 
 ### Frontmatter Fields
@@ -127,8 +127,10 @@ Skills connect to the broader context through references:
 ### Skills reference docs
 
 ```markdown
-> **References:** Data model → @docs/data-model.md | Auth → @docs/auth.md
+> **References:** Data model → @docs/data-model.md (if exists) | Auth → @docs/auth.md (if exists)
 ```
+
+Only reference docs that exist in the project. Not every project has every doc.
 
 ### Skills reference other skills
 

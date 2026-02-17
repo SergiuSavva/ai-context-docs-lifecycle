@@ -1,6 +1,8 @@
 # Demo: AGENTS.md + Skills + Docs as Code
 
 > A complete example showing **minimal context, maximum value** with three layers of progressive disclosure.
+>
+> **Note:** This is one specific output for a **Next.js + Supabase** full-stack project. Your project's docs, skills, and structure will vary based on its actual stack and needs. Not every project will have all these docs or skills — the AI agent or you decide what's relevant during bootstrap.
 
 ---
 

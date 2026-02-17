@@ -30,7 +30,7 @@ Together they form **Progressive Disclosure**: minimal upfront context with deep
 | Stage | What | When Loaded | Token Cost |
 |-------|------|-------------|------------|
 | **Discovery: AGENTS.md** | Stack, structure, boundaries, routing hints | Every session | ~500-700 |
-| **Activation: docs/** | Architecture, data model, API catalog, auth, ADRs | When task-relevant | ~1,000-1,200 each |
+| **Activation: docs/** | Project-specific domain docs (varies by project) | When task-relevant | ~1,000-1,200 each |
 | **Execution: docs/scripts.md** | Verified runnable commands + provenance | Only when executing/verifying | ~300-700 |
 
 **Always-on context:** Only AGENTS.md = ~500-700 tokens.
@@ -42,11 +42,11 @@ Together they form **Progressive Disclosure**: minimal upfront context with deep
 ```
 Discovery (Always)             Activation (On-demand)          Execution (On-demand)
 ┌─────────────────────┐        ┌────────────────────────┐
-│ AGENTS.md           │  ───►  │ @docs/architecture.md  │
-│ • Stack, structure  │        │ @docs/data-model.md    │
-│ • Routing hints     │        │ @docs/api.md           │
-│ • Task mode policy  │        │ @docs/auth.md          │
-│ • Boundaries        │        │ @docs/decisions/       │
+│ AGENTS.md           │  ───►  │ @docs/ (only the docs  │
+│ • Stack, structure  │        │  this project needs)   │
+│ • Routing hints     │        │ @docs/decisions/       │
+│ • Task mode policy  │        │                        │
+│ • Boundaries        │        │                        │
 └─────────────────────┘        └────────────────────────┘
                                       │
                                       └──────────────►  @docs/scripts.md
@@ -57,10 +57,10 @@ Discovery (Always)             Activation (On-demand)          Execution (On-dem
 ```
 Discovery (Always)             Activation (Subproject + docs)   Execution (On-demand)
 ┌─────────────────────┐        ┌─────────────────────┐       ┌──────────────────┐
-│ Root AGENTS.md      │        │ packages/web/        │       │ @docs/arch.md    │
-│ • Structure         │  ───►  │   AGENTS.md          │ ───►  │ @docs/api.md     │
-│ • Package Overview  │        │ • Local routing      │       │ @docs/auth.md    │
-│ • Subproject Routes │        │ • Context Loading    │       │                  │
+│ Root AGENTS.md      │        │ {{subproject}}/      │       │ @docs/ (only the │
+│ • Structure         │  ───►  │   AGENTS.md          │ ───►  │  docs this proj  │
+│ • Subproject Routes │        │ • Local routing      │       │  actually needs) │
+│ • Global boundaries │        │ • Context Loading    │       │                  │
 └─────────────────────┘        └─────────────────────┘       └──────────────────┘
                                                                  │
                                                                  └──► @docs/scripts.md
@@ -74,14 +74,13 @@ Discovery (Always)             Activation (Subproject + docs)   Execution (On-de
 your-project/
 ├── AGENTS.md                    # Discovery: always loaded (~80 lines)
 └── docs/
-    ├── architecture.md          # Activation: system overview, layers, diagrams
-    ├── data-model.md            # Activation: schema, ERD, relationships
-    ├── api.md                   # Activation: API surface / server actions catalog
-    ├── auth.md                  # Activation: auth flows, middleware, roles
+    ├── {{relevant-docs}}.md     # Activation: only the docs your project needs
     ├── scripts.md               # Execution: canonical command catalog
     └── decisions/               # Architecture Decision Records
         └── NNN-decision.md      # Permanent, never deleted
 ```
+
+The contents of `docs/` vary by project. A simple CLI might only have `scripts.md`. A full-stack app might have `architecture.md`, `data-model.md`, `api.md`, `auth.md`, and `scripts.md`. The AI agent or you decide what's relevant — see the template catalog below.
 
 ---
 
@@ -95,16 +94,20 @@ your-project/
 | [Monorepo Root](./templates/AGENTS-monorepo-root.md) | Monorepo root (routes to subprojects) |
 | [Monorepo Subproject](./templates/AGENTS-monorepo-subproject.md) | Each package/service in monorepo |
 
-### Reference Doc Templates
+### Reference Doc Templates (pick what fits your project)
 
-| Template | Purpose |
-|----------|---------|
-| [architecture.md](./templates/docs/architecture.md) | System overview, layers, dependency rules |
-| [data-model.md](./templates/docs/data-model.md) | Database schema, ERD, relationships, access patterns |
-| [api.md](./templates/docs/api.md) | API endpoints or Server Actions catalog |
-| [auth.md](./templates/docs/auth.md) | Auth flows, middleware, role-based access |
-| [scripts.md](./templates/docs/scripts.md) | Canonical runnable commands with verification metadata |
-| [decisions/adr.md](./templates/docs/decisions/adr.md) | Architecture Decision Record template |
+These are a **template catalog** — use only the ones that match your project. The AI agent selects from this catalog during bootstrap, or you can pick manually.
+
+| Template | Include When | Purpose |
+|----------|-------------|---------|
+| [architecture.md](./templates/docs/architecture.md) | Project has multiple layers or services | System overview, layers, dependency rules |
+| [data-model.md](./templates/docs/data-model.md) | Project has a database | Schema, ERD, relationships, access patterns |
+| [api.md](./templates/docs/api.md) | Project exposes or consumes APIs | Endpoints, actions, or API surface catalog |
+| [auth.md](./templates/docs/auth.md) | Project has authentication | Auth flows, middleware, role-based access |
+| [scripts.md](./templates/docs/scripts.md) | Project has runnable commands | Canonical commands with verification metadata |
+| [decisions/adr.md](./templates/docs/decisions/adr.md) | Significant technical decision made | Architecture Decision Record template |
+
+You can also create **project-specific docs** not in this catalog (e.g., `docs/integrations.md`, `docs/deployment.md`, `docs/testing.md`). The catalog covers common patterns — your project may need different ones.
 
 ---
 
@@ -114,10 +117,9 @@ your-project/
 
 1. Copy the right AGENTS.md template to your project root
 2. Fill in the placeholders (stack, structure, conventions, boundaries)
-3. Create `docs/` with the reference doc templates that apply
-4. Put executable commands in `docs/scripts.md` (with status + source)
-5. Fill in the other docs with your project's current state
-6. Done!
+3. Create `docs/` with only the reference doc templates that apply to your project
+4. Fill in the Context Loading table in AGENTS.md with only the docs you created
+5. Done!
 
 ### 2. Interactive Bootstrap (Smart)
 
@@ -126,24 +128,27 @@ Ask your AI agent to "bootstrap AGENTS.md" following the [Bootstrap Workflow](./
 The AI will:
 1. Detect if single-app or monorepo
 2. Scan project structure
-3. Auto-detect tech stack and candidate commands
+3. Auto-detect tech stack and which reference docs are relevant
 4. Mark commands as verified vs inferred in `docs/scripts.md`
-5. Generate `AGENTS.md` + initial `docs/` files
+5. Generate `AGENTS.md` + only the `docs/` files that match detected signals
 
 ---
 
 ## Reference Docs: What to Include
 
-Not every project needs every doc. Start with what exists, add as needed:
+Not every project needs every doc. Only create docs that match your project:
 
 | Doc | Include When | Update When |
 |-----|-------------|-------------|
-| `architecture.md` | Always (even if simple) | Architecture changes |
+| `architecture.md` | Project has multiple layers or services | Architecture changes |
 | `data-model.md` | Project has a database | Schema changes |
 | `api.md` | Project has an API / server actions | New endpoints or actions |
 | `auth.md` | Project has authentication | Auth flow changes |
 | `scripts.md` | Project has runnable commands | Tooling/script changes |
 | `decisions/NNN-*.md` | Significant technical decision made | Never (permanent record) |
+| `{{custom}}.md` | Project has a domain not covered above | When that domain changes |
+
+**A simple CLI** may only need `scripts.md`. **A full-stack web app** may need all five. **A library** might only need `architecture.md` and `scripts.md`. Let the project's actual needs drive what docs you create.
 
 ### Doc Freshness Rules
 
@@ -167,6 +172,8 @@ Docs reference each other and skills using a standard format:
 | A skill | `load skill \`<name>\`` | `load skill \`database\`` |
 | An ADR | `@docs/decisions/<NNN>-<name>.md` | `@docs/decisions/001-server-first.md` |
 | Command catalog | `@docs/scripts.md` | `@docs/scripts.md` |
+
+Only cross-reference docs that exist in the project.
 
 ---
 
@@ -200,7 +207,7 @@ AGENTS.md works with **every** AI coding agent. No tool-specific files required.
 
 ## Example
 
-See the complete [demo-taskflow](./examples/demo-taskflow/README.md) example showing AGENTS.md + docs/ + Skills working together with cross-references.
+See the complete [demo-taskflow](./examples/demo-taskflow/README.md) example — a Next.js + Supabase project showing AGENTS.md + docs/ + Skills working together. This is one specific output; your project's docs will vary based on its actual stack and needs.
 
 ---
 

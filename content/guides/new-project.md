@@ -37,11 +37,14 @@ Fill in:
 mkdir -p docs/decisions
 ```
 
-Create docs from the [Module 1 templates](../modules/01-project-context/README.md):
-- [`docs/architecture.md`](../modules/01-project-context/templates/docs/architecture.md) — System overview
-- [`docs/data-model.md`](../modules/01-project-context/templates/docs/data-model.md) — Database schema (if applicable)
-- [`docs/api.md`](../modules/01-project-context/templates/docs/api.md) — API surface (if applicable)
-- [`docs/auth.md`](../modules/01-project-context/templates/docs/auth.md) — Auth flows (if applicable)
+Create docs from the [Module 1 template catalog](../modules/01-project-context/README.md#choose-your-template) — only the ones that match your project:
+- [`docs/architecture.md`](../modules/01-project-context/templates/docs/architecture.md) — if project has multiple layers or services
+- [`docs/data-model.md`](../modules/01-project-context/templates/docs/data-model.md) — if project has a database
+- [`docs/api.md`](../modules/01-project-context/templates/docs/api.md) — if project exposes or consumes APIs
+- [`docs/auth.md`](../modules/01-project-context/templates/docs/auth.md) — if project has authentication
+- [`docs/scripts.md`](../modules/01-project-context/templates/docs/scripts.md) — if project has runnable commands
+
+A simple CLI might only need `scripts.md`. A library might only need `architecture.md`.
 
 ### Step 4: Done!
 
@@ -78,12 +81,11 @@ mkdir -p specs
 my-project/
 ├── AGENTS.md                          # Layer 1: Always loaded
 ├── .agents/skills/                    # Layer 2: On-demand skills
-│   ├── database/SKILL.md
-│   └── testing/SKILL.md
-├── docs/                              # Layer 3: Reference docs
-│   ├── architecture.md
-│   ├── data-model.md
-│   ├── api.md
+│   ├── {skill}/SKILL.md
+│   └── {skill}/SKILL.md
+├── docs/                              # Layer 3: Reference docs (project-specific)
+│   ├── {relevant docs}.md
+│   ├── scripts.md
 │   └── decisions/
 ├── specs/                             # Feature work (ephemeral)
 └── src/

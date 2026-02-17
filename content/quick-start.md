@@ -19,9 +19,8 @@ Create `AGENTS.md` at your project root (~80 lines):
 
 | Tech | Version |
 |------|---------|
-| Framework | [Your framework] |
 | Language | [Your language] |
-| Database | [Your database] |
+| Framework | [Your framework] |
 
 ## Commands
 
@@ -34,10 +33,10 @@ npm run test    # Run tests
 ## Structure
 
 ```
-src/
-├── app/           # Routes/pages
-├── features/      # Feature modules
-└── shared/        # Shared utilities
+[your source directory]/
+├── [area 1]/      # [description]
+├── [area 2]/      # [description]
+└── [area 3]/      # [description]
 ```
 
 ## Conventions
@@ -49,8 +48,7 @@ src/
 
 | Task | Read |
 |------|------|
-| Architecture | @docs/architecture.md |
-| Database | @docs/data-model.md |
+| [relevant task] | @docs/[relevant-doc].md |
 
 ## Boundaries
 
@@ -67,7 +65,7 @@ src/
 mkdir -p docs/decisions
 ```
 
-Create `docs/architecture.md` with your system overview.
+Create reference docs that match your project. See [Module 1 templates](modules/01-project-context/README.md#choose-your-template) for the catalog. A simple project might only need `docs/scripts.md`.
 
 ### Step 3: Done!
 
@@ -135,10 +133,9 @@ The AI will:
 ```
 project/
 ├── AGENTS.md          # Always loaded (~80 lines)
-└── docs/              # On-demand reference
-    ├── architecture.md
-    ├── data-model.md
-    ├── api.md
+└── docs/              # On-demand reference (only docs your project needs)
+    ├── {relevant docs}.md
+    ├── scripts.md
     └── decisions/
 ```
 
@@ -148,10 +145,10 @@ project/
 project/
 ├── AGENTS.md              # Layer 1: Always loaded
 ├── .agents/skills/        # Layer 2: On-demand skills
-│   ├── database/SKILL.md
-│   └── testing/SKILL.md
-├── docs/                  # Layer 3: Reference docs
-│   ├── architecture.md
+│   ├── {skill}/SKILL.md
+│   └── {skill}/SKILL.md
+├── docs/                  # Layer 3: Reference docs (project-specific)
+│   ├── {relevant docs}.md
 │   └── decisions/
 └── specs/                 # Feature work (ephemeral)
 ```

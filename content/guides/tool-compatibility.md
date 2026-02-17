@@ -31,7 +31,7 @@ Use tool-specific files for extra ergonomics (globs, UI actions), not as your pr
 
 1. Create `AGENTS.md` at project root from:
    `content/modules/01-project-context/templates/AGENTS-single-app.md`
-2. Create `docs/` from Module 1 templates (architecture, data-model, api, auth, decisions).
+2. Create `docs/` from Module 1 template catalog (only the docs your project needs).
 3. Create `.agents/skills/` from Module 2 template for deep domain patterns.
 4. Keep feature workflow templates in `specs/` (Module 3).
 
@@ -141,12 +141,11 @@ project/
 ├── AGENTS.md
 ├── .agents/
 │   └── skills/
-│       ├── database/SKILL.md
-│       └── testing/SKILL.md
-├── docs/
-│   ├── architecture.md
-│   ├── data-model.md
-│   ├── api.md
+│       ├── {skill}/SKILL.md
+│       └── {skill}/SKILL.md
+├── docs/                        # Only the docs your project needs
+│   ├── {relevant docs}.md
+│   ├── scripts.md
 │   └── decisions/
 └── specs/
 ```
@@ -185,7 +184,7 @@ monorepo/
 
 1. Consolidate universal instructions into `AGENTS.md`.
 2. Move deep procedures into `.agents/skills/*/SKILL.md`.
-3. Move architecture/API/data/auth truth into `docs/`.
+3. Move reference knowledge into `docs/` (only docs that match your project).
 4. Reduce tool-specific files to thin pointers.
 
 ### From `.cursorrules` to ACDL
@@ -225,7 +224,7 @@ Keep multi-step implementation knowledge in `.agents/skills/*/SKILL.md`.
 
 ### 3. Keep System Truth in docs/
 
-Architecture, data model, API, auth, and ADRs belong in `docs/`.
+System reference knowledge and ADRs belong in `docs/` — include only the docs your project needs.
 
 ### 4. Use Tool Files as Bridges
 

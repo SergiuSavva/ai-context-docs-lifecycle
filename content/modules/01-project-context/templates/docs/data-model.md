@@ -10,60 +10,75 @@ erDiagram
     {{entity_2}} ||--o{ {{entity_3}} : "{{relationship}}"
 
     {{entity_1}} {
-        uuid id PK
-        string name
-        timestamp created_at
+        {{id_type}} id PK
+        {{type}} {{field_name}}
+        {{type}} created_at
     }
 
     {{entity_2}} {
-        uuid id PK
-        uuid {{entity_1}}_id FK
-        string title
-        timestamp created_at
+        {{id_type}} id PK
+        {{id_type}} {{entity_1}}_id FK
+        {{type}} {{field_name}}
+        {{type}} created_at
     }
 ```
 
-## Tables
+<!-- Replace with your actual entity relationships.
+     Adapt ID types to match your database (uuid, integer, ObjectId, etc.) -->
+
+## Tables / Collections
 
 ### Core
 
-| Table | Purpose | RLS |
-|-------|---------|-----|
-| `{{table_1}}` | {{Description}} | {{Policy}} |
-| `{{table_2}}` | {{Description}} | {{Policy}} |
+| Name | Purpose | Access Control |
+|------|---------|----------------|
+| `{{table_1}}` | {{Description}} | {{e.g., public read, authenticated write}} |
+| `{{table_2}}` | {{Description}} | {{e.g., owner-only}} |
 
-## Enums
+<!-- Use "Tables" for SQL databases, "Collections" for document stores.
+     Access Control column: describe who can read/write (RLS policies, middleware checks, etc.) -->
 
-```sql
-CREATE TYPE {{enum_name}} AS ENUM ('{{value_1}}', '{{value_2}}', '{{value_3}}');
-```
+## Enums / Constants
 
-| Value | Meaning |
-|-------|---------|
-| `{{value_1}}` | {{Description}} |
-| `{{value_2}}` | {{Description}} |
+| Name | Values | Meaning |
+|------|--------|---------|
+| `{{enum_name}}` | `{{value_1}}`, `{{value_2}}` | {{Description}} |
+
+<!-- Define enums in whatever format your stack uses:
+     - SQL: CREATE TYPE ... AS ENUM
+     - TypeScript: union types or enum
+     - Python: Enum class
+     - Document DB: allowed values in schema validation -->
 
 ## Access Patterns
 
 ### Common Queries
 
-| Query | Table(s) | Index |
-|-------|----------|-------|
-| {{Description}} | `{{table}}` | `idx_{{name}}` |
+| Query | Table(s) / Collection(s) | Index |
+|-------|--------------------------|-------|
+| {{Description}} | `{{table}}` | `{{index_name}}` |
 
-## TypeScript Types
+## Generated Types
 
-```typescript
-// Generated from database schema
-type {{Entity}} = Tables<'{{table}}'>
+```{{language}}
+// Types generated from or representing your data model
+type {{Entity}} = {{type definition or ORM model reference}}
 
-// Joined types for common queries
+// Joined / populated types for common queries
 type {{EntityWithRelation}} = {{Entity}} & {
   {{relation}}: {{RelatedEntity}} | null
 }
 ```
 
+<!-- Replace with your actual type generation pattern:
+     - Supabase: Tables<'table_name'>
+     - Prisma: Prisma.EntityGetPayload<{}>
+     - SQLAlchemy: model classes
+     - Mongoose: Schema.Types
+     Omit this section if types are defined inline with the ORM. -->
+
 ## Related
 
-- Architecture overview: @docs/architecture.md
-- API / Server Actions: @docs/api.md
+<!-- Link to other project docs that exist. Remove entries for docs not in this project. -->
+- {{@docs/architecture.md — system overview}}
+- {{@docs/api.md — API surface that uses this data model}}

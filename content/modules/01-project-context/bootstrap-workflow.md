@@ -196,17 +196,25 @@ Use the template structure:
 [Always / Ask First / Never]
 ```
 
-### 4.2 Write/Enhance Reference Docs (Conditional)
+### 4.2 Write/Enhance Reference Docs (Only What Was Detected)
 
-Create detected docs and populate with initial data:
+Create **only** the docs whose signals were detected in Phase 1. Do not create docs for signals that were not found.
 
-- `docs/architecture.md`
-- `docs/data-model.md`
-- `docs/api.md`
-- `docs/auth.md`
-- `docs/scripts.md` (with status and source provenance)
+Available templates (use only if the corresponding signal was detected):
 
-Then enhance content with deeper findings from analysis.
+| Signal Detected | Create Doc |
+|----------------|------------|
+| Architecture complexity | `docs/architecture.md` |
+| Database present | `docs/data-model.md` |
+| API/server actions | `docs/api.md` |
+| Auth present | `docs/auth.md` |
+| Runnable commands | `docs/scripts.md` |
+
+You may also create **project-specific docs** not in this list (e.g., `docs/integrations.md`, `docs/deployment.md`) when detected signals warrant them.
+
+Populate each created doc with initial data from analysis, then enhance with deeper findings.
+
+**Critical rule**: The Context Loading table in `AGENTS.md` must only reference docs that were actually created. Do not include placeholder entries for docs that don't exist.
 
 ### 4.3 Suggest Next Steps
 
@@ -227,16 +235,18 @@ Result:
 
 (Other docs optional unless corresponding signals are present.)
 
-### Scenario B: Complex Service App
+### Scenario B: Complex Service App (when all signals are present)
 
-Result:
+Result (varies — only includes docs for detected signals):
 
 - `AGENTS.md`
-- `docs/architecture.md`
-- `docs/data-model.md`
-- `docs/api.md`
-- `docs/auth.md`
-- `docs/scripts.md`
+- `docs/architecture.md` (if multi-layer or multi-service)
+- `docs/data-model.md` (if database detected)
+- `docs/api.md` (if API surface detected)
+- `docs/auth.md` (if auth detected)
+- `docs/scripts.md` (if runnable commands detected)
+
+Not every complex app will produce all five. A complex app without auth skips `auth.md`.
 
 ### Scenario C: Monorepo
 
