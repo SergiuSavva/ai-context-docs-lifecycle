@@ -76,11 +76,11 @@ Want the complete setup with on-demand skills? Add these steps:
 mkdir -p .agents/skills
 ```
 
-Create skills for your tech stack domains. See [Module 2](../modules/02-skills/README.md) for the SKILL.md format and template.
+Create skills for your tech stack domains. See the [Skills section in Module 1](../modules/01-project-context/README.md#skills-on-demand-instruction-packages) for the SKILL.md format and template.
 
 ### Step 7: Add Feature Workflow
 
-Copy the workflow template from [Module 3](../modules/03-feature-development/README.md):
+Copy the workflow template from [Module 2](../modules/02-feature-development/README.md):
 
 ```bash
 mkdir -p specs
@@ -190,5 +190,5 @@ mkdir -p specs/my-feature
 
 ## Next Steps
 
-- [Module 3: Feature Development](../modules/03-feature-development/README.md) — Learn the workflows
+- [Module 2: Feature Development](../modules/02-feature-development/README.md) — Learn the workflows
 - [Skills Catalog](./skills-catalog.md) — Available skills and when to use them

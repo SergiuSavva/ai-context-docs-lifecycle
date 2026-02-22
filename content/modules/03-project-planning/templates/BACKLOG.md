@@ -83,7 +83,7 @@ Nice to have, build if time permits.
 
 1. Ensure spec is approved
 2. Update state to 🔨 In Progress
-3. Follow Module 3 workflows
+3. Follow Module 2 workflows
 
 ### Completing a Feature
 

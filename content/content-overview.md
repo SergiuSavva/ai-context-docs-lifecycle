@@ -9,10 +9,9 @@
 ```
 content/
 ├── modules/                       # Independent modules (pick what you need)
-│   ├── 01-project-context/       # AGENTS.md + docs/ (always-loaded context + reference)
-│   ├── 02-skills/                # On-demand instruction packages (.agents/skills/)
-│   ├── 03-feature-development/   # Workflows: Quick/Standard/Complex
-│   └── 04-project-planning/      # Multi-feature management (optional)
+│   ├── 01-project-context/       # AGENTS.md + docs/ + .agents/skills/
+│   ├── 02-feature-development/   # Workflows: Quick/Standard/Complex
+│   └── 03-project-planning/      # Multi-feature management (optional)
 │
 ├── guides/                        # Adoption guides
 │   ├── getting-started.md        # Module selector
@@ -30,10 +29,9 @@ content/
 
 Read modules in this default order:
 
-1. **Always read**: [`modules/01-project-context/README.md`](./modules/01-project-context/README.md) — AGENTS.md + docs/
-2. **For feature execution**: [`modules/03-feature-development/README.md`](./modules/03-feature-development/README.md) — Workflow selection + templates
-3. **For task-specific patterns**: [`modules/02-skills/README.md`](./modules/02-skills/README.md) — On-demand skills
-4. **For multi-feature coordination**: [`modules/04-project-planning/README.md`](./modules/04-project-planning/README.md) — Optional planning layer
+1. **Always read**: [`modules/01-project-context/README.md`](./modules/01-project-context/README.md) — AGENTS.md + docs/ + skills
+2. **For feature execution**: [`modules/02-feature-development/README.md`](./modules/02-feature-development/README.md) — Workflow selection + templates
+3. **For multi-feature coordination**: [`modules/03-project-planning/README.md`](./modules/03-project-planning/README.md) — Optional planning layer
 
 ### For Humans
 
@@ -45,10 +43,9 @@ Start with [guides/getting-started.md](./guides/getting-started.md) to choose yo
 
 | Module | You Get | Best For |
 |--------|---------|----------|
-| **1. Project Context** | AGENTS.md + docs/ templates | Every project |
-| **2. Skills** | .agents/skills/ templates | Deep coding patterns |
-| **3. Feature Development** | Workflows + templates | Building features |
-| **4. Project Planning** | PRD/Backlog/Roadmap | Multi-feature mgmt |
+| **1. Project Context** | AGENTS.md + docs/ + skills templates | Every project |
+| **2. Feature Development** | Workflows + templates | Building features |
+| **3. Project Planning** | PRD/Backlog/Roadmap | Multi-feature mgmt |
 
 ---
 

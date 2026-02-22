@@ -20,7 +20,7 @@ This initializes `.acdl/` with a local copy of methodology docs and templates.
 
 ### Just Starting?
 
-**Start with Module 1 only.**
+**Start with Module 1 (Basic tier).**
 
 ```bash
 # What you get:
@@ -29,49 +29,32 @@ your-project/
 └── docs/        # Reference docs (only docs your project needs)
 ```
 
+Add `.agents/skills/` when you need deep coding patterns (Full tier).
+
 [Go to Module 1: Project Context →](../modules/01-project-context/README.md)
-
----
-
-### Need Deep Coding Patterns?
-
-**Add Module 2 for on-demand skills.**
-
-```bash
-# What you get:
-your-project/
-├── AGENTS.md
-├── .agents/skills/          # On-demand instruction packages
-│   ├── database/SKILL.md
-│   ├── testing/SKILL.md
-│   └── ui-components/SKILL.md
-└── docs/
-```
-
-[Go to Module 2: Skills →](../modules/02-skills/README.md)
 
 ---
 
 ### Building Features?
 
-**Add Module 3 for feature workflows.**
+**Add Module 2 for feature workflows.**
 
 ```bash
 # What you get:
 your-project/
 ├── AGENTS.md
-├── .agents/skills/
-├── specs/           # Feature specifications (ephemeral)
+├── .agents/skills/          # On-demand instruction packages (optional)
+├── specs/                   # Feature specifications (ephemeral)
 └── docs/
 ```
 
-[Go to Module 3: Feature Development →](../modules/03-feature-development/README.md)
+[Go to Module 2: Feature Development →](../modules/02-feature-development/README.md)
 
 ---
 
 ### Managing Multiple Features?
 
-**Add Module 4 for project planning.**
+**Add Module 3 for project planning.**
 
 ```bash
 # What you get:
@@ -86,7 +69,7 @@ your-project/
 └── docs/
 ```
 
-[Go to Module 4: Project Planning →](../modules/04-project-planning/README.md)
+[Go to Module 3: Project Planning →](../modules/03-project-planning/README.md)
 
 ---
 
@@ -124,7 +107,7 @@ If you are not using the CLI, replace the workflow path with:
 ### Solo Developer (Minimal)
 
 ```
-Module 1 (Project Context)
+Module 1 — Basic tier (AGENTS.md + docs/)
 ```
 
 Best for: Personal projects, prototypes, small apps
@@ -132,7 +115,7 @@ Best for: Personal projects, prototypes, small apps
 ### Solo Developer (Standard)
 
 ```
-Modules 1 + 2 (Project Context + Skills)
+Module 1 — Full tier (AGENTS.md + docs/ + .agents/skills/)
 ```
 
 Best for: Production apps with specific tech stack patterns
@@ -140,7 +123,7 @@ Best for: Production apps with specific tech stack patterns
 ### Team Project
 
 ```
-Modules 1 + 2 + 3 (Project Context + Skills + Feature Dev)
+Modules 1 + 2 (Project Context + Feature Dev)
 ```
 
 Best for: Team projects building multiple features
@@ -148,7 +131,7 @@ Best for: Team projects building multiple features
 ### Enterprise
 
 ```
-All modules (1 + 2 + 3 + 4)
+All modules (1 + 2 + 3)
 ```
 
 Best for: Products with roadmaps, multiple teams
@@ -159,10 +142,9 @@ Best for: Products with roadmaps, multiple teams
 
 | # | Module | Purpose |
 |---|--------|---------|
-| 1 | [Project Context](../modules/01-project-context/README.md) | AGENTS.md + docs/ (always-loaded context + reference) |
-| 2 | [Skills](../modules/02-skills/README.md) | On-demand instruction packages (.agents/skills/) |
-| 3 | [Feature Development](../modules/03-feature-development/README.md) | Workflows for building features (specs/) |
-| 4 | [Project Planning](../modules/04-project-planning/README.md) | Multi-feature management (optional) |
+| 1 | [Project Context](../modules/01-project-context/README.md) | AGENTS.md + docs/ + .agents/skills/ |
+| 2 | [Feature Development](../modules/02-feature-development/README.md) | Workflows for building features (specs/) |
+| 3 | [Project Planning](../modules/03-project-planning/README.md) | Multi-feature management (optional) |
 
 ---
 

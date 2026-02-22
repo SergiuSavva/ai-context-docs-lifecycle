@@ -59,12 +59,6 @@ function printSummary(version: string): void {
   console.log(chalk.cyan(`     Bootstrap AGENTS.md for this project.`));
   console.log(chalk.cyan(`     Follow: .acdl/content/modules/01-project-context/bootstrap-workflow.md`));
   console.log("");
-  console.log(`  2. After bootstrap, set up on-demand skills:`);
-  console.log("");
-  console.log(chalk.cyan(`     Set up skills for this project.`));
-  console.log(chalk.cyan(`     Methodology skills: .acdl/content/modules/02-skills/templates/.agents/skills/`));
-  console.log(chalk.cyan(`     Read: .acdl/content/modules/02-skills/README.md`));
-  console.log("");
-  console.log(`  3. Commit ${chalk.bold(".acdl/")} to git`);
+  console.log(`  2. Commit ${chalk.bold(".acdl/")} to git`);
   console.log("");
 }

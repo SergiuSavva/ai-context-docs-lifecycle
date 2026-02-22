@@ -12,7 +12,7 @@ This policy defines a repeatable router for `SKILL.md` activation:
 - Skip skills when they add context noise
 - Ask once when confidence is ambiguous
 
-This guide applies to agents using Module 1 + Module 2 in this methodology.
+This guide applies to agents using Module 1 (Project Context) in this methodology.
 
 ---
 
@@ -188,7 +188,7 @@ Tune thresholds quarterly based on these measurements.
 ## Implementation Notes for This Repository
 
 - Keep universal rules compact in `AGENTS.md`
-- Keep deep domain procedures in `SKILL.md` files (Module 2 pattern)
+- Keep deep domain procedures in `SKILL.md` files
 - Route by task table first, then scoring fallback
 - Prefer deferred activation over loading many skills upfront
 
@@ -196,7 +196,7 @@ Tune thresholds quarterly based on these measurements.
 
 ## References
 
-- [Module 2: Skills](../modules/02-skills/README.md)
+- [Module 1: Project Context](../modules/01-project-context/README.md)
 - [AGENTS.md Best Practices](./agents-md-best-practices.md)
 - [Agent Skills Specification](https://agentskills.io/specification)
 - [Integrate Skills into Your Agent](https://agentskills.io/integrate-skills)

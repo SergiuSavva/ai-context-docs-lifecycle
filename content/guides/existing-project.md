@@ -67,7 +67,7 @@ Create at project root with:
 - Your tech stack and versions
 - Your file organization
 - Your conventions (short, inline)
-- Context Loading table pointing to docs/ (and skills only if Module 2 is adopted)
+- Context Loading table pointing to docs/ (and skills if set up)
 - Boundaries (always/ask/never)
 
 ### Step 2: Add Reference Docs
@@ -91,7 +91,7 @@ For deep tech patterns that AI needs to follow:
 mkdir -p .agents/skills
 ```
 
-Create skills for your specific tech stack. See [Module 2](../modules/02-skills/README.md).
+Create skills for your specific tech stack. See the [Skills section in Module 1](../modules/01-project-context/README.md#skills-on-demand-instruction-packages).
 
 **Tip**: If you have existing `.cursor/rules/`, you can keep them as lightweight bridges that point to skills for deeper content.
 
@@ -103,7 +103,7 @@ For new features going forward:
 mkdir -p specs
 ```
 
-Use [Module 3](../modules/03-feature-development/README.md) workflow for new features only.
+Use [Module 2](../modules/02-feature-development/README.md) workflow for new features only.
 
 ---
 
@@ -214,7 +214,7 @@ You don't have to do everything at once:
 
 ### Week 2: Skills + New Features
 - Add skills for your tech stack
-- Use Module 3 workflow for NEW features only
+- Use Module 2 workflow for NEW features only
 
 ### Month 1: Documentation
 - Complete docs/ reference layer
@@ -240,5 +240,5 @@ You don't have to do everything at once:
 
 ## Next Steps
 
-- [Module 3: Feature Development](../modules/03-feature-development/README.md) — Use for new features
+- [Module 2: Feature Development](../modules/02-feature-development/README.md) — Use for new features
 - [Getting Started](./getting-started.md) — Module overview

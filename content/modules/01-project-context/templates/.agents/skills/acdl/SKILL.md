@@ -94,10 +94,10 @@ Proceed?"
 
 | Situation | Suggest | Why |
 |-----------|---------|-----|
-| Simple app, solo dev | Module 1 only | AGENTS.md + docs/ is sufficient |
-| Specific stack patterns | Add Module 2 | Deep coding patterns via skills |
-| Multi-feature work | Add Module 3 | Structured spec/task workflows |
-| Roadmap planning | Add Module 4 | PRD, backlog, release management |
+| Simple app, solo dev | Module 1 (Basic tier) | AGENTS.md + docs/ is sufficient |
+| Specific stack patterns | Module 1 (Full tier) | Deep coding patterns via skills |
+| Multi-feature work | Add Module 2 | Structured spec/task workflows |
+| Roadmap planning | Add Module 3 | PRD, backlog, release management |
 
 ### Bootstrap Templates
 
@@ -157,7 +157,7 @@ When the same explanation keeps coming up, capture it as a skill:
 | UI components | load skill `ui-components` |
 ```
 
-### Set Up Feature Workflow (Module 3)
+### Set Up Feature Workflow (Module 2)
 
 If the project needs structured feature development:
 
@@ -255,12 +255,12 @@ The last row closes the feedback loop: bad AI output is a signal to improve your
 
 | Template | Path |
 |----------|------|
-| Skill template | `02-skills/templates/.agents/skills/skill-template/SKILL.md` |
-| spec.md | `03-feature-development/templates/spec.md` |
-| tasks.md | `03-feature-development/templates/tasks.md` |
-| research.md | `03-feature-development/templates/research.md` |
-| design.md | `03-feature-development/templates/design.md` |
-| plan.md | `03-feature-development/templates/plan.md` |
+| Skill template | `01-project-context/templates/.agents/skills/skill-template/SKILL.md` |
+| spec.md | `02-feature-development/templates/spec.md` |
+| tasks.md | `02-feature-development/templates/tasks.md` |
+| research.md | `02-feature-development/templates/research.md` |
+| design.md | `02-feature-development/templates/design.md` |
+| plan.md | `02-feature-development/templates/plan.md` |
 | ADR template | `01-project-context/templates/docs/decisions/adr.md` |
 
 ## Quick Checklist

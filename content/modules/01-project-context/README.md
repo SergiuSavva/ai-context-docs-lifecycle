@@ -1,6 +1,6 @@
 # Module 1: Project Context
 
-> **Give AI agents complete context about your project** with AGENTS.md and reference docs.
+> **Give AI agents complete context about your project** with AGENTS.md, reference docs, and on-demand skills.
 
 ---
 
@@ -11,7 +11,21 @@ AI coding assistants have no memory. Every session starts fresh, leading to:
 - Repeated explanations of your tech stack
 - Suggestions that conflict with past decisions
 
-**The solution**: A lightweight context file + reference docs that AI reads on-demand.
+**The solution**: A lightweight context file + reference docs + skill packages that AI reads on-demand.
+
+---
+
+## Adoption Tiers
+
+Pick the tier that matches your needs. Each tier builds on the previous one.
+
+| Tier | What You Add | When |
+|------|-------------|------|
+| **Basic** | `AGENTS.md` only | Minimum viable context — stack, structure, boundaries |
+| **Standard** | `AGENTS.md` + `docs/` | Project has domain knowledge worth documenting |
+| **Full** | `AGENTS.md` + `docs/` + `.agents/skills/` | Deep patterns you keep re-explaining to AI |
+
+You can start at Basic and grow. Each tier is independently useful.
 
 ---
 
@@ -20,7 +34,7 @@ AI coding assistants have no memory. Every session starts fresh, leading to:
 Sets up a three-stage loading model:
 
 1. **Discovery** — `AGENTS.md` (always loaded, compact routing context)
-2. **Activation** — domain docs in `docs/` (loaded when task-relevant)
+2. **Activation** — domain docs in `docs/` + skill packages in `.agents/skills/` (loaded when task-relevant)
 3. **Execution** — command catalog in `docs/scripts.md` (loaded only when running/verifying commands)
 
 Together they form **Progressive Disclosure**: minimal upfront context with deep knowledge available on-demand.
@@ -31,11 +45,12 @@ Together they form **Progressive Disclosure**: minimal upfront context with deep
 |-------|------|-------------|------------|
 | **Discovery: AGENTS.md** | Stack, structure, boundaries, routing hints | Every session | ~500-700 |
 | **Activation: docs/** | Project-specific domain docs (varies by project) | When task-relevant | ~1,000-1,200 each |
+| **Activation: .agents/skills/** | On-demand instruction packages | When task matches skill | ~1,600-1,800 each |
 | **Execution: docs/scripts.md** | Verified runnable commands + provenance | Only when executing/verifying | ~300-700 |
 
 **Always-on context:** Only AGENTS.md = ~500-700 tokens.
 **Typical plan/research session:** AGENTS.md + 1-2 docs = ~1,500-3,000 tokens.
-**Typical implementation session:** AGENTS.md + domain docs + scripts doc = task-relevant execution context.
+**Typical implementation session:** AGENTS.md + domain docs + skills + scripts doc = task-relevant execution context.
 
 **Single App:**
 
@@ -45,8 +60,8 @@ Discovery (Always)             Activation (On-demand)          Execution (On-dem
 │ AGENTS.md           │  ───►  │ @docs/ (only the docs  │
 │ • Stack, structure  │        │  this project needs)   │
 │ • Routing hints     │        │ @docs/decisions/       │
-│ • Task mode policy  │        │                        │
-│ • Boundaries        │        │                        │
+│ • Task mode policy  │        │ .agents/skills/        │
+│ • Boundaries        │        │  (task-matched only)   │
 └─────────────────────┘        └────────────────────────┘
                                       │
                                       └──────────────►  @docs/scripts.md
@@ -60,7 +75,7 @@ Discovery (Always)             Activation (Subproject + docs)   Execution (On-de
 │ Root AGENTS.md      │        │ {{subproject}}/      │       │ @docs/ (only the │
 │ • Structure         │  ───►  │   AGENTS.md          │ ───►  │  docs this proj  │
 │ • Subproject Routes │        │ • Local routing      │       │  actually needs) │
-│ • Global boundaries │        │ • Context Loading    │       │                  │
+│ • Global boundaries │        │ • Context Loading    │       │ .agents/skills/  │
 └─────────────────────┘        └─────────────────────┘       └──────────────────┘
                                                                  │
                                                                  └──► @docs/scripts.md
@@ -73,14 +88,19 @@ Discovery (Always)             Activation (Subproject + docs)   Execution (On-de
 ```
 your-project/
 ├── AGENTS.md                    # Discovery: always loaded (~80 lines)
-└── docs/
-    ├── {{relevant-docs}}.md     # Activation: only the docs your project needs
-    ├── scripts.md               # Execution: canonical command catalog
-    └── decisions/               # Architecture Decision Records
-        └── NNN-decision.md      # Permanent, never deleted
+├── docs/
+│   ├── {{relevant-docs}}.md     # Activation: only the docs your project needs
+│   ├── scripts.md               # Execution: canonical command catalog
+│   └── decisions/               # Architecture Decision Records
+│       └── NNN-decision.md      # Permanent, never deleted
+└── .agents/skills/              # Activation: on-demand instruction packages
+    ├── {{methodology-skill}}/   # Shipped with ACDL (optional)
+    │   └── SKILL.md
+    └── {{stack-skill}}/         # User-authored for project tech
+        └── SKILL.md
 ```
 
-The contents of `docs/` vary by project. A simple CLI might only have `scripts.md`. A full-stack app might have `architecture.md`, `data-model.md`, `api.md`, `auth.md`, and `scripts.md`. The AI agent or you decide what's relevant — see the template catalog below.
+The contents of `docs/` vary by project. A simple CLI might only have `scripts.md`. A full-stack app might have `architecture.md`, `data-model.md`, `api.md`, `auth.md`, and `scripts.md`. Skills are optional — add them when you find yourself re-explaining deep patterns. The AI agent or you decide what's relevant — see the template catalogs below.
 
 ---
 
@@ -203,19 +223,158 @@ Only cross-reference docs that exist in the project.
 
 ---
 
+## Skills: On-Demand Instruction Packages
+
+Short conventions (naming, component patterns) belong inline in AGENTS.md. But deep knowledge (database migration patterns, testing strategies, UI component systems) is too large to load every session. **Skills** solve this — instruction packages loaded only when the task matches.
+
+### What a Skill Is
+
+A **Skill** is a `SKILL.md` file in `.agents/skills/` that teaches an AI agent how to do something specific. Skills follow the open standard from [agentskills.io](https://agentskills.io/specification).
+
+```
+.agents/skills/
+├── feature-workflow/         # Methodology: Research → Plan → Implement phases
+│   └── SKILL.md
+├── agents-md/                # Methodology: AGENTS.md authoring and maintenance
+│   └── SKILL.md
+├── spec-writing/             # Methodology: Spec and task file authoring
+│   └── SKILL.md
+├── doc-writing/              # Methodology: Reference docs, guides, ADRs
+│   └── SKILL.md
+├── acdl/                     # Methodology: Full ACDL bootstrap and maintenance
+│   └── SKILL.md
+├── database/                 # Stack: Your DB patterns (user-authored)
+│   └── SKILL.md
+└── testing/                  # Stack: Your test strategy (user-authored)
+    └── SKILL.md
+```
+
+### Skills vs Inline Conventions
+
+| Characteristic | Inline in AGENTS.md | SKILL.md |
+|---------------|---------------------|----------|
+| Length | 1-2 lines | 100+ lines |
+| Applies to | Every task | Specific task types |
+| Example | "Use camelCase for functions" | "How to write a Supabase migration" |
+| Changes | Rarely | When patterns evolve |
+| Token cost | Always loaded (~700 total) | On-demand (~1,600-1,800 each) |
+
+**Rule of thumb**: If it fits in one bullet point, it goes in AGENTS.md. If it needs code examples and multiple sections, it's a skill.
+
+### SKILL.md Format
+
+Every skill has two parts: **YAML frontmatter** (name + description) and **Markdown content** (instructions).
+
+```markdown
+---
+name: database
+description: Supabase integration patterns — migrations, RLS, React Query, and type generation. Use when working with database queries, schema changes, or auth.
+---
+
+# Database Patterns
+
+> **References:** Data model → @docs/data-model.md (if exists) | Auth → @docs/auth.md (if exists)
+
+## Migrations
+{{Detailed patterns with code examples}}
+
+## Quick Checklist
+- [ ] Run type generation after schema changes
+- [ ] Verify access control on new tables
+
+## Related Docs
+- @docs/data-model.md (if exists)
+- load skill `{{related-skill}}`
+```
+
+| Field | Required | Purpose |
+|-------|----------|---------|
+| `name` | Yes | Unique identifier (used in `load skill \`name\``) |
+| `description` | Yes | 1-2 sentences. AI reads this to decide whether to load the full skill |
+
+### How Skills Load
+
+```mermaid
+flowchart TD
+    Start(["AI starts session"]) --> A["AGENTS.md loaded<br/>(~700 tokens)"]
+    A --> Q{"What is the task?"}
+    Q -->|"Add a new page"| S1["Load skill: nextjs-app-router<br/>(~1,700 tokens)"]
+    Q -->|"Fix a DB query"| S2["Load skill: database<br/>(~1,750 tokens)"]
+    Q -->|"Write tests"| S3["Load skill: testing<br/>(~1,700 tokens)"]
+    Q -->|"Build UI"| S4["Load skill: ui-components<br/>(~1,650 tokens)"]
+```
+
+### When to Create a Skill
+
+1. You find yourself explaining the same deep pattern to AI repeatedly
+2. A technology in your stack has specific conventions (e.g., "always use Server Actions, never API routes")
+3. A workflow has multiple steps with code examples (e.g., "how to add a new database table")
+4. You want the AI to follow project-specific patterns that differ from defaults
+
+### Methodology Skills
+
+These skills teach AI agents how to use the ACDL workflow itself. They ship as templates.
+
+| Skill | Covers |
+|-------|--------|
+| `feature-workflow` | Three-phase workflow (Research → Plan → Implement), task markers, progress tracking |
+| `agents-md` | AGENTS.md authoring — section anatomy, token budget, router pattern, update triggers |
+| `spec-writing` | Spec and task authoring — problem framing, acceptance criteria, scoping, task breakdown |
+| `doc-writing` | Reference docs, guides, READMEs, ADRs, templates — structure, style, freshness rules |
+| `acdl` | Full ACDL bootstrap and configuration — setup, daily usage, maintenance triggers |
+
+Templates: `content/modules/01-project-context/templates/.agents/skills/`
+
+### Stack Skills
+
+These skills teach project-specific tech stack patterns. Users author them for their own project.
+
+| Skill | Covers |
+|-------|--------|
+| `database` | ORM/client patterns, migrations, queries, caching |
+| `testing` | Testing strategy, which tool for what, patterns |
+| `ui-components` | Component library, theming, accessibility |
+| `nextjs-app-router` | Pages, layouts, server actions, streaming |
+| `api-design` | Endpoint conventions, error handling, validation |
+| `deployment` | CI/CD, environment config, release process |
+
+### Skill Template
+
+Use `content/modules/01-project-context/templates/.agents/skills/skill-template/SKILL.md` to create new skills.
+
+---
+
 ## Tool Compatibility
 
-| Agent | AGENTS.md | @docs/ References |
-|-------|-----------|-------------------|
-| **Cursor** | Auto-reads | `@docs/file.md` |
-| **Claude Code** | Via `CLAUDE.md` symlink | Direct read |
-| **GitHub Copilot** | Auto-reads | Direct read |
-| **Cline** | Via `.clinerules` | Direct read |
-| **OpenCode** | Auto-reads | Direct read |
-| **Windsurf** | Auto-reads | Direct read |
-| **Aider** | Via `/read` | Via `/read` |
+| Agent | AGENTS.md | @docs/ References | Skills |
+|-------|-----------|-------------------|--------|
+| **Cursor** (v2.4+) | Auto-reads | `@docs/file.md` | `@skill-name` |
+| **Claude Code** | Via `CLAUDE.md` symlink | Direct read | `/skill-name` |
+| **GitHub Copilot** | Auto-reads | Direct read | Preview |
+| **Cline** (v3.48+) | Via `.clinerules` | Direct read | Auto-discovered |
+| **OpenCode** | Auto-reads | Direct read | Via `skill` tool |
+| **Windsurf** | Auto-reads | Direct read | Via UI |
+| **OpenAI Codex** | Auto-reads | Direct read | Via commands |
+| **Aider** | Via `/read` | Via `/read` | Use `/read` |
 
 AGENTS.md works with **every** AI coding agent. No tool-specific files required.
+
+### Cursor Bridge (Optional)
+
+If your team uses Cursor, you can create lightweight `.mdc` rules that point to skills:
+
+```
+---
+description: Database patterns
+globs:
+  - "**/migrations/**"
+  - "**/supabase/**"
+---
+
+Load skill `database` for Supabase patterns, migrations, and RLS.
+```
+
+This gives you glob-based auto-loading while keeping the knowledge in portable `SKILL.md` files.
 
 ---
 
@@ -223,11 +382,10 @@ AGENTS.md works with **every** AI coding agent. No tool-specific files required.
 
 | Signal | What It Means | Add Module |
 |--------|---------------|------------|
-| Deep patterns repeated to AI | Need on-demand skill packages | [Module 2: Skills](../02-skills/README.md) |
-| Building features > 3 files | Need structured workflow | [Module 3: Feature Development](../03-feature-development/README.md) |
-| Managing multiple features | Need project-level planning | [Module 4: Project Planning](../04-project-planning/README.md) |
+| Building features > 3 files | Need structured workflow | [Module 2: Feature Development](../02-feature-development/README.md) |
+| Managing multiple features | Need project-level planning | [Module 3: Project Planning](../03-project-planning/README.md) |
 
-**Rule of thumb**: Short conventions go inline in AGENTS.md. Deep patterns become Skills (Module 2).
+**Rule of thumb**: Short conventions go inline in AGENTS.md. Deep patterns become skills in `.agents/skills/`.
 
 ---
 

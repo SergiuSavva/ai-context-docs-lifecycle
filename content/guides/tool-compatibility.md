@@ -32,8 +32,8 @@ Use tool-specific files for extra ergonomics (globs, UI actions), not as your pr
 1. Create `AGENTS.md` at project root from:
    `content/modules/01-project-context/templates/AGENTS-single-app.md`
 2. Create `docs/` from Module 1 template catalog (only the docs your project needs).
-3. Create `.agents/skills/` from Module 2 template for deep domain patterns.
-4. Keep feature workflow templates in `specs/` (Module 3).
+3. Create `.agents/skills/` from Module 1 skill templates for deep domain patterns.
+4. Keep feature workflow templates in `specs/` (Module 2).
 
 Works with every agent that can read markdown files.
 
@@ -264,5 +264,4 @@ Tool files should mostly point to universal files, not duplicate them.
 
 - [AGENTS.md Best Practices](./agents-md-best-practices.md)
 - [Module 1: Project Context](../modules/01-project-context/README.md)
-- [Module 2: Skills](../modules/02-skills/README.md)
 - [Getting Started](./getting-started.md)

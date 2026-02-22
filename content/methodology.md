@@ -37,14 +37,13 @@ Principle: keep `AGENTS.md` compact and route to deeper context only when needed
 
 ---
 
-## Module Model (4 Modules)
+## Module Model (3 Modules)
 
 | Module | Teaches | Main Artifacts |
 |--------|---------|----------------|
-| **1. Project Context** | Core context and reference setup | `AGENTS.md`, `docs/` |
-| **2. Skills** | On-demand reusable capabilities | `.agents/skills/` |
-| **3. Feature Development** | Research → Plan → Implement workflow | `specs/<feature>/` |
-| **4. Project Planning** | Optional multi-feature planning | `PROJECT-PRD.md`, `BACKLOG.md`, `ROADMAP.md`, `TASKS.md` |
+| **1. Project Context** | Core context, reference, and on-demand skills | `AGENTS.md`, `docs/`, `.agents/skills/` |
+| **2. Feature Development** | Research → Plan → Implement workflow | `specs/<feature>/` |
+| **3. Project Planning** | Optional multi-feature planning | `PROJECT-PRD.md`, `BACKLOG.md`, `ROADMAP.md`, `TASKS.md` |
 
 Modules are adoption units. Layers are runtime loading behavior.
 
@@ -224,6 +223,5 @@ Prefer:
 
 - [Modules](./modules/README.md)
 - [Module 1: Project Context](./modules/01-project-context/README.md)
-- [Module 2: Skills](./modules/02-skills/README.md)
-- [Module 3: Feature Development](./modules/03-feature-development/README.md)
-- [Module 4: Project Planning](./modules/04-project-planning/README.md)
+- [Module 2: Feature Development](./modules/02-feature-development/README.md)
+- [Module 3: Project Planning](./modules/03-project-planning/README.md)

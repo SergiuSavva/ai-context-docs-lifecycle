@@ -12,10 +12,9 @@ Pick the modules you need:
 
 | # | Module | Purpose |
 |---|--------|---------|
-| 1 | **Project Context** | AGENTS.md + docs/ (always-loaded context + reference) |
-| 2 | **Skills** | On-demand instruction packages (.agents/skills/) |
-| 3 | **Feature Development** | Workflows for building features |
-| 4 | **Project Planning** | Multi-feature management (optional) |
+| 1 | **Project Context** | AGENTS.md + docs/ + .agents/skills/ |
+| 2 | **Feature Development** | Workflows for building features |
+| 3 | **Project Planning** | Multi-feature management (optional) |
 
 ---
 
@@ -112,9 +111,8 @@ Tell your AI assistant:
 Apply AI Context Docs Lifecycle from https://github.com/sergiusavva/ai-context-docs-lifecycle
 
 I want:
-- Module 1 (Project Context) - AGENTS.md + docs/
-- Module 2 (Skills) - on-demand coding patterns
-- Module 3 (Feature Development) - workflows for building features
+- Module 1 (Project Context) - AGENTS.md + docs/ + skills
+- Module 2 (Feature Development) - workflows for building features
 
 My tech stack: [YOUR STACK]
 ```
@@ -126,7 +124,7 @@ My tech stack: [YOUR STACK]
 
 ## Three Workflow Tracks
 
-Module 3 provides structured workflows based on what you're building:
+Module 2 provides structured workflows based on what you're building:
 
 ### Quick Flow
 
@@ -170,7 +168,7 @@ Works with every AI coding agent:
 
 See complete walkthroughs in the repository:
 
-- [**Simple Todo Feature**](https://github.com/SergiuSavva/ai-context-docs-lifecycle/tree/main/content/modules/03-feature-development/examples/simple-todo/) — Standard Flow example
-- [**OAuth Authentication**](https://github.com/SergiuSavva/ai-context-docs-lifecycle/tree/main/content/modules/03-feature-development/examples/complex-auth/) — Complex Flow example
+- [**Simple Todo Feature**](https://github.com/SergiuSavva/ai-context-docs-lifecycle/tree/main/content/modules/02-feature-development/examples/simple-todo/) — Standard Flow example
+- [**OAuth Authentication**](https://github.com/SergiuSavva/ai-context-docs-lifecycle/tree/main/content/modules/02-feature-development/examples/complex-auth/) — Complex Flow example
 
 [View All Modules](modules/README.md){ .md-button }

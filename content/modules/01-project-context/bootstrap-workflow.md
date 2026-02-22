@@ -42,7 +42,8 @@ flowchart LR
     subgraph create [4. Create]
         D1[Write AGENTS.md]
         D2[Write/Update docs files]
-        D3[Suggest next modules]
+        D3[Set up skills if needed]
+        D4[Suggest next modules]
     end
     ask --> detect --> analyze --> preview --> create
 ```
@@ -216,11 +217,25 @@ Populate each created doc with initial data from analysis, then enhance with dee
 
 **Critical rule**: The Context Loading table in `AGENTS.md` must only reference docs that were actually created. Do not include placeholder entries for docs that don't exist.
 
-### 4.3 Suggest Next Steps
+### 4.3 Set Up Methodology Skills (Optional)
 
-- Suggest **Module 2** when deep patterns repeat (skills)
-- Suggest **Module 3** when feature work spans multiple files/workstreams
-- Suggest **Module 4** when roadmap/backlog management is needed
+If the project would benefit from on-demand instruction packages:
+
+1. Copy methodology skill templates from `.acdl/content/modules/01-project-context/templates/.agents/skills/` to `.agents/skills/`
+2. Add skill routing rows to the Context Loading table in `AGENTS.md`:
+
+```markdown
+| Writing specs / task breakdowns | load skill `spec-writing` |
+| Writing docs / ADRs | load skill `doc-writing` |
+| Feature workflow (research → plan → implement) | load skill `feature-workflow` |
+```
+
+Only include skills that match the project's needs. Users can also create stack-specific skills (e.g., `database`, `testing`) later.
+
+### 4.4 Suggest Next Steps
+
+- Suggest **Module 2** when feature work spans multiple files/workstreams
+- Suggest **Module 3** when roadmap/backlog management is needed
 
 ---
 

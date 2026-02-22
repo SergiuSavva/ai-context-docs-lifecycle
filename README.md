@@ -23,10 +23,9 @@ AI coding assistants lack memory and context:
 
 | Module | Purpose |
 |--------|---------|
-| **1. Project Context** | AGENTS.md + docs/ (always-loaded context + reference) |
-| **2. Skills** | On-demand instruction packages (.agents/skills/) |
-| **3. Feature Development** | Workflows for building features (specs/) |
-| **4. Project Planning** | Multi-feature management (optional) |
+| **1. Project Context** | AGENTS.md + docs/ + .agents/skills/ |
+| **2. Feature Development** | Workflows for building features (specs/) |
+| **3. Project Planning** | Multi-feature management (optional) |
 
 ---
 
@@ -88,9 +87,8 @@ Tell your AI assistant:
 Apply AI Context Docs Lifecycle from https://github.com/sergiusavva/ai-context-docs-lifecycle
 
 I want:
-- Module 1 (Project Context) - AGENTS.md + docs/
-- Module 2 (Skills) - on-demand coding patterns
-- Module 3 (Feature Development) - workflows for building features
+- Module 1 (Project Context) - AGENTS.md + docs/ + skills
+- Module 2 (Feature Development) - workflows for building features
 
 My tech stack: [YOUR STACK]
 ```
@@ -103,12 +101,11 @@ My tech stack: [YOUR STACK]
 ai-context-docs-lifecycle/
 ├── content/
 │   ├── methodology.md        # Full methodology explanation
-│   ├── modules/              # 4 independent modules
+│   ├── modules/              # 3 independent modules
 │   │   ├── README.md              # Module overview + adoption path
-│   │   ├── 01-project-context/    # AGENTS.md + docs/ + templates
-│   │   ├── 02-skills/             # SKILL.md template + guide
-│   │   ├── 03-feature-development/# Workflows, templates, examples
-│   │   └── 04-project-planning/   # PRD, backlog, roadmap (optional)
+│   │   ├── 01-project-context/    # AGENTS.md + docs/ + skills + templates
+│   │   ├── 02-feature-development/# Workflows, templates, examples
+│   │   └── 03-project-planning/   # PRD, backlog, roadmap (optional)
 │   └── guides/               # Adoption guides
 │       ├── getting-started.md
 │       ├── new-project.md
@@ -128,34 +125,25 @@ ai-context-docs-lifecycle/
 
 ### Module 1: Project Context
 
-**What you get**: `AGENTS.md` (~80 lines, always loaded) + `docs/` (on-demand reference)
+**What you get**: `AGENTS.md` (~80 lines, always loaded) + `docs/` (on-demand reference) + `.agents/skills/` (on-demand instruction packages)
 
 ```
 project/
 ├── AGENTS.md              # Layer 1: Always loaded
-└── docs/                  # Layer 3: On-demand reference
-    ├── {relevant docs}.md
-    ├── scripts.md         # If project has runnable commands
-    └── decisions/
+├── docs/                  # Layer 3: On-demand reference
+│   ├── {relevant docs}.md
+│   ├── scripts.md         # If project has runnable commands
+│   └── decisions/
+└── .agents/skills/        # Layer 2: Loaded when task matches
+    ├── {methodology}/SKILL.md
+    └── {stack}/SKILL.md
 ```
+
+Three adoption tiers: Basic (AGENTS.md only), Standard (+ docs/), Full (+ .agents/skills/).
 
 [Go to Module 1 →](content/modules/01-project-context/)
 
-### Module 2: Skills
-
-**What you get**: `.agents/skills/` with on-demand instruction packages
-
-```
-project/
-└── .agents/skills/        # Layer 2: Loaded when task matches
-    ├── database/SKILL.md
-    ├── testing/SKILL.md
-    └── ui-components/SKILL.md
-```
-
-[Go to Module 2 →](content/modules/02-skills/)
-
-### Module 3: Feature Development
+### Module 2: Feature Development
 
 **What you get**: Three-phase workflow + templates for building features
 
@@ -169,9 +157,9 @@ Research → Plan → Implement
 | **Feature** | `spec.md` + `tasks.md` (minimum) |
 | **Complex** | All docs + ADR |
 
-[Go to Module 3 →](content/modules/03-feature-development/)
+[Go to Module 2 →](content/modules/02-feature-development/)
 
-### Module 4: Project Planning (Optional)
+### Module 3: Project Planning (Optional)
 
 **What you get**: Multi-feature management
 
@@ -183,7 +171,7 @@ project/
 └── TASKS.md           # Global progress
 ```
 
-[Go to Module 4 →](content/modules/04-project-planning/)
+[Go to Module 3 →](content/modules/03-project-planning/)
 
 ---
 
@@ -223,8 +211,8 @@ For non-trivial feature work, run this sequence:
 
 See complete walkthroughs:
 
-- [Simple Todo Feature](content/modules/03-feature-development/examples/simple-todo/) — Standard Flow
-- [OAuth Authentication](content/modules/03-feature-development/examples/complex-auth/) — Complex Flow
+- [Simple Todo Feature](content/modules/02-feature-development/examples/simple-todo/) — Standard Flow
+- [OAuth Authentication](content/modules/02-feature-development/examples/complex-auth/) — Complex Flow
 
 ---
 

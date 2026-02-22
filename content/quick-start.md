@@ -85,9 +85,9 @@ AI agents will read AGENTS.md automatically and load docs/ on-demand.
 
 ---
 
-## Option 2: Standard (with Skills)
+## Option 2: Full (with Skills)
 
-Want on-demand coding patterns? Add **Modules 1 + 2**.
+Want on-demand coding patterns? Use **Module 1 Full tier**.
 
 ### Step 1: Add AGENTS.md + docs/ (see above)
 
@@ -105,7 +105,7 @@ Create `SKILL.md` files for your tech stack domains:
 | `testing/SKILL.md` | Test strategy, which tool for what |
 | `ui-components/SKILL.md` | Component library, theming |
 
-See [Module 2](modules/02-skills/README.md) for the SKILL.md format.
+See the [Skills section in Module 1](modules/01-project-context/README.md#skills-on-demand-instruction-packages) for the SKILL.md format.
 
 ---
 
@@ -153,7 +153,7 @@ project/
     └── decisions/
 ```
 
-### Modules 1 + 2 + 3
+### Modules 1 + 2
 
 ```
 project/

@@ -4,7 +4,7 @@
 
 ## Overview
 
-Docs-first, documentation-as-memory methodology with 4 progressive modules. Users adopt what they need — from minimal AGENTS.md context to full project planning.
+Docs-first, documentation-as-memory methodology with 3 progressive modules. Users adopt what they need — from minimal AGENTS.md context to full project planning.
 
 ## Stack
 
@@ -26,11 +26,10 @@ mkdocs build                    # Build to site/
 
 ```
 content/
-├── modules/           # 4 core modules with templates
-│   ├── 01-project-context/    # AGENTS.md + docs/ (Layer 1 + Layer 3)
-│   ├── 02-skills/             # .agents/skills/ (Layer 2)
-│   ├── 03-feature-development/# Workflows, specs, tasks
-│   └── 04-project-planning/   # Backlog, roadmap (optional)
+├── modules/           # 3 core modules with templates
+│   ├── 01-project-context/    # AGENTS.md + docs/ + .agents/skills/
+│   ├── 02-feature-development/# Workflows, specs, tasks
+│   └── 03-project-planning/   # Backlog, roadmap (optional)
 └── guides/            # Adoption guides
 specs/                 # Active feature specs (ephemeral)
 docs/                  # Reference documentation

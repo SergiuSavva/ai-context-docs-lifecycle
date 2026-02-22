@@ -5,7 +5,7 @@ description: How to write quality spec content — problem framing, acceptance c
 
 # Spec Writing
 
-> **References:** Spec template → @content/modules/03-feature-development/templates/spec.md | Tasks template → @content/modules/03-feature-development/templates/tasks.md
+> **References:** Spec template → @content/modules/02-feature-development/templates/spec.md | Tasks template → @content/modules/02-feature-development/templates/tasks.md
 
 ## Spec Structure
 
@@ -154,6 +154,6 @@ For task formatting (T-XX numbering, markers, phases, progress tracking), use `l
 
 ## Related Docs
 
-- Spec template: @content/modules/03-feature-development/templates/spec.md
-- Tasks template: @content/modules/03-feature-development/templates/tasks.md
+- Spec template: @content/modules/02-feature-development/templates/spec.md
+- Tasks template: @content/modules/02-feature-development/templates/tasks.md
 - load skill `feature-workflow`

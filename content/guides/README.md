@@ -22,7 +22,7 @@
 
 ### Start with [Getting Started](./getting-started.md) to:
 
-- Understand the 4 modules available
+- Understand the 3 modules available
 - Choose which modules fit your needs
 - See recommended combinations
 
@@ -65,17 +65,16 @@ When asked to apply this methodology:
    - Existing project: [existing-project.md](./existing-project.md)
 
 3. **Read relevant modules**
-   - [Module 1: Project Context](../modules/01-project-context/README.md) — AGENTS.md + docs/
-   - [Module 2: Skills](../modules/02-skills/README.md) — On-demand instruction packages
-   - [Module 3: Feature Development](../modules/03-feature-development/README.md) — Workflows
-   - [Module 4: Project Planning](../modules/04-project-planning/README.md) — Multi-feature management
+   - [Module 1: Project Context](../modules/01-project-context/README.md) — AGENTS.md + docs/ + .agents/skills/
+   - [Module 2: Feature Development](../modules/02-feature-development/README.md) — Workflows
+   - [Module 3: Project Planning](../modules/03-project-planning/README.md) — Multi-feature management
 
 4. **Use templates from modules**
    - Each module has a `templates/` folder
    - Copy and customize for the project
 
 5. **Reference examples**
-   - Module 3: `examples/simple-todo/` and `examples/complex-auth/`
+   - Module 2: `examples/simple-todo/` and `examples/complex-auth/`
 
 ---
 
@@ -94,7 +93,7 @@ When asked to apply this methodology:
 
 ```
 1. Create .agents/skills/ folder
-2. Create a SKILL.md for each tech domain (see Module 2)
+2. Create a SKILL.md for each tech domain (see Module 1 skills section)
 3. Add cross-references to @docs/ files
 ```
 
@@ -102,9 +101,9 @@ When asked to apply this methodology:
 
 ```
 1. Determine workflow: Quick, Standard, or Complex
-   - See modules/03-feature-development/README.md for decision tree
+   - See modules/02-feature-development/README.md for decision tree
 2. Create specs/<feature>/ if Standard or Complex
-3. Copy relevant templates from modules/03-feature-development/templates/
+3. Copy relevant templates from modules/02-feature-development/templates/
 4. Follow workflow guide
 5. Update docs/ when complete
 ```
@@ -123,10 +122,9 @@ When asked to apply this methodology:
 
 | Module | Templates | Examples |
 |--------|-----------|----------|
-| [01-project-context](../modules/01-project-context/README.md) | `templates/AGENTS-*.md`, `templates/docs/` | — |
-| [02-skills](../modules/02-skills/README.md) | `templates/.agents/skills/` (5 methodology + 1 template) | — |
-| [03-feature-development](../modules/03-feature-development/README.md) | `templates/` (7 files) | `examples/simple-todo/`, `examples/complex-auth/` |
-| [04-project-planning](../modules/04-project-planning/README.md) | `templates/` (4 files) | — |
+| [01-project-context](../modules/01-project-context/README.md) | `templates/AGENTS-*.md`, `templates/docs/`, `templates/.agents/skills/` | — |
+| [02-feature-development](../modules/02-feature-development/README.md) | `templates/` (7 files) | `examples/simple-todo/`, `examples/complex-auth/` |
+| [03-project-planning](../modules/03-project-planning/README.md) | `templates/` (4 files) | — |
 
 ---
 

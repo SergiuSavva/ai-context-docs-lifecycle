@@ -44,7 +44,7 @@ These ship as templates. Use them to teach AI agents how to follow the workflow.
 |---|---|
 | **When to use** | Building any feature, executing tasks, managing implementation progress |
 | **What it covers** | Three-phase workflow (Research → Plan → Implement), decision tree, task markers, progress tracking, completion signal, doc freshness rule |
-| **Module** | 3 (Feature Development) |
+| **Module** | 2 (Feature Development) |
 | **Token cost** | ~1,000-1,200 |
 | **Location** | `.agents/skills/feature-workflow/SKILL.md` |
 | **Cross-references** | `spec-writing` |
@@ -74,7 +74,7 @@ These ship as templates. Use them to teach AI agents how to follow the workflow.
 |---|---|
 | **When to use** | Drafting spec.md content, reviewing acceptance criteria quality, scoping a feature |
 | **What it covers** | Spec section anatomy, problem/solution framing, acceptance criteria patterns, scoping discipline, anti-patterns |
-| **Module** | 3 (Feature Development) |
+| **Module** | 2 (Feature Development) |
 | **Token cost** | ~1,200-1,400 |
 | **Location** | `.agents/skills/spec-writing/SKILL.md` |
 | **Cross-references** | `feature-workflow` |
@@ -91,7 +91,7 @@ These ship as templates. Use them to teach AI agents how to follow the workflow.
 |---|---|
 | **When to use** | Writing or reviewing any markdown documentation — reference docs, guides, READMEs, ADRs, templates |
 | **What it covers** | Three rules (value only, structure over prose, visual over text), doc type routing, section ordering, reference doc patterns, ADR format, template placeholders, cross-referencing, freshness rules, anti-patterns |
-| **Module** | 1 + 2 (cross-cutting) |
+| **Module** | 1 (Project Context) |
 | **Token cost** | ~1,800-2,000 |
 | **Location** | `.agents/skills/doc-writing/SKILL.md` |
 | **Cross-references** | `agents-md`, `spec-writing`, `acdl` |
@@ -126,7 +126,7 @@ These are authored per-project. Common examples:
 | `ui-components` | Building UI, theming, accessibility | shadcn/ui, Tailwind, responsive patterns |
 | `nextjs-app-router` | Pages, layouts, server actions | Next.js 15 App Router patterns |
 
-Create your own stack skills using the template at `content/modules/02-skills/templates/.agents/skills/skill-template/SKILL.md`.
+Create your own stack skills using the template at `content/modules/01-project-context/templates/.agents/skills/skill-template/SKILL.md`.
 
 ---
 
@@ -209,7 +209,7 @@ Skills also auto-load when AGENTS.md routes to them via the Context Loading tabl
 
 ## Creating New Skills
 
-1. Copy the template: `content/modules/02-skills/templates/.agents/skills/skill-template/SKILL.md`
+1. Copy the template: `content/modules/01-project-context/templates/.agents/skills/skill-template/SKILL.md`
 2. Place in `.agents/skills/<skill-name>/SKILL.md`
 3. Add routing entry to AGENTS.md Context Loading table
 4. Keep within 1,200-2,000 tokens
@@ -228,7 +228,7 @@ For detailed guidance, see the [Skill Routing Policy](./skill-routing.md).
 
 ## See Also
 
-- [Module 2: Skills](../modules/02-skills/README.md) — Full skills documentation
+- [Module 1: Project Context](../modules/01-project-context/README.md) — Full skills documentation
 - [Skill Routing Policy](./skill-routing.md) — Score-based activation rules
 - [AGENTS.md Best Practices](./agents-md-best-practices.md) — Context Loading table patterns
 - [Tool Compatibility](./tool-compatibility.md) — Multi-tool setup

@@ -89,7 +89,12 @@ Load detailed docs based on your task:
      - @docs/scripts.md        — when project has runnable commands
      Add project-specific docs as needed (e.g., @docs/integrations.md, @docs/deployment.md) -->
 
-<!-- If Module 2 (Skills) is adopted, add skill-routing rows here. -->
+<!-- If skills are set up in .agents/skills/, add routing rows like:
+     | Writing specs / task breakdowns | load skill `spec-writing` |
+     | Writing docs / ADRs | load skill `doc-writing` |
+     | Feature workflow | load skill `feature-workflow` |
+     | {{stack task}} | load skill `{{skill-name}}` |
+     Only include skills that exist in this project. -->
 
 ## Boundaries
 

@@ -64,7 +64,6 @@ nav:
   - Modules:
       - Overview: modules/README.md
       - 1. Project Context: modules/01-project-context/README.md
-      - 2. Skills: modules/02-skills/README.md
-      - 3. Feature Development: modules/03-feature-development/README.md
-      - 4. Project Planning: modules/04-project-planning/README.md
+      - 2. Feature Development: modules/02-feature-development/README.md
+      - 3. Project Planning: modules/03-project-planning/README.md
   - Methodology: methodology.md

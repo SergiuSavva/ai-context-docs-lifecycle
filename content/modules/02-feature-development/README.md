@@ -1,4 +1,4 @@
-# Module 3: Feature Development
+# Module 2: Feature Development
 
 > **Structured workflows for building features** - three phases, AI decides which docs are needed.
 
@@ -248,7 +248,7 @@ cp templates/.cursor/rules/feature-workflow.mdc .cursor/rules/
 
 **Option B: Agent Skill** (portable, works with any AI agent):
 
-Create `.agents/skills/feature-workflow/SKILL.md` with the three-phase workflow, task markers, and spec templates. See [Module 2: Skills](../02-skills/README.md) for the SKILL.md format.
+Create `.agents/skills/feature-workflow/SKILL.md` with the three-phase workflow, task markers, and spec templates. See the [Skills section in Module 1](../01-project-context/README.md#skills-on-demand-instruction-packages) for the SKILL.md format.
 
 ---
 
@@ -258,4 +258,4 @@ Create `.agents/skills/feature-workflow/SKILL.md` with the three-phase workflow,
 
 ## What's Next?
 
-- [Module 4: Project Planning](../04-project-planning/README.md) — Multi-feature management and roadmaps
+- [Module 3: Project Planning](../03-project-planning/README.md) — Multi-feature management and roadmaps

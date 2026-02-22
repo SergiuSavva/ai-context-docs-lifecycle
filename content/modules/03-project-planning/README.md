@@ -1,4 +1,4 @@
-# Module 4: Project Planning
+# Module 3: Project Planning
 
 > **Optional module** for managing multiple features and project-level planning.
 
@@ -39,7 +39,7 @@ your-project/
 ├── BACKLOG.md             # Feature prioritization
 ├── ROADMAP.md             # Phase planning
 ├── TASKS.md               # Global progress tracking
-├── specs/                 # Module 3 — ephemeral feature work
+├── specs/                 # Module 2 — ephemeral feature work
 └── docs/                  # Module 1 — permanent reference
 ```
 
@@ -130,7 +130,7 @@ See: [`templates/TASKS.md`](./templates/TASKS.md)
 ### Building Features
 
 1. Update BACKLOG.md status to "In Progress"
-2. Use Module 3 workflows (Quick/Standard/Complex)
+2. Use Module 2 workflows (Quick/Standard/Complex)
 3. Update TASKS.md progress
 
 ### Completing Features
@@ -144,7 +144,7 @@ See: [`templates/TASKS.md`](./templates/TASKS.md)
 ## Prerequisites
 
 - [Module 1: Project Context](../01-project-context/README.md) — AGENTS.md + docs/
-- [Module 3: Feature Development](../03-feature-development/README.md) — For building features
+- [Module 2: Feature Development](../02-feature-development/README.md) — For building features
 
 ---
 
@@ -156,4 +156,4 @@ Skip this module if:
 - Don't need formal planning
 - Prefer lightweight approach
 
-Module 3 (Feature Development) is sufficient for most projects.
+Module 2 (Feature Development) is sufficient for most projects.

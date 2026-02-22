@@ -8,10 +8,9 @@
 
 | # | Module | Purpose |
 |---|--------|---------|
-| 1 | [Project Context](./01-project-context/README.md) | AGENTS.md + docs/ (always-loaded context + reference) |
-| 2 | [Skills](./02-skills/README.md) | On-demand instruction packages (.agents/skills/) |
-| 3 | [Feature Development](./03-feature-development/README.md) | Workflows for building features |
-| 4 | [Project Planning](./04-project-planning/README.md) | Multi-feature management (optional) |
+| 1 | [Project Context](./01-project-context/README.md) | AGENTS.md + docs/ + .agents/skills/ |
+| 2 | [Feature Development](./02-feature-development/README.md) | Workflows for building features |
+| 3 | [Project Planning](./03-project-planning/README.md) | Multi-feature management (optional) |
 
 ---
 
@@ -21,12 +20,11 @@ Start with Module 1, add more as needed:
 
 ```mermaid
 graph LR
-    M1["1: Project Context"] --> M2["2: Skills"]
-    M2 --> M3["3: Feature Dev"]
-    M3 --> M4["4: Planning"]
-
-    M1 -.->|"Can skip to"| M3
+    M1["1: Project Context"] --> M2["2: Feature Dev"]
+    M2 --> M3["3: Planning"]
 ```
+
+Module 1 has three tiers: Basic (AGENTS.md), Standard (+ docs/), Full (+ .agents/skills/).
 
 ---
 
@@ -35,23 +33,23 @@ graph LR
 ### Minimal
 
 ```
-Module 1 only
+Module 1 — Basic tier
 ```
 
-AGENTS.md + docs/ for basic AI context.
+AGENTS.md only for basic AI context.
 
 ### Standard
 
 ```
-Modules 1 + 2
+Module 1 — Full tier
 ```
 
-Add Skills for deep tech stack patterns.
+AGENTS.md + docs/ + skills for deep tech stack patterns.
 
 ### Full
 
 ```
-Modules 1 + 2 + 3
+Modules 1 + 2
 ```
 
 Add feature workflows for structured development.
@@ -59,7 +57,7 @@ Add feature workflows for structured development.
 ### Enterprise
 
 ```
-All modules (1-4)
+All modules (1-3)
 ```
 
 Add project planning for multi-feature management.
