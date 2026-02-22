@@ -13,6 +13,7 @@
   "scripts": {
     "prebuild": "node scripts/bundle-templates.js",
     "build": "tsup",
+    "pretest": "npm run build",
     "test": "vitest run",
     "test:watch": "vitest",
     "prepublishOnly": "npm run build"

@@ -4,6 +4,7 @@ import {
   rmSync,
   existsSync,
   readFileSync,
+  readdirSync,
 } from "node:fs";
 import { resolve } from "node:path";
 import { execFileSync } from "node:child_process";
@@ -87,6 +88,43 @@ describe("acdl init", () => {
     ).toBe(true);
   });
 
+  it("creates the new 3-module structure (no legacy skills module)", () => {
+    run(["init"], FIXTURE_DIR);
+
+    const modulesDir = resolve(FIXTURE_DIR, ".acdl", "content", "modules");
+    const modules = readdirSync(modulesDir, { withFileTypes: true })
+      .filter((entry) => entry.isDirectory())
+      .map((entry) => entry.name)
+      .sort();
+
+    expect(modules).toEqual([
+      "01-project-context",
+      "02-feature-development",
+      "03-project-planning",
+    ]);
+    expect(existsSync(resolve(modulesDir, "02-skills"))).toBe(false);
+    expect(existsSync(resolve(modulesDir, "04-project-planning"))).toBe(false);
+  });
+
+  it("ships skills templates under module 1", () => {
+    run(["init"], FIXTURE_DIR);
+
+    const skillsTemplate = resolve(
+      FIXTURE_DIR,
+      ".acdl",
+      "content",
+      "modules",
+      "01-project-context",
+      "templates",
+      ".agents",
+      "skills",
+      "feature-workflow",
+      "SKILL.md"
+    );
+
+    expect(existsSync(skillsTemplate)).toBe(true);
+  });
+
   it("writes .acdl/version with CLI version", () => {
     run(["init"], FIXTURE_DIR);
 
@@ -123,9 +161,13 @@ describe("acdl init", () => {
     expect(exitCode).toBe(0);
   });
 
-  it("prints next steps pointing to .acdl/content/", () => {
+  it("prints next steps with bootstrap workflow path", () => {
     const { stdout } = run(["init"], FIXTURE_DIR);
 
     expect(stdout).toContain(".acdl/content/");
+    expect(stdout).toContain("Bootstrap AGENTS.md for this project.");
+    expect(stdout).toContain(
+      ".acdl/content/modules/01-project-context/bootstrap-workflow.md"
+    );
   });
 });
