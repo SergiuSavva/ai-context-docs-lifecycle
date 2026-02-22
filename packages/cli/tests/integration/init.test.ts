@@ -4,7 +4,6 @@ import {
   rmSync,
   existsSync,
   readFileSync,
-  writeFileSync,
 } from "node:fs";
 import { resolve } from "node:path";
 import { execFileSync } from "node:child_process";
@@ -48,112 +47,85 @@ afterEach(() => {
 });
 
 describe("acdl init", () => {
-  it("creates .acdl/ directory and config", () => {
-    const { exitCode } = run(["init", "--yes"], FIXTURE_DIR);
+  it("creates .acdl/ directory", () => {
+    const { exitCode } = run(["init"], FIXTURE_DIR);
 
     expect(exitCode).toBe(0);
     expect(existsSync(resolve(FIXTURE_DIR, ".acdl"))).toBe(true);
-    expect(existsSync(resolve(FIXTURE_DIR, ".acdl", "config.toml"))).toBe(
-      true
-    );
   });
 
-  it("creates AGENTS.md with managed markers", () => {
-    run(["init", "--yes"], FIXTURE_DIR);
+  it("copies content to .acdl/content/", () => {
+    run(["init"], FIXTURE_DIR);
 
-    const agentsPath = resolve(FIXTURE_DIR, "AGENTS.md");
-    expect(existsSync(agentsPath)).toBe(true);
-
-    const content = readFileSync(agentsPath, "utf-8");
-    expect(content).toContain("<!-- acdl:managed:start:agents-md -->");
-    expect(content).toContain("<!-- acdl:managed:end:agents-md -->");
-    // Template placeholders should be present (not substituted)
-    expect(content).toContain("{{project-name}}");
-  });
-
-  it("creates enabled doc files", () => {
-    run(
-      ["init", "--yes", "--with-docs", "architecture,api"],
-      FIXTURE_DIR
-    );
-
+    const contentDir = resolve(FIXTURE_DIR, ".acdl", "content");
+    expect(existsSync(contentDir)).toBe(true);
     expect(
-      existsSync(resolve(FIXTURE_DIR, "docs", "architecture.md"))
+      existsSync(resolve(contentDir, "methodology.md"))
     ).toBe(true);
-    expect(existsSync(resolve(FIXTURE_DIR, "docs", "api.md"))).toBe(true);
-    // These were not requested
     expect(
-      existsSync(resolve(FIXTURE_DIR, "docs", "auth.md"))
-    ).toBe(false);
-    expect(
-      existsSync(resolve(FIXTURE_DIR, "docs", "data-model.md"))
-    ).toBe(false);
+      existsSync(resolve(contentDir, "guides", "getting-started.md"))
+    ).toBe(true);
   });
 
-  it("does not create docs by default", () => {
-    run(["init", "--yes"], FIXTURE_DIR);
+  it("includes templates inside content/", () => {
+    run(["init"], FIXTURE_DIR);
 
-    expect(existsSync(resolve(FIXTURE_DIR, "docs", "architecture.md"))).toBe(
-      false
+    const templatesDir = resolve(
+      FIXTURE_DIR,
+      ".acdl",
+      "content",
+      "modules",
+      "01-project-context",
+      "templates"
     );
-    expect(existsSync(resolve(FIXTURE_DIR, "docs", "api.md"))).toBe(false);
-    expect(existsSync(resolve(FIXTURE_DIR, "docs", "auth.md"))).toBe(false);
-    expect(existsSync(resolve(FIXTURE_DIR, "docs", "data-model.md"))).toBe(
-      false
-    );
-    expect(existsSync(resolve(FIXTURE_DIR, "docs", "scripts.md"))).toBe(false);
-  });
-
-  it("copies templates to .acdl/templates/", () => {
-    run(["init", "--yes"], FIXTURE_DIR);
-
-    const templatesDir = resolve(FIXTURE_DIR, ".acdl", "templates");
     expect(existsSync(templatesDir)).toBe(true);
     expect(
       existsSync(resolve(templatesDir, "AGENTS-single-app.md"))
     ).toBe(true);
     expect(
-      existsSync(resolve(templatesDir, "docs", "architecture.md"))
+      existsSync(resolve(templatesDir, "AGENTS-monorepo-root.md"))
     ).toBe(true);
   });
 
-  it("copies full content/ scaffold to .acdl/content/ during init", () => {
-    run(["init", "--yes"], FIXTURE_DIR);
+  it("writes .acdl/version with CLI version", () => {
+    run(["init"], FIXTURE_DIR);
 
-    expect(existsSync(resolve(FIXTURE_DIR, ".acdl", "content"))).toBe(true);
-    expect(
-      existsSync(resolve(FIXTURE_DIR, ".acdl", "content", "index.md"))
-    ).toBe(true);
-    expect(
-      existsSync(resolve(FIXTURE_DIR, ".acdl", "content", "methodology.md"))
-    ).toBe(true);
+    const versionPath = resolve(FIXTURE_DIR, ".acdl", "version");
+    expect(existsSync(versionPath)).toBe(true);
+    expect(readFileSync(versionPath, "utf-8")).toBe(CLI_VERSION);
+  });
+
+  it("does NOT create AGENTS.md or docs/ (AI agent decides)", () => {
+    run(["init"], FIXTURE_DIR);
+
+    expect(existsSync(resolve(FIXTURE_DIR, "AGENTS.md"))).toBe(false);
+    expect(existsSync(resolve(FIXTURE_DIR, "docs"))).toBe(false);
+  });
+
+  it("does NOT create a separate .acdl/templates/ directory", () => {
+    run(["init"], FIXTURE_DIR);
+
+    expect(existsSync(resolve(FIXTURE_DIR, ".acdl", "templates"))).toBe(false);
   });
 
   it("blocks re-init without --force", () => {
-    run(["init", "--yes"], FIXTURE_DIR);
-    const { exitCode, stdout } = run(["init", "--yes"], FIXTURE_DIR);
+    run(["init"], FIXTURE_DIR);
+    const { exitCode, stdout } = run(["init"], FIXTURE_DIR);
 
     expect(exitCode).toBe(1);
     expect(stdout).toContain("already exists");
   });
 
   it("allows re-init with --force", () => {
-    run(["init", "--yes"], FIXTURE_DIR);
-    const { exitCode } = run(
-      ["init", "--yes", "--force"],
-      FIXTURE_DIR
-    );
+    run(["init"], FIXTURE_DIR);
+    const { exitCode } = run(["init", "--force"], FIXTURE_DIR);
 
     expect(exitCode).toBe(0);
   });
 
-  it("writes config with correct template version", () => {
-    run(["init", "--yes"], FIXTURE_DIR);
+  it("prints next steps pointing to .acdl/content/", () => {
+    const { stdout } = run(["init"], FIXTURE_DIR);
 
-    const configContent = readFileSync(
-      resolve(FIXTURE_DIR, ".acdl", "config.toml"),
-      "utf-8"
-    );
-    expect(configContent).toContain(`template_version = "${CLI_VERSION}"`);
+    expect(stdout).toContain(".acdl/content/");
   });
 });

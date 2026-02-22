@@ -178,7 +178,7 @@ Use the template structure:
 [Short loading policy]
 
 ## Command Policy
-[Package manager + `@docs/scripts.md` as canonical command source]
+[Package manager + command source policy (for example `@docs/scripts.md` if present)]
 
 ## Task Mode Routing
 [Research/Design/Plan vs Implement/Fix vs Verify/Release]
@@ -231,7 +231,7 @@ Populate each created doc with initial data from analysis, then enhance with dee
 Result:
 
 - `AGENTS.md`
-- `docs/scripts.md`
+- `docs/scripts.md` (if runnable commands detected)
 
 (Other docs optional unless corresponding signals are present.)
 
@@ -254,7 +254,7 @@ Result:
 
 - Root router `AGENTS.md`
 - Subproject `AGENTS.md` files
-- Shared cross-cutting docs (including root `docs/scripts.md`)
+- Shared cross-cutting docs (including root `docs/scripts.md` if runnable workspace commands are detected)
 
 ---
 

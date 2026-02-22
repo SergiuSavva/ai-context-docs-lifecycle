@@ -56,14 +56,66 @@ For feature work, agents should follow this order:
 
 ## Quick Start
 
-### Quick Setup (Module 1)
+### CLI Setup (Recommended)
 
-Copy `AGENTS.md` to your project root and fill in your project details. Done!
+From your project root:
+
+```bash
+npx @acdl/cli init
+```
+
+Then tell your AI assistant:
+
+```text
+Bootstrap AGENTS.md for this project.
+Follow: .acdl/content/modules/01-project-context/bootstrap-workflow.md
+```
+
+This initializes a local methodology copy in `.acdl/` and uses it to generate project-specific context files.
+
+If `.acdl/` already exists:
+
+```bash
+npx @acdl/cli init --force
+```
+
+### Manual Setup (Module 1)
+
+1. Copy the [`AGENTS-single-app.md`](https://github.com/SergiuSavva/ai-context-docs-lifecycle/blob/main/content/modules/01-project-context/templates/AGENTS-single-app.md) template to your project root as `AGENTS.md`
+2. Create `docs/` with reference doc templates from [`templates/docs/`](https://github.com/SergiuSavva/ai-context-docs-lifecycle/tree/main/content/modules/01-project-context/templates/docs/)
+3. Fill in your project details
+4. Done! AI agents now have context.
+
+### Interactive Bootstrap (Module 1)
+
+Tell your AI assistant:
 
 ```
-Apply AI Context Docs Lifecycle from https://github.com/SergiuSavva/ai-context-docs-lifecycle
+Bootstrap AGENTS.md for this project.
+Follow: .acdl/content/modules/01-project-context/bootstrap-workflow.md
+```
 
-I want Module 1 (Project Context) - AGENTS.md + docs/ only for now.
+This runs a comprehensive analysis and generates `AGENTS.md` with detected tech stack, commands, and structure.
+
+If you are not using the CLI, use the remote workflow URL instead:
+
+```
+Bootstrap AGENTS.md for this project.
+Follow: https://raw.githubusercontent.com/sergiusavva/ai-context-docs-lifecycle/main/content/modules/01-project-context/bootstrap-workflow.md
+```
+
+### Full Setup
+
+Tell your AI assistant:
+
+```
+Apply AI Context Docs Lifecycle from https://github.com/sergiusavva/ai-context-docs-lifecycle
+
+I want:
+- Module 1 (Project Context) - AGENTS.md + docs/
+- Module 2 (Skills) - on-demand coding patterns
+- Module 3 (Feature Development) - workflows for building features
+
 My tech stack: [YOUR STACK]
 ```
 
@@ -98,14 +150,19 @@ Research, spec, tasks, ADR.
 
 ## Tool Agnostic
 
-Works with any AI tool:
+Works with every AI coding agent:
 
-| Tool | Configuration |
-|------|---------------|
-| **Cursor** | `.cursor/rules/*.mdc` |
-| **Claude Code** | `CLAUDE.md` |
-| **GitHub Copilot** | `.github/copilot-instructions.md` |
-| **Any LLM** | Standard Markdown files |
+| Agent | AGENTS.md | Skills | @docs/ refs |
+|-------|-----------|--------|-------------|
+| **Cursor** | Auto-reads | `@skill-name` | `@docs/file.md` |
+| **Claude Code** | `CLAUDE.md` symlink | `/skill-name` | Direct read |
+| **GitHub Copilot** | Auto-reads | Auto-discovered | Direct read |
+| **Cline** | Via `.clinerules` | Auto-discovered | Direct read |
+| **OpenCode** | Auto-reads | Via `skill` tool | Direct read |
+| **Windsurf** | Auto-reads | Via UI | Direct read |
+| **Aider** | Via `/read` | Not supported | Via `/read` |
+
+**Zero tool-specific files required.** Optional bridges available (e.g., `.mdc` rules that point to skills).
 
 ---
 
@@ -113,7 +170,7 @@ Works with any AI tool:
 
 See complete walkthroughs in the repository:
 
-- **Simple Todo Feature** — Standard Flow example
-- **OAuth Authentication** — Complex Flow example
+- [**Simple Todo Feature**](https://github.com/SergiuSavva/ai-context-docs-lifecycle/tree/main/content/modules/03-feature-development/examples/simple-todo/) — Standard Flow example
+- [**OAuth Authentication**](https://github.com/SergiuSavva/ai-context-docs-lifecycle/tree/main/content/modules/03-feature-development/examples/complex-auth/) — Complex Flow example
 
 [View All Modules](modules/README.md){ .md-button }

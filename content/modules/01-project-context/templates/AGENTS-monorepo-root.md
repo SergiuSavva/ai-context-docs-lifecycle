@@ -16,7 +16,7 @@ Use this flow for context loading:
 2. **Activation (load only if task needs it)**
    - Subproject `AGENTS.md` + relevant `@docs/` references
 3. **Execution (load before running commands)**
-   - Command catalogs from `@docs/scripts.md` and the active subproject docs
+   - Command catalogs from workspace/subproject docs when they exist (for example `@docs/scripts.md`)
 
 ## Structure
 
@@ -51,8 +51,8 @@ Use this flow for context loading:
 ## Command Policy
 
 - Workspace package manager: `{{package-manager}}`
-- Canonical workspace commands live in `@docs/scripts.md`
-- Canonical subproject commands live in each subproject's command docs
+- If the workspace maintains a command catalog, define it here (for example `@docs/scripts.md`)
+- If subprojects maintain command docs, define those in each subproject's AGENTS.md
 - Do not invent commands; prefer verified entries only
 - Load command docs only for implementation, verification, or release tasks
 - Skip command docs for pure research, design, and planning tasks
@@ -62,8 +62,8 @@ Use this flow for context loading:
 | Task Mode | Load by Default | Command Docs |
 |-----------|-----------------|--------------|
 | Research / Design / Plan | Root `AGENTS.md` + relevant subproject `AGENTS.md` + topic docs | Skip unless user asks |
-| Implement / Fix | Relevant subproject `AGENTS.md` + topic docs | Load workspace + subproject command docs |
-| Verify / Release | Relevant subproject + CI/release docs | Load workspace + subproject command docs |
+| Implement / Fix | Relevant subproject `AGENTS.md` + topic docs | Load relevant workspace/subproject command docs (if they exist) |
+| Verify / Release | Relevant subproject + CI/release docs | Load relevant workspace/subproject command docs (if they exist) |
 
 ## Subproject Routing
 
@@ -83,14 +83,13 @@ Use this flow for context loading:
 |-------|------|
 | {{topic, e.g., Git workflow}} | @docs/{{doc-name}}.md |
 | {{topic, e.g., CI/CD}} | @docs/{{doc-name}}.md |
-| Workspace commands | @docs/scripts.md |
-| Building a feature | load skill `feature-workflow` |
-| Creating / updating AGENTS.md | load skill `agents-md` |
-| Writing specs or tasks | load skill `spec-writing` |
+| Workspace commands | @docs/scripts.md (if this doc exists) |
 
 <!-- Only include entries for docs that exist in this project.
      Common cross-cutting docs: git-workflow, ci-cd, architecture, scripts.
      Add project-specific docs as needed. -->
+
+<!-- If Module 2 (Skills) is adopted, add skill-routing rows here. -->
 
 ## Global Boundaries
 
@@ -98,7 +97,7 @@ Use this flow for context loading:
 - Run affected tests before committing
 - Follow subproject-specific patterns (read its AGENTS.md)
 - Use workspace dependencies, not external duplicates
-- Use verified commands from command docs when executing tasks
+- If command docs exist, use verified commands from those docs when executing tasks
 
 ### Ask First
 - Adding new subprojects

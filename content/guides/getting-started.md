@@ -4,6 +4,18 @@
 
 ---
 
+## Recommended First Command
+
+From your project root:
+
+```bash
+npx @acdl/cli init
+```
+
+This initializes `.acdl/` with a local copy of methodology docs and templates.
+
+---
+
 ## Quick Decision: Which Modules?
 
 ### Just Starting?
@@ -14,7 +26,7 @@
 # What you get:
 your-project/
 ├── AGENTS.md    # AI context file (~80 lines)
-└── docs/        # Reference docs (architecture, data model, API, auth)
+└── docs/        # Reference docs (only docs your project needs)
 ```
 
 [Go to Module 1: Project Context →](../modules/01-project-context/README.md)
@@ -91,7 +103,7 @@ Use this prompt:
 Bootstrap this project with AI Context Docs Lifecycle.
 
 Follow:
-https://raw.githubusercontent.com/SergiuSavva/ai-context-docs-lifecycle/main/content/modules/01-project-context/bootstrap-workflow.md
+.acdl/content/modules/01-project-context/bootstrap-workflow.md
 
 Start in plan mode only. Output:
 1) Project type (single app or monorepo)
@@ -101,6 +113,9 @@ Start in plan mode only. Output:
 
 Wait for my approval before apply mode.
 ```
+
+If you are not using the CLI, replace the workflow path with:
+`https://raw.githubusercontent.com/SergiuSavva/ai-context-docs-lifecycle/main/content/modules/01-project-context/bootstrap-workflow.md`
 
 ---
 

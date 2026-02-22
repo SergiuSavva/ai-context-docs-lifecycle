@@ -41,12 +41,12 @@ Optional files added as needed: `research.md`, `design.md`, `plan.md`, `user-sto
 ```markdown
 <!-- ✅ Good: specific, explains "why now" -->
 ## Problem
-Template adoption is manual, causing inconsistent file sets between projects
-and no way to detect drift from upstream changes.
+Users must manually copy 5+ config files when starting a new service,
+leading to inconsistent setups and missing environment variables.
 
 ## Solution
-Add a CLI with `init` and `update` commands that materialize templates
-deterministically and track managed vs user-owned content.
+Add a `scaffold` command that generates service boilerplate from a
+shared template with validated environment configuration.
 
 <!-- ❌ Bad: vague, no urgency -->
 ## Problem
@@ -66,9 +66,9 @@ Format: `AC-XX: [Specific, testable condition]`
 
 ```markdown
 <!-- ✅ Good: specific, verifiable -->
-- [ ] AC-01: `init` creates `.acdl/config.toml` with project type and pinned template version
-- [ ] AC-02: `update` defaults to `--dry-run` and shows a file-level diff summary
-- [ ] AC-03: Running `init` on an already-initialized project warns and exits without mutation
+- [ ] AC-01: `scaffold` creates `docker-compose.yml` with all required service ports from template
+- [ ] AC-02: `scaffold --validate` checks `.env` against `.env.example` and reports missing keys
+- [ ] AC-03: Running `scaffold` in an existing service directory warns and exits without mutation
 
 <!-- ❌ Bad: vague, untestable -->
 - [ ] AC-01: The system works correctly
@@ -90,14 +90,14 @@ Format: `AC-XX: [Specific, testable condition]`
 ## Scope
 
 ### In Scope
-- CLI commands: init, update, doctor
-- Config schema and version pinning
-- Managed marker protocol
+- `scaffold` command with template rendering
+- Environment validation against `.env.example`
+- Docker Compose generation from service manifest
 
 ### Out of Scope
-- Replacing manual setup workflows
-- Auto-installing project dependencies
-- Tool-specific rule generation
+- Runtime service orchestration
+- Auto-installing host dependencies
+- Cloud-specific deployment configuration
 ```
 
 **Rules**:

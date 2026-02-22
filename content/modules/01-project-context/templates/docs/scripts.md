@@ -31,8 +31,8 @@
 
 | Task | Command | Status | Source |
 |------|---------|--------|--------|
-| {{task description}} | `{{command}}` | `{{verified\|inferred}}` | `{{source}}` |
-| {{task description}} | `{{command}}` | `{{verified\|inferred}}` | `{{source}}` |
+| {{task description}} | `{{command}}` | `{{verified|inferred}}` | `{{source}}` |
+| {{task description}} | `{{command}}` | `{{verified|inferred}}` | `{{source}}` |
 
 <!-- Add project-specific commands here. Common examples:
      - Run migrations, seed database

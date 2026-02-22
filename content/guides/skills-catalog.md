@@ -12,6 +12,8 @@ flowchart LR
         FW["feature-workflow"]
         AM["agents-md"]
         SW["spec-writing"]
+        DW["doc-writing"]
+        AC["acdl"]
     end
 
     subgraph stack [Stack Skills]
@@ -83,9 +85,39 @@ These ship as templates. Use them to teach AI agents how to follow the workflow.
 
 ---
 
+### `doc-writing`
+
+| | |
+|---|---|
+| **When to use** | Writing or reviewing any markdown documentation — reference docs, guides, READMEs, ADRs, templates |
+| **What it covers** | Three rules (value only, structure over prose, visual over text), doc type routing, section ordering, reference doc patterns, ADR format, template placeholders, cross-referencing, freshness rules, anti-patterns |
+| **Module** | 1 + 2 (cross-cutting) |
+| **Token cost** | ~1,800-2,000 |
+| **Location** | `.agents/skills/doc-writing/SKILL.md` |
+| **Cross-references** | `agents-md`, `spec-writing`, `acdl` |
+
+**Trigger phrases**: "write a doc", "create a README", "write an ADR", "update documentation", "review this doc"
+
+---
+
+### `acdl`
+
+| | |
+|---|---|
+| **When to use** | Setting up ACDL for a project, configuring skills, understanding the daily workflow, maintaining docs |
+| **What it covers** | Full bootstrap workflow (4 phases), configure for your project, skill setup, daily workflow patterns, maintenance triggers, warning signs, what-goes-where routing |
+| **Module** | All (meta-skill) |
+| **Token cost** | ~2,200-2,500 |
+| **Location** | `.agents/skills/acdl/SKILL.md` |
+| **Cross-references** | `agents-md`, `feature-workflow`, `spec-writing` |
+
+**Trigger phrases**: "set up ACDL", "bootstrap this project", "configure AI docs", "how does ACDL work"
+
+---
+
 ## Stack Skills (Examples)
 
-These are authored per-project. The [demo-taskflow](../modules/01-project-context/examples/demo-taskflow/README.md) example includes four:
+These are authored per-project. Common examples:
 
 | Skill | When to Use | Covers |
 |-------|-------------|--------|
@@ -112,6 +144,8 @@ Add entries to your Context Loading table:
 | Building a feature          | load skill `feature-workflow` |
 | Creating / updating AGENTS.md | load skill `agents-md` |
 | Writing specs or tasks      | load skill `spec-writing` |
+| Writing / reviewing docs    | load skill `doc-writing` |
+| Setting up ACDL             | load skill `acdl` |
 | Database / auth / storage   | load skill `database` |
 | Writing tests               | load skill `testing` |
 ```
@@ -164,6 +198,8 @@ Skills also auto-load when AGENTS.md routes to them via the Context Loading tabl
 | Build a feature | `feature-workflow` |
 | Create/update AGENTS.md | `agents-md` |
 | Write a spec or tasks file | `spec-writing` |
+| Write/review any markdown doc | `doc-writing` |
+| Set up or maintain ACDL | `acdl` |
 | Work with database/auth | `database` (project-specific) |
 | Write tests or stories | `testing` (project-specific) |
 | Build UI components | `ui-components` (project-specific) |

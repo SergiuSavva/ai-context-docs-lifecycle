@@ -23,6 +23,20 @@ description: {{What this skill does and when to use it. 1-2 sentences.}}
 
 {{More patterns, conventions, and code examples.}}
 
+## Anti-Patterns
+
+{{Optional but recommended. Common mistakes and how to fix them.}}
+
+| Anti-Pattern | Fix |
+|--------------|-----|
+| {{What not to do}} | {{What to do instead}} |
+
+## When NOT to Use
+
+{{Optional but recommended. Clarify boundaries so the AI doesn't load this skill unnecessarily.}}
+
+- {{Situation where this skill doesn't apply}}
+
 ## Quick Checklist
 
 - [ ] {{Key thing to remember}}

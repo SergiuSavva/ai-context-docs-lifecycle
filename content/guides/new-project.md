@@ -14,7 +14,21 @@ cd my-project
 git init
 ```
 
-### Step 2: Add AGENTS.md
+### Step 2: Initialize ACDL Workspace (Recommended)
+
+```bash
+npx @acdl/cli init
+```
+
+This creates `.acdl/` with local methodology content and templates.
+
+If `.acdl/` already exists:
+
+```bash
+npx @acdl/cli init --force
+```
+
+### Step 3: Add AGENTS.md
 
 Copy the template from [Module 1](../modules/01-project-context/templates/AGENTS-single-app.md):
 
@@ -28,10 +42,10 @@ Fill in:
 - Commands (dev, build, test)
 - Project structure
 - Conventions (short, inline)
-- Context Loading table (references to docs/ and skills)
+- Context Loading table (references to docs/)
 - Boundaries (always/ask/never)
 
-### Step 3: Add Reference Docs
+### Step 4: Add Reference Docs
 
 ```bash
 mkdir -p docs/decisions
@@ -46,7 +60,7 @@ Create docs from the [Module 1 template catalog](../modules/01-project-context/R
 
 A simple CLI might only need `scripts.md`. A library might only need `architecture.md`.
 
-### Step 4: Done!
+### Step 5: Done!
 
 AI agents can now understand your project.
 
@@ -56,7 +70,7 @@ AI agents can now understand your project.
 
 Want the complete setup with on-demand skills? Add these steps:
 
-### Step 5: Add Skills
+### Step 6: Add Skills
 
 ```bash
 mkdir -p .agents/skills
@@ -64,7 +78,7 @@ mkdir -p .agents/skills
 
 Create skills for your tech stack domains. See [Module 2](../modules/02-skills/README.md) for the SKILL.md format and template.
 
-### Step 6: Add Feature Workflow
+### Step 7: Add Feature Workflow
 
 Copy the workflow template from [Module 3](../modules/03-feature-development/README.md):
 
@@ -75,7 +89,7 @@ mkdir -p specs
 **Option A** (Cursor-specific): Copy `feature-workflow.mdc` to `.cursor/rules/`
 **Option B** (Portable): Create `.agents/skills/feature-workflow/SKILL.md`
 
-### Step 7: Verify Structure
+### Step 8: Verify Structure
 
 ```
 my-project/
@@ -101,7 +115,7 @@ Tell your AI assistant:
 Apply the AI Context Docs Lifecycle methodology to this new project.
 
 Read the getting-started guide at:
-https://github.com/sergiusavva/ai-context-docs-lifecycle/content/guides/getting-started.md
+.acdl/content/guides/getting-started.md
 
 Set up:
 1. AGENTS.md with project context
@@ -115,6 +129,8 @@ The AI will:
 1. Create appropriate folder structure
 2. Generate customized AGENTS.md
 3. Create reference docs and skills for your stack
+
+If you are not using the CLI, provide the GitHub URL instead of the local `.acdl/` path.
 
 ---
 
@@ -175,4 +191,4 @@ mkdir -p specs/my-feature
 ## Next Steps
 
 - [Module 3: Feature Development](../modules/03-feature-development/README.md) — Learn the workflows
-- [Examples](../modules/01-project-context/examples/demo-taskflow/README.md) — See complete demo
+- [Skills Catalog](./skills-catalog.md) — Available skills and when to use them

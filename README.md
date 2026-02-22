@@ -32,6 +32,29 @@ AI coding assistants lack memory and context:
 
 ## Quick Start
 
+### CLI Setup (Recommended)
+
+From your project root:
+
+```bash
+npx @acdl/cli init
+```
+
+Then tell your AI assistant:
+
+```text
+Bootstrap AGENTS.md for this project.
+Follow: .acdl/content/modules/01-project-context/bootstrap-workflow.md
+```
+
+This initializes a local methodology copy in `.acdl/` and uses it to generate project-specific context files.
+
+If `.acdl/` already exists:
+
+```bash
+npx @acdl/cli init --force
+```
+
 ### Manual Setup (Module 1)
 
 1. Copy [`content/modules/01-project-context/templates/AGENTS-single-app.md`](content/modules/01-project-context/templates/AGENTS-single-app.md) to your project root as `AGENTS.md`
@@ -45,10 +68,17 @@ Tell your AI assistant:
 
 ```
 Bootstrap AGENTS.md for this project.
-Follow: https://raw.githubusercontent.com/sergiusavva/ai-context-docs-lifecycle/main/content/modules/01-project-context/bootstrap-workflow.md
+Follow: .acdl/content/modules/01-project-context/bootstrap-workflow.md
 ```
 
 This runs a comprehensive analysis and generates `AGENTS.md` with detected tech stack, commands, and structure.
+
+If you are not using the CLI, use the remote workflow URL instead:
+
+```
+Bootstrap AGENTS.md for this project.
+Follow: https://raw.githubusercontent.com/sergiusavva/ai-context-docs-lifecycle/main/content/modules/01-project-context/bootstrap-workflow.md
+```
 
 ### Full Setup
 
@@ -72,15 +102,21 @@ My tech stack: [YOUR STACK]
 ```
 ai-context-docs-lifecycle/
 ├── content/
+│   ├── methodology.md        # Full methodology explanation
 │   ├── modules/              # 4 independent modules
-│   │   ├── 01-project-context/    # AGENTS.md + docs/ + demo example
+│   │   ├── README.md              # Module overview + adoption path
+│   │   ├── 01-project-context/    # AGENTS.md + docs/ + templates
 │   │   ├── 02-skills/             # SKILL.md template + guide
 │   │   ├── 03-feature-development/# Workflows, templates, examples
 │   │   └── 04-project-planning/   # PRD, backlog, roadmap (optional)
 │   └── guides/               # Adoption guides
 │       ├── getting-started.md
 │       ├── new-project.md
-│       └── existing-project.md
+│       ├── existing-project.md
+│       ├── tool-compatibility.md
+│       ├── skills-catalog.md
+│       └── ...
+├── packages/cli/             # acdl CLI tool
 ├── specs/                    # Active feature specs (this repo)
 ├── docs/                     # Reference documentation (this repo)
 └── README.md                 # This file
@@ -98,9 +134,8 @@ ai-context-docs-lifecycle/
 project/
 ├── AGENTS.md              # Layer 1: Always loaded
 └── docs/                  # Layer 3: On-demand reference
-    ├── architecture.md
-    ├── data-model.md
-    ├── api.md
+    ├── {relevant docs}.md
+    ├── scripts.md         # If project has runnable commands
     └── decisions/
 ```
 
@@ -188,7 +223,6 @@ For non-trivial feature work, run this sequence:
 
 See complete walkthroughs:
 
-- [Demo: AGENTS.md + Skills + Docs](content/modules/01-project-context/examples/demo-taskflow/) — Full three-layer example
 - [Simple Todo Feature](content/modules/03-feature-development/examples/simple-todo/) — Standard Flow
 - [OAuth Authentication](content/modules/03-feature-development/examples/complex-auth/) — Complex Flow
 

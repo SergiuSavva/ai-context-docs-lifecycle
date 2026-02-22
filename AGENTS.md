@@ -44,7 +44,6 @@ docs/                  # Reference documentation
 | Module templates | @content/modules/[module]/templates/ |
 | Methodology skills | @content/guides/skills-catalog.md |
 | Writing guides | @content/guides/README.md |
-| Demo example | @content/modules/01-project-context/examples/demo-taskflow/ |
 | Architecture decisions | @docs/decisions/ |
 
 ## Boundaries

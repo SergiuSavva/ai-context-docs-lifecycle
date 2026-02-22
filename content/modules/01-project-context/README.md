@@ -113,7 +113,28 @@ You can also create **project-specific docs** not in this catalog (e.g., `docs/i
 
 ## Setup
 
-### 1. Manual Setup (Simple)
+### 1. CLI Setup (Recommended)
+
+From your project root:
+
+```bash
+npx @acdl/cli init
+```
+
+Then ask your AI agent to bootstrap from the local workflow file:
+
+```text
+Bootstrap AGENTS.md for this project.
+Follow: .acdl/content/modules/01-project-context/bootstrap-workflow.md
+```
+
+If `.acdl/` already exists:
+
+```bash
+npx @acdl/cli init --force
+```
+
+### 2. Manual Setup (Simple)
 
 1. Copy the right AGENTS.md template to your project root
 2. Fill in the placeholders (stack, structure, conventions, boundaries)
@@ -121,9 +142,14 @@ You can also create **project-specific docs** not in this catalog (e.g., `docs/i
 4. Fill in the Context Loading table in AGENTS.md with only the docs you created
 5. Done!
 
-### 2. Interactive Bootstrap (Smart)
+### 3. Interactive Bootstrap (Smart)
 
-Ask your AI agent to "bootstrap AGENTS.md" following the [Bootstrap Workflow](./bootstrap-workflow.md).
+Ask your AI agent to "bootstrap AGENTS.md" following the local workflow file in `.acdl/`:
+
+`.acdl/content/modules/01-project-context/bootstrap-workflow.md`
+
+If you are not using the CLI, use the repository workflow:
+[Bootstrap Workflow](./bootstrap-workflow.md).
 
 The AI will:
 1. Detect if single-app or monorepo
@@ -202,12 +228,6 @@ AGENTS.md works with **every** AI coding agent. No tool-specific files required.
 | Managing multiple features | Need project-level planning | [Module 4: Project Planning](../04-project-planning/README.md) |
 
 **Rule of thumb**: Short conventions go inline in AGENTS.md. Deep patterns become Skills (Module 2).
-
----
-
-## Example
-
-See the complete [demo-taskflow](./examples/demo-taskflow/README.md) example — a Next.js + Supabase project showing AGENTS.md + docs/ + Skills working together. This is one specific output; your project's docs will vary based on its actual stack and needs.
 
 ---
 

@@ -26,12 +26,12 @@ Use this flow for context loading:
 2. **Activation (load only if task needs it)**
    - Domain docs in `@docs/` — only the docs this project actually has
 3. **Execution (load before running commands)**
-   - Canonical command catalog in `@docs/scripts.md`
+   - Command catalog (for example `@docs/scripts.md`) if this project maintains one
 
 ## Command Policy
 
 - Package manager: `{{package-manager}}`
-- Canonical runnable commands live in `@docs/scripts.md`
+- If this project maintains a command catalog, define it here (for example `@docs/scripts.md`)
 - Do not invent commands not present in project config/docs
 - Load command docs only for implementation, verification, or release tasks
 - Skip command loading for pure research, design, and planning tasks
@@ -41,8 +41,8 @@ Use this flow for context loading:
 | Task Mode | Load by Default | Command Docs |
 |-----------|-----------------|--------------|
 | Research / Design / Plan | This file + relevant domain docs | Skip unless user asks |
-| Implement / Fix | This file + relevant domain docs | Load `@docs/scripts.md` before running commands |
-| Verify / Release | This file + test/build docs | Load `@docs/scripts.md` |
+| Implement / Fix | This file + relevant domain docs | Load command catalog before running commands (if it exists) |
+| Verify / Release | This file + test/build docs | Load command catalog (if it exists) |
 
 ## Structure
 
@@ -78,10 +78,7 @@ Load detailed docs based on your task:
 |------|------------|
 | {{task description}} | @docs/{{doc-name}}.md |
 | {{task description}} | @docs/{{doc-name}}.md |
-| Running commands / CI checks / release steps | @docs/scripts.md |
-| Building a feature | load skill `feature-workflow` |
-| Creating / updating AGENTS.md | load skill `agents-md` |
-| Writing specs or tasks | load skill `spec-writing` |
+| Running commands / CI checks / release steps | @docs/scripts.md (if this doc exists) |
 
 <!-- Only include entries for docs that exist in this project.
      Common docs (create only if relevant):
@@ -92,10 +89,12 @@ Load detailed docs based on your task:
      - @docs/scripts.md        — when project has runnable commands
      Add project-specific docs as needed (e.g., @docs/integrations.md, @docs/deployment.md) -->
 
+<!-- If Module 2 (Skills) is adopted, add skill-routing rows here. -->
+
 ## Boundaries
 
 ### Always
-- Use verified commands from `@docs/scripts.md` when executing tasks
+- If command docs exist, use verified commands from those docs when executing tasks
 - Follow existing patterns in codebase
 - {{project-specific always-rule}}
 

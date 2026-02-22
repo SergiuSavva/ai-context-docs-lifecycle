@@ -1,24 +1,12 @@
-import { existsSync } from "node:fs";
+import { existsSync, writeFileSync } from "node:fs";
+import { resolve } from "node:path";
 import chalk from "chalk";
-import type { AcdlDocs, DocName } from "../types.js";
-import { DOC_NAMES } from "../types.js";
-import {
-  createDefaultConfig,
-  writeConfig,
-  getAcdlDir,
-} from "../lib/config.js";
-import {
-  buildRenderPlan,
-  copyTemplatesToProject,
-  copyMethodologyContentToProject,
-  materializeFile,
-} from "../lib/renderer.js";
+import { copyContentToProject } from "../lib/renderer.js";
 import { getCliVersion } from "../lib/version.js";
+import { getAcdlDir } from "../lib/paths.js";
 
 interface InitOptions {
-  withDocs: string;
   force: boolean;
-  yes: boolean;
 }
 
 export async function initCommand(options: InitOptions): Promise<void> {
@@ -36,44 +24,23 @@ export async function initCommand(options: InitOptions): Promise<void> {
     process.exit(1);
   }
 
-  // 2. Parse --with-docs into config
-  const docs = parseDocsOption(options.withDocs);
-  const templateVersion = getCliVersion();
+  const version = getCliVersion();
 
   console.log("");
   console.log(chalk.bold("Initializing AI Context Docs..."));
   console.log("");
 
-  // 3. Create config
-  const config = createDefaultConfig(templateVersion, docs);
-
   try {
-    // 4. Write config
-    writeConfig(projectDir, config);
-    console.log(`  ${chalk.green("✓")} Created .acdl/config.toml`);
+    // 2. Copy methodology content to .acdl/content/
+    copyContentToProject(projectDir);
+    console.log(`  ${chalk.green("✓")} Copied methodology to .acdl/content/`);
 
-    // 5. Copy bundled templates to .acdl/templates/
-    copyTemplatesToProject(projectDir);
-    console.log(`  ${chalk.green("✓")} Copied templates to .acdl/templates/`);
+    // 3. Write version file
+    writeFileSync(resolve(acdlDir, "version"), version, "utf-8");
+    console.log(`  ${chalk.green("✓")} Created .acdl/version (${version})`);
 
-    // 5b. Copy the full methodology content/ scaffold into .acdl/content/
-    copyMethodologyContentToProject(projectDir);
-    console.log(
-      `  ${chalk.green("✓")} Copied methodology scaffold to .acdl/content/`
-    );
-
-    // 6. Build render plan and materialize files
-    const plan = buildRenderPlan(config);
-    const created: string[] = [];
-
-    for (const entry of plan) {
-      materializeFile(projectDir, entry);
-      created.push(entry.destination);
-      console.log(`  ${chalk.green("✓")} Created ${entry.destination}`);
-    }
-
-    // 7. Print summary
-    printSummary(created, config);
+    // 4. Print summary
+    printSummary(version);
   } catch (err) {
     const message = err instanceof Error ? err.message : String(err);
     console.error(chalk.red(`\nError during init: ${message}\n`));
@@ -81,75 +48,23 @@ export async function initCommand(options: InitOptions): Promise<void> {
   }
 }
 
-function parseDocsOption(withDocs: string): AcdlDocs {
-  const requested = withDocs
-    .split(",")
-    .map((s) => s.trim().toLowerCase())
-    .filter((s) => s.length > 0);
-
-  const docs: AcdlDocs = {
-    architecture: false,
-    data_model: false,
-    api: false,
-    auth: false,
-    scripts: false,
-  };
-
-  for (const name of requested) {
-    if (name in docs) {
-      docs[name as DocName] = true;
-    } else {
-      console.warn(
-        chalk.yellow(`  Warning: Unknown doc "${name}", skipping.`)
-      );
-    }
-  }
-
-  return docs;
-}
-
-function printSummary(created: string[], config: ReturnType<typeof createDefaultConfig>): void {
-  const enabledDocs = Object.entries(config.docs)
-    .filter(([, v]) => v)
-    .map(([k]) => k);
-
+function printSummary(version: string): void {
   console.log("");
-  console.log(chalk.bold("Done!"));
+  console.log(chalk.bold("Done!") + ` (v${version})`);
   console.log("");
-  console.log(`  Project type:      ${config.project_type}`);
-  console.log(`  Template version:  ${config.template_version}`);
-  console.log(`  Docs enabled:      ${enabledDocs.join(", ") || "(none)"}`);
-  console.log(`  Files created:     ${created.length}`);
+  console.log(chalk.bold("Next steps:"));
   console.log("");
-  console.log(chalk.dim("  Created files are wrapped in managed markers."));
-  if (enabledDocs.length > 0) {
-    console.log(
-      chalk.dim("  Fill in {{placeholders}} in AGENTS.md and docs/ with your project details.")
-    );
-  } else {
-    console.log(
-      chalk.dim("  Fill in {{placeholders}} in AGENTS.md, then let your AI agent create docs as needed.")
-    );
-  }
+  console.log(`  1. Paste this into your AI agent to bootstrap project context:`);
   console.log("");
-  console.log("Next steps:");
-  console.log(
-    `  1. Edit ${chalk.bold("AGENTS.md")} — fill in project name, stack, structure`
-  );
-  if (enabledDocs.length > 0) {
-    console.log(
-      `  2. Edit ${chalk.bold("docs/")} — fill in architecture, data model, etc.`
-    );
-  } else {
-    console.log(
-      `  2. Use ${chalk.bold(".acdl/content/guides/")} to let your AI agent generate docs smartly`
-    );
-  }
-  console.log(
-    `  3. Run ${chalk.bold("acdl doctor")} to verify integrity`
-  );
-  console.log(
-    `  4. Commit ${chalk.bold(".acdl/")} and generated files to git`
-  );
+  console.log(chalk.cyan(`     Bootstrap AGENTS.md for this project.`));
+  console.log(chalk.cyan(`     Follow: .acdl/content/modules/01-project-context/bootstrap-workflow.md`));
+  console.log("");
+  console.log(`  2. After bootstrap, set up on-demand skills:`);
+  console.log("");
+  console.log(chalk.cyan(`     Set up skills for this project.`));
+  console.log(chalk.cyan(`     Methodology skills: .acdl/content/modules/02-skills/templates/.agents/skills/`));
+  console.log(chalk.cyan(`     Read: .acdl/content/modules/02-skills/README.md`));
+  console.log("");
+  console.log(`  3. Commit ${chalk.bold(".acdl/")} to git`);
   console.log("");
 }

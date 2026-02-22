@@ -25,3 +25,7 @@ Thumbs.db
 
 # custom expections
 _*
+
+# CLI package build artifacts
+packages/cli/dist/
+packages/cli/content/

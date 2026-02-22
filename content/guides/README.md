@@ -75,7 +75,6 @@ When asked to apply this methodology:
    - Copy and customize for the project
 
 5. **Reference examples**
-   - Module 1: `examples/demo-taskflow/` — Complete AGENTS.md + Skills + Docs example
    - Module 3: `examples/simple-todo/` and `examples/complex-auth/`
 
 ---
@@ -124,8 +123,8 @@ When asked to apply this methodology:
 
 | Module | Templates | Examples |
 |--------|-----------|----------|
-| [01-project-context](../modules/01-project-context/README.md) | `templates/AGENTS-*.md`, `templates/docs/` | `examples/demo-taskflow/` |
-| [02-skills](../modules/02-skills/README.md) | `templates/.agents/skills/` (3 methodology + 1 template) | Referenced from Module 1 example |
+| [01-project-context](../modules/01-project-context/README.md) | `templates/AGENTS-*.md`, `templates/docs/` | — |
+| [02-skills](../modules/02-skills/README.md) | `templates/.agents/skills/` (5 methodology + 1 template) | — |
 | [03-feature-development](../modules/03-feature-development/README.md) | `templates/` (7 files) | `examples/simple-todo/`, `examples/complex-auth/` |
 | [04-project-planning](../modules/04-project-planning/README.md) | `templates/` (4 files) | — |
 

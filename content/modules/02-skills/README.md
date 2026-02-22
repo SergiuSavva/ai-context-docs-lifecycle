@@ -20,20 +20,20 @@ A **Skill** is a `SKILL.md` file that teaches an AI agent how to do something sp
 
 ```
 .agents/skills/
-├── feature-workflow/
-│   └── SKILL.md          # Research → Plan → Implement phases
-├── agents-md/
-│   └── SKILL.md          # AGENTS.md authoring and maintenance
-├── spec-writing/
-│   └── SKILL.md          # Spec and task file authoring
-├── database/
-│   └── SKILL.md          # Supabase patterns, migrations, RLS
-├── testing/
-│   └── SKILL.md          # Vitest + Storybook + Playwright strategy
-├── ui-components/
-│   └── SKILL.md          # shadcn/ui, theming, accessibility
-└── nextjs-app-router/
-    └── SKILL.md          # Pages, layouts, server actions
+├── feature-workflow/         # Methodology: Research → Plan → Implement phases
+│   └── SKILL.md
+├── agents-md/                # Methodology: AGENTS.md authoring and maintenance
+│   └── SKILL.md
+├── spec-writing/             # Methodology: Spec and task file authoring
+│   └── SKILL.md
+├── doc-writing/              # Methodology: Reference docs, guides, ADRs
+│   └── SKILL.md
+├── acdl/                     # Methodology: Full ACDL bootstrap and maintenance
+│   └── SKILL.md
+├── database/                 # Stack: Your DB patterns (user-authored)
+│   └── SKILL.md
+└── testing/                  # Stack: Your test strategy (user-authored)
+    └── SKILL.md
 ```
 
 ### How Skills Load
@@ -111,12 +111,14 @@ description: Supabase integration patterns — migrations, RLS, React Query, and
 
 ### Content Sections
 
-| Section | Purpose |
-|---------|---------|
-| **References** | Links to `@docs/` files the skill relates to |
-| **Patterns** | Deep how-to knowledge with code examples |
-| **Quick Checklist** | Key things to remember |
-| **Related Docs** | Cross-references to docs and other skills |
+| Section | Required | Purpose |
+|---------|----------|---------|
+| **References** | Yes | Links to `@docs/` files the skill relates to |
+| **Patterns** | Yes | Deep how-to knowledge with code examples |
+| **Anti-Patterns** | Recommended | Common mistakes and how to fix them |
+| **When NOT to Use** | Recommended | Clarifies boundaries so the AI doesn't load unnecessarily |
+| **Quick Checklist** | Yes | Key things to remember |
+| **Related Docs** | Yes | Cross-references to docs and other skills |
 
 ---
 
@@ -173,6 +175,8 @@ These skills teach AI agents how to use the ACDL workflow itself. They ship as t
 | `feature-workflow` | Three-phase workflow (Research → Plan → Implement), task markers, progress tracking |
 | `agents-md` | AGENTS.md authoring — section anatomy, token budget, router pattern, update triggers |
 | `spec-writing` | Spec and task authoring — problem framing, acceptance criteria, scoping, task breakdown |
+| `doc-writing` | Reference docs, guides, READMEs, ADRs, templates — structure, style, freshness rules |
+| `acdl` | Full ACDL bootstrap and configuration — setup, daily usage, maintenance triggers |
 
 Templates: `content/modules/02-skills/templates/.agents/skills/`
 
@@ -251,18 +255,23 @@ Use the template at `content/modules/02-skills/templates/.agents/skills/skill-te
 
 ### Methodology Skills (templates)
 
-See `content/modules/02-skills/templates/.agents/skills/` for 3 methodology skills:
+See `content/modules/02-skills/templates/.agents/skills/` for 5 methodology skills:
 - `feature-workflow` — Three-phase workflow, task markers, progress tracking
 - `agents-md` — AGENTS.md authoring and maintenance
 - `spec-writing` — Spec and task file authoring
+- `doc-writing` — Reference docs, guides, READMEs, ADRs, templates
+- `acdl` — Full ACDL bootstrap, configuration, and maintenance
 
-### Stack Skills (demo)
+### Stack Skills (user-authored)
 
-See the [demo-taskflow](../01-project-context/examples/demo-taskflow/README.md) example for 4 stack skills in action:
-- `nextjs-app-router` — Pages, layouts, server actions
-- `database` — Supabase, migrations, RLS, React Query
-- `testing` — Vitest + Storybook + Playwright
-- `ui-components` — shadcn/ui, theming, accessibility
+Create your own stack skills using the template. Common examples:
+
+| Skill | Covers |
+|-------|--------|
+| `database` | ORM patterns, migrations, queries, caching |
+| `testing` | Test strategy, which tool for what, patterns |
+| `ui-components` | Component library, theming, accessibility |
+| `nextjs-app-router` | Pages, layouts, server actions, streaming |
 
 ---
 

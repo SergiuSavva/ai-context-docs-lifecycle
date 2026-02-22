@@ -17,17 +17,12 @@ export function getPackageRoot(): string {
   return resolve(__dirname, "..");
 }
 
-/** Path to the bundled templates/ directory inside the npm package */
-export function getBundledTemplatesDir(): string {
-  return resolve(getPackageRoot(), "templates");
-}
-
 /** Path to the bundled methodology content/ directory inside the npm package */
 export function getBundledContentDir(): string {
   return resolve(getPackageRoot(), "content");
 }
 
-/** Path to a specific bundled template file */
-export function getBundledTemplatePath(relativePath: string): string {
-  return resolve(getBundledTemplatesDir(), relativePath);
+/** Path to the .acdl/ directory for a project */
+export function getAcdlDir(projectDir: string): string {
+  return resolve(projectDir, ".acdl");
 }

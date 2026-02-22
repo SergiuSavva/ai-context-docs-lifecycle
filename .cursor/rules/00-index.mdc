@@ -28,7 +28,7 @@ For project overview, commands, and boundaries, read @AGENTS.md
 | Project overview | @AGENTS.md |
 | Building a feature | `feature-workflow.mdc` + @specs/ |
 | Module templates | @content/modules/[module]/templates/ |
-| Demo example | @content/modules/01-project-context/examples/demo-taskflow/ |
+| Skill templates | @content/modules/02-skills/templates/.agents/skills/ |
 
 ---
 

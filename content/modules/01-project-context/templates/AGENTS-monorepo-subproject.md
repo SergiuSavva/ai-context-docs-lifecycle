@@ -29,13 +29,13 @@ Use this flow for context loading:
 2. **Activation (load only if task needs it)**
    - Local `@docs/` references and relevant shared docs
 3. **Execution (load before running commands)**
-   - Canonical command catalog in local `@docs/scripts.md`
+   - Command catalog in local docs (for example `@docs/scripts.md`) if this subproject maintains one
 
 ## Command Policy
 
 - Package manager: `{{package-manager}}`
-- Canonical runnable commands live in local `@docs/scripts.md`
-- Workspace-level commands may also exist in root `@docs/scripts.md`
+- If this subproject maintains a command catalog, define it here (for example local `@docs/scripts.md`)
+- Workspace-level command docs may also exist in root docs
 - Do not invent commands not present in project config/docs
 - Load command docs only for implementation, verification, or release tasks
 - Skip command docs for pure research, design, and planning tasks
@@ -45,8 +45,8 @@ Use this flow for context loading:
 | Task Mode | Load by Default | Command Docs |
 |-----------|-----------------|--------------|
 | Research / Design / Plan | This file + relevant domain docs | Skip unless user asks |
-| Implement / Fix | This file + relevant domain docs | Load local `@docs/scripts.md` first |
-| Verify / Release | This file + test/build/release docs | Load local `@docs/scripts.md` |
+| Implement / Fix | This file + relevant domain docs | Load local command docs first (if they exist) |
+| Verify / Release | This file + test/build/release docs | Load local command docs (if they exist) |
 
 ## Structure
 
@@ -86,7 +86,7 @@ Use this flow for context loading:
 |------|------|
 | {{task description}} | @docs/{{doc-name}}.md |
 | {{task description}} | @docs/{{doc-name}}.md |
-| Subproject commands / verification scripts | @docs/scripts.md |
+| Subproject commands / verification scripts | @docs/scripts.md (if this doc exists) |
 
 <!-- Only include entries for docs that exist in this subproject.
      Add project-specific docs as needed. -->
@@ -103,7 +103,7 @@ Use this flow for context loading:
 ## Boundaries
 
 ### Always
-- Use verified commands from `@docs/scripts.md` when executing tasks
+- If command docs exist, use verified commands from those docs when executing tasks
 - Use shared types from `{{scope/types-package}}`
 - Follow patterns in existing code
 
@@ -122,6 +122,6 @@ Use this flow for context loading:
 
 **Environment**: {{e.g., container, serverless, static, library (not deployed)}}
 **Trigger**: {{e.g., HTTP, queue, cron, event, npm publish}}
-**Command Source**: @docs/scripts.md
+**Command Source**: {{@docs/scripts.md if this doc exists}}
 
 <!-- Remove this section for libraries or packages that are not independently deployed. -->

@@ -15,6 +15,22 @@ Before adding anything, check what exists:
 | docs/ folder | Review | Integrate reference doc structure |
 | Existing specs | Keep | Add workflow to new specs |
 
+## Recommended First Command
+
+From project root:
+
+```bash
+npx @acdl/cli init
+```
+
+This creates `.acdl/` with local methodology docs and templates for guided setup.
+
+If `.acdl/` already exists:
+
+```bash
+npx @acdl/cli init --force
+```
+
 ---
 
 ## Minimal Integration
@@ -51,7 +67,7 @@ Create at project root with:
 - Your tech stack and versions
 - Your file organization
 - Your conventions (short, inline)
-- Context Loading table pointing to docs/ and skills
+- Context Loading table pointing to docs/ (and skills only if Module 2 is adopted)
 - Boundaries (always/ask/never)
 
 ### Step 2: Add Reference Docs
@@ -137,6 +153,9 @@ Tell your AI assistant:
 ```
 Integrate AI Context Docs Lifecycle into this existing project.
 
+Read local methodology guides from:
+.acdl/content/
+
 1. Analyze the current codebase structure
 2. Create AGENTS.md reflecting actual patterns
 3. Create docs/ with reference documentation
@@ -145,6 +164,8 @@ Integrate AI Context Docs Lifecycle into this existing project.
 Don't modify existing code or documentation structure.
 Focus on adding AI context alongside what exists.
 ```
+
+If you are not using the CLI, replace `.acdl/content/` guidance with the repository URL.
 
 ---
 
