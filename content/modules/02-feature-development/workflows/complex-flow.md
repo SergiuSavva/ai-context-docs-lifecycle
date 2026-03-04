@@ -121,9 +121,9 @@ Execute with structured task tracking.
 
 ---
 
-## Phase 4: Verify
+## Phase 4: Verify (Definition of Done)
 
-When all tasks are `[x]` or `[S]`, run verification before signaling completion.
+When all tasks are `[x]` or `[S]`, create the verification checklist. This checklist **is** the Definition of Done — a single artifact that gates closeout.
 
 ### Create verify-checklist.md
 
@@ -131,15 +131,16 @@ When all tasks are `[x]` or `[S]`, run verification before signaling completion.
 specs/[feature-name]/verify-checklist.md
 ```
 
-Cross-reference each acceptance criterion from `spec.md` against the implementation:
+The checklist covers:
 
-1. **Acceptance Criteria** — verify each AC with concrete evidence (test output, observed behavior)
-2. **Scope Check** — confirm in-scope items delivered, no out-of-scope creep
-3. **Quality Checks** — no linter errors, tests pass
-4. **Doc Freshness** — update affected `docs/` files in the same PR
-5. **ADR Check** — create decision record if significant choices were made
+1. **Task Completion** — all tasks `[x]`/`[S]`, progress = 100%
+2. **Acceptance Criteria** — each AC verified with concrete evidence
+3. **Scope Check** — in-scope delivered, no out-of-scope creep
+4. **Quality** — no linter errors, tests pass
+5. **Knowledge Persistence** — affected reference docs updated, ADR created if needed
+6. **Human Approval** — user signs off
 
-Present the completed checklist to the user for approval.
+Present the completed checklist to the user. Do not proceed to closeout until all checks pass and the user approves.
 
 ```
 Verification complete.
@@ -192,27 +193,6 @@ These are recommendations, not mandates:
 - **Meaningful messages**: Use `type(scope): description` format (e.g., `feat(auth): add JWT verification`)
 - **Spec in branch**: Include `specs/` folder in the branch; remove during closeout
 - **On closeout**: Squash-merge or merge with history — your choice
-
----
-
-## Definition of Done
-
-### Auto-Verifiable
-
-- [ ] All tasks `[x]` or `[S]`
-- [ ] No blocked tasks remaining
-- [ ] No linter errors
-
-### Verification
-
-- [ ] verify-checklist.md completed
-- [ ] All acceptance criteria pass with evidence
-- [ ] Affected docs updated
-- [ ] ADR created for key decisions
-
-### Manual
-
-- [ ] Human review approved
 
 ---
 

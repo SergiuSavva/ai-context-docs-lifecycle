@@ -15,6 +15,7 @@ ACDL is **knowledge-first**. It treats documentation as structured project knowl
 ### The Problem
 
 AI coding assistants have no lasting knowledge of your project:
+
 - Every session starts from zero — constant re-explaining
 - Generic, inconsistent code that ignores your patterns
 - Specs drive one feature but nothing carries forward
@@ -23,32 +24,38 @@ AI coding assistants have no lasting knowledge of your project:
 
 **Structured knowledge with three lifecycles:**
 
-| Knowledge type | Lifecycle | Purpose |
-|---------------|-----------|---------|
-| **Specs** | Ephemeral — delete after feature ships | Drive the current feature |
-| **Reference** | Evergreen — always current or deleted | Carry project knowledge forward |
-| **Decisions** | Permanent — never rewritten | Record the *why* behind choices |
+
+| Knowledge type | Lifecycle                              | Purpose                         |
+| -------------- | -------------------------------------- | ------------------------------- |
+| **Specs**      | Ephemeral — delete after feature ships | Drive the current feature       |
+| **Reference**  | Evergreen — always current or deleted  | Carry project knowledge forward |
+| **Decisions**  | Permanent — never rewritten            | Record the *why* behind choices |
+
 
 **Pick the modules you need:**
 
-| Module | Purpose |
-|--------|---------|
-| **1. Project Context** | AGENTS.md + docs/ + .agents/skills/ |
+
+| Module                     | Purpose                                  |
+| -------------------------- | ---------------------------------------- |
+| **1. Project Context**     | AGENTS.md + docs/ + .agents/skills/      |
 | **2. Feature Development** | Workflows for building features (specs/) |
-| **3. Project Planning** | Multi-feature management (optional) |
+| **3. Project Planning**    | Multi-feature management (optional)      |
+
 
 ### Why Not Existing SDD Tools?
 
 Spec-Driven Development (SDD) tools like [GSD](https://github.com/gsd-build/get-shit-done), [BMAD Method](https://docs.bmad-method.org), [Spec Kit](https://github.com/github/spec-kit), and [cc-sdd](https://github.com/gotalab/cc-sdd) solve the same root problem — AI agents produce inconsistent code without structured context. But they introduce new constraints:
 
-| Limitation | Tools affected | ACDL approach |
-|-----------|---------------|---------------|
-| **Agent lock-in** — installs commands/prompts for one or two agents | GSD (Claude), BMAD (Claude/Cursor), cc-sdd, Spec Kit | Pure markdown. Works with every agent that can read files. |
-| **All-or-nothing** — full system required to get value | GSD, BMAD, cc-sdd | Three independent modules. Adopt `AGENTS.md` alone or add features/planning as needed. |
-| **Runtime dependency** — requires `npx`, Node.js, or Python to function | GSD, BMAD, cc-sdd, Spec Kit | Zero runtime. The methodology *is* the files. CLI is optional convenience. |
-| **Heavy process** — sprint ceremonies, agent personas, multi-agent orchestration | BMAD (5 personas, sprints), GSD (wave orchestration, state machines) | Minimal process. One workflow, four phases, plain checklists. |
-| **No memory model** — specs drive code but nothing persists across features | Spec Kit, cc-sdd | Three document lifecycles: ephemeral specs, evergreen reference docs, permanent decisions. |
-| **Context bloat** — loads everything upfront | GSD (PROJECT.md + STATE.md + ROADMAP.md always loaded) | Progressive disclosure: ~700 tokens always loaded, rest on-demand via skills and docs. |
+
+| Limitation                                                                       | Tools affected                                                       | ACDL approach                                                                              |
+| -------------------------------------------------------------------------------- | -------------------------------------------------------------------- | ------------------------------------------------------------------------------------------ |
+| **Agent lock-in** — installs commands/prompts for one or two agents              | GSD (Claude), BMAD (Claude/Cursor), cc-sdd, Spec Kit                 | Pure markdown. Works with every agent that can read files.                                 |
+| **All-or-nothing** — full system required to get value                           | GSD, BMAD, cc-sdd                                                    | Three independent modules. Adopt `AGENTS.md` alone or add features/planning as needed.     |
+| **Runtime dependency** — requires `npx`, Node.js, or Python to function          | GSD, BMAD, cc-sdd, Spec Kit                                          | Zero runtime. The methodology *is* the files. CLI is optional convenience.                 |
+| **Heavy process** — sprint ceremonies, agent personas, multi-agent orchestration | BMAD (5 personas, sprints), GSD (wave orchestration, state machines) | Minimal process. One workflow, four phases, plain checklists.                              |
+| **No memory model** — specs drive code but nothing persists across features      | Spec Kit, cc-sdd                                                     | Three document lifecycles: ephemeral specs, evergreen reference docs, permanent decisions. |
+| **Context bloat** — loads everything upfront                                     | GSD (PROJECT.md + STATE.md + ROADMAP.md always loaded)               | Progressive disclosure: ~700 tokens always loaded, rest on-demand via skills and docs.     |
+
 
 Other tools are spec-driven: specs in, code out, knowledge discarded. ACDL is knowledge-first: structured project knowledge that compounds across features, persists across sessions, and moves with you to any AI agent.
 
@@ -81,8 +88,8 @@ npx @acdl/cli init --force
 
 ### Manual Setup (Module 1)
 
-1. Copy [`content/modules/01-project-context/templates/AGENTS-single-app.md`](content/modules/01-project-context/templates/AGENTS-single-app.md) to your project root as `AGENTS.md`
-2. Create `docs/` with reference doc templates from [`content/modules/01-project-context/templates/docs/`](content/modules/01-project-context/templates/docs/)
+1. Copy `[content/modules/01-project-context/templates/AGENTS-single-app.md](content/modules/01-project-context/templates/AGENTS-single-app.md)` to your project root as `AGENTS.md`
+2. Create `docs/` with reference doc templates from `[content/modules/01-project-context/templates/docs/](content/modules/01-project-context/templates/docs/)`
 3. Fill in your project details
 4. Done! AI agents now have context.
 
@@ -176,11 +183,13 @@ Three adoption tiers: Basic (AGENTS.md only), Standard (+ docs/), Full (+ .agent
 Research → Plan → Implement → Verify
 ```
 
-| Situation | Docs Needed |
-|-----------|-------------|
-| **Bug fix** | None |
+
+| Situation   | Docs Needed                      |
+| ----------- | -------------------------------- |
+| **Bug fix** | None                             |
 | **Feature** | `spec.md` + `tasks.md` (minimum) |
-| **Complex** | All docs + ADR |
+| **Complex** | All docs + ADR                   |
+
 
 [Go to Module 2 →](content/modules/02-feature-development/)
 
@@ -204,11 +213,13 @@ project/
 
 ### Three Document Types
 
-| Type | Lifecycle | Example |
-|------|-----------|---------|
-| **Specs** | Ephemeral (delete after) | spec.md, tasks.md |
-| **Reference** | Evergreen (always current) | AGENTS.md, docs/ |
-| **Decisions** | Permanent (never change) | ADRs |
+
+| Type          | Lifecycle                  | Example           |
+| ------------- | -------------------------- | ----------------- |
+| **Specs**     | Ephemeral (delete after)   | spec.md, tasks.md |
+| **Reference** | Evergreen (always current) | AGENTS.md, docs/  |
+| **Decisions** | Permanent (never change)   | ADRs              |
+
 
 ### Progressive Disclosure
 
@@ -245,15 +256,17 @@ See complete walkthroughs:
 
 Works with every AI coding agent:
 
-| Agent | AGENTS.md | Skills | @docs/ refs |
-|-------|-----------|--------|-------------|
-| **Cursor** | Auto-reads | `@skill-name` | `@docs/file.md` |
-| **Claude Code** | `CLAUDE.md` symlink | `/skill-name` | Direct read |
-| **GitHub Copilot** | Auto-reads | Auto-discovered | Direct read |
-| **Cline** | Via `.clinerules` | Auto-discovered | Direct read |
-| **OpenCode** | Auto-reads | Via `skill` tool | Direct read |
-| **Windsurf** | Auto-reads | Via UI | Direct read |
-| **Aider** | Via `/read` | Not supported | Via `/read` |
+
+| Agent              | AGENTS.md           | Skills           | @docs/ refs     |
+| ------------------ | ------------------- | ---------------- | --------------- |
+| **Cursor**         | Auto-reads          | `@skill-name`    | `@docs/file.md` |
+| **Claude Code**    | `CLAUDE.md` symlink | `/skill-name`    | Direct read     |
+| **GitHub Copilot** | Auto-reads          | Auto-discovered  | Direct read     |
+| **Cline**          | Via `.clinerules`   | Auto-discovered  | Direct read     |
+| **OpenCode**       | Auto-reads          | Via `skill` tool | Direct read     |
+| **Windsurf**       | Auto-reads          | Via UI           | Direct read     |
+| **Aider**          | Via `/read`         | Not supported    | Via `/read`     |
+
 
 **Zero tool-specific files required.** Optional bridges available (e.g., `.mdc` rules that point to skills).
 
@@ -273,14 +286,16 @@ Contributions welcome:
 
 This methodology draws from several Spec-Driven Development (SDD) approaches:
 
-| Project | Inspiration |
-|---------|-------------|
-| [GSD](https://github.com/gsd-build/get-shit-done) | Wave-based parallel execution, atomic git commits, verification phase |
-| [BMAD Method](https://docs.bmad-method.org) | Adaptive guidance ("what's next?"), phase-based planning |
-| [Spec-Kit](https://github.com/github/spec-kit) | Structured spec workflow, Constitution concept, feature branching |
-| [cc-sdd](https://github.com/gotalab/cc-sdd) | Kiro-style SDD, EARS requirements format, parallel task markers |
-| [Spec-Flow](https://github.com/ChrisLally/Spec-Flow) | Work sizing, quality gates |
-| [OpenSpec](https://github.com/openspec-ai/openspec) | Delta format for changes |
+
+| Project                                              | Inspiration                                                           |
+| ---------------------------------------------------- | --------------------------------------------------------------------- |
+| [GSD](https://github.com/gsd-build/get-shit-done)    | Wave-based parallel execution, atomic git commits, verification phase |
+| [BMAD Method](https://docs.bmad-method.org)          | Adaptive guidance ("what's next?"), phase-based planning              |
+| [Spec-Kit](https://github.com/github/spec-kit)       | Structured spec workflow, Constitution concept, feature branching     |
+| [cc-sdd](https://github.com/gotalab/cc-sdd)          | Kiro-style SDD, EARS requirements format, parallel task markers       |
+| [Spec-Flow](https://github.com/ChrisLally/Spec-Flow) | Work sizing, quality gates                                            |
+| [OpenSpec](https://github.com/openspec-ai/openspec)  | Delta format for changes                                              |
+
 
 ---
 

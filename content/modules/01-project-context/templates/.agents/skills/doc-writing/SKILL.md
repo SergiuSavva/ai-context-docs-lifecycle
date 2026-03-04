@@ -242,5 +242,3 @@ Docs are **evergreen** — always current or deleted. Never stale. For full upda
 
 - load skill `agents-md`
 - load skill `spec-writing`
-- load skill `agents-md`
-- load skill `spec-writing`

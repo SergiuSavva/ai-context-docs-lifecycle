@@ -5,7 +5,7 @@ description: How to write and maintain AGENTS.md — section anatomy, token budg
 
 # AGENTS.md Authoring
 
-> **References:** Best practices → @content/guides/agents-md-best-practices.md | Templates → @content/modules/01-project-context/templates/
+> **References:** @AGENTS.md
 
 ## Router Pattern
 
@@ -139,6 +139,5 @@ Do **not** update AGENTS.md for every feature. Only update when project-level pa
 
 ## Related Docs
 
-- Module 1 templates: @content/modules/01-project-context/templates/
-- Best practices guide: @content/guides/agents-md-best-practices.md
+- @AGENTS.md
 - load skill `feature-workflow`

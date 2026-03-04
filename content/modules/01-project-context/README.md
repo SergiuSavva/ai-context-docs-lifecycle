@@ -233,23 +233,25 @@ A **Skill** is a `SKILL.md` file in `.agents/skills/` that teaches an AI agent h
 
 ```
 .agents/skills/
-├── feature-workflow/         # Methodology: Research → Plan → Implement → Verify
+├── agents-md/                # Methodology: AGENTS.md authoring (Module 1)
 │   └── SKILL.md
-├── workflow-guide/           # Methodology: "What should I do next?" guidance
+├── doc-writing/              # Methodology: Reference docs, guides, ADRs (Module 1)
 │   └── SKILL.md
-├── agents-md/                # Methodology: AGENTS.md authoring and maintenance
+├── acdl/                     # Methodology: Full ACDL bootstrap (Module 1)
 │   └── SKILL.md
-├── spec-writing/             # Methodology: Spec and task file authoring
+├── feature-workflow/         # Methodology: Research → Plan → Implement → Verify (Module 2)
 │   └── SKILL.md
-├── doc-writing/              # Methodology: Reference docs, guides, ADRs
+├── spec-writing/             # Methodology: Spec and task file authoring (Module 2)
 │   └── SKILL.md
-├── acdl/                     # Methodology: Full ACDL bootstrap and maintenance
+├── workflow-guide/           # Methodology: "What should I do next?" guidance (Module 2)
 │   └── SKILL.md
 ├── database/                 # Stack: Your DB patterns (user-authored)
 │   └── SKILL.md
 └── testing/                  # Stack: Your test strategy (user-authored)
     └── SKILL.md
 ```
+
+All skills install to `.agents/skills/` in your project. Templates come from the module that owns each skill's domain.
 
 ### Skills vs Inline Conventions
 
@@ -315,18 +317,27 @@ flowchart TD
 
 ### Methodology Skills
 
-These skills teach AI agents how to use the ACDL workflow itself. They ship as templates.
+These skills teach AI agents how to use the ACDL workflow itself. They ship as templates from the module that owns each domain.
+
+#### Module 1 Skills (Project Context)
 
 | Skill | Covers |
 |-------|--------|
-| `feature-workflow` | Four-phase workflow (Research → Plan → Implement → Verify), task markers, parallel waves, git workflow, verification |
-| `workflow-guide` | Project state inspection, next-action recommendations, recovery scenarios |
 | `agents-md` | AGENTS.md authoring — section anatomy, token budget, router pattern, update triggers |
-| `spec-writing` | Spec and task authoring — problem framing, acceptance criteria, scoping, task breakdown |
 | `doc-writing` | Reference docs, guides, READMEs, ADRs, templates — structure, style, freshness rules |
 | `acdl` | Full ACDL bootstrap and configuration — setup, daily usage, maintenance triggers |
 
 Templates: `content/modules/01-project-context/templates/.agents/skills/`
+
+#### Module 2 Skills (Feature Development)
+
+| Skill | Covers |
+|-------|--------|
+| `feature-workflow` | Four-phase workflow (Research → Plan → Implement → Verify), task markers, parallel waves, git workflow, verification |
+| `spec-writing` | Spec and task authoring — problem framing, acceptance criteria, scoping, task breakdown |
+| `workflow-guide` | Project state inspection, next-action recommendations, recovery scenarios |
+
+Templates: `content/modules/02-feature-development/templates/.agents/skills/`
 
 ### Stack Skills
 

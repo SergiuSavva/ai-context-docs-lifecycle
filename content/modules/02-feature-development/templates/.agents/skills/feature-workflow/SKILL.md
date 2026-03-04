@@ -30,7 +30,7 @@ Each phase ends with a **user validation checkpoint** before proceeding.
 ```
 Is this a bug fix?
 ├─ YES → Quick Flow: Find → Fix → Commit → Done (no docs)
-└─ NO → Create specs/[feature]/spec.md + tasks.md
+└─ NO → Create specs/[feature-name]/spec.md + tasks.md
 
     Do I need to evaluate options?
     ├─ YES → Add research.md (Research phase)
@@ -52,13 +52,13 @@ Is this a bug fix?
 ## Before Starting
 
 ```
-1. Does specs/[feature]/spec.md exist?
+1. Does specs/[feature-name]/spec.md exist?
    ├─ YES → Read it
-   └─ NO → Create it, validate with user
+   └─ NO → Create it (load skill `spec-writing`), validate with user
 
-2. Does specs/[feature]/tasks.md exist?
+2. Does specs/[feature-name]/tasks.md exist?
    ├─ YES → Find first non-complete task
-   └─ NO → Create it from spec
+   └─ NO → Create it from spec (load skill `spec-writing` for traceability)
 
 3. Is there a task marked [~]?
    ├─ YES → Continue that task
@@ -96,16 +96,20 @@ Is this a bug fix?
 
 ---
 
-## Verify Phase
+## Verify Phase (Definition of Done)
 
-When all tasks are `[x]` or `[S]`, create `verify-checklist.md`:
+When all tasks are `[x]` or `[S]`, create `verify-checklist.md`. This checklist **is** the Definition of Done — a single artifact that gates closeout.
 
-1. Cross-reference each acceptance criterion with concrete evidence
-2. Check scope (nothing missed, no creep)
-3. Verify affected reference docs are updated
-4. Check if ADR is needed
+The checklist covers:
 
-Present the completed checklist to the user for approval.
+1. **Task Completion** — all tasks `[x]`/`[S]`, progress = 100%
+2. **Acceptance Criteria** — each AC verified with concrete evidence
+3. **Scope Check** — in-scope delivered, no out-of-scope creep
+4. **Quality** — no linter errors, tests pass
+5. **Knowledge Persistence** — affected reference docs updated, ADR created if needed
+6. **Human Approval** — user signs off
+
+Do not proceed to closeout until all checks pass and the user approves.
 
 ```
 Verification complete.
@@ -147,7 +151,7 @@ Not every project has every doc. Update only the docs your project maintains. Up
 
 1. Create ADR in `docs/decisions/` (if significant decision was made)
 2. Update AGENTS.md (if new patterns emerged)
-3. Delete `specs/[feature]/` folder (specs are ephemeral)
+3. Delete `specs/[feature-name]/` folder (specs are ephemeral)
 
 ---
 
@@ -163,16 +167,17 @@ Not every project has every doc. Update only the docs your project maintains. Up
 
 - [ ] spec.md exists with problem, solution, and acceptance criteria
 - [ ] tasks.md exists with phases and T-XX numbered tasks
+- [ ] User validated spec before implementation started
 - [ ] One `[~]` at a time (or per wave if parallel)
 - [ ] tasks.md updated after each completed task
-- [ ] User validated spec before implementation started
-- [ ] verify-checklist.md completed after all tasks done
-- [ ] Docs updated if code changed data model, API, or architecture
+- [ ] verify-checklist.md completed (this is the Definition of Done)
+- [ ] User approved the verify-checklist before closeout
 - [ ] Spec folder deleted after feature approved
 
 ## Related Docs
 
-- Spec template: @specs/[feature]/spec.md
-- Task template: @specs/[feature]/tasks.md
+- Spec files: @specs/[feature-name]/spec.md
+- Task files: @specs/[feature-name]/tasks.md
 - Decision records: @docs/decisions/
 - load skill `spec-writing`
+- load skill `workflow-guide`

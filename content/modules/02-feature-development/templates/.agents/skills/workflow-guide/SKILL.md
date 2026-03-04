@@ -49,6 +49,7 @@ Does the active spec folder have spec.md?
 Does the active spec folder have tasks.md?
 ├─ NO  → Recommend: Create tasks.md
 │        "Spec exists but no task breakdown. Create tasks.md from the spec."
+│        load skill `spec-writing` (for spec-to-tasks traceability)
 └─ YES → Continue to Step 4
 ```
 
@@ -60,12 +61,15 @@ Read tasks.md and check marker states:
 All tasks [x] or [S]?
 ├─ YES → Does verify-checklist.md exist?
 │        ├─ NO  → Recommend: Run verification
-│        │        "All tasks complete. Create verify-checklist.md and
-│        │         cross-reference each acceptance criterion."
+│        │        "All tasks complete. Create verify-checklist.md with the
+│        │         6-point checklist (Task Completion, Acceptance Criteria,
+│        │         Scope Check, Quality, Knowledge Persistence, Human Approval)."
+│        │        load skill `feature-workflow`
 │        └─ YES → Is checklist all passing?
 │                 ├─ YES → Recommend: Closeout
-│                 │        "Verification passed. Delete spec folder,
-│                 │         create ADR if needed, update AGENTS.md."
+│                 │        "Verification passed. Create ADR if needed,
+│                 │         update AGENTS.md, delete spec folder."
+│                 │        load skill `feature-workflow`
 │                 └─ NO  → Recommend: Fix verification issues
 │                          "Verification found issues. Fix them before closeout."
 │
@@ -73,14 +77,17 @@ Any tasks [B]?
 ├─ YES → Recommend: Resolve blockers
 │        "Tasks are blocked: [list blocked tasks and reasons].
 │         Resolve blockers or mark [S] with justification."
+│        load skill `feature-workflow`
 │
 Any tasks [~]?
 ├─ YES → Recommend: Continue in-progress task
 │        "Task [T-XX] is in progress. Continue from where you left off."
+│        load skill `feature-workflow`
 │
 Otherwise:
 └─ Recommend: Start next pending task
    "Next pending task: [T-XX description]. Mark it [~] and begin."
+   load skill `feature-workflow`
 ```
 
 ---
@@ -106,7 +113,7 @@ When reporting project state, use this structure:
 - AGENTS.md: ✓ Exists / ✗ Missing
 - Active specs: [list or "none"]
 - Current feature: [name] or "none"
-- Phase: Research / Plan / Implement / Verify / Closeout
+- Phase: Research / Plan / Implement / Verify
 - Task progress: X/Y (Z%)
 - Blocked: [count] tasks
 

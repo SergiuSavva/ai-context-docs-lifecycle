@@ -1,7 +1,15 @@
 # Verify: [Feature Name]
 
 > **Template**: Copy to `specs/[feature-name]/verify-checklist.md`
-> Run after all tasks are complete, before closeout.
+> This checklist is the Definition of Done. Fill it after all tasks are complete, before closeout.
+
+---
+
+## Task Completion
+
+- [ ] All tasks in `tasks.md` are `[x]` or `[S]`
+- [ ] No tasks remain `[B]` (blocked)
+- [ ] Progress = 100%
 
 ---
 
@@ -30,7 +38,7 @@ Cross-reference each AC from `spec.md`:
 
 ---
 
-## Quality Checks
+## Quality
 
 - [ ] No linter errors introduced
 - [ ] Tests pass (if applicable)
@@ -38,9 +46,13 @@ Cross-reference each AC from `spec.md`:
 
 ---
 
-## Doc Freshness
+## Knowledge Persistence
 
-Check if implementation changed any of these areas. Update affected docs in the same PR:
+These checks ensure project knowledge grows with the feature, not just the code.
+
+### Doc Freshness
+
+Update affected docs in the same PR:
 
 | Area Changed? | Doc to Update | Updated? |
 |---------------|---------------|----------|
@@ -48,13 +60,11 @@ Check if implementation changed any of these areas. Update affected docs in the 
 | API surface | `docs/api.md` | Yes / No / N/A |
 | Auth flow | `docs/auth.md` | Yes / No / N/A |
 | Architecture / structure | `docs/architecture.md` | Yes / No / N/A |
-| AGENTS.md (new patterns) | `AGENTS.md` | Yes / No / N/A |
+| New patterns / conventions | `AGENTS.md` | Yes / No / N/A |
 
 Only check docs that exist in the project. Mark N/A for docs that don't apply.
 
----
-
-## Decision Record
+### Decision Record
 
 - [ ] Were significant technical decisions made during implementation?
   - YES → Create ADR in `docs/decisions/NNN-[decision].md`
@@ -62,15 +72,18 @@ Only check docs that exist in the project. Mark N/A for docs that don't apply.
 
 ---
 
-## Summary
+## Definition of Done
 
 | Check | Result |
 |-------|--------|
+| Task Completion | All `[x]`/`[S]` / Tasks remaining |
 | Acceptance Criteria | All Pass / Issues Found |
 | Scope | Clean / Creep Detected |
 | Quality | Pass / Issues Found |
 | Doc Freshness | Up to Date / Updates Needed |
-| ADR | Created / Not Needed |
+| Decision Record | Created / Not Needed |
+
+- [ ] **Human review approved**
 
 **Overall**: Ready for closeout / Issues to resolve
 
@@ -81,4 +94,4 @@ Only check docs that exist in the project. Mark N/A for docs that don't apply.
 1. Fill this checklist after all tasks in `tasks.md` are `[x]` or `[S]`
 2. For each AC, provide concrete evidence (test command output, file path, behavior observed)
 3. If any check fails, note the issue and recommend a fix before closeout
-4. Present the completed checklist to the user for final approval
+4. This checklist is the Definition of Done — do not proceed to closeout until all checks pass and the user approves

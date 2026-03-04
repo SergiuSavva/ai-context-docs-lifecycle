@@ -250,19 +250,39 @@ Add feature specs to your Context Loading section:
 
 ---
 
-## Workflow as a Skill or Rule
+## Skills (Feature Development)
 
-You can set up the feature workflow in two ways:
+This module provides three skills that teach AI agents how to execute the feature workflow. Templates live in `templates/.agents/skills/`.
 
-**Option A: Cursor Rule** (Cursor-specific, auto-loads on `specs/**`):
+| Skill | Purpose |
+|-------|---------|
+| `workflow-guide` | **Start here if unsure.** Inspects project state, recommends next action, routes to other skills |
+| `feature-workflow` | Four-phase workflow (Research → Plan → Implement → Verify), task markers, parallel waves, git workflow, verification |
+| `spec-writing` | Spec and task authoring — problem framing, acceptance criteria, scoping, task breakdown |
+
+### Setup
+
+**Option A: Agent Skill** (portable, works with any AI agent — recommended):
 
 ```bash
+cp -r templates/.agents/skills/feature-workflow .agents/skills/
+cp -r templates/.agents/skills/spec-writing .agents/skills/
+cp -r templates/.agents/skills/workflow-guide .agents/skills/
+```
+
+**Option B: Cursor Bridge + Skills** (auto-loads in `specs/` and source directories):
+
+```bash
+# Copy the skills first (the bridge routes to them)
+cp -r templates/.agents/skills/feature-workflow .agents/skills/
+cp -r templates/.agents/skills/spec-writing .agents/skills/
+cp -r templates/.agents/skills/workflow-guide .agents/skills/
+
+# Then add the Cursor bridge rule
 cp templates/.cursor/rules/feature-workflow.mdc .cursor/rules/
 ```
 
-**Option B: Agent Skill** (portable, works with any AI agent):
-
-Create `.agents/skills/feature-workflow/SKILL.md` with the four-phase workflow, task markers, and spec templates. See the [Skills section in Module 1](../01-project-context/README.md#skills-on-demand-instruction-packages) for the SKILL.md format.
+The Cursor bridge is a lightweight rule that auto-loads on `specs/**` and source directories, then routes to the portable skills for detailed instructions.
 
 ---
 
