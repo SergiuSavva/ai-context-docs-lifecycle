@@ -88,7 +88,7 @@ Proceed?"
 
 ### Phase 4: Create and Suggest Modules
 
-1. **Write AGENTS.md** — use the template, fill six sections (Overview, Stack, Commands, Structure, Context Loading, Boundaries), keep under 150 lines
+1. **Write AGENTS.md** — use the template, fill all sections: core (Overview, Stack, Commands, Structure, Context Loading, Boundaries) plus routing (Discovery -> Activation -> Execution, Task Mode Routing). Keep under 150 lines
 2. **Write reference docs** — only for detected signals, use the reference doc templates
 3. **Suggest next modules** based on project complexity:
 
@@ -266,7 +266,7 @@ The last row closes the feedback loop: bad AI output is a signal to improve your
 
 ## Quick Checklist
 
-- [ ] AGENTS.md exists with six sections (Overview, Stack, Commands, Structure, Context Loading, Boundaries)
+- [ ] AGENTS.md exists with core sections (Overview, Stack, Commands, Structure, Context Loading, Boundaries) and routing sections
 - [ ] AGENTS.md stays under 150 lines (router, not manual)
 - [ ] Reference docs in docs/ are current (or deleted)
 - [ ] Skills have concrete code examples from YOUR project (not generic)

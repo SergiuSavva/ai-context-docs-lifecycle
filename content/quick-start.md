@@ -157,11 +157,11 @@ project/
 
 ```
 project/
-├── AGENTS.md              # Layer 1: Always loaded
-├── .agents/skills/        # Layer 2: On-demand skills
+├── AGENTS.md              # Discovery: Always loaded
+├── .agents/skills/        # Activation: On-demand skills
 │   ├── {skill}/SKILL.md
 │   └── {skill}/SKILL.md
-├── docs/                  # Layer 3: Reference docs (project-specific)
+├── docs/                  # Activation: Reference docs (project-specific)
 │   ├── {relevant docs}.md
 │   └── decisions/
 └── specs/                 # Feature work (ephemeral)

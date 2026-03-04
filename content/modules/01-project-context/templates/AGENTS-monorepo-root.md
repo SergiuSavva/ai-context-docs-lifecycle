@@ -48,14 +48,23 @@ Use this flow for context loading:
 | `{{path/name}}` | {{description}} | {{stack}} |
 | `{{path/name}}` | {{description}} | {{stack}} |
 
-## Command Policy
+## Commands
 
 - Workspace package manager: `{{package-manager}}`
-- If the workspace maintains a command catalog, define it here (for example `@docs/scripts.md`)
+
+```bash
+{{package-manager}} install   # Install all workspace dependencies
+{{package-manager}} build     # Build all packages
+{{package-manager}} test      # Run all tests
+{{package-manager}} lint      # Lint all packages
+```
+
+<!-- Replace with actual verified workspace-level commands.
+     Remove any that don't apply. Mark inferred commands with (inferred). -->
+
+- If the workspace maintains a detailed command catalog, reference it here (for example `@docs/scripts.md`)
 - If subprojects maintain command docs, define those in each subproject's AGENTS.md
 - Do not invent commands; prefer verified entries only
-- Load command docs only for implementation, verification, or release tasks
-- Skip command docs for pure research, design, and planning tasks
 
 ## Task Mode Routing
 

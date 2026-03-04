@@ -31,14 +31,23 @@ Use this flow for context loading:
 3. **Execution (load before running commands)**
    - Command catalog in local docs (for example `@docs/scripts.md`) if this subproject maintains one
 
-## Command Policy
+## Commands
 
 - Package manager: `{{package-manager}}`
-- If this subproject maintains a command catalog, define it here (for example local `@docs/scripts.md`)
+
+```bash
+{{package-manager}} dev       # Start dev server
+{{package-manager}} test      # Run tests
+{{package-manager}} build     # Build
+{{package-manager}} lint      # Lint
+```
+
+<!-- Replace with actual verified commands for this subproject.
+     Remove any that don't apply. Mark inferred commands with (inferred). -->
+
+- If this subproject maintains a detailed command catalog, reference it here (for example local `@docs/scripts.md`)
 - Workspace-level command docs may also exist in root docs
 - Do not invent commands not present in project config/docs
-- Load command docs only for implementation, verification, or release tasks
-- Skip command docs for pure research, design, and planning tasks
 
 ## Task Mode Routing
 

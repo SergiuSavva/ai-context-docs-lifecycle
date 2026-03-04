@@ -178,8 +178,8 @@ Use the template structure:
 ## Discovery -> Activation -> Execution
 [Short loading policy]
 
-## Command Policy
-[Package manager + command source policy (for example `@docs/scripts.md` if present)]
+## Commands
+[Exact verified commands + package manager. Reference `@docs/scripts.md` if the project maintains a detailed command catalog]
 
 ## Task Mode Routing
 [Research/Design/Plan vs Implement/Fix vs Verify/Release]

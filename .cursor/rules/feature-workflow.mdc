@@ -1,5 +1,5 @@
 ---
-description: Implementation workflow - Research → Plan → Implement with task tracking
+description: Implementation workflow - Research → Plan → Implement → Verify with task tracking
 globs:
   - "specs/**/*"
   - "content/**/*"
@@ -10,11 +10,11 @@ alwaysApply: false
 
 > Reference: @docs/decisions/001-implementation-flow.md
 
-## Three Phases
+## Four Phases
 
 ```
-Research → Plan → Implement
-(optional)  (required)  (required)
+Research → Plan → Implement → Verify
+(optional)  (required)  (required)  (required)
 ```
 
 ## Decision Tree
@@ -32,7 +32,7 @@ Is this a bug fix?
     ├─ YES → Add design.md
     └─ NO → Continue
 
-    Validate with user → Implement
+    Validate with user → Implement → Verify → Closeout
 ```
 
 ---
@@ -60,36 +60,47 @@ Is this a bug fix?
 | Marker | Status |
 |--------|--------|
 | `[ ]` | Pending |
-| `[~]` | In Progress (only ONE) |
+| `[~]` | In Progress |
 | `[x]` | Completed |
 | `[B]` | Blocked (include reason) |
 | `[S]` | Skipped (include reason) |
+
+**Sequential (default)**: One `[~]` at a time.
+**Parallel (opt-in)**: One `[~]` per wave when tasks use `### Wave N` grouping.
 
 ---
 
 ## During Implementation
 
-1. **ONE task [~] at a time**
+1. **One `[~]` at a time** (or per wave if parallel)
 2. **Update tasks.md after EACH task**
-3. **Progress**: `(completed + skipped) / total * 100`
-4. **When blocked**: Mark `[B]`, ask user
+3. **Commit after each task or wave**
+4. **Progress**: `(completed + skipped) / total * 100`
+5. **When blocked**: Mark `[B]`, ask user
 
 ---
 
-## Completion Signal
+## Verify Phase
+
+When all tasks are `[x]` or `[S]`, create `verify-checklist.md`:
+
+1. Cross-reference each AC from spec.md with evidence
+2. Check scope (nothing missed, no creep)
+3. Verify affected reference docs are updated
+4. Check if ADR is needed
 
 ```
-Ready for review. Implementation complete.
+Verification complete.
 
-**Progress**: X/Y tasks (100%)
-**Acceptance Criteria**: All verified
+**Acceptance Criteria**: All pass / Issues found
+**Doc Freshness**: Up to date / Updates needed
 
-**Next steps**: Please review.
+**Next steps**: Please review. After approval, I will close out.
 ```
 
 ---
 
-## After Approval
+## After Approval (Closeout)
 
 1. Create ADR in `docs/decisions/` (if significant decision)
 2. Update AGENTS.md (if new patterns)

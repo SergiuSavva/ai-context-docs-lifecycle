@@ -20,17 +20,16 @@ This methodology treats documentation as operational memory for agents:
 
 The runtime model is progressive disclosure:
 
-| Layer | Purpose | Loading Mode | Typical Content |
+| Stage | Purpose | Loading Mode | Typical Content |
 |-------|---------|--------------|-----------------|
-| **Layer 1** | Fast project orientation | Always loaded | `AGENTS.md` |
-| **Layer 2** | Deep task-specific patterns | On-demand | `.agents/skills/*/SKILL.md` |
-| **Layer 3** | System reference knowledge | On-demand | `docs/` |
+| **Discovery** | Fast project orientation | Always loaded | `AGENTS.md` |
+| **Activation** | Deep task-specific patterns | On-demand | `.agents/skills/*/SKILL.md` + `docs/` |
+| **Execution** | Command catalog for running/verifying | On-demand | `docs/scripts.md` |
 
 ```mermaid
 flowchart LR
-    A["Layer 1<br/>AGENTS.md"] --> S["Layer 2<br/>Skills"]
-    A --> D["Layer 3<br/>docs/"]
-    S --> D
+    A["Discovery<br/>AGENTS.md"] --> S["Activation<br/>Skills + docs/"]
+    S --> E["Execution<br/>scripts.md"]
 ```
 
 Principle: keep `AGENTS.md` compact and route to deeper context only when needed.

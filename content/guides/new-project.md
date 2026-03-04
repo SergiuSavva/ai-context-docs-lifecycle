@@ -93,13 +93,13 @@ mkdir -p specs
 
 ```
 my-project/
-├── AGENTS.md                          # Layer 1: Always loaded
-├── .agents/skills/                    # Layer 2: On-demand skills
+├── AGENTS.md                          # Discovery: Always loaded
+├── .agents/skills/                    # Activation: On-demand skills
 │   ├── {skill}/SKILL.md
 │   └── {skill}/SKILL.md
-├── docs/                              # Layer 3: Reference docs (project-specific)
+├── docs/                              # Activation: Reference docs (project-specific)
 │   ├── {relevant docs}.md
-│   ├── scripts.md
+│   ├── scripts.md                     # Execution: Loaded before running commands
 │   └── decisions/
 ├── specs/                             # Feature work (ephemeral)
 └── src/
@@ -147,7 +147,7 @@ No spec needed. Just fix and commit.
 ```bash
 # 1. Create spec
 mkdir -p specs/my-feature
-# Copy spec.md and tasks.md from Module 3 templates
+# Copy spec.md and tasks.md from Module 2 templates
 
 # 2. Tell AI
 "Build the feature specified in specs/my-feature/"
@@ -163,7 +163,7 @@ mkdir -p specs/my-feature
 ```bash
 # 1. Create research
 mkdir -p specs/my-feature
-# Copy all templates from Module 3
+# Copy all templates from Module 2
 
 # 2. Tell AI
 "Research options for [feature] and create research.md"

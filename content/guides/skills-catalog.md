@@ -59,7 +59,7 @@ These ship as templates. Use them to teach AI agents how to follow the workflow.
 | | |
 |---|---|
 | **When to use** | Creating a new AGENTS.md, updating project context, onboarding a project |
-| **What it covers** | Router pattern, six essential sections, token budget, what-goes-where decisions, update triggers, anti-patterns |
+| **What it covers** | Router pattern, essential sections (core + routing), token budget, what-goes-where decisions, update triggers, anti-patterns |
 | **Module** | 1 (Project Context) |
 | **Token cost** | ~1,200-1,400 |
 | **Location** | `.agents/skills/agents-md/SKILL.md` |

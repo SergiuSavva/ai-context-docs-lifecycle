@@ -104,7 +104,7 @@ If you are not using the CLI, replace the workflow path with:
 
 ## Recommended Combinations
 
-### Solo Developer (Minimal)
+### Starter
 
 ```
 Module 1 — Basic tier (AGENTS.md + docs/)
@@ -112,7 +112,7 @@ Module 1 — Basic tier (AGENTS.md + docs/)
 
 Best for: Personal projects, prototypes, small apps
 
-### Solo Developer (Standard)
+### Production
 
 ```
 Module 1 — Full tier (AGENTS.md + docs/ + .agents/skills/)
@@ -120,7 +120,7 @@ Module 1 — Full tier (AGENTS.md + docs/ + .agents/skills/)
 
 Best for: Production apps with specific tech stack patterns
 
-### Team Project
+### Team
 
 ```
 Modules 1 + 2 (Project Context + Feature Dev)

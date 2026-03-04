@@ -88,8 +88,8 @@ npx @acdl/cli init --force
 
 ### Manual Setup (Module 1)
 
-1. Copy `[content/modules/01-project-context/templates/AGENTS-single-app.md](content/modules/01-project-context/templates/AGENTS-single-app.md)` to your project root as `AGENTS.md`
-2. Create `docs/` with reference doc templates from `[content/modules/01-project-context/templates/docs/](content/modules/01-project-context/templates/docs/)`
+1. Copy [AGENTS-single-app.md](content/modules/01-project-context/templates/AGENTS-single-app.md) to your project root as `AGENTS.md`
+2. Create `docs/` with reference doc templates from [Module 1 templates/docs/](content/modules/01-project-context/templates/docs/)
 3. Fill in your project details
 4. Done! AI agents now have context.
 
@@ -161,12 +161,12 @@ ai-context-docs-lifecycle/
 
 ```
 project/
-├── AGENTS.md              # Layer 1: Always loaded
-├── docs/                  # Layer 3: On-demand reference
+├── AGENTS.md              # Discovery: Always loaded
+├── docs/                  # Activation: On-demand reference
 │   ├── {relevant docs}.md
-│   ├── scripts.md         # If project has runnable commands
+│   ├── scripts.md         # Execution: Loaded before running commands
 │   └── decisions/
-└── .agents/skills/        # Layer 2: Loaded when task matches
+└── .agents/skills/        # Activation: Loaded when task matches
     ├── {methodology}/SKILL.md
     └── {stack}/SKILL.md
 ```

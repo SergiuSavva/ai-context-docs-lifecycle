@@ -28,13 +28,23 @@ Use this flow for context loading:
 3. **Execution (load before running commands)**
    - Command catalog (for example `@docs/scripts.md`) if this project maintains one
 
-## Command Policy
+## Commands
 
 - Package manager: `{{package-manager}}`
-- If this project maintains a command catalog, define it here (for example `@docs/scripts.md`)
+
+```bash
+{{package-manager}} install   # Install dependencies
+{{package-manager}} dev       # Start dev server
+{{package-manager}} test      # Run tests
+{{package-manager}} lint      # Lint
+{{package-manager}} build     # Production build
+```
+
+<!-- Replace with actual verified commands from package.json / Makefile / taskfile.
+     Remove any that don't apply. Mark inferred commands with (inferred). -->
+
+- If this project maintains a detailed command catalog, reference it here (for example `@docs/scripts.md`)
 - Do not invent commands not present in project config/docs
-- Load command docs only for implementation, verification, or release tasks
-- Skip command loading for pure research, design, and planning tasks
 
 ## Task Mode Routing
 

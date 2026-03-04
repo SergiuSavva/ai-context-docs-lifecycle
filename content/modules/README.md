@@ -30,29 +30,29 @@ Module 1 has three tiers: Basic (AGENTS.md), Standard (+ docs/), Full (+ .agents
 
 ## Recommended Combinations
 
-### Minimal
+### Starter
 
 ```
 Module 1 — Basic tier
 ```
 
-AGENTS.md only for basic AI context.
+AGENTS.md only for basic AI context. Best for personal projects and prototypes.
 
-### Standard
+### Production
 
 ```
 Module 1 — Full tier
 ```
 
-AGENTS.md + docs/ + skills for deep tech stack patterns.
+AGENTS.md + docs/ + skills for deep tech stack patterns. Best for production apps.
 
-### Full
+### Team
 
 ```
 Modules 1 + 2
 ```
 
-Add feature workflows for structured development.
+Add feature workflows for structured development. Best for team projects.
 
 ### Enterprise
 
@@ -60,7 +60,7 @@ Add feature workflows for structured development.
 All modules (1-3)
 ```
 
-Add project planning for multi-feature management.
+Add project planning for multi-feature management. Best for products with roadmaps.
 
 ---
 

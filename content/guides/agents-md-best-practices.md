@@ -423,6 +423,5 @@ Start with a minimal AGENTS.md. When the AI makes a mistake, add a routing hint,
 
 ## See Also
 
-- [Module 1: Project Context](../modules/01-project-context/README.md) - AGENTS.md + docs/ templates
-- [Module 1: Project Context](../modules/01-project-context/README.md) - Includes on-demand skill packages
+- [Module 1: Project Context](../modules/01-project-context/README.md) - AGENTS.md + docs/ + skills templates
 - [Getting Started Guide](./getting-started.md) - Choose your modules

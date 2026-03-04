@@ -21,7 +21,9 @@ docs/ — detailed reference, variable tokens
 
 ---
 
-## Six Essential Sections
+## Essential Sections
+
+Every AGENTS.md needs these six core sections:
 
 | Section | What to Include |
 |---------|-----------------|
@@ -31,6 +33,8 @@ docs/ — detailed reference, variable tokens
 | **Structure** | Directory tree with key areas for routing |
 | **Context Loading** | Task → doc/skill routing table |
 | **Boundaries** | Always / Ask First / Never rules |
+
+The ACDL template also includes routing sections (Discovery -> Activation -> Execution, Task Mode Routing) that describe the context loading model. These are recommended for projects using the full methodology.
 
 ---
 
