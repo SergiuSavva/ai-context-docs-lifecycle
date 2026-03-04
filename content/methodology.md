@@ -42,7 +42,7 @@ Principle: keep `AGENTS.md` compact and route to deeper context only when needed
 | Module | Teaches | Main Artifacts |
 |--------|---------|----------------|
 | **1. Project Context** | Core context, reference, and on-demand skills | `AGENTS.md`, `docs/`, `.agents/skills/` |
-| **2. Feature Development** | Research → Plan → Implement workflow | `specs/<feature>/` |
+| **2. Feature Development** | Research → Plan → Implement → Verify workflow | `specs/<feature>/` |
 | **3. Project Planning** | Optional multi-feature planning | `PROJECT-PRD.md`, `BACKLOG.md`, `ROADMAP.md`, `TASKS.md` |
 
 Modules are adoption units. Layers are runtime loading behavior.
@@ -99,11 +99,23 @@ Optional docs when needed:
 
 Rules during execution:
 
-- exactly one task `[~]` in progress at a time
+- one task `[~]` in progress at a time (sequential), or one `[~]` per wave (parallel)
 - update `tasks.md` after each completed/blocked/skipped step
 - request human validation at checkpoints
+- commit after each completed task or wave
 
-### 5. Closeout
+### 5. Verify Before Closeout
+
+After all tasks are complete, create `verify-checklist.md`:
+
+- cross-reference each acceptance criterion with concrete evidence
+- check scope (nothing missed, no creep)
+- verify affected reference docs are updated
+- check if an ADR is needed
+
+Present the checklist to the user for approval before closeout.
+
+### 6. Closeout
 
 After approval:
 
@@ -138,14 +150,20 @@ Use complexity signals, not file count:
 | Marker | Meaning |
 |--------|---------|
 | `[ ]` | Pending |
-| `[~]` | In progress (only one) |
+| `[~]` | In progress |
 | `[x]` | Completed |
 | `[B]` | Blocked (must include reason) |
 | `[S]` | Skipped (must include reason) |
 
-Progress formula:
+Progress formula: `(completed + skipped) / total * 100`
 
-`(completed + skipped) / total * 100`
+### Sequential vs Parallel
+
+**Sequential (default)**: One `[~]` at a time across all tasks.
+
+**Parallel (opt-in)**: Group tasks into waves using `### Wave N` headers. Tasks within a wave are independent and can run concurrently. All tasks in Wave N must complete before Wave N+1 starts. One `[~]` at a time per wave.
+
+Use waves when a feature has multiple independent streams (e.g., API + UI + tests) or clear dependency boundaries between task groups.
 
 ---
 
@@ -174,6 +192,20 @@ Update reference docs in the same PR as code changes. Only applicable for docs t
 | System boundary/structure change | `docs/architecture.md` + ADR if significant |
 
 Not every project has every doc. Update only the docs your project maintains.
+
+---
+
+## Git Integration
+
+Recommended practices for tying version control to the feature workflow:
+
+- **Branch per feature**: Create `feat/<spec-name>` or `fix/<spec-name>` from your main branch
+- **Commit per task or wave**: Commit after each completed task or wave, not one giant commit at the end
+- **Message format**: `type(scope): description` (e.g., `feat(search): add filter component`)
+- **Spec in branch**: Include `specs/` folder in the branch; remove during closeout
+- **On closeout**: Squash-merge or merge with history — project's choice
+
+These are recommendations, not mandates. Adapt to your project's existing git conventions.
 
 ---
 

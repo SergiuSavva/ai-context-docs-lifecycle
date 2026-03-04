@@ -1,5 +1,5 @@
 ---
-description: Feature development workflow for AI agents - three phases, task tracking, and completion signals
+description: Feature development workflow for AI agents - four phases, task tracking, verification, and parallel execution
 globs:
   - "specs/**/*"
   - "src/**/*"
@@ -13,11 +13,11 @@ alwaysApply: false
 > This rule activates when working in specs/ or source code directories.
 > **Alternative**: This can also be a portable skill at `.agents/skills/feature-workflow/SKILL.md`
 
-## Three Phases
+## Four Phases
 
 ```
-Research → Plan → Implement
-(optional)  (required)  (required)
+Research → Plan → Implement → Verify
+(optional)  (required)  (required)  (required)
 ```
 
 ## Decision Tree
@@ -74,10 +74,13 @@ AI MUST check before implementing:
 | Marker | Status |
 |--------|--------|
 | `[ ]` | Pending |
-| `[~]` | In progress (only ONE) |
+| `[~]` | In progress |
 | `[x]` | Completed |
 | `[B]` | Blocked (include reason) |
 | `[S]` | Skipped (include reason) |
+
+**Sequential (default)**: One `[~]` at a time.
+**Parallel (opt-in)**: One `[~]` per wave when tasks use `### Wave N` grouping.
 
 ---
 
@@ -86,8 +89,7 @@ AI MUST check before implementing:
 ```
 AI MUST follow these rules:
 
-1. ONE task [~] at a time
-   - Never have multiple tasks in progress
+1. One [~] at a time (or per wave if parallel)
 
 2. Update tasks.md after EACH task
    - Mark completed: [x]
@@ -95,47 +97,56 @@ AI MUST follow these rules:
    - Mark skipped: [S] with reason
    - Recalculate progress
 
-3. Progress calculation
+3. Commit after each task or wave
+
+4. Progress calculation
    progress = (completed + skipped) / total * 100
 
-4. When blocked
+5. When blocked
    - Mark task [B] with clear reason
    - Ask user for guidance
 ```
 
 ---
 
-## Signaling Completion
+## Verify Phase
 
-When all tasks are `[x]` or `[S]`:
+When all tasks are `[x]` or `[S]`, create `verify-checklist.md`:
+
+1. Cross-reference each AC from spec.md with evidence
+2. Check scope (nothing missed, no creep)
+3. Verify affected reference docs are updated
+4. Check if ADR is needed
+
+Present the checklist to the user:
 
 ```
-"Ready for review. Implementation complete.
+"Verification complete.
 
-**DoD Checklist**:
-- [x] All tasks completed (X/Y)
-- [x] Acceptance criteria verified
-- [ ] Human review needed
+**Acceptance Criteria**: All pass / Issues found
+**Scope**: Clean / Creep detected
+**Doc Freshness**: Up to date / Updates needed
 
-**Acceptance Criteria Status**:
-- AC-01: ✓ Implemented
-- AC-02: ✓ Implemented
-
-**Next steps**: Please review and provide feedback."
+**Next steps**: Please review. After approval, I will close out."
 ```
-
-For complex features, also include:
-- ADR needed: Yes/No
-- AGENTS.md updates needed: [List sections]
 
 ---
 
-## After Approval
+## After Approval (Closeout)
 
 1. **Update docs/** (if code changes affect schema, API, auth, or architecture)
 2. **Create ADR** (if significant decision was made)
 3. **Update AGENTS.md** (if new patterns)
 4. **Delete spec folder**: `specs/[feature]/`
+
+---
+
+## Git Workflow (Recommended)
+
+- Branch per feature: `feat/<spec-name>` or `fix/<spec-name>`
+- Commit per task or wave (not one giant commit)
+- Message format: `type(scope): description`
+- Include `specs/` in branch; remove during closeout
 
 ---
 
@@ -158,6 +169,7 @@ Templates location: `.acdl/templates/`
 |----------|----------|---------|
 | `spec.md` | Yes | `specs/[feature]/spec.md` |
 | `tasks.md` | Yes | `specs/[feature]/tasks.md` |
+| `verify-checklist.md` | Yes (Verify phase) | `specs/[feature]/verify-checklist.md` |
 | `research.md` | No | `specs/[feature]/research.md` |
 | `design.md` | No | `specs/[feature]/design.md` |
 | `plan.md` | No | `specs/[feature]/plan.md` |

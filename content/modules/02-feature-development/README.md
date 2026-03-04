@@ -1,6 +1,6 @@
 # Module 2: Feature Development
 
-> **Structured workflows for building features** - three phases, AI decides which docs are needed.
+> **Structured workflows for building features** - four phases, AI decides which docs are needed.
 
 ---
 
@@ -12,13 +12,13 @@ Without structure, AI builds features chaotically:
 - Decisions made and forgotten
 - No way to resume after interruption
 
-**The solution**: A three-phase workflow with task tracking and user validation.
+**The solution**: A structured workflow with task tracking, verification, and user validation.
 
 ---
 
 ## What This Module Does
 
-Provides a three-phase workflow for AI agents: **Research → Plan → Implement**. The AI decides which documents to create based on feature complexity.
+Provides a structured workflow for AI agents: **Research → Plan → Implement → Verify**. The AI decides which documents to create based on feature complexity.
 
 ## When to Use
 
@@ -29,11 +29,11 @@ Provides a three-phase workflow for AI agents: **Research → Plan → Implement
 
 ---
 
-## Three Phases
+## Four Phases
 
 ```
-Research → Plan → Implement
-(optional)  (required)  (required)
+Research → Plan → Implement → Verify
+(optional)  (required)  (required)  (required)
 ```
 
 Each phase includes validation checkpoints with the user.
@@ -43,6 +43,7 @@ Each phase includes validation checkpoints with the user.
 | **Research** | Explore unknowns, evaluate options | Multiple approaches possible |
 | **Plan** | Define what to build, break into tasks | Always (for features) |
 | **Implement** | Execute step by step | Always |
+| **Verify** | Confirm implementation matches spec | Always (after tasks complete) |
 
 ---
 
@@ -54,6 +55,12 @@ Each phase includes validation checkpoints with the user.
 |----------|---------|
 | `spec.md` | What to build, acceptance criteria |
 | `tasks.md` | Execution checklist, progress tracking |
+
+### Verification (created during Verify phase)
+
+| Document | Purpose |
+|----------|---------|
+| `verify-checklist.md` | Cross-references acceptance criteria against implementation |
 
 ### Optional (add as needed)
 
@@ -80,6 +87,7 @@ project/
 │   └── [feature-name]/
 │       ├── spec.md               # Required
 │       ├── tasks.md              # Required
+│       ├── verify-checklist.md   # Created during Verify phase
 │       ├── research.md           # Optional
 │       ├── design.md             # Optional
 │       ├── plan.md               # Optional
@@ -139,7 +147,8 @@ See: [`workflows/quick-flow.md`](./workflows/quick-flow.md)
 2. Add optional docs if needed
 3. Validate with user
 4. Implement with task tracking
-5. Delete spec folder
+5. Verify against acceptance criteria
+6. Delete spec folder
 
 **Templates**:
 - [`templates/spec.md`](./templates/spec.md)
@@ -158,8 +167,9 @@ See: [`workflows/standard-flow.md`](./workflows/standard-flow.md)
 2. Plan phase with all docs
 3. Validate with user
 4. Implement with task tracking
-5. Create ADR for key decisions
-6. Delete spec folder
+5. Verify against acceptance criteria
+6. Create ADR for key decisions
+7. Delete spec folder
 
 **Templates**:
 - [`templates/research.md`](./templates/research.md)
@@ -168,6 +178,7 @@ See: [`workflows/standard-flow.md`](./workflows/standard-flow.md)
 - [`templates/plan.md`](./templates/plan.md)
 - [`templates/user-stories.md`](./templates/user-stories.md)
 - [`templates/tasks.md`](./templates/tasks.md)
+- [`templates/verify-checklist.md`](./templates/verify-checklist.md)
 
 See: [`workflows/complex-flow.md`](./workflows/complex-flow.md)
 
@@ -178,12 +189,14 @@ See: [`workflows/complex-flow.md`](./workflows/complex-flow.md)
 | Marker | Status |
 |--------|--------|
 | `[ ]` | Pending |
-| `[~]` | In Progress (only ONE at a time) |
+| `[~]` | In Progress |
 | `[x]` | Completed |
 | `[B]` | Blocked (include reason) |
 | `[S]` | Skipped (include reason) |
 
 **Progress**: `(completed + skipped) / total * 100`
+
+**Sequential (default)**: One `[~]` at a time. **Parallel (opt-in)**: Group tasks into waves for concurrent execution — one `[~]` per wave.
 
 ---
 
@@ -200,9 +213,10 @@ The methodology provides structure. The AI agent decides specifics:
 
 | Methodology Provides | AI Agent Decides |
 |---------------------|------------------|
-| Three phases | Which optional docs to create |
+| Four phases | Which optional docs to create |
 | Document catalog | Level of detail needed |
-| Task markers | Task granularity |
+| Task markers + wave grouping | Task granularity and parallelism |
+| Verification checklist | Level of evidence per criterion |
 
 ---
 
@@ -248,7 +262,7 @@ cp templates/.cursor/rules/feature-workflow.mdc .cursor/rules/
 
 **Option B: Agent Skill** (portable, works with any AI agent):
 
-Create `.agents/skills/feature-workflow/SKILL.md` with the three-phase workflow, task markers, and spec templates. See the [Skills section in Module 1](../01-project-context/README.md#skills-on-demand-instruction-packages) for the SKILL.md format.
+Create `.agents/skills/feature-workflow/SKILL.md` with the four-phase workflow, task markers, and spec templates. See the [Skills section in Module 1](../01-project-context/README.md#skills-on-demand-instruction-packages) for the SKILL.md format.
 
 ---
 

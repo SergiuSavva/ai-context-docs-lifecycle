@@ -51,10 +51,10 @@ Start with [guides/getting-started.md](./guides/getting-started.md) to choose yo
 
 ## Key Concepts
 
-### Three Phases
+### Four Phases
 
 ```
-Research → Plan → Implement
+Research → Plan → Implement → Verify
 ```
 
 | Situation | Docs Needed |

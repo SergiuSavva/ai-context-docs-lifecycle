@@ -18,10 +18,10 @@
 
 ---
 
-## Three Phases
+## Four Phases
 
 ```
-Research (required) → Plan (required) → Implement (required)
+Research (required) → Plan (required) → Implement (required) → Verify (required)
 ```
 
 All phases include validation checkpoints with user.
@@ -98,12 +98,14 @@ Execute with structured task tracking.
 ### AI Instructions
 
 ```
-1. ONE task [~] at a time
+1. ONE task [~] at a time (per wave, if using waves)
 2. Update tasks.md after EACH task
 3. Work in dependency order (see plan.md)
 4. Signal completion at milestones
 5. Request human review at checkpoints
 ```
+
+**Parallel execution (opt-in)**: When tasks are grouped into waves in `tasks.md`, independent tasks within a wave can run in parallel. All tasks in Wave N must complete before Wave N+1 starts.
 
 ### Context Loading Order
 
@@ -119,30 +121,40 @@ Execute with structured task tracking.
 
 ---
 
-## Completion
+## Phase 4: Verify
 
-When all tasks are done:
+When all tasks are `[x]` or `[S]`, run verification before signaling completion.
+
+### Create verify-checklist.md
 
 ```
-Ready for review. Implementation complete.
+specs/[feature-name]/verify-checklist.md
+```
 
-**DoD Checklist**:
-- [x] All tasks completed (X/Y)
-- [x] All acceptance criteria verified
-- [x] Tests passing
-- [ ] ADR needed: Yes/No
-- [ ] AGENTS.md updates needed: [list sections]
-- [ ] Human review needed
+Cross-reference each acceptance criterion from `spec.md` against the implementation:
 
-**Key Decisions Made**:
-- [Decision 1]: [Brief rationale]
+1. **Acceptance Criteria** — verify each AC with concrete evidence (test output, observed behavior)
+2. **Scope Check** — confirm in-scope items delivered, no out-of-scope creep
+3. **Quality Checks** — no linter errors, tests pass
+4. **Doc Freshness** — update affected `docs/` files in the same PR
+5. **ADR Check** — create decision record if significant choices were made
 
-**Next steps**: Please review. After approval, I will create ADR.
+Present the completed checklist to the user for approval.
+
+```
+Verification complete.
+
+**Acceptance Criteria**: All pass / Issues found
+**Scope**: Clean / Creep detected
+**Key Decisions**: [Decision 1]: [Brief rationale]
+**Doc Freshness**: Up to date / Updates needed
+
+**Next steps**: Please review. After approval, I will close out.
 ```
 
 ---
 
-## After Approval
+## After Approval (Closeout)
 
 ### 1. Create ADR
 
@@ -171,6 +183,18 @@ Knowledge now lives in:
 
 ---
 
+## Git Workflow (Recommended)
+
+These are recommendations, not mandates:
+
+- **Branch per feature**: Create `feat/<spec-name>` or `fix/<spec-name>` from your main branch
+- **Commit per task or wave**: Commit after each completed task or wave, not one giant commit at the end
+- **Meaningful messages**: Use `type(scope): description` format (e.g., `feat(auth): add JWT verification`)
+- **Spec in branch**: Include `specs/` folder in the branch; remove during closeout
+- **On closeout**: Squash-merge or merge with history — your choice
+
+---
+
 ## Definition of Done
 
 ### Auto-Verifiable
@@ -179,12 +203,16 @@ Knowledge now lives in:
 - [ ] No blocked tasks remaining
 - [ ] No linter errors
 
-### Manual Verification
+### Verification
 
-- [ ] All acceptance criteria verified
-- [ ] Tests written and passing
+- [ ] verify-checklist.md completed
+- [ ] All acceptance criteria pass with evidence
+- [ ] Affected docs updated
 - [ ] ADR created for key decisions
-- [ ] AGENTS.md updated
+
+### Manual
+
+- [ ] Human review approved
 
 ---
 
@@ -193,15 +221,16 @@ Knowledge now lives in:
 ```
 specs/
 └── [feature-name]/
-    ├── research.md      # Required for complex
-    ├── spec.md          # Required
-    ├── tasks.md         # Required
-    ├── design.md        # Recommended
-    ├── plan.md          # Recommended
-    └── user-stories.md  # Recommended
+    ├── research.md          # Required for complex
+    ├── spec.md              # Required
+    ├── tasks.md             # Required
+    ├── verify-checklist.md  # Created during Verify phase
+    ├── design.md            # Recommended
+    ├── plan.md              # Recommended
+    └── user-stories.md      # Recommended
 
 docs/decisions/
-└── NNN-[decision].md    # Created after approval
+└── NNN-[decision].md        # Created after approval
 ```
 
 ---
@@ -212,5 +241,5 @@ docs/decisions/
 |-------|----------|
 | Research | User approves approach |
 | Plan | User approves spec |
-| Implement | User reviews code |
-| Completion | User approves for merge |
+| Implement | Tasks complete, proceed to verify |
+| Verify | User reviews checklist and approves for merge |

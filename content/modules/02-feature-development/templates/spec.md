@@ -63,6 +63,7 @@
 ## Related Docs
 
 - [tasks.md](./tasks.md) - Implementation checklist
+- [verify-checklist.md](./verify-checklist.md) - Verification against acceptance criteria
 - [design.md](./design.md) - Architecture (if needed)
 - [plan.md](./plan.md) - Sequence & dependencies (if needed)
 - [research.md](./research.md) - Options evaluated (if needed)

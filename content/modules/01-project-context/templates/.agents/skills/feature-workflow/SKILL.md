@@ -1,17 +1,17 @@
 ---
 name: feature-workflow
-description: Three-phase feature workflow — Research, Plan, Implement with task tracking and validation checkpoints. Use when building features, executing tasks, or managing implementation progress.
+description: Feature workflow — Research, Plan, Implement, Verify with task tracking, parallel execution, and validation checkpoints. Use when building features, executing tasks, or managing implementation progress.
 ---
 
 # Feature Workflow
 
 > **References:** Implementation flow → @docs/decisions/001-implementation-flow.md
 
-## Three Phases
+## Four Phases
 
 ```
-Research → Plan → Implement
-(optional)  (required)  (required)
+Research → Plan → Implement → Verify
+(optional)  (required)  (required)  (required)
 ```
 
 | Phase | Purpose | When |
@@ -19,6 +19,7 @@ Research → Plan → Implement
 | **Research** | Explore unknowns, evaluate options | Multiple approaches possible |
 | **Plan** | Define what to build, break into tasks | Always (for features) |
 | **Implement** | Execute step by step | Always |
+| **Verify** | Confirm implementation matches spec | Always (after tasks complete) |
 
 Each phase ends with a **user validation checkpoint** before proceeding.
 
@@ -71,35 +72,49 @@ Is this a bug fix?
 | Marker | Status |
 |--------|--------|
 | `[ ]` | Pending |
-| `[~]` | In Progress (only ONE at a time) |
+| `[~]` | In Progress |
 | `[x]` | Completed |
 | `[B]` | Blocked (include reason) |
 | `[S]` | Skipped (include reason) |
 
 **Progress formula**: `(completed + skipped) / total * 100`
 
+### Sequential vs Parallel
+
+- **Sequential (default)**: One `[~]` at a time across all tasks
+- **Parallel (opt-in)**: Tasks grouped into waves (`### Wave N` headers). One `[~]` per wave. All tasks in Wave N must complete before Wave N+1 starts.
+
 ---
 
 ## During Implementation
 
-1. **ONE task `[~]` at a time** — never mark multiple in progress
+1. **One `[~]` at a time** (sequential) or **one `[~]` per wave** (parallel)
 2. **Update tasks.md after EACH task** — track progress continuously
-3. **Calculate progress** after each update
-4. **When blocked** — mark `[B]` with reason, ask user for help
+3. **Commit after each task or wave** — not one giant commit at the end
+4. **Calculate progress** after each update
+5. **When blocked** — mark `[B]` with reason, ask user for help
 
 ---
 
-## Completion Signal
+## Verify Phase
 
-When all tasks are done, output:
+When all tasks are `[x]` or `[S]`, create `verify-checklist.md`:
+
+1. Cross-reference each acceptance criterion with concrete evidence
+2. Check scope (nothing missed, no creep)
+3. Verify affected reference docs are updated
+4. Check if ADR is needed
+
+Present the completed checklist to the user for approval.
 
 ```
-Ready for review. Implementation complete.
+Verification complete.
 
 **Progress**: X/Y tasks (100%)
-**Acceptance Criteria**: All verified
+**Acceptance Criteria**: All pass / Issues found
+**Doc Freshness**: Up to date / Updates needed
 
-**Next steps**: Please review.
+**Next steps**: Please review. After approval, I will close out.
 ```
 
 ---
@@ -119,7 +134,16 @@ Not every project has every doc. Update only the docs your project maintains. Up
 
 ---
 
-## After Approval
+## Git Workflow (Recommended)
+
+- **Branch per feature**: `feat/<spec-name>` or `fix/<spec-name>`
+- **Commit per task or wave**: Not one giant commit at the end
+- **Message format**: `type(scope): description`
+- **Spec in branch**: Include `specs/` folder; remove during closeout
+
+---
+
+## After Approval (Closeout)
 
 1. Create ADR in `docs/decisions/` (if significant decision was made)
 2. Update AGENTS.md (if new patterns emerged)
@@ -139,9 +163,10 @@ Not every project has every doc. Update only the docs your project maintains. Up
 
 - [ ] spec.md exists with problem, solution, and acceptance criteria
 - [ ] tasks.md exists with phases and T-XX numbered tasks
-- [ ] Only ONE task marked `[~]` at any time
+- [ ] One `[~]` at a time (or per wave if parallel)
 - [ ] tasks.md updated after each completed task
 - [ ] User validated spec before implementation started
+- [ ] verify-checklist.md completed after all tasks done
 - [ ] Docs updated if code changed data model, API, or architecture
 - [ ] Spec folder deleted after feature approved
 

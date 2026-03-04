@@ -233,7 +233,9 @@ A **Skill** is a `SKILL.md` file in `.agents/skills/` that teaches an AI agent h
 
 ```
 .agents/skills/
-├── feature-workflow/         # Methodology: Research → Plan → Implement phases
+├── feature-workflow/         # Methodology: Research → Plan → Implement → Verify
+│   └── SKILL.md
+├── workflow-guide/           # Methodology: "What should I do next?" guidance
 │   └── SKILL.md
 ├── agents-md/                # Methodology: AGENTS.md authoring and maintenance
 │   └── SKILL.md
@@ -317,7 +319,8 @@ These skills teach AI agents how to use the ACDL workflow itself. They ship as t
 
 | Skill | Covers |
 |-------|--------|
-| `feature-workflow` | Three-phase workflow (Research → Plan → Implement), task markers, progress tracking |
+| `feature-workflow` | Four-phase workflow (Research → Plan → Implement → Verify), task markers, parallel waves, git workflow, verification |
+| `workflow-guide` | Project state inspection, next-action recommendations, recovery scenarios |
 | `agents-md` | AGENTS.md authoring — section anatomy, token budget, router pattern, update triggers |
 | `spec-writing` | Spec and task authoring — problem framing, acceptance criteria, scoping, task breakdown |
 | `doc-writing` | Reference docs, guides, READMEs, ADRs, templates — structure, style, freshness rules |
