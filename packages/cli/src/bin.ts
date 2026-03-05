@@ -19,12 +19,28 @@ program
   .description("Initialize AI Context Docs in any project")
   .version(pkg.version);
 
-program
+const initCmd = program
   .command("init")
   .description(
     "Initialize .acdl/ with methodology content and templates"
   )
   .option("--force", "Re-initialize over existing .acdl/", false)
+  .option("-y, --yes", "Accept default module selection without prompting")
+  .option("--modules <list>", 'Modules to install: comma-separated (1,2,3) or "all"')
+  .option("--skip-install", "Skip installing module assets into project")
+  .option("--dry-run", "Preview what would be installed without writing files")
   .action(initCommand);
+
+initCmd.addHelpText(
+  "after",
+  `
+Available modules:
+  1  Project Context        — skills, docs/ templates
+  2  Feature Development    — workflow skills, cursor rules, spec templates
+  3  Project Planning       — roadmap, backlog, tasks, PRD templates
+
+Modules 1 and 2 are selected by default when using -y or the interactive prompt.
+`
+);
 
 program.parse();

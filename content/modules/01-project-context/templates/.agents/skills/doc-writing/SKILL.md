@@ -226,6 +226,13 @@ Docs are **evergreen** — always current or deleted. Never stale. For full upda
 
 ---
 
+## When NOT to Use
+
+- Writing or updating **AGENTS.md** → `load skill agents-md`
+- Writing **feature specs** (spec.md, tasks.md) → `load skill spec-writing`
+- Writing **code** or implementation → use stack-specific skills
+- Setting up **ACDL methodology** → `load skill acdl`
+
 ## Quick Checklist
 
 - [ ] Doc follows: value only, structure over prose, visual over text
@@ -241,4 +248,5 @@ Docs are **evergreen** — always current or deleted. Never stale. For full upda
 ## Related Docs
 
 - load skill `agents-md`
+- load skill `acdl`
 - load skill `spec-writing`

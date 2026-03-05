@@ -176,52 +176,20 @@ For spec quality: `load skill spec-writing`
 
 ## Daily Workflow
 
-How ACDL integrates into day-to-day development:
+For day-to-day development patterns (what to do next, resuming work, feature flow), `load skill workflow-guide`.
 
-```
-Starting work?
-├─ AGENTS.md loads automatically (identity, navigation, boundaries)
-├─ Check specs/ for active features with in-progress tasks
-└─ Load relevant skills when task matches a context loading entry
-
-Building a feature?
-├─ Bug fix → just fix it, no docs needed
-├─ Feature → load skill feature-workflow
-│   ├─ Create specs/[feature]/spec.md + tasks.md
-│   ├─ ONE task [~] at a time, update tasks.md after each
-│   └─ Signal completion when done
-└─ Need research first? → Add research.md before spec
-
-Shipping code?
-├─ Update any docs/ files affected by the change
-├─ Create ADR in docs/decisions/ if significant decision was made
-├─ Update AGENTS.md if new project-level patterns emerged
-└─ Delete specs/[feature]/ folder after approval (specs are ephemeral)
-```
-
-### What Goes Where
-
-| Content | Location | Rule |
-|---------|----------|------|
-| Project identity, stack, commands | `AGENTS.md` | Fits in one bullet → AGENTS.md |
-| Deep domain patterns with code | `.agents/skills/` | Needs code examples → skill |
-| Architecture, data model, API | `docs/` | Reference content → docs/ |
-| Significant technical choices | `docs/decisions/` | Permanent record → ADR |
-| Feature requirements and tasks | `specs/` | Ephemeral → delete after shipping |
+For content placement decisions (AGENTS.md vs skill vs docs/), `load skill agents-md` (What Goes Where).
 
 ---
 
 ## Maintenance Triggers
 
-Update docs when these things happen:
+For AGENTS.md-specific update triggers (when to update Stack, Commands, Structure, Context Loading, Boundaries), `load skill agents-md` (Update Triggers).
+
+Additional project-level triggers:
 
 | What Changed | Update |
 |--------------|--------|
-| Added/changed dependency | AGENTS.md Stack table |
-| New command or script | AGENTS.md Commands + `docs/scripts.md` |
-| Directory restructured | AGENTS.md Structure section |
-| Created new skill | AGENTS.md Context Loading table |
-| New docs/ file added | AGENTS.md Context Loading table |
 | Feature shipped | Delete `specs/[feature]/`, update affected `docs/` |
 | Architecture decision made | Create ADR in `docs/decisions/` |
 | Boundary violated (mistake happened) | Add to AGENTS.md Boundaries (Never) |
@@ -250,19 +218,15 @@ The last row closes the feedback loop: bad AI output is a signal to improve your
 | Stack-specific patterns | `load skill [your-stack-skill]` |
 | Set up or maintain ACDL | This skill |
 
-## Templates Quick Reference
+## When NOT to Use
 
-**Read the template before creating any doc.**
+- Writing or updating **AGENTS.md** specifically → `load skill agents-md`
+- Writing **any markdown doc** (reference docs, guides, ADRs) → `load skill doc-writing`
+- Building a **feature** (workflow, tasks, implementation) → `load skill feature-workflow`
+- Writing **spec content** (problem/solution, acceptance criteria) → `load skill spec-writing`
+- Resuming work or asking **"what should I do next?"** → `load skill workflow-guide`
 
-| Template | Path |
-|----------|------|
-| Skill template | `01-project-context/templates/.agents/skills/skill-template/SKILL.md` |
-| spec.md | `02-feature-development/templates/spec.md` |
-| tasks.md | `02-feature-development/templates/tasks.md` |
-| research.md | `02-feature-development/templates/research.md` |
-| design.md | `02-feature-development/templates/design.md` |
-| plan.md | `02-feature-development/templates/plan.md` |
-| ADR template | `01-project-context/templates/docs/decisions/adr.md` |
+Use this skill for: initial ACDL setup, methodology configuration, diagnosing AI quality problems, and understanding the overall system.
 
 ## Quick Checklist
 
@@ -277,7 +241,8 @@ The last row closes the feedback loop: bad AI output is a signal to improve your
 
 ## Related Docs
 
-- load skill `doc-writing`
 - load skill `agents-md`
+- load skill `doc-writing`
 - load skill `feature-workflow`
 - load skill `spec-writing`
+- load skill `workflow-guide`
