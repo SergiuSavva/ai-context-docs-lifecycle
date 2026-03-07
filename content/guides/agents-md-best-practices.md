@@ -273,8 +273,8 @@ make migrate            # Run migrations
 ### Templates
 
 Use the monorepo templates from Module 1:
-- [Monorepo Root Template](../modules/01-project-context/templates/AGENTS-monorepo-root.md)
-- [Subproject Template](../modules/01-project-context/templates/AGENTS-monorepo-subproject.md)
+- [Monorepo Root Template](../modules/01-project-context/skills/acdl/templates/AGENTS-monorepo-root.md)
+- [Subproject Template](../modules/01-project-context/skills/acdl/templates/AGENTS-monorepo-subproject.md)
 
 ---
 

@@ -30,7 +30,7 @@ Use tool-specific files for extra ergonomics (globs, UI actions), not as your pr
 ### Recommended Baseline (Any Tool)
 
 1. Create `AGENTS.md` at project root from:
-   `content/modules/01-project-context/templates/AGENTS-single-app.md`
+   `content/modules/01-project-context/skills/acdl/templates/AGENTS-single-app.md`
 2. Create `docs/` from Module 1 template catalog (only the docs your project needs).
 3. Create `.agents/skills/` from Module 1 skill templates for deep domain patterns.
 4. Keep feature workflow templates in `specs/` (Module 2).

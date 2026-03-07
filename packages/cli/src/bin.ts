@@ -22,9 +22,9 @@ program
 const initCmd = program
   .command("init")
   .description(
-    "Initialize .acdl/ with methodology content and templates"
+    "Install ACDL skills and templates into your project"
   )
-  .option("--force", "Re-initialize over existing .acdl/", false)
+  .option("--force", "Overwrite existing skill and template files", false)
   .option("-y, --yes", "Accept default module selection without prompting")
   .option("--modules <list>", 'Modules to install: comma-separated (1,2,3) or "all"')
   .option("--skip-install", "Skip installing module assets into project")
@@ -35,9 +35,9 @@ initCmd.addHelpText(
   "after",
   `
 Available modules:
-  1  Project Context        — skills, docs/ templates
-  2  Feature Development    — workflow skills, cursor rules, spec templates
-  3  Project Planning       — roadmap, backlog, tasks, PRD templates
+  1  Project Context        — AGENTS.md bootstrap, reference doc templates, doc-writing skills
+  2  Feature Development    — feature workflow skills, spec templates, optional Cursor bridge
+  3  Project Planning       — project planning skill with roadmap, backlog, tasks, PRD templates
 
 Modules 1 and 2 are selected by default when using -y or the interactive prompt.
 `

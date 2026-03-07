@@ -19,7 +19,7 @@ When you have multiple features to build:
 
 ## What This Module Does
 
-Provides templates for tracking multiple features, prioritizing work, and maintaining a project-level vision. This is the only module where a project-level PRD (Product Requirements Document) lives.
+Provides a self-contained `project-planning` skill with templates for tracking multiple features, prioritizing work, and maintaining a project-level vision. The skill carries all templates inside its directory — install it by copying the folder or using the CLI.
 
 ## When to Use
 
@@ -30,15 +30,19 @@ Provides templates for tracking multiple features, prioritizing work, and mainta
 
 ## What You Get
 
-Planning artifacts live at project root (separate from `docs/` which is permanent reference):
+The `project-planning` skill installs to `.agents/skills/project-planning/` with templates inside. When activated, the AI copies templates to the project root:
 
 ```
 your-project/
 ├── AGENTS.md              # Module 1 — always loaded
-├── PROJECT-PRD.md         # Project vision (optional)
-├── BACKLOG.md             # Feature prioritization
-├── ROADMAP.md             # Phase planning
-├── TASKS.md               # Global progress tracking
+├── PROJECT-PRD.md         # Project vision (optional, from templates/)
+├── BACKLOG.md             # Feature prioritization (from templates/)
+├── ROADMAP.md             # Phase planning (from templates/)
+├── TASKS.md               # Global progress tracking (from templates/)
+├── .agents/skills/
+│   └── project-planning/
+│       ├── SKILL.md       # Workflow instructions
+│       └── templates/     # Source templates
 ├── specs/                 # Module 2 — ephemeral feature work
 └── docs/                  # Module 1 — permanent reference
 ```
@@ -57,7 +61,7 @@ This is different from feature specs:
 - Feature Spec = What to build for ONE feature
 - Project PRD = Vision for the ENTIRE product
 
-See: [`templates/PROJECT-PRD.md`](./templates/PROJECT-PRD.md)
+See: [`skills/project-planning/templates/PROJECT-PRD.md`](./skills/project-planning/templates/PROJECT-PRD.md)
 
 ---
 
@@ -72,7 +76,7 @@ Features move through states:
 Idea → Specified → Ready → In Progress → Complete
 ```
 
-See: [`templates/BACKLOG.md`](./templates/BACKLOG.md)
+See: [`skills/project-planning/templates/BACKLOG.md`](./skills/project-planning/templates/BACKLOG.md)
 
 ---
 
@@ -87,7 +91,7 @@ Organization options:
 - Release-based: v1.0 → v1.1 → v2.0
 - Quarter-based: Q1 → Q2 → Q3
 
-See: [`templates/ROADMAP.md`](./templates/ROADMAP.md)
+See: [`skills/project-planning/templates/ROADMAP.md`](./skills/project-planning/templates/ROADMAP.md)
 
 ---
 
@@ -97,7 +101,7 @@ See: [`templates/ROADMAP.md`](./templates/ROADMAP.md)
 **When**: Want high-level view of project progress
 **Lifecycle**: Evergreen - update as features complete
 
-See: [`templates/TASKS.md`](./templates/TASKS.md)
+See: [`skills/project-planning/templates/TASKS.md`](./skills/project-planning/templates/TASKS.md)
 
 ---
 
@@ -138,6 +142,32 @@ See: [`templates/TASKS.md`](./templates/TASKS.md)
 1. Update BACKLOG.md status to "Complete"
 2. Update TASKS.md with 100%
 3. Update ROADMAP.md if phase complete
+
+---
+
+## Skill
+
+This module provides one self-contained skill:
+
+| Skill | Purpose |
+|-------|---------|
+| `project-planning` | Project-level planning workflow — roadmap, backlog, task tracking, PRD. Includes all 4 planning templates. |
+
+### Setup
+
+**CLI:**
+
+```bash
+npx @acdl/cli init --modules 3
+```
+
+**Manual:**
+
+```bash
+cp -r skills/project-planning .agents/skills/
+```
+
+Then tell your AI agent: `load skill project-planning`
 
 ---
 

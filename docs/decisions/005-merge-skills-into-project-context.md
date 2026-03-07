@@ -31,7 +31,7 @@ Module 1 now has three adoption tiers: Basic (AGENTS.md only), Standard (+ docs/
 ## Consequences
 
 - Module count reduced from 4 to 3
-- Skill templates live at `content/modules/01-project-context/templates/.agents/skills/`
+- Skill templates live at `content/modules/01-project-context/skills/`
 - Module 1 README includes a full skills section (~80 lines)
 - Bootstrap workflow includes optional skills setup (Phase 4.3)
 - AGENTS.md templates use concrete skill routing comments instead of "If Module 2 is adopted"

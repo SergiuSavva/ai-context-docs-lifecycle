@@ -15,6 +15,7 @@ flowchart LR
         SW["spec-writing"]
         DW["doc-writing"]
         AC["acdl"]
+        PP["project-planning"]
     end
 
     subgraph stack [Stack Skills]
@@ -131,6 +132,21 @@ These ship as templates. Use them to teach AI agents how to follow the workflow.
 
 ---
 
+### `project-planning`
+
+| | |
+|---|---|
+| **When to use** | Managing multiple features, prioritizing work, tracking project progress, documenting product vision |
+| **What it covers** | Roadmap, backlog, global task tracking, PRD — with templates for all four documents, feature state machine, project workflow |
+| **Module** | 3 (Project Planning) |
+| **Token cost** | ~1,000-1,200 |
+| **Location** | `.agents/skills/project-planning/SKILL.md` |
+| **Cross-references** | `feature-workflow`, `spec-writing`, `workflow-guide` |
+
+**Trigger phrases**: "plan the project", "prioritize features", "update roadmap", "manage backlog", "project vision"
+
+---
+
 ## Stack Skills (Examples)
 
 These are authored per-project. Common examples:
@@ -142,7 +158,7 @@ These are authored per-project. Common examples:
 | `ui-components` | Building UI, theming, accessibility | shadcn/ui, Tailwind, responsive patterns |
 | `nextjs-app-router` | Pages, layouts, server actions | Next.js 15 App Router patterns |
 
-Create your own stack skills using the template at `content/modules/01-project-context/templates/.agents/skills/skill-template/SKILL.md`.
+Create your own stack skills — see [Creating New Skills](#creating-new-skills) below.
 
 ---
 
@@ -163,6 +179,7 @@ Add entries to your Context Loading table:
 | Writing specs or tasks      | load skill `spec-writing` |
 | Writing / reviewing docs    | load skill `doc-writing` |
 | Setting up ACDL             | load skill `acdl` |
+| Project planning / roadmap  | load skill `project-planning` |
 | Database / auth / storage   | load skill `database` |
 | Writing tests               | load skill `testing` |
 ```
@@ -218,6 +235,7 @@ Skills also auto-load when AGENTS.md routes to them via the Context Loading tabl
 | Write a spec or tasks file | `spec-writing` |
 | Write/review any markdown doc | `doc-writing` |
 | Set up or maintain ACDL | `acdl` |
+| Plan project / manage backlog | `project-planning` |
 | Work with database/auth | `database` (project-specific) |
 | Write tests or stories | `testing` (project-specific) |
 | Build UI components | `ui-components` (project-specific) |
@@ -227,8 +245,8 @@ Skills also auto-load when AGENTS.md routes to them via the Context Loading tabl
 
 ## Creating New Skills
 
-1. Copy the template: `content/modules/01-project-context/templates/.agents/skills/skill-template/SKILL.md`
-2. Place in `.agents/skills/<skill-name>/SKILL.md`
+1. Create `.agents/skills/<skill-name>/SKILL.md`
+2. Add frontmatter: `name` and `description` fields
 3. Add routing entry to AGENTS.md Context Loading table
 4. Keep within 1,200-2,000 tokens
 

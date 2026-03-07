@@ -110,9 +110,9 @@ The contents of `docs/` vary by project. A simple CLI might only have `scripts.m
 
 | Template | Use When |
 |----------|----------|
-| [Single App](./templates/AGENTS-single-app.md) | Standard apps, libraries, CLIs |
-| [Monorepo Root](./templates/AGENTS-monorepo-root.md) | Monorepo root (routes to subprojects) |
-| [Monorepo Subproject](./templates/AGENTS-monorepo-subproject.md) | Each package/service in monorepo |
+| [Single App](./skills/acdl/templates/AGENTS-single-app.md) | Standard apps, libraries, CLIs |
+| [Monorepo Root](./skills/acdl/templates/AGENTS-monorepo-root.md) | Monorepo root (routes to subprojects) |
+| [Monorepo Subproject](./skills/acdl/templates/AGENTS-monorepo-subproject.md) | Each package/service in monorepo |
 
 ### Reference Doc Templates (pick what fits your project)
 
@@ -120,12 +120,12 @@ These are a **template catalog** — use only the ones that match your project. 
 
 | Template | Include When | Purpose |
 |----------|-------------|---------|
-| [architecture.md](./templates/docs/architecture.md) | Project has multiple layers or services | System overview, layers, dependency rules |
-| [data-model.md](./templates/docs/data-model.md) | Project has a database | Schema, ERD, relationships, access patterns |
-| [api.md](./templates/docs/api.md) | Project exposes or consumes APIs | Endpoints, actions, or API surface catalog |
-| [auth.md](./templates/docs/auth.md) | Project has authentication | Auth flows, middleware, role-based access |
-| [scripts.md](./templates/docs/scripts.md) | Project has runnable commands | Canonical commands with verification metadata |
-| [decisions/adr.md](./templates/docs/decisions/adr.md) | Significant technical decision made | Architecture Decision Record template |
+| [architecture.md](./skills/acdl/templates/docs/architecture.md) | Project has multiple layers or services | System overview, layers, dependency rules |
+| [data-model.md](./skills/acdl/templates/docs/data-model.md) | Project has a database | Schema, ERD, relationships, access patterns |
+| [api.md](./skills/acdl/templates/docs/api.md) | Project exposes or consumes APIs | Endpoints, actions, or API surface catalog |
+| [auth.md](./skills/acdl/templates/docs/auth.md) | Project has authentication | Auth flows, middleware, role-based access |
+| [scripts.md](./skills/acdl/templates/docs/scripts.md) | Project has runnable commands | Canonical commands with verification metadata |
+| [decisions/adr.md](./skills/acdl/templates/docs/decisions/adr.md) | Significant technical decision made | Architecture Decision Record template |
 
 You can also create **project-specific docs** not in this catalog (e.g., `docs/integrations.md`, `docs/deployment.md`, `docs/testing.md`). The catalog covers common patterns — your project may need different ones.
 
@@ -141,22 +141,18 @@ From your project root:
 npx @acdl/cli init
 ```
 
-Then ask your AI agent to bootstrap from the local workflow file:
+Then tell your AI agent:
 
 ```text
 Bootstrap AGENTS.md for this project.
-Follow: .acdl/content/modules/01-project-context/bootstrap-workflow.md
+load skill `acdl`
 ```
 
-If `.acdl/` already exists:
-
-```bash
-npx @acdl/cli init --force
-```
+The `acdl` skill contains the full bootstrap workflow and all AGENTS.md templates.
 
 ### 2. Manual Setup (Simple)
 
-1. Copy the right AGENTS.md template to your project root
+1. Copy the right AGENTS.md template from `.agents/skills/acdl/templates/` to your project root
 2. Fill in the placeholders (stack, structure, conventions, boundaries)
 3. Create `docs/` with only the reference doc templates that apply to your project
 4. Fill in the Context Loading table in AGENTS.md with only the docs you created
@@ -164,14 +160,7 @@ npx @acdl/cli init --force
 
 ### 3. Interactive Bootstrap (Smart)
 
-Ask your AI agent to "bootstrap AGENTS.md" following the local workflow file in `.acdl/`:
-
-`.acdl/content/modules/01-project-context/bootstrap-workflow.md`
-
-If you are not using the CLI, use the repository workflow:
-[Bootstrap Workflow](./bootstrap-workflow.md).
-
-The AI will:
+Tell your AI agent to `load skill acdl` and bootstrap AGENTS.md. The skill will:
 1. Detect if single-app or monorepo
 2. Scan project structure
 3. Auto-detect tech stack and which reference docs are relevant
@@ -327,7 +316,7 @@ These skills teach AI agents how to use the ACDL workflow itself. They ship as t
 | `doc-writing` | Reference docs, guides, READMEs, ADRs, templates — structure, style, freshness rules |
 | `acdl` | Full ACDL bootstrap and configuration — setup, daily usage, maintenance triggers |
 
-Templates: `content/modules/01-project-context/templates/.agents/skills/`
+Source: `content/modules/01-project-context/skills/`
 
 #### Module 2 Skills (Feature Development)
 
@@ -337,7 +326,7 @@ Templates: `content/modules/01-project-context/templates/.agents/skills/`
 | `spec-writing` | Spec and task authoring — problem framing, acceptance criteria, scoping, task breakdown |
 | `workflow-guide` | Project state inspection, next-action recommendations, recovery scenarios |
 
-Templates: `content/modules/02-feature-development/templates/.agents/skills/`
+Source: `content/modules/02-feature-development/skills/`
 
 ### Stack Skills
 
@@ -351,10 +340,6 @@ These skills teach project-specific tech stack patterns. Users author them for t
 | `nextjs-app-router` | Pages, layouts, server actions, streaming |
 | `api-design` | Endpoint conventions, error handling, validation |
 | `deployment` | CI/CD, environment config, release process |
-
-### Skill Template
-
-Use `content/modules/01-project-context/templates/.agents/skills/skill-template/SKILL.md` to create new skills.
 
 ---
 
@@ -407,4 +392,3 @@ This gives you glob-based auto-loading while keeping the knowledge in portable `
 
 - [AGENTS.md Best Practices](../../guides/agents-md-best-practices.md) — Research-backed writing guide
 - [Tool Compatibility](../../guides/tool-compatibility.md) — Setup for Cursor, Claude Code, Copilot
-- [Bootstrap Workflow](./bootstrap-workflow.md) — AI-assisted project initialization

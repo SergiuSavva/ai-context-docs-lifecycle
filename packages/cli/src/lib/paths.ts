@@ -22,7 +22,3 @@ export function getBundledContentDir(): string {
   return resolve(getPackageRoot(), "content");
 }
 
-/** Path to the .acdl/ directory for a project */
-export function getAcdlDir(projectDir: string): string {
-  return resolve(projectDir, ".acdl");
-}

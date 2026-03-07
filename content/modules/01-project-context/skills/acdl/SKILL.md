@@ -94,21 +94,19 @@ Proceed?"
 
 | Situation | Suggest | Why |
 |-----------|---------|-----|
-| Simple app, solo dev | Module 1 (Basic tier) | AGENTS.md + docs/ is sufficient |
-| Specific stack patterns | Module 1 (Full tier) | Deep coding patterns via skills |
-| Multi-feature work | Add Module 2 | Structured spec/task workflows |
-| Roadmap planning | Add Module 3 | PRD, backlog, release management |
+| Simple app, solo dev | `acdl` skill (Basic tier) | AGENTS.md + docs/ is sufficient |
+| Specific stack patterns | `acdl` skill (Full tier) | Deep coding patterns via skills |
+| Multi-feature work | `feature-workflow` skill | Structured spec/task workflows |
+| Roadmap planning | `project-planning` skill | PRD, backlog, release management |
 
 ### Bootstrap Templates
 
-| Template | Path (relative to `.acdl/content/modules/`) |
+| Template | Path |
 |----------|------|
-| AGENTS.md (single app) | `01-project-context/templates/AGENTS-single-app.md` |
-| AGENTS.md (monorepo root) | `01-project-context/templates/AGENTS-monorepo-root.md` |
-| AGENTS.md (monorepo sub) | `01-project-context/templates/AGENTS-monorepo-subproject.md` |
-| Reference docs | `01-project-context/templates/docs/` |
-
-> **Detailed reference**: For full detection heuristics and output scenarios, read the bootstrap workflow in Module 1.
+| AGENTS.md (single app) | `.agents/skills/acdl/templates/AGENTS-single-app.md` |
+| AGENTS.md (monorepo root) | `.agents/skills/acdl/templates/AGENTS-monorepo-root.md` |
+| AGENTS.md (monorepo sub) | `.agents/skills/acdl/templates/AGENTS-monorepo-subproject.md` |
+| Reference docs | `.agents/skills/acdl/templates/docs/` |
 
 ---
 
@@ -157,7 +155,7 @@ When the same explanation keeps coming up, capture it as a skill:
 | UI components | load skill `ui-components` |
 ```
 
-### Set Up Feature Workflow (Module 2)
+### Set Up Feature Workflow
 
 If the project needs structured feature development:
 

@@ -17,8 +17,9 @@ export interface ModuleDefinition {
   id: number;
   name: string;
   description: string;
-  templateDir: string;
-  assets: AssetMapping[];
+  skillsDir: string;
+  skills: string[];
+  extras: AssetMapping[];
   defaultSelected: boolean;
 }
 
@@ -34,45 +35,34 @@ export const MODULE_DEFINITIONS: ModuleDefinition[] = [
   {
     id: 1,
     name: "Project Context",
-    description: "skills, docs/ templates",
-    templateDir: "modules/01-project-context/templates",
+    description: "AGENTS.md bootstrap, reference doc templates, doc-writing skills",
+    skillsDir: "modules/01-project-context/skills",
     defaultSelected: true,
-    assets: [
-      { src: ".agents", dest: ".agents" },
-      { src: "docs", dest: "docs" },
-    ],
+    skills: ["acdl", "agents-md", "doc-writing"],
+    extras: [],
   },
   {
     id: 2,
     name: "Feature Development",
-    description: "workflow skills, cursor rules, spec templates",
-    templateDir: "modules/02-feature-development/templates",
+    description: "feature workflow skills, spec templates, optional Cursor bridge",
+    skillsDir: "modules/02-feature-development/skills",
     defaultSelected: true,
-    assets: [
-      { src: ".agents", dest: ".agents" },
-      { src: ".cursor", dest: ".cursor" },
-      { src: "spec.md", dest: "specs/_templates/spec.md" },
-      { src: "tasks.md", dest: "specs/_templates/tasks.md" },
-      { src: "research.md", dest: "specs/_templates/research.md" },
-      { src: "plan.md", dest: "specs/_templates/plan.md" },
-      { src: "design.md", dest: "specs/_templates/design.md" },
-      { src: "adr.md", dest: "specs/_templates/adr.md" },
-      { src: "verify-checklist.md", dest: "specs/_templates/verify-checklist.md" },
-      { src: "user-stories.md", dest: "specs/_templates/user-stories.md" },
+    skills: ["feature-workflow", "spec-writing", "workflow-guide"],
+    extras: [
+      {
+        src: "feature-workflow/cursor-bridge.mdc",
+        dest: ".cursor/rules/feature-workflow.mdc",
+      },
     ],
   },
   {
     id: 3,
     name: "Project Planning",
-    description: "roadmap, backlog, tasks, PRD templates",
-    templateDir: "modules/03-project-planning/templates",
+    description: "project planning skill with roadmap, backlog, tasks, PRD templates",
+    skillsDir: "modules/03-project-planning/skills",
     defaultSelected: false,
-    assets: [
-      { src: "ROADMAP.md", dest: "ROADMAP.md" },
-      { src: "BACKLOG.md", dest: "BACKLOG.md" },
-      { src: "TASKS.md", dest: "TASKS.md" },
-      { src: "PROJECT-PRD.md", dest: "PROJECT-PRD.md" },
-    ],
+    skills: ["project-planning"],
+    extras: [],
   },
 ];
 
@@ -97,44 +87,60 @@ export function installModule(
   dryRun = false
 ): InstallResult {
   const contentDir = getBundledContentDir();
-  const templatesDir = resolve(contentDir, moduleDef.templateDir);
+  const skillsDir = resolve(contentDir, moduleDef.skillsDir);
   const installed: string[] = [];
   const skipped: string[] = [];
   const warnings: string[] = [];
 
-  for (const asset of moduleDef.assets) {
-    const srcPath = resolve(templatesDir, asset.src);
-    const stat = statSync(srcPath, { throwIfNoEntry: false });
+  // Install each skill directory into .agents/skills/<skill-name>/
+  for (const skillName of moduleDef.skills) {
+    const srcSkillDir = resolve(skillsDir, skillName);
+    const stat = statSync(srcSkillDir, { throwIfNoEntry: false });
+
     if (!stat) {
-      warnings.push(`Source not found: ${asset.src} (in ${moduleDef.templateDir})`);
+      warnings.push(`Skill not found: ${skillName} (in ${moduleDef.skillsDir})`);
       continue;
     }
 
-    if (stat.isDirectory()) {
-      for (const file of walkFiles(srcPath)) {
-        const destPath = resolve(projectDir, asset.dest, file);
-        const destRel = join(asset.dest, file);
-        if (existsSync(destPath) && !force) {
-          skipped.push(destRel);
-        } else {
-          if (!dryRun) {
-            mkdirSync(dirname(destPath), { recursive: true });
-            cpSync(resolve(srcPath, file), destPath);
-          }
-          installed.push(destRel);
-        }
-      }
-    } else {
-      const destPath = resolve(projectDir, asset.dest);
+    for (const file of walkFiles(srcSkillDir)) {
+      // Skip cursor-bridge.mdc — handled via extras
+      if (file === "cursor-bridge.mdc") continue;
+
+      const srcPath = resolve(srcSkillDir, file);
+      const destRel = join(".agents", "skills", skillName, file);
+      const destPath = resolve(projectDir, destRel);
+
       if (existsSync(destPath) && !force) {
-        skipped.push(asset.dest);
+        skipped.push(destRel);
       } else {
         if (!dryRun) {
           mkdirSync(dirname(destPath), { recursive: true });
           cpSync(srcPath, destPath);
         }
-        installed.push(asset.dest);
+        installed.push(destRel);
       }
+    }
+  }
+
+  // Install extras (non-skill file mappings, e.g. cursor bridge)
+  for (const extra of moduleDef.extras) {
+    const srcPath = resolve(skillsDir, extra.src);
+    const stat = statSync(srcPath, { throwIfNoEntry: false });
+
+    if (!stat) {
+      warnings.push(`Extra asset not found: ${extra.src} (in ${moduleDef.skillsDir})`);
+      continue;
+    }
+
+    const destPath = resolve(projectDir, extra.dest);
+    if (existsSync(destPath) && !force) {
+      skipped.push(extra.dest);
+    } else {
+      if (!dryRun) {
+        mkdirSync(dirname(destPath), { recursive: true });
+        cpSync(srcPath, destPath);
+      }
+      installed.push(extra.dest);
     }
   }
 

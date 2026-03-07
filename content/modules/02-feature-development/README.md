@@ -151,8 +151,8 @@ See: [`workflows/quick-flow.md`](./workflows/quick-flow.md)
 6. Delete spec folder
 
 **Templates**:
-- [`templates/spec.md`](./templates/spec.md)
-- [`templates/tasks.md`](./templates/tasks.md)
+- [`spec.md`](./skills/feature-workflow/templates/spec.md)
+- [`tasks.md`](./skills/feature-workflow/templates/tasks.md)
 
 See: [`workflows/standard-flow.md`](./workflows/standard-flow.md)
 
@@ -171,14 +171,14 @@ See: [`workflows/standard-flow.md`](./workflows/standard-flow.md)
 6. Create ADR for key decisions
 7. Delete spec folder
 
-**Templates**:
-- [`templates/research.md`](./templates/research.md)
-- [`templates/spec.md`](./templates/spec.md)
-- [`templates/design.md`](./templates/design.md)
-- [`templates/plan.md`](./templates/plan.md)
-- [`templates/user-stories.md`](./templates/user-stories.md)
-- [`templates/tasks.md`](./templates/tasks.md)
-- [`templates/verify-checklist.md`](./templates/verify-checklist.md)
+**Templates** (in `.agents/skills/feature-workflow/templates/`):
+- [`research.md`](./skills/feature-workflow/templates/research.md)
+- [`spec.md`](./skills/feature-workflow/templates/spec.md)
+- [`design.md`](./skills/feature-workflow/templates/design.md)
+- [`plan.md`](./skills/feature-workflow/templates/plan.md)
+- [`user-stories.md`](./skills/feature-workflow/templates/user-stories.md)
+- [`tasks.md`](./skills/feature-workflow/templates/tasks.md)
+- [`verify-checklist.md`](./skills/feature-workflow/templates/verify-checklist.md)
 
 See: [`workflows/complex-flow.md`](./workflows/complex-flow.md)
 
@@ -252,37 +252,31 @@ Add feature specs to your Context Loading section:
 
 ## Skills (Feature Development)
 
-This module provides three skills that teach AI agents how to execute the feature workflow. Templates live in `templates/.agents/skills/`.
+This module provides three self-contained skills that teach AI agents how to execute the feature workflow. Each skill carries its own templates.
 
 | Skill | Purpose |
 |-------|---------|
 | `workflow-guide` | **Start here if unsure.** Inspects project state, recommends next action, routes to other skills |
-| `feature-workflow` | Four-phase workflow (Research → Plan → Implement → Verify), task markers, parallel waves, git workflow, verification |
+| `feature-workflow` | Four-phase workflow (Research → Plan → Implement → Verify), task markers, parallel waves, git workflow, verification. Includes all 8 spec templates. |
 | `spec-writing` | Spec and task authoring — problem framing, acceptance criteria, scoping, task breakdown |
 
 ### Setup
 
-**Option A: Agent Skill** (portable, works with any AI agent — recommended):
+**CLI (recommended):**
 
 ```bash
-cp -r templates/.agents/skills/feature-workflow .agents/skills/
-cp -r templates/.agents/skills/spec-writing .agents/skills/
-cp -r templates/.agents/skills/workflow-guide .agents/skills/
+npx @acdl/cli init  # select Module 2 in the prompt
 ```
 
-**Option B: Cursor Bridge + Skills** (auto-loads in `specs/` and source directories):
+**Manual (portable):**
 
 ```bash
-# Copy the skills first (the bridge routes to them)
-cp -r templates/.agents/skills/feature-workflow .agents/skills/
-cp -r templates/.agents/skills/spec-writing .agents/skills/
-cp -r templates/.agents/skills/workflow-guide .agents/skills/
-
-# Then add the Cursor bridge rule
-cp templates/.cursor/rules/feature-workflow.mdc .cursor/rules/
+cp -r skills/feature-workflow .agents/skills/
+cp -r skills/spec-writing .agents/skills/
+cp -r skills/workflow-guide .agents/skills/
 ```
 
-The Cursor bridge is a lightweight rule that auto-loads on `specs/**` and source directories, then routes to the portable skills for detailed instructions.
+The `feature-workflow` skill includes a `cursor-bridge.mdc` file. The CLI installs it to `.cursor/rules/feature-workflow.mdc` automatically.
 
 ---
 

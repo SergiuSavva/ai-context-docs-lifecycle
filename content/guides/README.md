@@ -69,8 +69,8 @@ When asked to apply this methodology:
    - [Module 2: Feature Development](../modules/02-feature-development/README.md) — Workflows
    - [Module 3: Project Planning](../modules/03-project-planning/README.md) — Multi-feature management
 
-4. **Use templates from modules**
-   - Each module has a `templates/` folder
+4. **Use templates from skills**
+   - Templates are bundled inside module skills (`skills/<skill>/templates/`)
    - Copy and customize for the project
 
 5. **Reference examples**
@@ -83,7 +83,7 @@ When asked to apply this methodology:
 ### Adding AI context to any project (5 min)
 
 ```
-1. Copy AGENTS.md from modules/01-project-context/templates/
+1. Copy AGENTS.md from modules/01-project-context/skills/acdl/templates/
 2. Fill in project details (commands, stack, conventions)
 3. Create docs/ with reference doc templates
 4. Done!
@@ -103,7 +103,7 @@ When asked to apply this methodology:
 1. Determine workflow: Quick, Standard, or Complex
    - See modules/02-feature-development/README.md for decision tree
 2. Create specs/<feature>/ if Standard or Complex
-3. Copy relevant templates from modules/02-feature-development/templates/
+3. Copy relevant templates from modules/02-feature-development/skills/feature-workflow/templates/
 4. Follow workflow guide
 5. Update docs/ when complete
 ```
@@ -111,7 +111,7 @@ When asked to apply this methodology:
 ### Making an architecture decision
 
 ```
-1. Create ADR from modules/01-project-context/templates/docs/decisions/adr.md
+1. Create ADR from modules/01-project-context/skills/acdl/templates/docs/decisions/adr.md
 2. Place in docs/decisions/NNN-title.md
 3. Document context, decision, rationale, consequences
 ```
@@ -122,9 +122,9 @@ When asked to apply this methodology:
 
 | Module | Templates | Examples |
 |--------|-----------|----------|
-| [01-project-context](../modules/01-project-context/README.md) | `templates/AGENTS-*.md`, `templates/docs/`, `templates/.agents/skills/` | — |
-| [02-feature-development](../modules/02-feature-development/README.md) | `templates/` (7 files) | `examples/simple-todo/`, `examples/complex-auth/` |
-| [03-project-planning](../modules/03-project-planning/README.md) | `templates/` (4 files) | — |
+| [01-project-context](../modules/01-project-context/README.md) | `skills/acdl/templates/`, plus `skills/*/SKILL.md` | — |
+| [02-feature-development](../modules/02-feature-development/README.md) | `skills/feature-workflow/templates/` | `examples/simple-todo/`, `examples/complex-auth/` |
+| [03-project-planning](../modules/03-project-planning/README.md) | `skills/project-planning/templates/` | — |
 
 ---
 

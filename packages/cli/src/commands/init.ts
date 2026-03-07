@@ -1,9 +1,5 @@
-import { existsSync, writeFileSync } from "node:fs";
-import { resolve } from "node:path";
 import chalk from "chalk";
-import { copyContentToProject } from "../lib/renderer.js";
 import { getCliVersion } from "../lib/version.js";
-import { getAcdlDir } from "../lib/paths.js";
 import {
   MODULE_DEFINITIONS,
   installModule,
@@ -23,17 +19,6 @@ interface InitOptions {
 
 export async function initCommand(options: InitOptions): Promise<void> {
   const projectDir = process.cwd();
-  const acdlDir = getAcdlDir(projectDir);
-
-  if (existsSync(acdlDir) && !options.force) {
-    console.error(
-      chalk.red(
-        `\nError: ${acdlDir} already exists.\n` +
-          `Use ${chalk.bold("--force")} to re-initialize.\n`
-      )
-    );
-    process.exit(1);
-  }
 
   if (options.modules) {
     try {
@@ -57,16 +42,6 @@ export async function initCommand(options: InitOptions): Promise<void> {
   console.log("");
 
   try {
-    if (!dryRun) {
-      copyContentToProject(projectDir);
-    }
-    console.log(`  ${chalk.green("✓")} Copied methodology to .acdl/content/`);
-
-    if (!dryRun) {
-      writeFileSync(resolve(acdlDir, "version"), version, "utf-8");
-    }
-    console.log(`  ${chalk.green("✓")} Created .acdl/version (${version})`);
-
     const results = await installSelectedModules(projectDir, options, dryRun);
 
     printSummary(version, results, dryRun);
@@ -186,14 +161,14 @@ function printSummary(
   );
   console.log(
     chalk.cyan(
-      "     Follow: .acdl/content/modules/01-project-context/bootstrap-workflow.md"
+      "     load skill `acdl`"
     )
   );
   console.log("");
 
   const hasModules = results.some((r) => r.installed.length > 0);
   console.log(
-    `  2. Commit ${chalk.bold(".acdl/")}${hasModules ? " and installed files" : ""} to git`
+    `  2. Commit ${hasModules ? "installed files" : "changes"} to git`
   );
   console.log("");
 }

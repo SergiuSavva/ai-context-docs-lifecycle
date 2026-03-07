@@ -10,7 +10,7 @@ From your project root:
 npx @acdl/cli init
 ```
 
-This creates a local methodology workspace in `.acdl/` so your AI assistant can bootstrap from local files.
+This installs methodology skills/templates directly into your project (for example `.agents/skills/...` and optional `.cursor/rules/feature-workflow.mdc`).
 
 ---
 
@@ -115,9 +115,7 @@ Tell your AI assistant:
 
 ```
 Apply the AI Context Docs Lifecycle methodology to this project.
-
-Follow this workflow:
-.acdl/content/modules/01-project-context/bootstrap-workflow.md
+load skill `acdl`
 
 Start in plan mode only and output:
 1. AGENTS.md with project context
@@ -130,8 +128,11 @@ Wait for my approval before apply mode.
 My tech stack: [YOUR TECH STACK]
 ```
 
-If you are not using the CLI, replace the workflow path with:
-`https://raw.githubusercontent.com/SergiuSavva/ai-context-docs-lifecycle/main/content/modules/01-project-context/bootstrap-workflow.md`
+If your tool cannot load skills by name, replace `load skill \`acdl\`` with:
+`.agents/skills/acdl/SKILL.md`
+
+If you are not using the CLI, replace that local path with:
+`https://raw.githubusercontent.com/SergiuSavva/ai-context-docs-lifecycle/main/content/modules/01-project-context/skills/acdl/SKILL.md`
 
 The AI will:
 

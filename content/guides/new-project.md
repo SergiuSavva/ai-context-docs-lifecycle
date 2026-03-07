@@ -14,15 +14,15 @@ cd my-project
 git init
 ```
 
-### Step 2: Initialize ACDL Workspace (Recommended)
+### Step 2: Install ACDL Assets (Recommended)
 
 ```bash
 npx @acdl/cli init
 ```
 
-This creates `.acdl/` with local methodology content and templates.
+This installs methodology skills/templates directly into your project (for example `.agents/skills/...` and optional `.cursor/rules/feature-workflow.mdc`).
 
-If `.acdl/` already exists:
+If the installed assets already exist:
 
 ```bash
 npx @acdl/cli init --force
@@ -30,7 +30,7 @@ npx @acdl/cli init --force
 
 ### Step 3: Add AGENTS.md
 
-Copy the template from [Module 1](../modules/01-project-context/templates/AGENTS-single-app.md):
+Copy the template from [Module 1](../modules/01-project-context/skills/acdl/templates/AGENTS-single-app.md):
 
 ```bash
 # Create AGENTS.md at project root
@@ -52,11 +52,11 @@ mkdir -p docs/decisions
 ```
 
 Create docs from the [Module 1 template catalog](../modules/01-project-context/README.md#choose-your-template) — only the ones that match your project:
-- [`docs/architecture.md`](../modules/01-project-context/templates/docs/architecture.md) — if project has multiple layers or services
-- [`docs/data-model.md`](../modules/01-project-context/templates/docs/data-model.md) — if project has a database
-- [`docs/api.md`](../modules/01-project-context/templates/docs/api.md) — if project exposes or consumes APIs
-- [`docs/auth.md`](../modules/01-project-context/templates/docs/auth.md) — if project has authentication
-- [`docs/scripts.md`](../modules/01-project-context/templates/docs/scripts.md) — if project has runnable commands
+- [`docs/architecture.md`](../modules/01-project-context/skills/acdl/templates/docs/architecture.md) — if project has multiple layers or services
+- [`docs/data-model.md`](../modules/01-project-context/skills/acdl/templates/docs/data-model.md) — if project has a database
+- [`docs/api.md`](../modules/01-project-context/skills/acdl/templates/docs/api.md) — if project exposes or consumes APIs
+- [`docs/auth.md`](../modules/01-project-context/skills/acdl/templates/docs/auth.md) — if project has authentication
+- [`docs/scripts.md`](../modules/01-project-context/skills/acdl/templates/docs/scripts.md) — if project has runnable commands
 
 A simple CLI might only need `scripts.md`. A library might only need `architecture.md`.
 
@@ -114,8 +114,8 @@ Tell your AI assistant:
 ```
 Apply the AI Context Docs Lifecycle methodology to this new project.
 
-Read the getting-started guide at:
-.acdl/content/guides/getting-started.md
+Read:
+.agents/skills/acdl/SKILL.md
 
 Set up:
 1. AGENTS.md with project context
@@ -130,7 +130,7 @@ The AI will:
 2. Generate customized AGENTS.md
 3. Create reference docs and skills for your stack
 
-If you are not using the CLI, provide the GitHub URL instead of the local `.acdl/` path.
+If your tool cannot load skills by name, point it to `.agents/skills/acdl/SKILL.md`. If you are not using the CLI, provide the GitHub raw URL for `content/modules/01-project-context/skills/acdl/SKILL.md` instead of the local path.
 
 ---
 

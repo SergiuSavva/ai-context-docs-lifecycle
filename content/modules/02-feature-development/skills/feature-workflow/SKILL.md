@@ -174,6 +174,14 @@ Not every project has every doc. Update only the docs your project maintains. Up
 - [ ] User approved the verify-checklist before closeout
 - [ ] Spec folder deleted after feature approved
 
+## Spec Templates
+
+Templates live in `.agents/skills/feature-workflow/templates/`. When creating a new feature spec:
+
+1. Copy `templates/spec.md` → `specs/<feature-name>/spec.md`
+2. Copy `templates/tasks.md` → `specs/<feature-name>/tasks.md`
+3. Add optional templates as needed: `research.md`, `plan.md`, `design.md`, `adr.md`, `verify-checklist.md`, `user-stories.md`
+
 ## Related Docs
 
 - Spec files: @specs/[feature-name]/spec.md

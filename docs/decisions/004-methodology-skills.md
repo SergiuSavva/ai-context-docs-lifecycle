@@ -32,15 +32,18 @@ Key boundary decisions:
 
 ## Consequences
 
-- Methodology skills ship in `content/modules/02-skills/templates/.agents/skills/`
-- Module 2 README now distinguishes "Methodology Skills" from "Stack Skills"
+- Methodology skills now ship in skill-owned folders:
+  - `content/modules/02-feature-development/skills/` (`feature-workflow`, `spec-writing`, `workflow-guide`)
+  - `content/modules/01-project-context/skills/` (`agents-md`, `acdl`, `doc-writing`)
+- Module 2 README documents feature-development skills, while Module 1 documents project-context and writing skills
 - AGENTS.md templates (single-app + monorepo) include routing entries for all three
 - Skills catalog guide added at `content/guides/skills-catalog.md`
 - Cursor `.mdc` feature-workflow rule remains as an optional bridge (not replaced)
 
 ## Related
 
-- `content/modules/02-skills/README.md`
+- `content/modules/02-feature-development/README.md`
+- `content/modules/01-project-context/README.md`
 - `content/guides/skills-catalog.md`
 - `content/guides/skill-routing.md`
 - `docs/decisions/003-methodology-modules-and-workflow-update.md`

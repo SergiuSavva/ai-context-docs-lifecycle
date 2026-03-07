@@ -67,12 +67,12 @@ Then tell your AI assistant:
 
 ```text
 Bootstrap AGENTS.md for this project.
-Follow: .acdl/content/modules/01-project-context/bootstrap-workflow.md
+load skill `acdl`
 ```
 
-This initializes a local methodology copy in `.acdl/` and uses it to generate project-specific context files.
+This installs methodology skills/templates into your project and lets the AI generate project-specific context files from `.agents/skills/acdl/`.
 
-If `.acdl/` already exists:
+If the installed assets already exist:
 
 ```bash
 npx @acdl/cli init --force
@@ -80,8 +80,8 @@ npx @acdl/cli init --force
 
 ### Manual Setup (Module 1)
 
-1. Copy the [`AGENTS-single-app.md`](https://github.com/SergiuSavva/ai-context-docs-lifecycle/blob/main/content/modules/01-project-context/templates/AGENTS-single-app.md) template to your project root as `AGENTS.md`
-2. Create `docs/` with reference doc templates from [`templates/docs/`](https://github.com/SergiuSavva/ai-context-docs-lifecycle/tree/main/content/modules/01-project-context/templates/docs/)
+1. Copy the [`AGENTS-single-app.md`](https://github.com/SergiuSavva/ai-context-docs-lifecycle/blob/main/content/modules/01-project-context/skills/acdl/templates/AGENTS-single-app.md) template to your project root as `AGENTS.md`
+2. Create `docs/` with reference doc templates from [`skills/acdl/templates/docs/`](https://github.com/SergiuSavva/ai-context-docs-lifecycle/tree/main/content/modules/01-project-context/skills/acdl/templates/docs/)
 3. Fill in your project details
 4. Done! AI agents now have context.
 
@@ -91,16 +91,23 @@ Tell your AI assistant:
 
 ```
 Bootstrap AGENTS.md for this project.
-Follow: .acdl/content/modules/01-project-context/bootstrap-workflow.md
+load skill `acdl`
 ```
 
 This runs a comprehensive analysis and generates `AGENTS.md` with detected tech stack, commands, and structure.
 
-If you are not using the CLI, use the remote workflow URL instead:
+If your tool cannot load skills by name, point it to the installed skill file:
+
+```text
+Bootstrap AGENTS.md for this project.
+Follow: .agents/skills/acdl/SKILL.md
+```
+
+If you are not using the CLI, use the remote skill URL instead:
 
 ```
 Bootstrap AGENTS.md for this project.
-Follow: https://raw.githubusercontent.com/sergiusavva/ai-context-docs-lifecycle/main/content/modules/01-project-context/bootstrap-workflow.md
+Follow: https://raw.githubusercontent.com/sergiusavva/ai-context-docs-lifecycle/main/content/modules/01-project-context/skills/acdl/SKILL.md
 ```
 
 ### Full Setup

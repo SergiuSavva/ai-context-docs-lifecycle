@@ -95,8 +95,8 @@ Adopt the updated methodology baseline with the following decisions:
 - `docs/decisions/002-agents-md-router-pattern.md`
 - `content/modules/README.md`
 - `content/modules/01-project-context/README.md`
-- `content/modules/02-skills/README.md`
-- `content/modules/03-feature-development/README.md`
+- `content/modules/02-feature-development/README.md`
+- `content/modules/03-project-planning/README.md`
 - `README.md`
 
 ---

@@ -1,6 +1,6 @@
 # @acdl/cli
 
-Initialize AI Context Docs Lifecycle files in any project.
+Install AI Context Docs Lifecycle skills and templates into any project.
 
 ## Requirements
 
@@ -26,35 +26,32 @@ acdl --help
 From your project root:
 
 ```bash
-# Initialize local methodology files in .acdl/
 npx @acdl/cli init
 ```
 
-If `.acdl/` already exists:
+This installs selected module assets directly into your project (for example `.agents/skills/...` and optional `.cursor/rules/feature-workflow.mdc`).
 
-```bash
-npx @acdl/cli init --force
-```
-
-After init, ask your AI assistant to bootstrap using the local workflow:
+After init, tell your AI assistant:
 
 ```text
-Bootstrap AGENTS.md for this project.
-Follow: .acdl/content/modules/01-project-context/bootstrap-workflow.md
+load skill `acdl`
 ```
 
-## What `init` Creates
+## What `init` Installs
 
-- `.acdl/content/` (full bundled methodology scaffold from this package)
-- `.acdl/version` (current CLI version)
+Based on selected modules:
 
-`init` does not generate `AGENTS.md` or `docs/` directly; it installs the local methodology content your AI assistant uses for bootstrap.
+- Module 1: `.agents/skills/acdl`, `.agents/skills/agents-md`, `.agents/skills/doc-writing`
+- Module 2: `.agents/skills/feature-workflow`, `.agents/skills/spec-writing`, `.agents/skills/workflow-guide`, optional `.cursor/rules/feature-workflow.mdc`
+- Module 3: `.agents/skills/project-planning`
+
+`init` does not auto-generate project-specific `AGENTS.md` or `docs/` content; skills/templates are installed so your AI can generate them.
 
 ## Commands
 
 ### `init`
 
-Initialize `.acdl/` with bundled methodology content.
+Install selected module assets into the current project.
 
 ```bash
 npx @acdl/cli init [options]
@@ -62,13 +59,11 @@ npx @acdl/cli init [options]
 
 Options:
 
-- `--force`: Re-initialize over an existing `.acdl/`
-
-Behavior:
-
-- Fails if `.acdl/` already exists and `--force` is not provided
-- Replaces `.acdl/content/` with the bundled content
-- Writes/updates `.acdl/version`
+- `--force`: overwrite existing installed assets
+- `-y, --yes`: accept default module selection (Modules 1 and 2)
+- `--modules <list>`: explicit selection (`1,2,3` or `all`)
+- `--skip-install`: skip module asset installation
+- `--dry-run`: preview installation without writing files
 
 ## Local Development
 
@@ -85,5 +80,6 @@ Run the built CLI locally:
 ```bash
 node dist/bin.js --help
 node dist/bin.js init
+node dist/bin.js init --modules 1,2
 node dist/bin.js init --force
 ```

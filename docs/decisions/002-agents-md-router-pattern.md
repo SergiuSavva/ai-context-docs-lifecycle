@@ -124,9 +124,9 @@ templates/
 
 | File | Purpose |
 |------|---------|
-| `content/modules/01-project-context/templates/AGENTS-single-app.md` | Single app template |
-| `content/modules/01-project-context/templates/AGENTS-monorepo-root.md` | Monorepo root template |
-| `content/modules/01-project-context/templates/AGENTS-monorepo-subproject.md` | Subproject template |
+| `content/modules/01-project-context/skills/acdl/templates/AGENTS-single-app.md` | Single app template |
+| `content/modules/01-project-context/skills/acdl/templates/AGENTS-monorepo-root.md` | Monorepo root template |
+| `content/modules/01-project-context/skills/acdl/templates/AGENTS-monorepo-subproject.md` | Subproject template |
 | `content/guides/agents-md-best-practices.md` | Research-backed writing guide |
 | `content/guides/tool-compatibility.md` | Multi-tool setup guide |
 | `AGENTS.md` (project root) | Living example of router pattern |

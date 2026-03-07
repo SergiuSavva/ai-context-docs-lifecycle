@@ -23,9 +23,9 @@ From project root:
 npx @acdl/cli init
 ```
 
-This creates `.acdl/` with local methodology docs and templates for guided setup.
+This installs methodology skills/templates directly into your project (for example `.agents/skills/...` and optional `.cursor/rules/feature-workflow.mdc`) for guided setup.
 
-If `.acdl/` already exists:
+If the installed assets already exist:
 
 ```bash
 npx @acdl/cli init --force
@@ -153,8 +153,8 @@ Tell your AI assistant:
 ```
 Integrate AI Context Docs Lifecycle into this existing project.
 
-Read local methodology guides from:
-.acdl/content/
+Read:
+.agents/skills/acdl/SKILL.md
 
 1. Analyze the current codebase structure
 2. Create AGENTS.md reflecting actual patterns
@@ -165,7 +165,7 @@ Don't modify existing code or documentation structure.
 Focus on adding AI context alongside what exists.
 ```
 
-If you are not using the CLI, replace `.acdl/content/` guidance with the repository URL.
+If your tool cannot load skills by name, point it to `.agents/skills/acdl/SKILL.md`. If you are not using the CLI, replace that local path with the repository raw URL for `content/modules/01-project-context/skills/acdl/SKILL.md`.
 
 ---
 

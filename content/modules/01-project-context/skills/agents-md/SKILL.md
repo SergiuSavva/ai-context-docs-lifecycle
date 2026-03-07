@@ -34,7 +34,7 @@ Every AGENTS.md needs these six core sections:
 | **Context Loading** | Task → doc/skill routing table |
 | **Boundaries** | Always / Ask First / Never rules |
 
-The ACDL template also includes routing sections (Discovery -> Activation -> Execution, Task Mode Routing) that describe the context loading model. See the AGENTS.md templates in `.acdl/content/modules/01-project-context/templates/` for the full structure.
+The ACDL template also includes routing sections (Discovery -> Activation -> Execution, Task Mode Routing) that describe the context loading model. See the AGENTS.md templates in `.agents/skills/acdl/templates/` for the full structure.
 
 ---
 
