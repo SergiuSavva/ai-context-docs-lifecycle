@@ -63,12 +63,12 @@ Other tools are spec-driven: specs in, code out, knowledge discarded. ACDL is kn
 
 ## Quick Start
 
-### CLI Setup (Recommended)
+> **Solo side project or new to ACDL?** [Quick Start guide →](content/quick-start.md) walks you through the minimum useful setup in three steps.
 
-From your project root:
+### Fastest Path
 
 ```bash
-npx @acdl/cli init
+npx @acdl/cli init          # installs skills and templates into .agents/skills/
 ```
 
 Then tell your AI assistant:
@@ -78,39 +78,26 @@ Bootstrap AGENTS.md for this project.
 load skill `acdl`
 ```
 
-This installs self-contained skills into `.agents/skills/` and uses the `acdl` skill to generate project-specific context files.
+That's it. The `acdl` skill scans your project, generates `AGENTS.md` and only the `docs/` files your project needs, and stops there. No ceremony.
 
-### Manual Setup (Module 1)
+### Manual Setup (no CLI)
 
 1. Copy [AGENTS-single-app.md](content/modules/01-project-context/skills/acdl/templates/AGENTS-single-app.md) to your project root as `AGENTS.md`
-2. Create `docs/` with reference doc templates from [Module 1 templates](content/modules/01-project-context/skills/acdl/templates/docs/)
-3. Fill in your project details
-4. Done! AI agents now have context.
+2. Fill in your stack, commands, and structure
+3. Add `docs/scripts.md` for runnable commands (optional but recommended)
+4. Done. AI agents now have context.
 
-### Interactive Bootstrap (Module 1)
+### Add More When You Need It
 
-Tell your AI assistant:
+Once you're building real features, add Module 2:
 
+```bash
+npx @acdl/cli init --modules 2
 ```
-Bootstrap AGENTS.md for this project.
-load skill `acdl`
-```
 
-The `acdl` skill contains the full bootstrap workflow. It scans your project and generates `AGENTS.md` with detected tech stack, commands, and structure.
+Then tell your AI: `load skill \`feature-workflow\``
 
-### Full Setup
-
-Tell your AI assistant:
-
-```
-Apply AI Context Docs Lifecycle from https://github.com/sergiusavva/ai-context-docs-lifecycle
-
-I want:
-- Module 1 (Project Context) - AGENTS.md + docs/ + skills
-- Module 2 (Feature Development) - workflows for building features
-
-My tech stack: [YOUR STACK]
-```
+See [Quick Start](content/quick-start.md) for the full progressive path.
 
 ---
 
@@ -158,7 +145,7 @@ project/
     └── {stack}/SKILL.md
 ```
 
-Three adoption tiers: Basic (AGENTS.md only), Standard (+ docs/), Full (+ .agents/skills/).
+Three adoption tiers: Basic (`AGENTS.md` only), Standard (+ `docs/`), Full (+ `.agents/skills/`). For a solo side project, Standard tier is the recommended starting point.
 
 [Go to Module 1 →](content/modules/01-project-context/)
 

@@ -1,12 +1,12 @@
 # AI Context Docs Lifecycle
 
-> Docs-first methodology kit for AI-assisted development
+> Knowledge-first methodology kit for AI-assisted development
 
 ---
 
 ## What Is This?
 
-**AI Context Docs Lifecycle** is a docs-first methodology kit for AI-assisted development. It gives AI coding assistants structured context and workflows for understanding your project and building features consistently.
+**AI Context Docs Lifecycle** is a knowledge-first methodology kit for AI-assisted development. It gives AI coding assistants structured context and workflows for understanding your project and building features consistently.
 
 Pick the modules you need:
 
@@ -55,9 +55,9 @@ For feature work, agents should follow this order:
 
 ## Quick Start
 
-### CLI Setup (Recommended)
+> **Solo side project or new to ACDL?** [Quick Start →](quick-start.md) covers the minimum useful setup in three steps.
 
-From your project root:
+### Fastest Path
 
 ```bash
 npx @acdl/cli init
@@ -70,59 +70,9 @@ Bootstrap AGENTS.md for this project.
 load skill `acdl`
 ```
 
-This installs methodology skills/templates into your project and lets the AI generate project-specific context files from `.agents/skills/acdl/`.
+This installs methodology skills/templates directly into your project. The `acdl` skill scans your repo, generates `AGENTS.md`, and creates only the `docs/` files your project actually needs. Nothing more.
 
-If the installed assets already exist:
-
-```bash
-npx @acdl/cli init --force
-```
-
-### Manual Setup (Module 1)
-
-1. Copy the [`AGENTS-single-app.md`](https://github.com/SergiuSavva/ai-context-docs-lifecycle/blob/main/content/modules/01-project-context/skills/acdl/templates/AGENTS-single-app.md) template to your project root as `AGENTS.md`
-2. Create `docs/` with reference doc templates from [`skills/acdl/templates/docs/`](https://github.com/SergiuSavva/ai-context-docs-lifecycle/tree/main/content/modules/01-project-context/skills/acdl/templates/docs/)
-3. Fill in your project details
-4. Done! AI agents now have context.
-
-### Interactive Bootstrap (Module 1)
-
-Tell your AI assistant:
-
-```
-Bootstrap AGENTS.md for this project.
-load skill `acdl`
-```
-
-This runs a comprehensive analysis and generates `AGENTS.md` with detected tech stack, commands, and structure.
-
-If your tool cannot load skills by name, point it to the installed skill file:
-
-```text
-Bootstrap AGENTS.md for this project.
-Follow: .agents/skills/acdl/SKILL.md
-```
-
-If you are not using the CLI, use the remote skill URL instead:
-
-```
-Bootstrap AGENTS.md for this project.
-Follow: https://raw.githubusercontent.com/sergiusavva/ai-context-docs-lifecycle/main/content/modules/01-project-context/skills/acdl/SKILL.md
-```
-
-### Full Setup
-
-Tell your AI assistant:
-
-```
-Apply AI Context Docs Lifecycle from https://github.com/sergiusavva/ai-context-docs-lifecycle
-
-I want:
-- Module 1 (Project Context) - AGENTS.md + docs/ + skills
-- Module 2 (Feature Development) - workflows for building features
-
-My tech stack: [YOUR STACK]
-```
+See [Quick Start](quick-start.md) for the full progressive path, manual setup, and how to add feature workflows when you need them.
 
 [Get Started](quick-start.md){ .md-button .md-button--primary }
 [View Modules](modules/README.md){ .md-button }

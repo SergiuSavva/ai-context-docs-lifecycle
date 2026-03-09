@@ -20,101 +20,69 @@
 
 ## Which Guide to Use?
 
-### Start with [Getting Started](./getting-started.md) to:
+**New to ACDL?** Start with [Quick Start](../quick-start.md) — it covers the minimum setup regardless of project size.
 
-- Understand the 3 modules available
-- Choose which modules fit your needs
-- See recommended combinations
+Then come back here for your specific situation:
 
-### Use [New Project](./new-project.md) when:
-
-- Starting a project from scratch
-- Creating a greenfield application
-- Setting up a new repository
-
-### Use [Existing Project](./existing-project.md) when:
-
-- Adding the methodology to an existing codebase
-- Migrating a project to use this methodology
-- Incrementally adopting the approach
-
-### Use [Skills Catalog](./skills-catalog.md) when:
-
-- Looking for available skills and what they cover
-- Deciding which skill to load for a specific task
-- Learning how to create new skills
-
-### Use [Skill Routing Policy](./skill-routing.md) when:
-
-- You want consistent skill activation behavior across agents
-- You need clear thresholds for "load skill" vs "skip"
-- You want a measurable policy with precision/recall targets
+| Situation | Guide |
+|-----------|-------|
+| Starting a new project | [New Project](./new-project.md) |
+| Adding to an existing codebase | [Existing Project](./existing-project.md) |
+| Choosing which modules to adopt | [Getting Started](./getting-started.md) |
+| Multi-tool team or migration | [Tool Compatibility](./tool-compatibility.md) |
+| Writing effective `AGENTS.md` | [AGENTS.md Best Practices](./agents-md-best-practices.md) |
+| Available skills and when to use them | [Skills Catalog](./skills-catalog.md) |
 
 ---
 
-## Quick Start for AI Agents
+## Quick Reference (Common Tasks)
 
-When asked to apply this methodology:
+### Add AI context to any project (~5 min)
 
-1. **Determine project state**
-   - Is this a new project or existing?
-   - What modules does the user want?
+```
+1. npx @acdl/cli init
+2. Tell AI: "Bootstrap AGENTS.md for this project. load skill `acdl`"
+3. Review and trim what was generated
+```
 
-2. **Read the appropriate guide**
-   - New project: [new-project.md](./new-project.md)
-   - Existing project: [existing-project.md](./existing-project.md)
+### Add deep coding patterns (~10 min)
 
-3. **Read relevant modules**
-   - [Module 1: Project Context](../modules/01-project-context/README.md) — AGENTS.md + docs/ + .agents/skills/
-   - [Module 2: Feature Development](../modules/02-feature-development/README.md) — Workflows
-   - [Module 3: Project Planning](../modules/03-project-planning/README.md) — Multi-feature management
+```
+1. Create .agents/skills/<name>/SKILL.md
+2. Document your specific patterns with code examples
+3. Add a routing entry to the Context Loading table in AGENTS.md
+```
 
-4. **Use templates from skills**
-   - Templates are bundled inside module skills (`skills/<skill>/templates/`)
-   - Copy and customize for the project
+### Build a feature
 
-5. **Reference examples**
-   - Module 2: `examples/simple-todo/` and `examples/complex-auth/`
+```
+1. Bug fix or config change? Just do it — no docs needed.
+2. Real feature? Create specs/<feature>/spec.md + tasks.md
+3. Tell AI: "load skill `feature-workflow`"
+```
+
+### Record an architecture decision
+
+```
+1. Create docs/decisions/NNN-title.md from the ADR template
+2. Document context, decision, and rationale
+3. Never edit it again — ADRs are permanent
+```
 
 ---
 
-## Common Tasks
+## For AI Agents Applying This Methodology
 
-### Adding AI context to any project (5 min)
+When asked to apply ACDL to a project:
 
-```
-1. Copy AGENTS.md from modules/01-project-context/skills/acdl/templates/
-2. Fill in project details (commands, stack, conventions)
-3. Create docs/ with reference doc templates
-4. Done!
-```
-
-### Adding deep coding patterns (10 min)
-
-```
-1. Create .agents/skills/ folder
-2. Create a SKILL.md for each tech domain (see Module 1 skills section)
-3. Add cross-references to @docs/ files
-```
-
-### Building a feature
-
-```
-1. Determine workflow: Quick, Standard, or Complex
-   - See modules/02-feature-development/README.md for decision tree
-2. Create specs/<feature>/ if Standard or Complex
-3. Copy relevant templates from modules/02-feature-development/skills/feature-workflow/templates/
-4. Follow workflow guide
-5. Update docs/ when complete
-```
-
-### Making an architecture decision
-
-```
-1. Create ADR from modules/01-project-context/skills/acdl/templates/docs/decisions/adr.md
-2. Place in docs/decisions/NNN-title.md
-3. Document context, decision, rationale, consequences
-```
+1. Determine project state: new or existing?
+2. Use the appropriate guide above
+3. Read relevant module READMEs before writing files:
+   - [Module 1: Project Context](../modules/01-project-context/README.md)
+   - [Module 2: Feature Development](../modules/02-feature-development/README.md)
+   - [Module 3: Project Planning](../modules/03-project-planning/README.md)
+4. Use templates from skills: `skills/<skill>/templates/`
+5. Reference examples in Module 2: `examples/simple-todo/`, `examples/complex-auth/`
 
 ---
 

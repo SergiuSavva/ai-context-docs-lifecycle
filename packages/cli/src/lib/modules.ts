@@ -164,7 +164,7 @@ export function parseModulesFlag(value: string): number[] {
   const ids = value.split(",").map((s) => Number(s.trim()));
   const valid = MODULE_DEFINITIONS.map((m) => m.id);
   for (const id of ids) {
-    if (!valid.includes(id)) {
+    if (isNaN(id) || !valid.includes(id)) {
       throw new Error(
         `Unknown module: ${id}. Valid modules: ${valid.join(", ")} or "all"`
       );

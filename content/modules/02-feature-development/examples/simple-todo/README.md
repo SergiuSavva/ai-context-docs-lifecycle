@@ -1,6 +1,6 @@
 # Example: Mark All Complete (Simple Feature)
 
-> **Walkthrough** of a simple feature implementation using the three-phase approach.
+> **Walkthrough** of a simple feature implementation using the four-phase approach.
 
 ---
 
@@ -91,9 +91,9 @@ AI updates tasks.md and continues...
 
 ---
 
-## Completion
+## Phase 3: Verify
 
-When all tasks are done, AI outputs:
+When all tasks are done, AI creates `verify-checklist.md` and outputs:
 
 ```
 Ready for review. Implementation complete.

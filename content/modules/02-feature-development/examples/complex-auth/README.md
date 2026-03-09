@@ -1,6 +1,6 @@
 # Example: OAuth Authentication (Complex Feature)
 
-> **Walkthrough** of a complex feature using the three-phase approach with all optional docs.
+> **Walkthrough** of a complex feature using the four-phase approach with all optional docs.
 
 ---
 
@@ -79,9 +79,9 @@ AI works through tasks:
 
 ---
 
-## Completion
+## Phase 4: Verify
 
-AI signals ready for review:
+AI creates `verify-checklist.md` and signals ready for review:
 
 ```
 Ready for review. Implementation complete.

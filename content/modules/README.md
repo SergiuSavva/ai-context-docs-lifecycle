@@ -24,7 +24,7 @@ graph LR
     M2 --> M3["3: Planning"]
 ```
 
-Module 1 has three tiers: Basic (AGENTS.md), Standard (+ docs/), Full (+ .agents/skills/).
+Module 1 has three tiers: Basic (`AGENTS.md` only), Standard (`AGENTS.md` + `docs/`), Full (+ `.agents/skills/`). For a solo side project, Standard tier is the recommended starting point.
 
 ---
 
@@ -33,18 +33,18 @@ Module 1 has three tiers: Basic (AGENTS.md), Standard (+ docs/), Full (+ .agents
 ### Starter
 
 ```
-Module 1 — Basic tier
+Module 1 — Standard tier (AGENTS.md + docs/)
 ```
 
-AGENTS.md only for basic AI context. Best for personal projects and prototypes.
+AGENTS.md + `docs/scripts.md` (and any docs your project needs). Best for personal projects, prototypes, and side projects.
 
 ### Production
 
 ```
-Module 1 — Full tier
+Module 1 — Full tier (AGENTS.md + docs/ + .agents/skills/)
 ```
 
-AGENTS.md + docs/ + skills for deep tech stack patterns. Best for production apps.
+Adds on-demand skills for deep tech stack patterns. Best for production apps with specific framework or library conventions.
 
 ### Team
 
@@ -52,7 +52,7 @@ AGENTS.md + docs/ + skills for deep tech stack patterns. Best for production app
 Modules 1 + 2
 ```
 
-Add feature workflows for structured development. Best for team projects.
+Add feature workflows for structured development. Best for team projects building multiple features.
 
 ### Enterprise
 

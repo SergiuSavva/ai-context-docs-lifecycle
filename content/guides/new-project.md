@@ -1,6 +1,6 @@
 # New Project Setup
 
-> **Starting from scratch?** Follow this guide to set up AI Context Docs Lifecycle.
+> **Starting from scratch?** Follow this guide to set up AI Context Docs Lifecycle. For the fastest path (3 steps), see [Quick Start →](../quick-start.md) first.
 
 ---
 

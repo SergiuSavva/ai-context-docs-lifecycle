@@ -1,200 +1,174 @@
 # Quick Start
 
-Get AI context for your project. Choose your setup level:
+> Start here. Three steps to give AI agents consistent context for your project.
 
-## Recommended First Command
+---
 
-From your project root:
+## What You're Setting Up
+
+| File / Folder | What It Does |
+|---------------|--------------|
+| `AGENTS.md` | Always-loaded project summary: stack, commands, structure, boundaries |
+| `docs/` | Durable reference docs (only the ones your project needs) |
+| `.agents/skills/` | On-demand instructions loaded when the task matches |
+
+**Solo side project?** You need `AGENTS.md` and maybe one doc. Start there. Skills are optional.
+
+---
+
+## Step 1: Install ACDL Assets
 
 ```bash
 npx @acdl/cli init
 ```
 
-This installs methodology skills/templates directly into your project (for example `.agents/skills/...` and optional `.cursor/rules/feature-workflow.mdc`).
+This installs methodology skills and templates into your project:
+
+- `.agents/skills/acdl/` — bootstrap skill + `AGENTS.md` templates
+- `.agents/skills/feature-workflow/` — spec and task templates (Module 2, default)
+- optional `.cursor/rules/feature-workflow.mdc` — Cursor bridge
+
+> **Note**: `init` installs assets only. Your AI generates the actual project-specific files in Step 2.
+
+If assets already exist:
+
+```bash
+npx @acdl/cli init --force
+```
 
 ---
 
-## Option 1: Minimal
-
-Just need AI context? Use **Module 1** only.
-
-### Step 1: Create AGENTS.md
-
-Create `AGENTS.md` at your project root (~80 lines):
-
-```markdown
-# [Project Name]
-
-> [One-line description]
-
-## Stack
-
-| Tech | Version |
-|------|---------|
-| Language | [Your language] |
-| Framework | [Your framework] |
-
-## Commands
-
-```bash
-npm run dev     # Dev server
-npm run build   # Production build
-npm run test    # Run tests
-```
-
-## Structure
-
-```
-[your source directory]/
-├── [area 1]/      # [description]
-├── [area 2]/      # [description]
-└── [area 3]/      # [description]
-```
-
-## Conventions
-
-- [Convention 1]
-- [Convention 2]
-
-## Context Loading
-
-| Task | Read |
-|------|------|
-| [relevant task] | @docs/[relevant-doc].md |
-
-## Boundaries
-
-### Always
-- [Rule 1]
-
-### Never
-- [Anti-pattern 1]
-```
-
-### Step 2: Add Reference Docs
-
-```bash
-mkdir -p docs/decisions
-```
-
-Create reference docs that match your project. See [Module 1 templates](modules/01-project-context/README.md#choose-your-template) for the catalog. A simple project might only need `docs/scripts.md`.
-
-### Step 3: Done!
-
-AI agents will read AGENTS.md automatically and load docs/ on-demand.
-
----
-
-## Option 2: Full (with Skills)
-
-Want on-demand coding patterns? Use **Module 1 Full tier**.
-
-### Step 1: Add AGENTS.md + docs/ (see above)
-
-### Step 2: Add Skills
-
-```bash
-mkdir -p .agents/skills
-```
-
-Create `SKILL.md` files for your tech stack domains:
-
-| Skill | Covers |
-|-------|--------|
-| `database/SKILL.md` | ORM patterns, migrations, queries |
-| `testing/SKILL.md` | Test strategy, which tool for what |
-| `ui-components/SKILL.md` | Component library, theming |
-
-See the [Skills section in Module 1](modules/01-project-context/README.md#skills-on-demand-instruction-packages) for the SKILL.md format.
-
----
-
-## Option 3: AI-Assisted Setup (Plan Mode First)
+## Step 2: Let AI Generate Your Context
 
 Tell your AI assistant:
 
-```
-Apply the AI Context Docs Lifecycle methodology to this project.
+```text
+Bootstrap AGENTS.md for this project.
 load skill `acdl`
-
-Start in plan mode only and output:
-1. AGENTS.md with project context
-2. docs/ with reference documentation
-3. .agents/skills/ for tech stack patterns (if needed)
-4. Commands list with verified/inferred status + source
-5. Assumptions and open questions
-
-Wait for my approval before apply mode.
-My tech stack: [YOUR TECH STACK]
 ```
 
-If your tool cannot load skills by name, replace `load skill \`acdl\`` with:
-`.agents/skills/acdl/SKILL.md`
+The `acdl` skill will:
 
-If you are not using the CLI, replace that local path with:
-`https://raw.githubusercontent.com/SergiuSavva/ai-context-docs-lifecycle/main/content/modules/01-project-context/skills/acdl/SKILL.md`
+1. Detect project type (single app or monorepo)
+2. Scan your stack and commands
+3. Show you a plan — what files it will create
+4. Wait for your approval before writing anything
+5. Generate `AGENTS.md` + only the `docs/` files your project needs
 
-The AI will:
+If your tool cannot load skills by name:
 
-1. Analyze your project without writing files first
-2. Propose a safe, reviewable plan
-3. Generate approved files in apply mode
-
----
-
-## What You Get
-
-### Module 1: Project Context
-
-```
-project/
-├── AGENTS.md          # Always loaded (~80 lines)
-└── docs/              # On-demand reference (only docs your project needs)
-    ├── {relevant docs}.md
-    └── decisions/
+```text
+Bootstrap AGENTS.md for this project.
+Follow: .agents/skills/acdl/SKILL.md
 ```
 
-### Modules 1 + 2
+If you are not using the CLI (no local skills installed):
 
-```
-project/
-├── AGENTS.md              # Discovery: Always loaded
-├── .agents/skills/        # Activation: On-demand skills
-│   ├── {skill}/SKILL.md
-│   └── {skill}/SKILL.md
-├── docs/                  # Activation: Reference docs (project-specific)
-│   ├── {relevant docs}.md
-│   └── decisions/
-└── specs/                 # Feature work (ephemeral)
+```text
+Bootstrap AGENTS.md for this project.
+Follow: https://raw.githubusercontent.com/SergiuSavva/ai-context-docs-lifecycle/main/content/modules/01-project-context/skills/acdl/SKILL.md
 ```
 
 ---
 
-## Three Workflow Tracks
+## Step 3: Review and Done
 
-Once set up, use these workflows for building features:
+Check what the AI generated:
 
-| Flow | Use For | Templates |
-|------|---------|-----------|
-| **Quick** | Bug fixes, config changes | None |
-| **Standard** | Features | spec.md + tasks.md |
-| **Complex** | Research needed | All templates + ADR |
+- `AGENTS.md` — does it reflect your real stack, commands, and structure?
+- `docs/` — does it only contain docs for what your project actually has?
+
+Trim anything that feels like filler. The value comes from accuracy, not completeness.
+
+```
+your-project/
+├── AGENTS.md              # Always loaded by AI
+└── docs/                  # Loaded on-demand
+    ├── scripts.md          # Common first doc: runnable commands
+    └── decisions/          # Architecture decisions (add as needed)
+```
+
+AI agents will now read `AGENTS.md` automatically and load `docs/` when relevant.
+
+---
+
+## Add More When You Need It
+
+Start minimal. Expand only when you hit a real pain.
+
+### Pain: AI keeps guessing commands wrong
+
+Add `docs/scripts.md` — canonical runnable commands with verified/inferred labels.
+
+### Pain: AI keeps getting your stack patterns wrong
+
+Add a stack skill:
+
+```bash
+mkdir -p .agents/skills/my-stack
+# Create .agents/skills/my-stack/SKILL.md with your patterns
+```
+
+See [Module 1: Skills](modules/01-project-context/README.md#skills-on-demand-instruction-packages).
+
+### Pain: Feature work is chaotic or hard to resume
+
+Install Module 2 if you haven't already:
+
+```bash
+npx @acdl/cli init --modules 2
+```
+
+Then tell your AI: `load skill \`feature-workflow\``
+
+You'll get a Research → Plan → Implement → Verify workflow with spec and task templates.
+
+### Pain: Managing too many features at once
+
+Add Module 3 for roadmap, backlog, and project tracking:
+
+```bash
+npx @acdl/cli init --modules 3
+```
+
+Then tell your AI: `load skill \`project-planning\``
+
+---
+
+## Reference: What Each Module Installs
+
+| Module | What Gets Installed | Default? |
+|--------|---------------------|----------|
+| 1 — Project Context | `acdl`, `agents-md`, `doc-writing` skills | Yes |
+| 2 — Feature Development | `feature-workflow`, `spec-writing`, `workflow-guide` skills + optional Cursor bridge | Yes |
+| 3 — Project Planning | `project-planning` skill | No |
+
+```bash
+npx @acdl/cli init -y                  # installs Modules 1 + 2 (defaults)
+npx @acdl/cli init --modules 1        # Module 1 only
+npx @acdl/cli init --modules 1,2,3    # all modules
+npx @acdl/cli init --dry-run -y       # preview without writing files
+```
+
+---
+
+## Manual Setup (No CLI)
+
+If you prefer not to use the CLI:
+
+1. Copy [`AGENTS-single-app.md`](https://github.com/SergiuSavva/ai-context-docs-lifecycle/blob/main/content/modules/01-project-context/skills/acdl/templates/AGENTS-single-app.md) to your project root as `AGENTS.md`
+2. Fill in your stack, commands, structure, and boundaries
+3. Create `docs/scripts.md` from the [template](https://github.com/SergiuSavva/ai-context-docs-lifecycle/blob/main/content/modules/01-project-context/skills/acdl/templates/docs/scripts.md)
+4. Add other docs only if your project has them (architecture, API, auth, data model)
+
+See the full [template catalog](modules/01-project-context/README.md#choose-your-template).
 
 ---
 
 ## Next Steps
 
-- [View all modules](modules/README.md) — Browse templates and examples
-- [New project guide](guides/new-project.md) — Detailed setup walkthrough
-- [Existing project guide](guides/existing-project.md) — Add to existing code
-- [Skills Catalog](guides/skills-catalog.md) — Available skills and when to use them
-
----
-
-## Alternative: Manual Download
-
-If your AI can't access URLs, download templates from:
-
-**GitHub**: [github.com/SergiuSavva/ai-context-docs-lifecycle/content/modules/](https://github.com/SergiuSavva/ai-context-docs-lifecycle/tree/main/content/modules/)
-
-Then paste the relevant templates into your project.
+- [New Project Setup](guides/new-project.md) — detailed walkthrough from scratch
+- [Existing Project Setup](guides/existing-project.md) — adding ACDL to an existing codebase
+- [Module 1: Project Context](modules/01-project-context/README.md) — AGENTS.md, docs/, skills in depth
+- [Module 2: Feature Development](modules/02-feature-development/README.md) — feature workflow and spec templates
+- [Skills Catalog](guides/skills-catalog.md) — available skills and when to use them

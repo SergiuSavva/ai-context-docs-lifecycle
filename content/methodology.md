@@ -1,6 +1,6 @@
 # Methodology
 
-> A docs-first lifecycle system for AI-assisted development.
+> A knowledge-first lifecycle system for AI-assisted development.
 
 ---
 

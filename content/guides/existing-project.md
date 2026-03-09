@@ -1,6 +1,6 @@
 # Existing Project Setup
 
-> **Adding to an existing codebase?** Follow this guide to integrate AI Context Docs Lifecycle.
+> **Adding to an existing codebase?** Follow this guide to integrate AI Context Docs Lifecycle. For the fastest path, see [Quick Start →](../quick-start.md) first.
 
 ---
 

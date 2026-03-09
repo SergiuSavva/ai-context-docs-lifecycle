@@ -1,6 +1,6 @@
 # Getting Started
 
-> **Pick the modules you need** - Start minimal, add complexity as needed.
+> **Pick the modules you need.** New to ACDL? Start with [Quick Start →](../quick-start.md) for the minimum setup, then return here to choose which modules to add.
 
 ---
 
@@ -20,16 +20,22 @@ This installs methodology skills/templates directly into your project (for examp
 
 ### Just Starting?
 
-**Start with Module 1 (Basic tier).**
+**Start with Module 1 — Standard tier.**
 
-```bash
-# What you get:
+The minimum useful setup for a side project:
+
+```
 your-project/
-├── AGENTS.md    # AI context file (~80 lines)
-└── docs/        # Reference docs (only docs your project needs)
+├── AGENTS.md              # AI context (~80 lines) — always loaded
+└── docs/                  # Reference docs — only the ones your project needs
+    └── scripts.md         # Start here: runnable commands
 ```
 
-Add `.agents/skills/` when you need deep coding patterns (Full tier).
+- **Basic tier** = `AGENTS.md` only — fast start, minimum viable context
+- **Standard tier** = `AGENTS.md` + `docs/` — adds durable reference knowledge
+- **Full tier** = add `.agents/skills/` — for deep patterns you keep re-explaining
+
+For a solo side project, Standard tier is the right default. Add skills only when the AI keeps getting your specific stack patterns wrong.
 
 [Go to Module 1: Project Context →](../modules/01-project-context/README.md)
 
@@ -108,10 +114,10 @@ If you are not using the CLI, replace that local path with:
 ### Starter
 
 ```
-Module 1 — Basic tier (AGENTS.md + docs/)
+Module 1 — Standard tier (AGENTS.md + docs/)
 ```
 
-Best for: Personal projects, prototypes, small apps
+Best for: Personal projects, prototypes, side projects
 
 ### Production
 
