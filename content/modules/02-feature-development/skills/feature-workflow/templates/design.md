@@ -1,13 +1,14 @@
-# Design: [Feature Name]
+# Design: {{Feature Name}}
 
-> **Template**: Copy to `specs/[feature-name]/design.md`
+> **Template**: Copy to `specs/{{feature-name}}/design.md`
 > Use when architecture decisions, API contracts, or data models need to be defined.
+> Replace all `{{bracketed}}` placeholders.
 
 ---
 
 ## Overview
 
-[1-2 paragraphs: What are we building and how? Summary of the technical approach.]
+{{1-2 paragraphs: What are we building and how? Summary of the technical approach.}}
 
 ---
 
@@ -16,41 +17,41 @@
 ### System Context
 
 ```
-┌─────────────────────────────────────────────────────────────────┐
-│                         System Context                          │
-├─────────────────────────────────────────────────────────────────┤
-│                                                                 │
-│  ┌─────────┐     ┌─────────────────┐     ┌─────────────────┐   │
-│  │  User   │ ──► │   This Feature  │ ──► │ External System │   │
-│  └─────────┘     └─────────────────┘     └─────────────────┘   │
-│                          │                                      │
-│                          ▼                                      │
-│                  ┌─────────────────┐                           │
-│                  │    Database     │                           │
-│                  └─────────────────┘                           │
-│                                                                 │
-└─────────────────────────────────────────────────────────────────┘
++------------------------------------------------------------------+
+|                         System Context                            |
++------------------------------------------------------------------+
+|                                                                   |
+|  +---------+     +-----------------+     +-----------------+      |
+|  |  User   | --> |   This Feature  | --> | External System |      |
+|  +---------+     +-----------------+     +-----------------+      |
+|                          |                                        |
+|                          v                                        |
+|                  +-----------------+                              |
+|                  |    Database     |                              |
+|                  +-----------------+                              |
+|                                                                   |
++------------------------------------------------------------------+
 ```
 
 ### Component Structure
 
 ```
-┌─────────────────────────────────────────────────────────────────┐
-│                      Feature Components                         │
-├─────────────────────────────────────────────────────────────────┤
-│                                                                 │
-│  ┌─────────────────┐     ┌─────────────────┐                   │
-│  │   Component A   │ ──► │   Component B   │                   │
-│  │   (UI Layer)    │     │  (Logic Layer)  │                   │
-│  └─────────────────┘     └────────┬────────┘                   │
-│                                   │                             │
-│                                   ▼                             │
-│                          ┌─────────────────┐                   │
-│                          │   Component C   │                   │
-│                          │  (Data Layer)   │                   │
-│                          └─────────────────┘                   │
-│                                                                 │
-└─────────────────────────────────────────────────────────────────┘
++------------------------------------------------------------------+
+|                      Feature Components                           |
++------------------------------------------------------------------+
+|                                                                   |
+|  +-----------------+     +-----------------+                      |
+|  |   Component A   | --> |   Component B   |                      |
+|  |   (UI Layer)    |     |  (Logic Layer)  |                      |
+|  +-----------------+     +--------+--------+                      |
+|                                   |                               |
+|                                   v                               |
+|                          +-----------------+                      |
+|                          |   Component C   |                      |
+|                          |  (Data Layer)   |                      |
+|                          +-----------------+                      |
+|                                                                   |
++------------------------------------------------------------------+
 ```
 
 ---
@@ -61,7 +62,7 @@
 
 | Entity | Purpose | Key Fields |
 |--------|---------|------------|
-| [entity_name] | [Description] | id, field1, field2 |
+| {{entity_name}} | {{Description}} | id, field1, field2 |
 
 ### Schema (if applicable)
 
@@ -78,10 +79,10 @@ CREATE TABLE table_name (
 ### Relationships
 
 ```
-Entity A  1───*  Entity B
-    │
+Entity A  1---*  Entity B
+    |
     1
-    │
+    |
     *
 Entity C
 ```
@@ -125,7 +126,7 @@ Entity C
 ## File Structure
 
 ```
-features/<feature>/
+features/{{feature}}/
 ├── components/
 │   ├── ComponentA.tsx
 │   └── index.ts
@@ -143,10 +144,10 @@ features/<feature>/
 
 | State Type | Location | Why |
 |------------|----------|-----|
-| Server data | [React Query / SWR / etc.] | Caching, sync |
-| Form data | [React Hook Form / etc.] | Validation |
+| Server data | {{React Query / SWR / etc.}} | Caching, sync |
+| Form data | {{React Hook Form / etc.}} | Validation |
 | UI state | useState | Component-local |
-| URL state | [nuqs / searchParams] | Shareable |
+| URL state | {{nuqs / searchParams}} | Shareable |
 
 ---
 
@@ -163,24 +164,24 @@ features/<feature>/
 
 ## Performance Considerations
 
-- [Optimization 1: e.g., pagination for large lists]
-- [Optimization 2: e.g., lazy loading]
-- [Target metrics: e.g., < 500ms load time]
+- {{Optimization 1: e.g., pagination for large lists}}
+- {{Optimization 2: e.g., lazy loading}}
+- {{Target metrics: e.g., < 500ms load time}}
 
 ---
 
 ## Security Considerations
 
-- [Auth requirement]
-- [Data validation]
-- [Access control rules]
+- {{Auth requirement}}
+- {{Data validation}}
+- {{Access control rules}}
 
 ---
 
 ## Open Questions
 
-- [ ] [Question 1 requiring decision]
-- [ ] [Question 2 requiring decision]
+- [ ] {{Question 1 requiring decision}}
+- [ ] {{Question 2 requiring decision}}
 
 ---
 
@@ -193,5 +194,5 @@ features/<feature>/
 
 ---
 
-*Created: [Date]*
+*Created: {{Date}}*
 *Status: Draft | Approved*

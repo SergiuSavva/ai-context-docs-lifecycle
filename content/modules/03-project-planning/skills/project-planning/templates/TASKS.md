@@ -2,6 +2,9 @@
 
 > **Template**: Copy to `TASKS.md`
 > High-level progress tracking across all features.
+> Replace all `{{bracketed}}` placeholders.
+
+> **Scope**: TASKS.md owns **progress tracking and velocity**. For feature priorities, see `BACKLOG.md`. For phase/release grouping, see `ROADMAP.md`. For per-feature task lists, see `specs/<feature>/tasks.md`.
 
 ---
 
@@ -9,46 +12,45 @@
 
 | Phase | Features | Complete | Progress |
 |-------|----------|----------|----------|
-| MVP | 5 | 2 | 40% |
-| Phase 2 | 4 | 0 | 0% |
-| **Total** | **9** | **2** | **22%** |
+| MVP | {{count}} | {{count}} | {{percent}}% |
+| Phase 2 | {{count}} | {{count}} | {{percent}}% |
+| **Total** | **{{count}}** | **{{count}}** | **{{percent}}%** |
 
 ---
 
 ## MVP Progress
 
-### ✅ Complete
+### Complete
 
 | Feature | Completed | ADR |
 |---------|-----------|-----|
-| [Core Setup] | [Date] | - |
-| [Database Schema] | [Date] | `docs/decisions/001-database.md` |
+| {{Feature}} | {{Date}} | - |
+| {{Feature}} | {{Date}} | `docs/decisions/{{NNN-name}}.md` |
 
-### 🔨 In Progress
+### In Progress
 
 | Feature | Progress | Spec | Blocked |
 |---------|----------|------|---------|
-| [Feature Name] | [X]% | `specs/[feature]/` | No |
+| {{Feature}} | {{percent}}% | `specs/{{feature}}/` | No |
 
-### 📋 Up Next
+### Up Next
 
-| Feature | Priority | Spec |
-|---------|----------|------|
-| [Feature Name] | High | `specs/[feature]/` |
-| [Feature Name] | Medium | Not started |
+| Feature | Spec |
+|---------|------|
+| {{Feature}} | `specs/{{feature}}/` |
+| {{Feature}} | Not started |
 
 ---
 
 ## Phase 2 Progress
 
-### 📋 Planned
+### Planned
 
-| Feature | Priority | Notes |
-|---------|----------|-------|
-| Feature 4 | High | After MVP |
-| Feature 5 | High | |
-| Feature 6 | Medium | |
-| Feature 7 | Low | |
+| Feature | Notes |
+|---------|-------|
+| {{Feature}} | After MVP |
+| {{Feature}} | |
+| {{Feature}} | |
 
 ---
 
@@ -56,7 +58,7 @@
 
 | Feature | Blocked By | Action Needed |
 |---------|------------|---------------|
-| [None currently] | - | - |
+| {{None currently}} | - | - |
 
 ---
 
@@ -64,9 +66,9 @@
 
 | Date | Feature | Action |
 |------|---------|--------|
-| 2026-01-19 | User Auth | Started implementation |
-| 2026-01-18 | Dashboard | Spec approved |
-| 2026-01-16 | Database | Completed setup |
+| {{Date}} | {{Feature}} | {{Action}} |
+| {{Date}} | {{Feature}} | {{Action}} |
+| {{Date}} | {{Feature}} | {{Action}} |
 
 ---
 
@@ -76,15 +78,18 @@
 
 | Week | Features Completed | Notes |
 |------|--------------------|-------|
-| W3 2026 | 1 | Database setup |
-| W2 2026 | 1 | Core setup |
+| {{Week}} | {{count}} | {{Notes}} |
+| {{Week}} | {{count}} | {{Notes}} |
 
 ### Burndown
 
+Update the bar after each feature completes. Adjust the filled/empty blocks to match the ratio.
+
 ```
-Features remaining: ████████░░ 8/10 (MVP)
-                    ██████████ 4/4  (Phase 2)
+Features remaining: {{filled}}{{empty}} {{done}}/{{total}} ({{phase}})
 ```
+
+Example: `████████░░ 8/10 (MVP)` means 8 of 10 features remain.
 
 ---
 
@@ -93,8 +98,8 @@ Features remaining: ████████░░ 8/10 (MVP)
 ### When Feature Completes
 
 1. Move to "Complete" section
-2. Update Summary table
-3. Recalculate progress percentages
+2. Update Summary table (recalculate counts and percentages)
+3. Update Burndown bar
 4. Add to Recent Activity
 
 ### When Feature Starts
@@ -110,4 +115,4 @@ Features remaining: ████████░░ 8/10 (MVP)
 
 ---
 
-*Last updated: [Date]*
+*Last updated: {{Date}}*

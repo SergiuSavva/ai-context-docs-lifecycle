@@ -94,6 +94,8 @@
 
 ### Phase Breakdown
 
+> Keep this high-level. Detailed phase planning belongs in `ROADMAP.md`.
+
 | Phase | Focus | Key Features |
 |-------|-------|--------------|
 | MVP | {{Core value}} | {{Features}} |
@@ -163,4 +165,4 @@ See `docs/decisions/` for ADRs.
 ---
 
 *Last updated: {{Date}}*
-*Version: {{1.0}}*
+*Version: {{Version}}*

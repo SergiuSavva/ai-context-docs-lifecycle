@@ -12,9 +12,9 @@ Pick the modules you need:
 
 | # | Module | Purpose |
 |---|--------|---------|
-| 1 | **Project Context** | AGENTS.md + docs/ + .agents/skills/ |
-| 2 | **Feature Development** | Workflows for building features |
-| 3 | **Project Planning** | Multi-feature management (optional) |
+| 1 | **[Project Context](modules/01-project-context/README.md)** | AGENTS.md + docs/ + .agents/skills/ |
+| 2 | **[Feature Development](modules/02-feature-development/README.md)** | Workflows for building features |
+| 3 | **[Project Planning](modules/03-project-planning/README.md)** | Multi-feature management (optional) |
 
 ---
 

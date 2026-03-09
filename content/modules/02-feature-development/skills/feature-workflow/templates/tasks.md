@@ -1,6 +1,7 @@
-# Tasks: [Feature Name]
+# Tasks: {{Feature Name}}
 
-> **Template**: Copy to `specs/[feature-name]/tasks.md`
+> **Template**: Copy to `specs/{{feature-name}}/tasks.md`
+> Replace all `{{bracketed}}` placeholders.
 
 ---
 
@@ -18,24 +19,24 @@
 
 ## Setup
 
-- [ ] T-01: [Setup task 1]
-- [ ] T-02: [Setup task 2]
+- [ ] T-01: {{Setup task 1}}
+- [ ] T-02: {{Setup task 2}}
 
 ## Core Implementation
 
-- [ ] T-03: [Implementation task 1]
-- [ ] T-04: [Implementation task 2]
-- [ ] T-05: [Implementation task 3]
+- [ ] T-03: {{Implementation task 1}}
+- [ ] T-04: {{Implementation task 2}}
+- [ ] T-05: {{Implementation task 3}}
 
 ## Testing
 
-- [ ] T-06: [Write unit tests]
-- [ ] T-07: [Write integration tests]
+- [ ] T-06: {{Write unit tests}}
+- [ ] T-07: {{Write integration tests}}
 
 ## Documentation
 
-- [ ] T-08: [Update AGENTS.md if new patterns]
-- [ ] T-09: [Update feature README]
+- [ ] T-08: {{Update AGENTS.md if new patterns}}
+- [ ] T-09: {{Update feature README}}
 
 ---
 
@@ -47,7 +48,7 @@
 
 ## Notes
 
-[Add notes as implementation progresses]
+{{Add notes as implementation progresses}}
 
 ---
 

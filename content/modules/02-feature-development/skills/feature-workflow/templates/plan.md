@@ -1,43 +1,44 @@
-# Plan: [Feature Name]
+# Plan: {{Feature Name}}
 
-> **Template**: Copy to `specs/[feature-name]/plan.md`
+> **Template**: Copy to `specs/{{feature-name}}/plan.md`
 > Use when there are complex dependencies, phased rollout, or significant risks.
+> Replace all `{{bracketed}}` placeholders.
 
 ---
 
 ## Implementation Phases
 
-### Phase 1: [Name] (e.g., Setup/Foundation)
+### Phase 1: {{Name}} (e.g., Setup/Foundation)
 
-**Goal**: [What this phase accomplishes]
+**Goal**: {{What this phase accomplishes}}
 
 **Tasks**:
-- T-01: [Task]
-- T-02: [Task]
+- T-01: {{Task}}
+- T-02: {{Task}}
 
 **Depends on**: Nothing (starting point)
 
 ---
 
-### Phase 2: [Name] (e.g., Core Implementation)
+### Phase 2: {{Name}} (e.g., Core Implementation)
 
-**Goal**: [What this phase accomplishes]
+**Goal**: {{What this phase accomplishes}}
 
 **Tasks**:
-- T-03: [Task]
-- T-04: [Task]
+- T-03: {{Task}}
+- T-04: {{Task}}
 
 **Depends on**: Phase 1
 
 ---
 
-### Phase 3: [Name] (e.g., Integration)
+### Phase 3: {{Name}} (e.g., Integration)
 
-**Goal**: [What this phase accomplishes]
+**Goal**: {{What this phase accomplishes}}
 
 **Tasks**:
-- T-05: [Task]
-- T-06: [Task]
+- T-05: {{Task}}
+- T-06: {{Task}}
 
 **Depends on**: Phase 1, Phase 2
 
@@ -47,14 +48,14 @@
 
 ```
 Phase 1 (Setup)
-    │
-    ▼
+    |
+    v
 Phase 2 (Core)
-    │
-    ▼
+    |
+    v
 Phase 3 (Integration)
-    │
-    ▼
+    |
+    v
 Phase 4 (Testing)
 ```
 
@@ -62,14 +63,14 @@ Or for parallel work:
 
 ```
         Phase 1 (Setup)
-           │
-     ┌─────┴─────┐
-     ▼           ▼
+           |
+     +-----+-----+
+     v           v
 Phase 2A      Phase 2B
 (Backend)    (Frontend)
-     │           │
-     └─────┬─────┘
-           ▼
+     |           |
+     +-----+-----+
+           v
      Phase 3 (Integration)
 ```
 
@@ -79,9 +80,9 @@ Phase 2A      Phase 2B
 
 The minimum sequence that must complete:
 
-1. [Step 1] - blocks everything
-2. [Step 2] - blocks integration
-3. [Step 3] - blocks deployment
+1. {{Step 1}} - blocks everything
+2. {{Step 2}} - blocks integration
+3. {{Step 3}} - blocks deployment
 
 ---
 
@@ -89,8 +90,8 @@ The minimum sequence that must complete:
 
 | Risk | Likelihood | Impact | Mitigation | Owner |
 |------|------------|--------|------------|-------|
-| [Risk 1] | High/Med/Low | High/Med/Low | [Action] | [Who] |
-| [Risk 2] | High/Med/Low | High/Med/Low | [Action] | [Who] |
+| {{Risk}} | High/Med/Low | High/Med/Low | {{Action}} | {{Who}} |
+| {{Risk}} | High/Med/Low | High/Med/Low | {{Action}} | {{Who}} |
 
 ---
 
@@ -98,9 +99,9 @@ The minimum sequence that must complete:
 
 | Checkpoint | Criteria | When |
 |------------|----------|------|
-| Phase 1 complete | [What must be true] | After T-02 |
-| Ready for integration | [What must be true] | After Phase 2 |
-| Ready for review | [What must be true] | After all phases |
+| Phase 1 complete | {{What must be true}} | After T-02 |
+| Ready for integration | {{What must be true}} | After Phase 2 |
+| Ready for review | {{What must be true}} | After all phases |
 
 ---
 
@@ -108,9 +109,9 @@ The minimum sequence that must complete:
 
 If implementation fails:
 
-1. [Step to revert]
-2. [Step to restore]
-3. [Communication needed]
+1. {{Step to revert}}
+2. {{Step to restore}}
+3. {{Communication needed}}
 
 ---
 

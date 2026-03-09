@@ -230,5 +230,5 @@ When implementing, respect dependencies:
 
 ## See Also
 
-- Module 3: Feature Development
+- Module 2: Feature Development
 - FEEDBACK-AI-REVIEW.md - Original critique

@@ -78,7 +78,7 @@ The Context Loading tables use:
 
 This syntax works in Claude Code but isn't universal. Other tools use different discovery mechanisms. Users may think this is standard markdown syntax when it's tool-specific.
 
-### 3. Module 5 (Project Planning) Feels Disconnected
+### 3. Module 3 (Project Planning) Feels Disconnected
 
 PRD, BACKLOG, ROADMAP - these are human project management artifacts, not AI context files. It's unclear how an AI agent would meaningfully consume `ROADMAP.md` during implementation.
 
@@ -210,7 +210,7 @@ Add a section: **"How AI Agents Discover This File"**
 
 Consider splitting Module 5 or reframing it:
 
-**Option A**: Remove Module 5 from the AI-focused methodology
+**Option A**: Remove Module 3 from the AI-focused methodology
 **Option B**: Reframe it as "AI-Readable Project State" with specific guidance on what AI can do with backlog/roadmap info
 
 ---

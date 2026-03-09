@@ -1,26 +1,27 @@
-# Spec: [Feature Name]
+# Spec: {{Feature Name}}
 
-> **Template**: Copy to `specs/[feature-name]/spec.md`
+> **Template**: Copy to `specs/{{feature-name}}/spec.md`
+> Replace all `{{bracketed}}` placeholders.
 
 ---
 
 ## Problem
 
-[1-2 sentences: What problem does this solve? Why is it needed now?]
+{{1-2 sentences: What problem does this solve? Why is it needed now?}}
 
 ---
 
 ## Solution
 
-[1-2 sentences: How will we solve it?]
+{{1-2 sentences: How will we solve it?}}
 
 ---
 
 ## Acceptance Criteria
 
-- [ ] AC-01: [Specific, testable criterion]
-- [ ] AC-02: [Specific, testable criterion]
-- [ ] AC-03: [Specific, testable criterion]
+- [ ] AC-01: {{Specific, testable criterion}}
+- [ ] AC-02: {{Specific, testable criterion}}
+- [ ] AC-03: {{Specific, testable criterion}}
 
 ---
 
@@ -28,27 +29,27 @@
 
 ### In Scope
 
-- [What we ARE building]
+- {{What we ARE building}}
 
 ### Out of Scope
 
-- [What we're NOT building]
+- {{What we're NOT building}}
 
 ---
 
 ## Technical Approach
 
-[Brief approach - expand in design.md if complex]
+{{Brief approach - expand in design.md if complex}}
 
-- [Key technology/pattern]
-- [Implementation approach]
+- {{Key technology/pattern}}
+- {{Implementation approach}}
 
 ---
 
 ## Dependencies
 
-- [External: API, service, library]
-- [Internal: Other feature, existing code]
+- {{External: API, service, library}}
+- {{Internal: Other feature, existing code}}
 
 ---
 
@@ -56,7 +57,7 @@
 
 | Risk | Mitigation |
 |------|------------|
-| [Risk 1] | [How to mitigate] |
+| {{Risk}} | {{How to mitigate}} |
 
 ---
 

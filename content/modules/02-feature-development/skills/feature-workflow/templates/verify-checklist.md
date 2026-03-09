@@ -1,6 +1,6 @@
-# Verify: [Feature Name]
+# Verify: {{Feature Name}}
 
-> **Template**: Copy to `specs/[feature-name]/verify-checklist.md`
+> **Template**: Copy to `specs/{{feature-name}}/verify-checklist.md`
 > This checklist is the Definition of Done. Fill it after all tasks are complete, before closeout.
 
 ---
@@ -19,9 +19,9 @@ Cross-reference each AC from `spec.md`:
 
 | AC | Criterion | Status | Evidence |
 |----|-----------|--------|----------|
-| AC-01 | [Copy from spec.md] | Pass / Fail / Partial | [How verified — test output, manual check, screenshot] |
-| AC-02 | [Copy from spec.md] | Pass / Fail / Partial | [How verified] |
-| AC-03 | [Copy from spec.md] | Pass / Fail / Partial | [How verified] |
+| AC-01 | {{Copy from spec.md}} | Pass / Fail / Partial | {{How verified — test output, manual check, screenshot}} |
+| AC-02 | {{Copy from spec.md}} | Pass / Fail / Partial | {{How verified}} |
+| AC-03 | {{Copy from spec.md}} | Pass / Fail / Partial | {{How verified}} |
 
 ---
 
@@ -67,7 +67,7 @@ Only check docs that exist in the project. Mark N/A for docs that don't apply.
 ### Decision Record
 
 - [ ] Were significant technical decisions made during implementation?
-  - YES → Create ADR in `docs/decisions/NNN-[decision].md`
+  - YES → Create ADR in `docs/decisions/NNN-{{decision}}.md`
   - NO → No ADR needed
 
 ---

@@ -1,29 +1,30 @@
-# Research: [Feature Name]
+# Research: {{Feature Name}}
 
-> **Template**: Copy to `specs/[feature-name]/research.md`
+> **Template**: Copy to `specs/{{feature-name}}/research.md`
 > Use when exploring options, evaluating libraries, or unfamiliar territory.
+> Replace all `{{bracketed}}` placeholders.
 
 ---
 
 ## Problem Statement
 
-[What are we trying to solve? What constraints exist?]
+{{What are we trying to solve? What constraints exist?}}
 
 ---
 
 ## Options Evaluated
 
-### Option A: [Name]
+### Option A: {{Name}}
 
-**Description**: [What is this option?]
+**Description**: {{What is this option?}}
 
 **Pros**:
-- [Advantage 1]
-- [Advantage 2]
+- {{Advantage 1}}
+- {{Advantage 2}}
 
 **Cons**:
-- [Disadvantage 1]
-- [Disadvantage 2]
+- {{Disadvantage 1}}
+- {{Disadvantage 2}}
 
 **Effort**: Low / Medium / High
 
@@ -33,17 +34,17 @@
 
 ---
 
-### Option B: [Name]
+### Option B: {{Name}}
 
-**Description**: [What is this option?]
+**Description**: {{What is this option?}}
 
 **Pros**:
-- [Advantage 1]
-- [Advantage 2]
+- {{Advantage 1}}
+- {{Advantage 2}}
 
 **Cons**:
-- [Disadvantage 1]
-- [Disadvantage 2]
+- {{Disadvantage 1}}
+- {{Disadvantage 2}}
 
 **Effort**: Low / Medium / High
 
@@ -53,15 +54,15 @@
 
 ---
 
-### Option C: [Name] (if applicable)
+### Option C: {{Name}} (if applicable)
 
-**Description**: [What is this option?]
+**Description**: {{What is this option?}}
 
 **Pros**:
-- [Advantage 1]
+- {{Advantage 1}}
 
 **Cons**:
-- [Disadvantage 1]
+- {{Disadvantage 1}}
 
 **Effort**: Low / Medium / High
 
@@ -71,9 +72,9 @@
 
 | Criteria | Option A | Option B | Option C |
 |----------|----------|----------|----------|
-| Ease of implementation | ⭐⭐⭐ | ⭐⭐ | ⭐ |
-| Performance | ⭐⭐ | ⭐⭐⭐ | ⭐⭐ |
-| Maintainability | ⭐⭐⭐ | ⭐⭐ | ⭐⭐⭐ |
+| Ease of implementation | High | Medium | Low |
+| Performance | Medium | High | Medium |
+| Maintainability | High | Medium | High |
 | Cost | Free | $$ | Free |
 | Community support | Large | Medium | Small |
 
@@ -81,15 +82,15 @@
 
 ## Recommendation
 
-**Chosen Option**: [Option X]
+**Chosen Option**: {{Option}}
 
 **Rationale**:
-- [Reason 1]
-- [Reason 2]
-- [Reason 3]
+- {{Reason 1}}
+- {{Reason 2}}
+- {{Reason 3}}
 
 **Trade-offs Accepted**:
-- [Trade-off 1]
+- {{Trade-off 1}}
 
 ---
 
@@ -110,7 +111,7 @@ sequenceDiagram
     participant User
     participant App
     participant Service
-    
+
     User->>App: Action
     App->>Service: Request
     Service-->>App: Response
@@ -121,15 +122,15 @@ sequenceDiagram
 
 ## Security Considerations
 
-- [Security consideration 1]
-- [Security consideration 2]
+- {{Security consideration 1}}
+- {{Security consideration 2}}
 
 ---
 
 ## Performance Considerations
 
-- [Performance consideration 1]
-- [Expected load/scale]
+- {{Performance consideration 1}}
+- {{Expected load/scale}}
 
 ---
 
@@ -144,15 +145,15 @@ sequenceDiagram
 - Tutorial: `<paste URL here>`
 
 ### Related
-- `docs/decisions/NNN-[related].md` (if applicable)
-- `docs/features/[related]/` (if applicable)
+- `docs/decisions/NNN-{{related}}.md` (if applicable)
+- `docs/features/{{related}}/` (if applicable)
 
 ---
 
 ## Open Questions
 
-- [ ] [Question 1 that needs answering]
-- [ ] [Question 2 that needs answering]
+- [ ] {{Question 1 that needs answering}}
+- [ ] {{Question 2 that needs answering}}
 
 ---
 
@@ -165,5 +166,5 @@ After research approval:
 
 ---
 
-*Researched: [Date]*
+*Researched: {{Date}}*
 *Status: Draft | Approved*
