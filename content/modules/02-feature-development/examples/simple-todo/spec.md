@@ -72,4 +72,4 @@ Add a "Mark all as complete" button above the todo list that completes all pendi
 
 ---
 
-*Status: Implementing*
+*Status: Complete*

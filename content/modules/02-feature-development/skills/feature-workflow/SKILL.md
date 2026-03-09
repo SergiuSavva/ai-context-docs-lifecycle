@@ -5,8 +5,6 @@ description: Feature workflow — Research, Plan, Implement, Verify with task tr
 
 # Feature Workflow
 
-> **References:** Implementation flow → @docs/decisions/001-implementation-flow.md
-
 ## Four Phases
 
 ```
@@ -78,6 +76,15 @@ Is this a bug fix?
 | `[S]` | Skipped (include reason) |
 
 **Progress formula**: `(completed + skipped) / total * 100`
+
+### Task Numbering
+
+Number tasks sequentially with the `T-XX` prefix: `T-01`, `T-02`, etc. Group tasks under phase headings (Setup, Core Implementation, Testing, Documentation). Each task is a single checklist item with its marker and number:
+
+```markdown
+- [ ] T-01: Set up database schema
+- [ ] T-02: Create API route stubs
+```
 
 ### Sequential vs Parallel
 

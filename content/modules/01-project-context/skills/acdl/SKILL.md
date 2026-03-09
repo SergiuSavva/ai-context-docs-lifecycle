@@ -94,7 +94,7 @@ Proceed?"
 
 | Situation | Suggest | Why |
 |-----------|---------|-----|
-| Simple app, solo dev | `acdl` skill (Basic tier) | AGENTS.md + docs/ is sufficient |
+| Simple app, solo dev | `acdl` skill (Standard tier) | AGENTS.md + docs/ is sufficient |
 | Specific stack patterns | `acdl` skill (Full tier) | Deep coding patterns via skills |
 | Multi-feature work | `feature-workflow` skill | Structured spec/task workflows |
 | Roadmap planning | `project-planning` skill | PRD, backlog, release management |
@@ -213,6 +213,8 @@ The last row closes the feedback loop: bad AI output is a signal to improve your
 | Write spec or acceptance criteria | `load skill spec-writing` |
 | Build a feature (workflow + tasks) | `load skill feature-workflow` |
 | Inspect project state / next action | `load skill workflow-guide` |
+| Write or review any markdown doc | `load skill doc-writing` |
+| Multi-feature planning, roadmap, backlog | `load skill project-planning` |
 | Stack-specific patterns | `load skill [your-stack-skill]` |
 | Set up or maintain ACDL | This skill |
 

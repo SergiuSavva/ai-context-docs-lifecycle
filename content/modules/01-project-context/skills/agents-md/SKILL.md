@@ -114,7 +114,7 @@ Do **not** update AGENTS.md for every feature. Only update when project-level pa
 ## When NOT to Use This Skill
 
 - Writing **stack-specific patterns** (use a dedicated stack skill like `database`, `testing`)
-- Writing **detailed reference docs** (create a file in `docs/` instead)
+- Writing **detailed reference docs** → `load skill doc-writing` (for structure, style, and quality rules)
 - Working on **feature specs** (use `spec-writing` or `feature-workflow` skills)
 
 ---

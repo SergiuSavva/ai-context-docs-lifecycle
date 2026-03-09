@@ -1,36 +1,36 @@
-# ADR-NNN: [Decision Title]
+# ADR-NNN: {{Decision Title}}
 
 > **Template**: Copy to `docs/decisions/NNN-<decision-slug>.md`
 > Replace NNN with next sequential number.
-> Replace all `[bracketed]` placeholders.
+> Replace all `{{bracketed}}` placeholders.
 
 ---
 
 ## Status
 
-**Proposed** | **Accepted** | **Deprecated** | **Superseded by ADR-XXX**
+**{{Proposed | Accepted | Deprecated | Superseded by ADR-NNN}}**
 
 ---
 
 ## Context
 
-[What problem or question required a decision? What constraints existed? What was the situation?]
+{{What problem or question required a decision? What constraints existed? What was the situation?}}
 
 ---
 
 ## Decision
 
-[What did we decide? State the decision clearly and concisely.]
+{{What did we decide? State the decision clearly and concisely.}}
 
 ---
 
 ## Rationale
 
-[WHY did we make this decision? What were the key factors?]
+{{WHY did we make this decision? What were the key factors?}}
 
-- [Reason 1]
-- [Reason 2]
-- [Reason 3]
+- {{Reason 1}}
+- {{Reason 2}}
+- {{Reason 3}}
 
 ---
 
@@ -38,62 +38,62 @@
 
 ### Positive
 
-- [Benefit 1]
-- [Benefit 2]
-- [Benefit 3]
+- {{Benefit 1}}
+- {{Benefit 2}}
+- {{Benefit 3}}
 
 ### Negative
 
-- [Trade-off 1]
-- [Trade-off 2]
+- {{Trade-off 1}}
+- {{Trade-off 2}}
 
 ### Neutral
 
-- [Side effect that's neither good nor bad]
+- {{Side effect that's neither good nor bad}}
 
 ---
 
 ## Alternatives Considered
 
-### [Alternative 1 Name]
+### {{Alternative 1 Name}}
 
-**Description**: [What was this option?]
+**Description**: {{What was this option?}}
 
-**Rejected because**: [Why we didn't choose this]
+**Rejected because**: {{Why we didn't choose this}}
 
 ---
 
-### [Alternative 2 Name]
+### {{Alternative 2 Name}}
 
-**Description**: [What was this option?]
+**Description**: {{What was this option?}}
 
-**Rejected because**: [Why we didn't choose this]
+**Rejected because**: {{Why we didn't choose this}}
 
 ---
 
 ## Implementation
 
-[Brief notes on how this decision was implemented, or link to relevant code/docs]
+{{Brief notes on how this decision was implemented, or link to relevant code/docs}}
 
-- Feature: `docs/features/<feature>/`
-- Code: `src/<path>/`
-- Related: [Link to related docs]
+- Feature: `docs/features/{{feature}}/`
+- Code: `src/{{path}}/`
+- Related: {{Link to related docs}}
 
 ---
 
 ## References
 
-- Research doc: `specs/_archive/[feature]/research.md` (if applicable)
-- External resources: [URLs]
-- Related ADRs: `docs/decisions/NNN-[related].md`
+- Research doc: `specs/_archive/{{feature}}/research.md` (if applicable)
+- External resources: {{URLs}}
+- Related ADRs: `docs/decisions/NNN-{{related}}.md`
 
 ---
 
 ## Metadata
 
-- **Date**: [YYYY-MM-DD]
-- **Decision makers**: [Who made/approved this decision]
-- **Related feature**: [Feature name]
+- **Date**: {{YYYY-MM-DD}}
+- **Decision makers**: {{Who made/approved this decision}}
+- **Related feature**: {{Feature name}}
 
 ---
 
@@ -101,15 +101,15 @@
 
 Create an ADR when ANY of these are true:
 
-- ✅ Evaluated 2+ alternatives and chose one
-- ✅ Introduced a new architectural pattern
-- ✅ Made a breaking change
-- ✅ Chose a third-party library/service
-- ✅ Made a significant trade-off decision
+- Evaluated 2+ alternatives and chose one
+- Introduced a new architectural pattern
+- Made a breaking change
+- Chose a third-party library/service
+- Made a significant trade-off decision
 
 Do NOT create an ADR for:
 
-- ❌ Bug fixes
-- ❌ Simple features with obvious implementation
-- ❌ Following existing patterns
-- ❌ Minor refactoring
+- Bug fixes
+- Simple features with obvious implementation
+- Following existing patterns
+- Minor refactoring

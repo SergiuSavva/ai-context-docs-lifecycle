@@ -91,36 +91,26 @@ Architecture Decision Records are **permanent**. Never deleted, even if the deci
 
 ### Format
 
+Use the ADR template at `.agents/skills/feature-workflow/templates/adr.md`. Key sections:
+
 ```markdown
 # ADR-NNN: {{Decision Title}}
 
-**Status:** {{Proposed | Accepted | Deprecated | Superseded}}
-**Date:** {{YYYY-MM-DD}}
+**{{Proposed | Accepted | Deprecated | Superseded by ADR-NNN}}**
 
-## Context
-{{Why this decision was needed — 2-3 sentences.}}
-
-## Decision
-{{What was decided — 1-2 sentences.}}
-
-## Rationale
-| Concern | {{Option A}} | {{Option B (chosen)}} |
-|---------|-------------|----------------------|
-| {{concern}} | {{tradeoff}} | {{tradeoff}} |
-
-## Consequences
-- {{Positive consequence}}
-- {{Negative consequence / accepted trade-off}}
-
-## Related
-- @docs/relevant-doc.md
+## Context       — Why this decision was needed
+## Decision      — What was decided
+## Rationale     — Why (with key factors)
+## Consequences  — Positive, Negative, Neutral
+## Alternatives  — What was rejected and why
+## Metadata      — Date, decision makers, related feature
 ```
 
 ### ADR Rules
 
 - Number sequentially: `001-`, `002-`, etc.
 - Status tracks lifecycle: Proposed → Accepted → (optionally) Deprecated/Superseded
-- Comparison table in Rationale makes the "why" scannable
+- List alternatives with rejection reasons — makes the "why" scannable
 - Consequences include both positives AND trade-offs
 
 ---
