@@ -80,14 +80,14 @@ Create skills for your tech stack domains. See the [Skills section in Module 1](
 
 ### Step 7: Add Feature Workflow
 
-Copy the workflow template from [Module 2](../modules/02-feature-development/README.md):
+If you ran `npx @acdl/cli init` with Module 2, the `feature-workflow` skill and optional Cursor bridge are already installed. Otherwise, install manually:
 
 ```bash
 mkdir -p specs
+npx @acdl/cli init --modules 2
 ```
 
-**Option A** (Cursor-specific): Copy `feature-workflow.mdc` to `.cursor/rules/`
-**Option B** (Portable): Create `.agents/skills/feature-workflow/SKILL.md`
+Then tell your AI: `load skill feature-workflow`
 
 ### Step 8: Verify Structure
 

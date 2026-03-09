@@ -63,7 +63,7 @@ These ship as templates. Use them to teach AI agents how to follow the workflow.
 | **Module** | 1 (Project Context) |
 | **Token cost** | ~1,200-1,400 |
 | **Location** | `.agents/skills/agents-md/SKILL.md` |
-| **Cross-references** | `feature-workflow` |
+| **Cross-references** | `acdl`, `doc-writing`, `feature-workflow` |
 
 **Trigger phrases**: "create AGENTS.md", "update project context", "set up AI docs"
 
@@ -107,10 +107,10 @@ These ship as templates. Use them to teach AI agents how to follow the workflow.
 |---|---|
 | **When to use** | Setting up ACDL for a project, configuring skills, understanding the daily workflow, maintaining docs |
 | **What it covers** | Full bootstrap workflow (4 phases), configure for your project, skill setup, daily workflow patterns, maintenance triggers, warning signs, what-goes-where routing |
-| **Module** | All (meta-skill) |
+| **Module** | 1 (Project Context) |
 | **Token cost** | ~2,200-2,500 |
 | **Location** | `.agents/skills/acdl/SKILL.md` |
-| **Cross-references** | `agents-md`, `feature-workflow`, `spec-writing` |
+| **Cross-references** | `agents-md`, `doc-writing`, `feature-workflow`, `spec-writing` |
 
 **Trigger phrases**: "set up ACDL", "bootstrap this project", "configure AI docs", "how does ACDL work"
 
@@ -125,7 +125,7 @@ These ship as templates. Use them to teach AI agents how to follow the workflow.
 | **Module** | 3 (Project Planning) |
 | **Token cost** | ~1,000-1,200 |
 | **Location** | `.agents/skills/project-planning/SKILL.md` |
-| **Cross-references** | `feature-workflow`, `spec-writing` |
+| **Cross-references** | `feature-workflow` |
 
 **Trigger phrases**: "plan the project", "prioritize features", "update roadmap", "manage backlog", "project vision"
 
@@ -173,7 +173,7 @@ Add entries to your Context Loading table:
 ```mermaid
 flowchart TD
     Task["Agent receives task"] --> Match{"Match Context\nLoading table?"}
-    Match -->|"Yes"| Load["Load matching skill\n(~1,200-1,800 tokens)"]
+    Match -->|"Yes"| Load["Load matching skill\n(~1,000-2,500 tokens)"]
     Match -->|"No"| Score["Score candidates\n(see routing policy)"]
     Score -->|">= 70"| Load
     Score -->|"55-69"| Ask["Ask or defer"]

@@ -154,7 +154,7 @@ Load based on your task:
 |------|------------|
 | Architecture | @docs/architecture.md |
 | Components | @docs/components.md |
-| Database changes | load skill `database` |
+| Database changes | load skill `database` (project-specific) |
 | Testing | @docs/testing.md |
 ```
 
@@ -280,42 +280,7 @@ Use the monorepo templates from Module 1:
 
 ## Tool Compatibility
 
-### Recommended Baseline
-
-Use this portable stack first:
-
-1. `AGENTS.md` for always-on project routing
-2. `.agents/skills/*/SKILL.md` for deep task-specific patterns
-3. `docs/` for reference context and ADR history
-
-This works across tools and minimizes lock-in.
-
-### Two-Layer Architecture
-
-```
-┌─────────────────────────────────────────────────────┐
-│  AGENTS.md (Universal)                              │
-│  - Project facts, commands, boundaries              │
-│  - Works with ANY AI tool                           │
-└─────────────────────────────────────────────────────┘
-                        │
-                        ▼
-┌─────────────────────────────────────────────────────┐
-│  Skills + Docs (Portable, on-demand)                │
-│  .agents/skills/*/SKILL.md                          │
-│  @docs/*.md                                          │
-└─────────────────────────────────────────────────────┘
-```
-
-### Optional Tool Bridges
-
-```bash
-# Keep AGENTS.md + skills + docs as source of truth.
-# Add tool-specific bridges only if your team needs advanced features.
-
-# Claude Code
-ln -s AGENTS.md CLAUDE.md
-```
+For multi-tool setup, Cursor/Claude Code/Copilot bridges, and the two-layer architecture, see the [Tool Compatibility Guide](./tool-compatibility.md).
 
 ---
 
@@ -382,8 +347,8 @@ src/
 | Architecture | @docs/architecture.md |
 | Components | @docs/components.md |
 | Payments | @docs/stripe-integration.md |
-| Database migrations | load skill `database` |
-| Testing strategy | load skill `testing` |
+| Database migrations | load skill `database` (project-specific) |
+| Testing strategy | load skill `testing` (project-specific) |
 
 ## Boundaries
 

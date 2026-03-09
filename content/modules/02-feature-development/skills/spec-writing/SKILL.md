@@ -157,4 +157,3 @@ For task formatting (T-XX numbering, markers, phases, progress tracking), use `l
 - Spec files: @specs/[feature-name]/spec.md
 - Task files: @specs/[feature-name]/tasks.md
 - load skill `feature-workflow`
-- load skill `feature-workflow`

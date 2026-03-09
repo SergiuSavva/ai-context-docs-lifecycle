@@ -245,4 +245,3 @@ Use this skill for: initial ACDL setup, methodology configuration, diagnosing AI
 - load skill `doc-writing`
 - load skill `feature-workflow`
 - load skill `spec-writing`
-- load skill `feature-workflow`
