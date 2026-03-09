@@ -44,20 +44,9 @@ AI coding assistants have no lasting knowledge of your project:
 
 ### Why Not Existing SDD Tools?
 
-Spec-Driven Development (SDD) tools like [GSD](https://github.com/gsd-build/get-shit-done), [BMAD Method](https://docs.bmad-method.org), [Spec Kit](https://github.com/github/spec-kit), and [cc-sdd](https://github.com/gotalab/cc-sdd) solve the same root problem — AI agents produce inconsistent code without structured context. But they introduce new constraints:
+Spec-Driven Development tools ([GSD](https://github.com/gsd-build/get-shit-done), [BMAD](https://docs.bmad-method.org), [Spec Kit](https://github.com/github/spec-kit), [cc-sdd](https://github.com/gotalab/cc-sdd)) solve the same root problem but tend to be agent-locked, all-or-nothing, runtime-dependent, and process-heavy. Specs drive one feature, then knowledge evaporates.
 
-
-| Limitation                                                                       | Tools affected                                                       | ACDL approach                                                                              |
-| -------------------------------------------------------------------------------- | -------------------------------------------------------------------- | ------------------------------------------------------------------------------------------ |
-| **Agent lock-in** — installs commands/prompts for one or two agents              | GSD (Claude), BMAD (Claude/Cursor), cc-sdd, Spec Kit                 | Pure markdown. Works with every agent that can read files.                                 |
-| **All-or-nothing** — full system required to get value                           | GSD, BMAD, cc-sdd                                                    | Three independent modules. Adopt `AGENTS.md` alone or add features/planning as needed.     |
-| **Runtime dependency** — requires `npx`, Node.js, or Python to function          | GSD, BMAD, cc-sdd, Spec Kit                                          | Zero runtime. The methodology *is* the files. CLI is optional convenience.                 |
-| **Heavy process** — sprint ceremonies, agent personas, multi-agent orchestration | BMAD (5 personas, sprints), GSD (wave orchestration, state machines) | Minimal process. One workflow, four phases, plain checklists.                              |
-| **No memory model** — specs drive code but nothing persists across features      | Spec Kit, cc-sdd                                                     | Three document lifecycles: ephemeral specs, evergreen reference docs, permanent decisions. |
-| **Context bloat** — loads everything upfront                                     | GSD (PROJECT.md + STATE.md + ROADMAP.md always loaded)               | Progressive disclosure: ~700 tokens always loaded, rest on-demand via skills and docs.     |
-
-
-Other tools are spec-driven: specs in, code out, knowledge discarded. ACDL is knowledge-first: structured project knowledge that compounds across features, persists across sessions, and moves with you to any AI agent.
+ACDL is different: pure markdown (no runtime), works with any AI agent, three independent modules you adopt incrementally, and a memory model where project knowledge compounds across features instead of being discarded.
 
 ---
 
@@ -181,28 +170,6 @@ project/
 ```
 
 [Go to Module 3 →](content/modules/03-project-planning/)
-
----
-
-## Key Concepts
-
-### Three Document Types
-
-
-| Type          | Lifecycle                  | Example           |
-| ------------- | -------------------------- | ----------------- |
-| **Specs**     | Ephemeral (delete after)   | spec.md, tasks.md |
-| **Reference** | Evergreen (always current) | AGENTS.md, docs/  |
-| **Decisions** | Permanent (never change)   | ADRs              |
-
-
-### Progressive Disclosure
-
-AGENTS.md is always loaded (~700 tokens). Skills and docs load on-demand when the task requires them. Minimal context upfront, deep knowledge available when needed.
-
-### Core Rule: Update or Delete
-
-Stale documentation is worse than no documentation. Reference docs are either current or deleted.
 
 ---
 
