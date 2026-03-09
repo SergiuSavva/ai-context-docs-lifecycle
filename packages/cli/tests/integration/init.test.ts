@@ -123,8 +123,10 @@ describe("acdl init --modules", () => {
 
     // Skills installed
     expect(existsSync(resolve(FIXTURE_DIR, ".agents", "skills", "feature-workflow", "SKILL.md"))).toBe(true);
-    expect(existsSync(resolve(FIXTURE_DIR, ".agents", "skills", "workflow-guide", "SKILL.md"))).toBe(true);
     expect(existsSync(resolve(FIXTURE_DIR, ".agents", "skills", "spec-writing", "SKILL.md"))).toBe(true);
+
+    // workflow-guide merged into feature-workflow — no separate directory
+    expect(existsSync(resolve(FIXTURE_DIR, ".agents", "skills", "workflow-guide"))).toBe(false);
 
     // Spec templates inside feature-workflow skill
     expect(existsSync(resolve(FIXTURE_DIR, ".agents", "skills", "feature-workflow", "templates", "spec.md"))).toBe(true);

@@ -10,7 +10,6 @@
 flowchart LR
     subgraph methodology [Methodology Skills]
         FW["feature-workflow"]
-        WG["workflow-guide"]
         AM["agents-md"]
         SW["spec-writing"]
         DW["doc-writing"]
@@ -44,14 +43,14 @@ These ship as templates. Use them to teach AI agents how to follow the workflow.
 
 | | |
 |---|---|
-| **When to use** | Building any feature, executing tasks, managing implementation progress |
-| **What it covers** | Four-phase workflow (Research → Plan → Implement → Verify), decision tree, task markers, parallel waves, verification checklist, git recommendations, doc freshness rule |
+| **When to use** | Building any feature, executing tasks, managing implementation progress, resuming work, asking "what should I do next?" |
+| **What it covers** | Project state inspection, four-phase workflow (Research → Plan → Implement → Verify), decision tree, task markers, parallel waves, verification checklist, git recommendations, doc freshness rule, recovery scenarios |
 | **Module** | 2 (Feature Development) |
 | **Token cost** | ~1,000-1,200 |
 | **Location** | `.agents/skills/feature-workflow/SKILL.md` |
 | **Cross-references** | `spec-writing` |
 
-**Trigger phrases**: "build a feature", "implement this", "what's the next task", "mark task complete"
+**Trigger phrases**: "build a feature", "implement this", "what's the next task", "mark task complete", "what should I do next", "resume work", "project status"
 
 ---
 
@@ -102,21 +101,6 @@ These ship as templates. Use them to teach AI agents how to follow the workflow.
 
 ---
 
-### `workflow-guide`
-
-| | |
-|---|---|
-| **When to use** | Resuming work, onboarding, asking "what should I do next?", checking project state |
-| **What it covers** | Project state inspection, workflow position mapping, next-action recommendations, recovery scenarios (stale specs, missing docs, incomplete closeout) |
-| **Module** | 2 (Feature Development) |
-| **Token cost** | ~1,000-1,200 |
-| **Location** | `.agents/skills/workflow-guide/SKILL.md` |
-| **Cross-references** | `feature-workflow`, `acdl`, `spec-writing` |
-
-**Trigger phrases**: "what should I do next", "where am I", "resume work", "project status", "what's the next step"
-
----
-
 ### `acdl`
 
 | | |
@@ -141,7 +125,7 @@ These ship as templates. Use them to teach AI agents how to follow the workflow.
 | **Module** | 3 (Project Planning) |
 | **Token cost** | ~1,000-1,200 |
 | **Location** | `.agents/skills/project-planning/SKILL.md` |
-| **Cross-references** | `feature-workflow`, `spec-writing`, `workflow-guide` |
+| **Cross-references** | `feature-workflow`, `spec-writing` |
 
 **Trigger phrases**: "plan the project", "prioritize features", "update roadmap", "manage backlog", "project vision"
 
@@ -174,7 +158,7 @@ Add entries to your Context Loading table:
 | Task | Read First |
 |------|------------|
 | Building a feature          | load skill `feature-workflow` |
-| What should I do next?      | load skill `workflow-guide` |
+| What should I do next?      | load skill `feature-workflow` |
 | Creating / updating AGENTS.md | load skill `agents-md` |
 | Writing specs or tasks      | load skill `spec-writing` |
 | Writing / reviewing docs    | load skill `doc-writing` |
@@ -230,7 +214,7 @@ Skills also auto-load when AGENTS.md routes to them via the Context Loading tabl
 | Task | Load Skill |
 |------|------------|
 | Build a feature | `feature-workflow` |
-| What should I do next? / Resume work | `workflow-guide` |
+| What should I do next? / Resume work | `feature-workflow` |
 | Create/update AGENTS.md | `agents-md` |
 | Write a spec or tasks file | `spec-writing` |
 | Write/review any markdown doc | `doc-writing` |

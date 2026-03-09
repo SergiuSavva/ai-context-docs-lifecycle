@@ -252,12 +252,11 @@ Add feature specs to your Context Loading section:
 
 ## Skills (Feature Development)
 
-This module provides three self-contained skills that teach AI agents how to execute the feature workflow. Each skill carries its own templates.
+This module provides two skills that teach AI agents how to execute the feature workflow. Each skill carries its own templates.
 
 | Skill | Purpose |
 |-------|---------|
-| `workflow-guide` | **Start here if unsure.** Inspects project state, recommends next action, routes to other skills |
-| `feature-workflow` | Four-phase workflow (Research → Plan → Implement → Verify), task markers, parallel waves, git workflow, verification. Includes all 8 spec templates. |
+| `feature-workflow` | Four-phase workflow (Research → Plan → Implement → Verify), project state inspection, task markers, parallel waves, git workflow, verification. Includes all 8 spec templates. Also handles "what should I do next?" and resuming work. |
 | `spec-writing` | Spec and task authoring — problem framing, acceptance criteria, scoping, task breakdown |
 
 ### Setup
@@ -273,7 +272,6 @@ npx @acdl/cli init  # select Module 2 in the prompt
 ```bash
 cp -r skills/feature-workflow .agents/skills/
 cp -r skills/spec-writing .agents/skills/
-cp -r skills/workflow-guide .agents/skills/
 ```
 
 The `feature-workflow` skill includes a `cursor-bridge.mdc` file. The CLI installs it to `.cursor/rules/feature-workflow.mdc` automatically.

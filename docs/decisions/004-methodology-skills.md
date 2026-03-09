@@ -33,7 +33,7 @@ Key boundary decisions:
 ## Consequences
 
 - Methodology skills now ship in skill-owned folders:
-  - `content/modules/02-feature-development/skills/` (`feature-workflow`, `spec-writing`, `workflow-guide`)
+  - `content/modules/02-feature-development/skills/` (`feature-workflow`, `spec-writing`)
   - `content/modules/01-project-context/skills/` (`agents-md`, `acdl`, `doc-writing`)
 - Module 2 README documents feature-development skills, while Module 1 documents project-context and writing skills
 - AGENTS.md templates (single-app + monorepo) include routing entries for all three

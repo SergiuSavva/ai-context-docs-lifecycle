@@ -1,9 +1,58 @@
 ---
 name: feature-workflow
-description: Feature workflow — Research, Plan, Implement, Verify with task tracking, parallel execution, and validation checkpoints. Use when building features, executing tasks, or managing implementation progress.
+description: Feature workflow — Research, Plan, Implement, Verify with task tracking, parallel execution, and validation checkpoints. Also handles project state inspection and "what should I do next?" guidance. Use when building features, executing tasks, managing implementation progress, resuming work, or onboarding.
 ---
 
 # Feature Workflow
+
+## Project State Inspection
+
+When resuming work, onboarding, or asked "what should I do next?", inspect state in this order:
+
+```
+1. Does AGENTS.md exist?
+   ├─ NO  → Bootstrap it (load skill `acdl`)
+   └─ YES → Continue
+
+2. Does specs/ have active feature folders?
+   ├─ NO  → Start a new feature (see Decision Tree) or Quick Flow for bug fixes
+   └─ YES → Pick most recent, continue
+
+3. Does the active spec have spec.md + tasks.md?
+   ├─ Missing spec.md  → Create it (load skill `spec-writing`)
+   ├─ Missing tasks.md → Create it from spec (load skill `spec-writing`)
+   └─ Both exist → Check task progress
+
+4. Task progress:
+   ├─ All [x]/[S]     → Verify phase (see below)
+   ├─ Any [B]         → Resolve blockers or mark [S] with justification
+   ├─ Any [~]         → Continue that in-progress task
+   └─ Otherwise       → Mark next pending task [~] and begin
+```
+
+**Report format:**
+
+```
+**Project State**:
+- AGENTS.md: ✓ / ✗
+- Active specs: [list or "none"]
+- Current feature: [name] — Phase: Research / Plan / Implement / Verify
+- Task progress: X/Y (Z%)
+- Blocked: [count] tasks
+
+**Recommended Next Action**: [specific instruction]
+```
+
+### Recovery Scenarios
+
+| Situation | Action |
+|-----------|--------|
+| Stale spec (code changed, spec not updated) | Update spec.md or delete if feature is done |
+| Tasks 100% but no verification | Create verify-checklist.md before closeout |
+| Spec folder exists after feature shipped | Delete spec folder, check if ADR is needed |
+| Multiple active specs | Focus on one; list all and ask user which to continue |
+
+---
 
 ## Four Phases
 
@@ -167,6 +216,7 @@ Not every project has every doc. Update only the docs your project maintains. Up
 - **Bug fixes, typos, config changes** — use Quick Flow (Find → Fix → Commit)
 - **Pure exploration / brainstorming** — no structured workflow needed
 - **Single-file changes** that don't need acceptance criteria
+- **Setting up ACDL for the first time** — load skill `acdl` instead
 
 ---
 
@@ -195,4 +245,3 @@ Templates live in `.agents/skills/feature-workflow/templates/`. When creating a 
 - Task files: @specs/[feature-name]/tasks.md
 - Decision records: @docs/decisions/
 - load skill `spec-writing`
-- load skill `workflow-guide`

@@ -132,4 +132,3 @@ Project-level vision: goals, target users, success metrics. Different from featu
 
 - load skill `feature-workflow`
 - load skill `spec-writing`
-- load skill `workflow-guide`

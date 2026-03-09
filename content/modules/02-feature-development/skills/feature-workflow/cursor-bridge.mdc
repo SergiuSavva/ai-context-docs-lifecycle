@@ -65,4 +65,3 @@ Is this a bug fix?
 |------|---------------|
 | Execute the workflow (phases, tasks, verify, closeout) | `load skill feature-workflow` |
 | Write spec content (problem, AC, scope) | `load skill spec-writing` |
-| Inspect project state / next action | `load skill workflow-guide` |

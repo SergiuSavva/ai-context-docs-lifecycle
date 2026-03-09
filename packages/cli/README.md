@@ -42,7 +42,7 @@ load skill `acdl`
 Based on selected modules:
 
 - Module 1: `.agents/skills/acdl`, `.agents/skills/agents-md`, `.agents/skills/doc-writing`
-- Module 2: `.agents/skills/feature-workflow`, `.agents/skills/spec-writing`, `.agents/skills/workflow-guide`, optional `.cursor/rules/feature-workflow.mdc`
+- Module 2: `.agents/skills/feature-workflow`, `.agents/skills/spec-writing`, optional `.cursor/rules/feature-workflow.mdc`
 - Module 3: `.agents/skills/project-planning`
 
 `init` does not auto-generate project-specific `AGENTS.md` or `docs/` content; skills/templates are installed so your AI can generate them.

@@ -47,7 +47,7 @@ export const MODULE_DEFINITIONS: ModuleDefinition[] = [
     description: "feature workflow skills, spec templates, optional Cursor bridge",
     skillsDir: "modules/02-feature-development/skills",
     defaultSelected: true,
-    skills: ["feature-workflow", "spec-writing", "workflow-guide"],
+    skills: ["feature-workflow", "spec-writing"],
     extras: [
       {
         src: "feature-workflow/cursor-bridge.mdc",

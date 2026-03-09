@@ -103,7 +103,7 @@ Load detailed docs based on your task:
      | Writing specs / task breakdowns | load skill `spec-writing` |
      | Writing docs / ADRs | load skill `doc-writing` |
      | Feature workflow | load skill `feature-workflow` |
-     | What should I do next? / Resume work | load skill `workflow-guide` |
+     | What should I do next? / Resume work | load skill `feature-workflow` |
      | {{stack task}} | load skill `{{skill-name}}` |
      Only include skills that exist in this project. -->
 

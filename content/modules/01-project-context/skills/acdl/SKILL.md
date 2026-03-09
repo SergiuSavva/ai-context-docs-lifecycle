@@ -142,7 +142,7 @@ AI agents need different information than human readers:
 When the same explanation keeps coming up, capture it as a skill:
 
 1. Copy methodology skills to `.agents/skills/`
-   - `feature-workflow`, `workflow-guide`, `agents-md`, `spec-writing`, `doc-writing`, `acdl` — provided methodology skills
+   - `feature-workflow`, `agents-md`, `spec-writing`, `doc-writing`, `acdl` — provided methodology skills
 2. Identify stack areas that need deep patterns (database, testing, UI, framework)
 3. Create stack skills using the skill template
 4. Add routing entries to AGENTS.md Context Loading table:
@@ -174,7 +174,7 @@ For spec quality: `load skill spec-writing`
 
 ## Daily Workflow
 
-For day-to-day development patterns (what to do next, resuming work, feature flow), `load skill workflow-guide`.
+For day-to-day development patterns (what to do next, resuming work, feature flow), `load skill feature-workflow`.
 
 For content placement decisions (AGENTS.md vs skill vs docs/), `load skill agents-md` (What Goes Where).
 
@@ -212,7 +212,7 @@ The last row closes the feedback loop: bad AI output is a signal to improve your
 | Create/update AGENTS.md | `load skill agents-md` |
 | Write spec or acceptance criteria | `load skill spec-writing` |
 | Build a feature (workflow + tasks) | `load skill feature-workflow` |
-| Inspect project state / next action | `load skill workflow-guide` |
+| Inspect project state / next action | `load skill feature-workflow` |
 | Write or review any markdown doc | `load skill doc-writing` |
 | Multi-feature planning, roadmap, backlog | `load skill project-planning` |
 | Stack-specific patterns | `load skill [your-stack-skill]` |
@@ -224,7 +224,7 @@ The last row closes the feedback loop: bad AI output is a signal to improve your
 - Writing **any markdown doc** (reference docs, guides, ADRs) → `load skill doc-writing`
 - Building a **feature** (workflow, tasks, implementation) → `load skill feature-workflow`
 - Writing **spec content** (problem/solution, acceptance criteria) → `load skill spec-writing`
-- Resuming work or asking **"what should I do next?"** → `load skill workflow-guide`
+- Resuming work or asking **"what should I do next?"** → `load skill feature-workflow`
 
 Use this skill for: initial ACDL setup, methodology configuration, diagnosing AI quality problems, and understanding the overall system.
 
@@ -245,4 +245,4 @@ Use this skill for: initial ACDL setup, methodology configuration, diagnosing AI
 - load skill `doc-writing`
 - load skill `feature-workflow`
 - load skill `spec-writing`
-- load skill `workflow-guide`
+- load skill `feature-workflow`

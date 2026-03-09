@@ -232,8 +232,6 @@ A **Skill** is a `SKILL.md` file in `.agents/skills/` that teaches an AI agent h
 │   └── SKILL.md
 ├── spec-writing/             # Methodology: Spec and task file authoring (Module 2)
 │   └── SKILL.md
-├── workflow-guide/           # Methodology: "What should I do next?" guidance (Module 2)
-│   └── SKILL.md
 ├── database/                 # Stack: Your DB patterns (user-authored)
 │   └── SKILL.md
 └── testing/                  # Stack: Your test strategy (user-authored)
@@ -322,9 +320,8 @@ Source: `content/modules/01-project-context/skills/`
 
 | Skill | Covers |
 |-------|--------|
-| `feature-workflow` | Four-phase workflow (Research → Plan → Implement → Verify), task markers, parallel waves, git workflow, verification |
+| `feature-workflow` | Four-phase workflow (Research → Plan → Implement → Verify), project state inspection, task markers, parallel waves, git workflow, verification, recovery scenarios |
 | `spec-writing` | Spec and task authoring — problem framing, acceptance criteria, scoping, task breakdown |
-| `workflow-guide` | Project state inspection, next-action recommendations, recovery scenarios |
 
 Source: `content/modules/02-feature-development/skills/`
 
