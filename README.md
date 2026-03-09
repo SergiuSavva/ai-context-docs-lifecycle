@@ -1,6 +1,6 @@
 # AI Context Docs Lifecycle
 
-> **Knowledge-first methodology kit for AI-assisted development**
+> **Skill-driven methodology kit for AI-assisted development**
 
 **Live Site:** [https://sergiusavva.github.io/ai-context-docs-lifecycle](https://sergiusavva.github.io/ai-context-docs-lifecycle)
 
@@ -10,7 +10,7 @@
 
 Most AI development tools are **spec-driven** — specs go in, code comes out, and project knowledge evaporates when the feature ships.
 
-ACDL is **knowledge-first**. It treats documentation as structured project knowledge that compounds with every feature and outlives any single AI tool. Not scaffolding you discard — the persistent memory that makes every session smarter than the last.
+ACDL is **skill-driven**. It ships portable skills that teach AI agents how to understand your project, build features consistently, and grow project knowledge that compounds across sessions. Not scaffolding you discard — persistent memory that makes every session smarter than the last.
 
 ### The Problem
 
@@ -22,25 +22,32 @@ AI coding assistants have no lasting knowledge of your project:
 
 ### The Solution
 
-**Structured knowledge with three lifecycles:**
+**Skills** — on-demand instruction packages that AI agents load when the task matches. Each skill bundles workflow instructions and templates in a single portable `SKILL.md` file.
 
+| Skill | What it teaches the AI |
+| --- | --- |
+| `acdl` | Bootstrap AGENTS.md and project docs from your codebase |
+| `feature-workflow` | Four-phase workflow: Research → Plan → Implement → Verify |
+| `spec-writing` | Write quality specs with acceptance criteria and scoping |
+| `agents-md` | Author and maintain effective AGENTS.md files |
+| `doc-writing` | Write reference docs, ADRs, and templates |
+| `project-planning` | Manage roadmap, backlog, and multi-feature progress |
 
-| Knowledge type | Lifecycle                              | Purpose                         |
-| -------------- | -------------------------------------- | ------------------------------- |
-| **Specs**      | Ephemeral — delete after feature ships | Drive the current feature       |
-| **Reference**  | Evergreen — always current or deleted  | Carry project knowledge forward |
-| **Decisions**  | Permanent — never rewritten            | Record the *why* behind choices |
+Skills produce three types of project knowledge:
 
+| Knowledge type | Lifecycle | Purpose |
+| --- | --- | --- |
+| **Specs** | Ephemeral — delete after feature ships | Drive the current feature |
+| **Reference** | Evergreen — always current or deleted | Carry project knowledge forward |
+| **Decisions** | Permanent — never rewritten | Record the *why* behind choices |
 
 **Pick the modules you need:**
 
-
-| Module                     | Purpose                                  |
-| -------------------------- | ---------------------------------------- |
-| **1. Project Context**     | AGENTS.md + docs/ + .agents/skills/      |
-| **2. Feature Development** | Workflows for building features (specs/) |
-| **3. Project Planning**    | Multi-feature management (optional)      |
-
+| Module | Skills | Purpose |
+| --- | --- | --- |
+| **1. Project Context** | `acdl`, `agents-md`, `doc-writing` | AGENTS.md + docs/ + project skills |
+| **2. Feature Development** | `feature-workflow`, `spec-writing` | Workflows for building features |
+| **3. Project Planning** | `project-planning` | Multi-feature management (optional) |
 
 ### Why Not Existing SDD Tools?
 
@@ -84,9 +91,25 @@ Once you're building real features, add Module 2:
 npx @acdl/cli init --modules 2
 ```
 
-Then tell your AI: `load skill \`feature-workflow\``
+Then tell your AI: `load skill `feature-workflow``
 
 See [Quick Start](content/quick-start.md) for the full progressive path.
+
+---
+
+## How Skills Work
+
+Skills load on demand via `AGENTS.md` routing. The AI reads the compact router (~700 tokens), matches the task to a skill, and loads only what's needed.
+
+```
+AGENTS.md (always loaded, ~700 tokens)
+    ↓ routes to
+.agents/skills/{skill}/SKILL.md (loaded on demand, ~1,000-2,500 tokens each)
+    ↓ references
+docs/ (loaded when implementation needs them)
+```
+
+Each skill bundles its own templates inside `SKILL.md`'s directory — no separate template installation step.
 
 ---
 
@@ -98,9 +121,9 @@ ai-context-docs-lifecycle/
 │   ├── methodology.md        # Full methodology explanation
 │   ├── modules/              # 3 independent modules
 │   │   ├── README.md              # Module overview + adoption path
-│   │   ├── 01-project-context/    # AGENTS.md + docs/ + skills + templates
-│   │   ├── 02-feature-development/# Workflows, templates, examples
-│   │   └── 03-project-planning/   # PRD, backlog, roadmap (optional)
+│   │   ├── 01-project-context/    # Skills: acdl, agents-md, doc-writing
+│   │   ├── 02-feature-development/# Skills: feature-workflow, spec-writing
+│   │   └── 03-project-planning/   # Skill: project-planning
 │   └── guides/               # Adoption guides
 │       ├── getting-started.md
 │       ├── new-project.md
@@ -110,7 +133,6 @@ ai-context-docs-lifecycle/
 │       ├── skill-routing.md
 │       └── tool-compatibility.md
 ├── packages/cli/             # acdl CLI tool
-├── specs/                    # Active feature specs (this repo)
 ├── docs/                     # Reference documentation (this repo)
 └── README.md                 # This file
 ```
@@ -121,45 +143,43 @@ ai-context-docs-lifecycle/
 
 ### Module 1: Project Context
 
-**What you get**: `AGENTS.md` (~80 lines, always loaded) + `docs/` (on-demand reference) + `.agents/skills/` (on-demand instruction packages)
+**Skills**: `acdl`, `agents-md`, `doc-writing`
+
+The `acdl` skill bootstraps your project: scans the codebase, generates `AGENTS.md`, and creates only the `docs/` files your project needs. The `agents-md` and `doc-writing` skills provide ongoing guidance for maintaining project context.
 
 ```
 project/
-├── AGENTS.md              # Discovery: Always loaded
-├── docs/                  # Activation: On-demand reference
+├── AGENTS.md              # Router: always loaded (~700 tokens)
+├── docs/                  # Reference docs (on-demand)
 │   ├── {relevant docs}.md
-│   ├── scripts.md         # Execution: Loaded before running commands
-│   └── decisions/
-└── .agents/skills/        # Activation: Loaded when task matches
-    ├── {methodology}/SKILL.md
-    └── {stack}/SKILL.md
+│   └── decisions/         # ADRs (permanent)
+└── .agents/skills/        # Skills (loaded when task matches)
+    ├── acdl/SKILL.md
+    ├── agents-md/SKILL.md
+    └── doc-writing/SKILL.md
 ```
-
-Three adoption tiers: Basic (`AGENTS.md` only), Standard (+ `docs/`), Full (+ `.agents/skills/`). For a solo side project, Standard tier is the recommended starting point.
 
 [Go to Module 1 →](content/modules/01-project-context/)
 
 ### Module 2: Feature Development
 
-**What you get**: Structured workflow + templates for building features
+**Skills**: `feature-workflow`, `spec-writing`
 
-```
-Research → Plan → Implement → Verify
-```
+The `feature-workflow` skill drives the four-phase workflow (Research → Plan → Implement → Verify) with task tracking, verification checklists, and state inspection. The `spec-writing` skill teaches quality spec content.
 
-
-| Situation   | Docs Needed                      |
-| ----------- | -------------------------------- |
-| **Bug fix** | None                             |
+| Situation | Docs Needed |
+| --- | --- |
+| **Bug fix** | None |
 | **Feature** | `spec.md` + `tasks.md` (minimum) |
-| **Complex** | All docs + ADR                   |
-
+| **Complex** | All docs + ADR |
 
 [Go to Module 2 →](content/modules/02-feature-development/)
 
 ### Module 3: Project Planning (Optional)
 
-**What you get**: Multi-feature management
+**Skill**: `project-planning`
+
+For teams managing multiple features. Provides templates for roadmap, backlog, global task tracking, and product vision.
 
 ```
 project/
@@ -170,18 +190,6 @@ project/
 ```
 
 [Go to Module 3 →](content/modules/03-project-planning/)
-
----
-
-## AI Agent Workflow (Default)
-
-For non-trivial feature work, run this sequence:
-
-1. Read `AGENTS.md` for constraints, stack, and routing.
-2. Create or open `specs/<feature>/spec.md` and `specs/<feature>/tasks.md`.
-3. Load only relevant skills from `.agents/skills/` when the task matches.
-4. Pull targeted references from `docs/` as implementation requires.
-5. Ship code, update affected reference docs, and add an ADR for significant decisions.
 
 ---
 
@@ -198,17 +206,15 @@ See complete walkthroughs:
 
 Works with every AI coding agent:
 
-
-| Agent              | AGENTS.md           | Skills           | @docs/ refs     |
-| ------------------ | ------------------- | ---------------- | --------------- |
-| **Cursor**         | Auto-reads          | `@skill-name`    | `@docs/file.md` |
-| **Claude Code**    | `CLAUDE.md` symlink | `/skill-name`    | Direct read     |
-| **GitHub Copilot** | Auto-reads          | Auto-discovered  | Direct read     |
-| **Cline**          | Via `.clinerules`   | Auto-discovered  | Direct read     |
-| **OpenCode**       | Auto-reads          | Via `skill` tool | Direct read     |
-| **Windsurf**       | Auto-reads          | Via UI           | Direct read     |
-| **Aider**          | Via `/read`         | Not supported    | Via `/read`     |
-
+| Agent | AGENTS.md | Skills | @docs/ refs |
+| --- | --- | --- | --- |
+| **Cursor** | Auto-reads | `@skill-name` | `@docs/file.md` |
+| **Claude Code** | `CLAUDE.md` symlink | `load skill` | Direct read |
+| **GitHub Copilot** | Auto-reads | Auto-discovered | Direct read |
+| **Cline** | Via `.clinerules` | Auto-discovered | Direct read |
+| **OpenCode** | Auto-reads | Via `skill` tool | Direct read |
+| **Windsurf** | Auto-reads | Via UI | Direct read |
+| **Aider** | Via `/read` | Not supported | Via `/read` |
 
 **Zero tool-specific files required.** Optional bridges available (e.g., `.mdc` rules that point to skills).
 
@@ -228,16 +234,14 @@ Contributions welcome:
 
 This methodology draws from several Spec-Driven Development (SDD) approaches:
 
-
-| Project                                              | Inspiration                                                           |
-| ---------------------------------------------------- | --------------------------------------------------------------------- |
-| [GSD](https://github.com/gsd-build/get-shit-done)    | Wave-based parallel execution, atomic git commits, verification phase |
-| [BMAD Method](https://docs.bmad-method.org)          | Adaptive guidance ("what's next?"), phase-based planning              |
-| [Spec-Kit](https://github.com/github/spec-kit)       | Structured spec workflow, Constitution concept, feature branching     |
-| [cc-sdd](https://github.com/gotalab/cc-sdd)          | Kiro-style SDD, EARS requirements format, parallel task markers       |
-| [Spec-Flow](https://github.com/ChrisLally/Spec-Flow) | Work sizing, quality gates                                            |
-| [OpenSpec](https://github.com/openspec-ai/openspec)  | Delta format for changes                                              |
-
+| Project | Inspiration |
+| --- | --- |
+| [GSD](https://github.com/gsd-build/get-shit-done) | Wave-based parallel execution, atomic git commits, verification phase |
+| [BMAD Method](https://docs.bmad-method.org) | Adaptive guidance ("what's next?"), phase-based planning |
+| [Spec-Kit](https://github.com/github/spec-kit) | Structured spec workflow, Constitution concept, feature branching |
+| [cc-sdd](https://github.com/gotalab/cc-sdd) | Kiro-style SDD, EARS requirements format, parallel task markers |
+| [Spec-Flow](https://github.com/ChrisLally/Spec-Flow) | Work sizing, quality gates |
+| [OpenSpec](https://github.com/openspec-ai/openspec) | Delta format for changes |
 
 ---
 
