@@ -116,9 +116,10 @@ ai-context-docs-lifecycle/
 │       ├── getting-started.md
 │       ├── new-project.md
 │       ├── existing-project.md
-│       ├── tool-compatibility.md
+│       ├── agents-md-best-practices.md
 │       ├── skills-catalog.md
-│       └── ...
+│       ├── skill-routing.md
+│       └── tool-compatibility.md
 ├── packages/cli/             # acdl CLI tool
 ├── specs/                    # Active feature specs (this repo)
 ├── docs/                     # Reference documentation (this repo)
