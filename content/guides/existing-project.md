@@ -131,17 +131,17 @@ Review your codebase and document in AGENTS.md:
 For significant past decisions, create ADRs:
 
 ```markdown
-# ADR-001: [Past Decision]
+# ADR-001: {{Past Decision}}
 
 **Status:** Accepted (historical)
-**Date:** [approximate date]
-**Context:** [What led to this decision]
+**Date:** {{approximate date}}
+**Context:** {{What led to this decision}}
 
 ## Decision
-[What was decided]
+{{What was decided}}
 
 ## Rationale
-[Why, if known]
+{{Why, if known}}
 ```
 
 ---

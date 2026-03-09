@@ -91,19 +91,17 @@ Architecture Decision Records are **permanent**. Never deleted, even if the deci
 
 ### Format
 
-Use the ADR template at `.agents/skills/feature-workflow/templates/adr.md`. Key sections:
+Use the ADR template at `.agents/skills/acdl/templates/docs/decisions/adr.md` (Module 1). If Module 2 is installed, `.agents/skills/feature-workflow/templates/adr.md` provides a more detailed variant. Key sections:
 
 ```markdown
 # ADR-NNN: {{Decision Title}}
 
-**{{Proposed | Accepted | Deprecated | Superseded by ADR-NNN}}**
+**Status:** {{Proposed | Accepted | Deprecated | Superseded}}
 
-## Context       — Why this decision was needed
 ## Decision      — What was decided
-## Rationale     — Why (with key factors)
-## Consequences  — Positive, Negative, Neutral
-## Alternatives  — What was rejected and why
-## Metadata      — Date, decision makers, related feature
+## Rationale     — Why (with comparison table)
+## Consequences  — Positive and negative
+## Related       — Connected docs and skills
 ```
 
 ### ADR Rules

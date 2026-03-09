@@ -6,16 +6,19 @@ import {
   readFileSync,
   writeFileSync,
 } from "node:fs";
-import { resolve } from "node:path";
+import { resolve, dirname } from "node:path";
+import { fileURLToPath } from "node:url";
 import { execFileSync } from "node:child_process";
 
+const __test_dirname = dirname(fileURLToPath(import.meta.url));
+
 const FIXTURE_DIR = resolve(
-  import.meta.dirname,
+  __test_dirname,
   "../fixtures",
   "_integration-init"
 );
-const CLI_BIN = resolve(import.meta.dirname, "../../dist/bin.js");
-const CLI_PACKAGE_JSON = resolve(import.meta.dirname, "../../package.json");
+const CLI_BIN = resolve(__test_dirname, "../../dist/bin.js");
+const CLI_PACKAGE_JSON = resolve(__test_dirname, "../../package.json");
 const CLI_VERSION = JSON.parse(readFileSync(CLI_PACKAGE_JSON, "utf-8")).version;
 
 function run(args: string[], cwd: string): { stdout: string; exitCode: number } {

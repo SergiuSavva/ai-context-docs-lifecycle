@@ -22,11 +22,11 @@
 npx @acdl/cli init
 ```
 
-This installs methodology skills and templates into your project:
+This installs methodology skills and templates into your project. By default, Modules 1 + 2 are selected:
 
-- `.agents/skills/acdl/` — bootstrap skill + `AGENTS.md` templates
-- `.agents/skills/feature-workflow/` — spec and task templates (Module 2, default)
-- optional `.cursor/rules/feature-workflow.mdc` — Cursor bridge
+- `.agents/skills/acdl/`, `agents-md/`, `doc-writing/` — Module 1: bootstrap + doc templates
+- `.agents/skills/feature-workflow/`, `spec-writing/`, `workflow-guide/` — Module 2: feature workflow
+- optional `.cursor/rules/feature-workflow.mdc` — Cursor bridge (Module 2)
 
 > **Note**: `init` installs assets only. Your AI generates the actual project-specific files in Step 2.
 
