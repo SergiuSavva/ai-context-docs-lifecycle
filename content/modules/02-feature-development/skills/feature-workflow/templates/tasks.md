@@ -17,30 +17,48 @@
 
 ---
 
-## Setup
+## Phase 1: {{Core / Foundation}}
 
-- [ ] T-01: {{Setup task 1}}
-- [ ] T-02: {{Setup task 2}}
+> **Goal**: {{What this phase establishes — the core that everything else depends on}}
+> **Covers**: AC-01, AC-02
 
-## Core Implementation
+- [ ] T-01: {{Core setup / schema / data model}}
+- [ ] T-02: {{Core implementation}}
+- [ ] T-03: {{Tests for core behavior}}
 
-- [ ] T-03: {{Implementation task 1}}
-- [ ] T-04: {{Implementation task 2}}
-- [ ] T-05: {{Implementation task 3}}
-
-## Testing
-
-- [ ] T-06: {{Write unit tests}}
-- [ ] T-07: {{Write integration tests}}
-
-## Documentation
-
-- [ ] T-08: {{Update AGENTS.md if new patterns}}
-- [ ] T-09: {{Update feature README}}
+**Phase 1 Validation**: {{How to confirm — e.g., "unit tests pass", "API returns expected response"}}
 
 ---
 
-**Progress**: 0/9 (0%)
+## Phase 2: {{Dependent Feature}}
+
+> **Goal**: {{What this phase builds on top of Phase 1}}
+> **Covers**: AC-03
+> **Depends on**: Phase 1 validated
+
+- [ ] T-04: {{Implementation task}}
+- [ ] T-05: {{Implementation task}}
+- [ ] T-06: {{Tests for this phase}}
+
+**Phase 2 Validation**: {{How to confirm}}
+
+---
+
+## Phase 3: {{Polish / Integration}}
+
+> **Goal**: {{Final integration, edge cases, docs}}
+> **Covers**: AC-04 (if applicable)
+> **Depends on**: Phase 2 validated
+
+- [ ] T-07: {{Integration tests / edge cases}}
+- [ ] T-08: {{Documentation updates}}
+
+**Phase 3 Validation**: {{How to confirm}}
+
+---
+
+**Progress**: 0/8 (0%)
+**Current Phase**: Phase 1
 **Blocked**: None
 **In Progress**: None
 
@@ -57,8 +75,10 @@
 1. One `[~]` at a time (sequential) or one `[~]` per wave (parallel)
 2. Update this file after completing each task
 3. Recalculate progress: `(completed + skipped) / total * 100`
-4. When blocked: Mark `[B]` with reason, ask for guidance
-5. When all tasks done: Proceed to Verify phase (`verify-checklist.md`)
+4. **Complete all tasks in a phase before running its validation**
+5. **Do not start the next phase until validation passes and user confirms**
+6. When blocked: Mark `[B]` with reason, ask for guidance
+7. When all phases validated: Proceed to Verify phase (`verify-checklist.md`)
 
 ---
 

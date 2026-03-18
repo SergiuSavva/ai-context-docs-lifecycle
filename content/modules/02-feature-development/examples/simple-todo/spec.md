@@ -51,6 +51,21 @@ Add a "Mark all as complete" button above the todo list that completes all pendi
 
 ---
 
+## Implementation Phases
+
+### Phase 1: Core Logic
+**Goal**: Add the bulk-complete function and button component
+**Covers**: AC-01, AC-02
+**Validates**: Button renders when 2+ incomplete todos exist; clicking it marks all complete
+
+### Phase 2: Confirmation & Edge Cases
+**Goal**: Add confirmation dialog and disabled state
+**Covers**: AC-03, AC-04
+**Depends on**: Phase 1 validated
+**Validates**: Dialog appears before action; button disabled when no incomplete todos
+
+---
+
 ## Risks
 
 | Risk | Mitigation |

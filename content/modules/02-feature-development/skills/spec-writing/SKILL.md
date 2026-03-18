@@ -29,6 +29,7 @@ Optional files added as needed: `research.md`, `design.md`, `plan.md`, `user-sto
 | **Acceptance Criteria** | Numbered AC-01, AC-02, etc. — testable conditions |
 | **Scope** | In Scope / Out of Scope |
 | **Technical Approach** | Brief approach (expand in design.md if complex) |
+| **Implementation Phases** | Ordered phases: core → dependent, each with ACs and validation |
 | **Dependencies** | External/internal dependencies |
 | **Risks** | Risk + Mitigation table |
 | **Related Docs** | Links to other spec files |
@@ -114,9 +115,24 @@ After spec.md is written, create tasks.md. Each task should trace back to at lea
 | Spec Section | Drives |
 |-------------|--------|
 | Acceptance Criteria | What tasks must achieve |
+| Implementation Phases | Phase ordering — core before dependent |
 | Scope (In Scope) | Task coverage — nothing outside scope |
 | Technical Approach | How tasks are structured |
 | Dependencies | Task ordering and blockers |
+
+### Phased Planning
+
+Group tasks into **phases ordered by dependency** — core functionality first, then features that build on it. Each phase:
+
+1. **Maps to specific ACs** — every AC belongs to exactly one phase
+2. **Has a validation gate** — a concrete check that proves the phase works (tests pass, output is correct, etc.)
+3. **Must be validated before the next phase starts** — no skipping ahead
+
+```
+Phase 1 (core)  →  validate  →  Phase 2 (dependent)  →  validate  →  Phase 3 (integration)  →  validate
+```
+
+**How to identify phases**: Start with the pieces that have zero internal dependencies (data models, core logic, base APIs). Then layer on features that consume those pieces. Finish with integration, polish, and documentation.
 
 For task formatting (T-XX numbering, markers, phases, progress tracking), use `load skill feature-workflow`.
 

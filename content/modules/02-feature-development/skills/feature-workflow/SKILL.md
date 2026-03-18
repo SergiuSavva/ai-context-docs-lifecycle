@@ -37,6 +37,7 @@ When resuming work, onboarding, or asked "what should I do next?", inspect state
 - AGENTS.md: ✓ / ✗
 - Active specs: [list or "none"]
 - Current feature: [name] — Phase: Research / Plan / Implement / Verify
+- Implementation phase: Phase N of M ({{phase name}})
 - Task progress: X/Y (Z%)
 - Blocked: [count] tasks
 
@@ -150,6 +151,20 @@ Number tasks sequentially with the `T-XX` prefix: `T-01`, `T-02`, etc. Group tas
 4. **Calculate progress** after each update
 5. **When blocked** — mark `[B]` with reason, ask user for help
 
+### Phase Validation Gates
+
+Tasks are grouped into **dependency-ordered phases** (core → dependent). Between phases:
+
+1. **Complete all tasks** in the current phase
+2. **Run the phase validation** (defined in tasks.md per phase — e.g., tests pass, output correct)
+3. **Report results to user** and get confirmation before starting the next phase
+
+```
+Phase 1 tasks → Phase 1 validation → user confirms → Phase 2 tasks → ...
+```
+
+If validation fails, fix issues within the current phase before moving on. This prevents building on a broken foundation.
+
 ---
 
 ## Verify Phase (Definition of Done)
@@ -222,11 +237,12 @@ Not every project has every doc. Update only the docs your project maintains. Up
 
 ## Quick Checklist
 
-- [ ] spec.md exists with problem, solution, and acceptance criteria
-- [ ] tasks.md exists with phases and T-XX numbered tasks
+- [ ] spec.md exists with problem, solution, acceptance criteria, and implementation phases
+- [ ] tasks.md exists with dependency-ordered phases and T-XX numbered tasks
 - [ ] User validated spec before implementation started
 - [ ] One `[~]` at a time (or per wave if parallel)
 - [ ] tasks.md updated after each completed task
+- [ ] Each phase validated before starting the next
 - [ ] verify-checklist.md completed (this is the Definition of Done)
 - [ ] User approved the verify-checklist before closeout
 - [ ] Spec folder deleted after feature approved

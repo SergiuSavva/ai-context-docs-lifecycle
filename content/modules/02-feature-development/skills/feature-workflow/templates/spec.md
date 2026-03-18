@@ -46,6 +46,26 @@
 
 ---
 
+## Implementation Phases
+
+> Plan implementation from core (no dependencies) to dependent (builds on prior phases).
+> Each phase is validated before the next begins.
+
+### Phase 1: {{Core / Foundation}}
+**Goal**: {{What this phase establishes}}
+**Covers**: AC-01, AC-02
+**Validates**: {{How to confirm this phase works — e.g., tests pass, manual check, output matches}}
+
+### Phase 2: {{Dependent Feature}}
+**Goal**: {{What this phase adds on top of Phase 1}}
+**Covers**: AC-03
+**Depends on**: Phase 1
+**Validates**: {{How to confirm this phase works}}
+
+{{Add more phases as needed. Keep phases small — 2-4 ACs max per phase.}}
+
+---
+
 ## Dependencies
 
 - {{External: API, service, library}}
