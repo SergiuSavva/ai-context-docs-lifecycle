@@ -42,7 +42,33 @@ Cross-reference each AC from `spec.md`:
 
 - [ ] No linter errors introduced
 - [ ] Tests pass (if applicable)
-- [ ] No hardcoded secrets, tokens, or credentials
+
+---
+
+## Stub Detection
+
+Scan new and modified code for incomplete implementations:
+
+### Placeholder Markers
+- [ ] No `TODO`, `FIXME`, `HACK`, `XXX`, or `TEMP` comments in new code
+- [ ] No placeholder strings: "lorem ipsum", "coming soon", "placeholder", "sample data"
+
+### Empty Implementations
+- [ ] No empty function bodies (`return null`, `return {}`, `return []`, `pass`, `raise NotImplementedError`)
+- [ ] No functions that only log/print without doing actual work
+- [ ] No empty catch/except blocks (swallowed errors)
+
+### Hardcoded Values
+- [ ] No hardcoded credentials, API keys, or tokens
+- [ ] No magic numbers without named constants
+- [ ] No hardcoded URLs/paths that should be configurable
+
+### Wiring Check
+- [ ] New functions/components are imported and called somewhere (not just defined)
+- [ ] New routes/endpoints are registered in the router
+- [ ] New config values are actually read by the application
+
+**Stub scan result**: Clean / {{N}} issues found — {{list issues}}
 
 ---
 
@@ -80,6 +106,7 @@ Only check docs that exist in the project. Mark N/A for docs that don't apply.
 | Acceptance Criteria | All Pass / Issues Found |
 | Scope | Clean / Creep Detected |
 | Quality | Pass / Issues Found |
+| Stub Detection | Clean / Issues Found |
 | Doc Freshness | Up to Date / Updates Needed |
 | Decision Record | Created / Not Needed |
 

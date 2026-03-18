@@ -142,7 +142,7 @@ AI agents need different information than human readers:
 When the same explanation keeps coming up, capture it as a skill:
 
 1. Copy methodology skills to `.agents/skills/`
-   - `feature-workflow`, `agents-md`, `spec-writing`, `doc-writing`, `acdl` — provided methodology skills
+   - `feature-workflow`, `agents-md`, `spec-writing`, `doc-writing`, `acdl`, `debug-workflow`, `testing` — provided methodology skills
 2. Identify stack areas that need deep patterns (database, testing, UI, framework)
 3. Create stack skills using the skill template
 4. Add routing entries to AGENTS.md Context Loading table:
@@ -152,6 +152,7 @@ When the same explanation keeps coming up, capture it as a skill:
 |------|------------|
 | Database queries | load skill `database` |
 | Writing tests | load skill `testing` |
+| Debugging a bug | load skill `debug-workflow` |
 | UI components | load skill `ui-components` |
 ```
 
@@ -215,6 +216,8 @@ The last row closes the feedback loop: bad AI output is a signal to improve your
 | Inspect project state / next action | `load skill feature-workflow` |
 | Write or review any markdown doc | `load skill doc-writing` |
 | Multi-feature planning, roadmap, backlog | `load skill project-planning` |
+| Debug a bug systematically | `load skill debug-workflow` |
+| Writing or reviewing tests | `load skill testing` |
 | Stack-specific patterns | `load skill [your-stack-skill]` |
 | Set up or maintain ACDL | This skill |
 
@@ -245,3 +248,5 @@ Use this skill for: initial ACDL setup, methodology configuration, diagnosing AI
 - load skill `doc-writing`
 - load skill `feature-workflow`
 - load skill `spec-writing`
+- load skill `debug-workflow`
+- load skill `testing`

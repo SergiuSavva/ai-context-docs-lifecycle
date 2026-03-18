@@ -57,7 +57,7 @@
 
 ---
 
-**Progress**: 0/8 (0%)
+**Progress**: 0/{{N}} (0%)
 **Current Phase**: Phase 1
 **Blocked**: None
 **In Progress**: None
@@ -75,10 +75,26 @@
 1. One `[~]` at a time (sequential) or one `[~]` per wave (parallel)
 2. Update this file after completing each task
 3. Recalculate progress: `(completed + skipped) / total * 100`
-4. **Complete all tasks in a phase before running its validation**
-5. **Do not start the next phase until validation passes and user confirms**
-6. When blocked: Mark `[B]` with reason, ask for guidance
-7. When all phases validated: Proceed to Verify phase (`verify-checklist.md`)
+4. Commit after each task (or once per wave if using parallel execution): `type(scope): description` with T-XX in body
+5. **Complete all tasks in a phase before running its validation**
+6. **Do not start the next phase until validation passes and user confirms**
+7. When blocked: Mark `[B]` with reason, ask for guidance
+8. Before using waves: verify no two tasks in a wave modify the same file or shared state
+9. When all phases validated: Proceed to Verify phase (`verify-checklist.md`)
+
+---
+
+## Plan Verification
+
+Before starting implementation, verify the plan passes these checks:
+
+- [ ] AC coverage: every AC-XX maps to at least one task — {{AC-01 → T-01, T-02; AC-02 → T-03; ...}}
+- [ ] Task atomicity: each task is a single deliverable (one logical unit)
+- [ ] Dependencies flow forward: no task references a later task's output
+- [ ] Every phase validation has a concrete check command
+- [ ] No task implements out-of-scope items from spec.md
+
+**Verified by**: {{agent or user}} on {{date}}
 
 ---
 
@@ -86,9 +102,20 @@
 
 For features with independent subtasks, group tasks into waves for parallel execution. Tasks within a wave are independent and can run concurrently. All tasks in Wave N must complete before Wave N+1 starts.
 
-**When to use waves**: Multiple independent streams (e.g., API + UI + tests), or tasks with clear dependency boundaries.
-
 **Default (no waves)**: Sequential execution — one `[~]` at a time across all tasks.
+
+**Safe for waves** (tasks can run in parallel):
+- Tasks touch different files and different domains
+- Tasks have no shared state, config, or database migrations
+- Tasks produce independent outputs
+
+**Must be sequential** (do NOT put in the same wave):
+- Tasks that modify the same file — merge conflicts, lost changes
+- Tasks that share database migrations — ordering failures
+- Tasks that share config/env files — overwrite race conditions
+- Task B reads Task A's output — runtime failures
+
+**Conflict check**: Before grouping into a wave, list every file each task modifies. If any file appears in two tasks, those tasks must be in different waves.
 
 Example:
 

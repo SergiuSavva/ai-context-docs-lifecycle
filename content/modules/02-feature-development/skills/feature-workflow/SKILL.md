@@ -115,6 +115,29 @@ Is this a bug fix?
 
 ---
 
+## Plan Verification Gate
+
+Before marking any task `[~]`, verify the plan passes these checks:
+
+1. **AC coverage** — every AC-XX in spec.md maps to at least one task
+2. **Task atomicity** — each task is a single deliverable (one logical unit, not 5+ unrelated files)
+3. **Dependency ordering** — no task references output from a later task; phases flow core → dependent
+4. **Validation commands** — every phase validation has a concrete check (not "confirm it works")
+5. **Scope alignment** — no task implements items listed as out-of-scope in spec.md
+
+**Gate rule**: Do not start implementation until all 5 checks pass. Present the AC → task mapping to the user for confirmation.
+
+```
+Plan Verification:
+- [ ] AC coverage: [AC-01 → T-01, T-02] [AC-02 → T-03] ...
+- [ ] Task atomicity: each task is a single deliverable
+- [ ] Dependencies flow forward (no backward references)
+- [ ] Every phase validation has a concrete check command
+- [ ] No task exceeds spec scope
+```
+
+---
+
 ## Task Markers
 
 | Marker | Status |
@@ -140,6 +163,7 @@ Number tasks sequentially with the `T-XX` prefix: `T-01`, `T-02`, etc. Group tas
 
 - **Sequential (default)**: One `[~]` at a time across all tasks
 - **Parallel (opt-in)**: Tasks grouped into waves (`### Wave N` headers). One `[~]` per wave. All tasks in Wave N must complete before Wave N+1 starts.
+- **Safety check**: Before grouping tasks into a wave, verify no two tasks in the same wave modify the same file or shared state. See `tasks.md` Wave Grouping section for safe/unsafe criteria.
 
 ---
 
@@ -149,7 +173,8 @@ Number tasks sequentially with the `T-XX` prefix: `T-01`, `T-02`, etc. Group tas
 2. **Update tasks.md after EACH task** — track progress continuously
 3. **Commit after each task or wave** — not one giant commit at the end
 4. **Calculate progress** after each update
-5. **When blocked** — mark `[B]` with reason, ask user for help
+5. **Tests must pass** before marking a task `[x]` — tests are part of the task, not a follow-up
+6. **When blocked** — mark `[B]` with reason, ask user for help
 
 ### Phase Validation Gates
 
@@ -167,6 +192,51 @@ If validation fails, fix issues within the current phase before moving on. This 
 
 ---
 
+## Subagent Delegation (Optional)
+
+For large features (>8 tasks) or when context becomes heavy, delegate work to fresh subagents instead of running everything in a single conversation.
+
+| Agent | When to Spawn | Context It Receives |
+|-------|---------------|---------------------|
+| **Researcher** | Research phase; mid-implementation unknowns | spec.md + AGENTS.md + search scope description |
+| **Executor** | Per task or wave during Implement phase | spec.md + specific task(s) from tasks.md + AGENTS.md |
+| **Verifier** | Verify phase; phase validation gates | spec.md + tasks.md + verify-checklist.md template + AGENTS.md |
+
+**When to delegate**:
+
+```
+Task count > 8 or conversation context feeling heavy?
+├─ YES → Spawn Executor per task/wave, Verifier for gates
+└─ NO  → Single-context execution (default, most features)
+```
+
+**Delegation protocol**:
+1. Pass file paths to each subagent (let it read fresh, don't paste content)
+2. Subagent completes work and writes a status summary as a comment in tasks.md
+3. Orchestrator (main conversation) updates task markers based on results
+
+**Tool-specific**: In Claude Code, use the Task tool. In Cursor, use separate Composer sessions. In other tools, start a new conversation with the listed files as context.
+
+**Anti-pattern**: Never spawn an executor for a task that depends on output from an incomplete prior task. Sequential dependencies must remain sequential.
+
+---
+
+## Context Awareness
+
+Long implementations consume context. Monitor and manage proactively.
+
+**Warning signs**:
+- Conversation exceeds ~30 back-and-forth exchanges
+- Agent starts forgetting earlier decisions or repeating questions
+- Responses become less specific or more generic
+
+**Checkpoint protocol**:
+1. Write a progress comment in tasks.md: completed tasks, current status, key decisions made, blockers
+2. Consider subagent delegation if many tasks remain
+3. Offer the user a fresh session: "Context is getting heavy. State is saved in tasks.md. We can continue or start fresh."
+
+---
+
 ## Verify Phase (Definition of Done)
 
 When all tasks are `[x]` or `[S]`, create `verify-checklist.md`. This checklist **is** the Definition of Done — a single artifact that gates closeout.
@@ -177,8 +247,9 @@ The checklist covers:
 2. **Acceptance Criteria** — each AC verified with concrete evidence
 3. **Scope Check** — in-scope delivered, no out-of-scope creep
 4. **Quality** — no linter errors, tests pass
-5. **Knowledge Persistence** — affected reference docs updated, ADR created if needed
-6. **Human Approval** — user signs off
+5. **Stub Detection** — no TODOs, empty implementations, placeholder text, or unwired code
+6. **Knowledge Persistence** — affected reference docs updated, ADR created if needed
+7. **Human Approval** — user signs off
 
 Do not proceed to closeout until all checks pass and the user approves.
 
@@ -187,7 +258,9 @@ Verification complete.
 
 **Progress**: X/Y tasks (100%)
 **Acceptance Criteria**: All pass / Issues found
+**Stub Detection**: Clean / Issues found
 **Doc Freshness**: Up to date / Updates needed
+**Decision Record**: Created / Not needed
 
 **Next steps**: Please review. After approval, I will close out.
 ```
@@ -211,18 +284,41 @@ Not every project has every doc. Update only the docs your project maintains. Up
 
 ## Git Workflow (Recommended)
 
-- **Branch per feature**: `feat/<spec-name>` or `fix/<spec-name>`
-- **Commit per task or wave**: Not one giant commit at the end
-- **Message format**: `type(scope): description`
-- **Spec in branch**: Include `specs/` folder; remove during closeout
+### Branch Naming
+
+- `feat/<spec-name>` for features
+- `fix/<spec-name>` for bug fixes
+
+### Atomic Commits
+
+One commit per completed task. Format:
+
+```
+type(scope): description
+
+- T-XX: what was done
+```
+
+**Types**: `feat` (new feature), `fix` (bug fix), `test` (tests only), `refactor` (no behavior change), `chore` (config, deps, docs)
+
+**Scope**: Feature name or module area. Example: `feat(auth): add JWT validation middleware`
+
+### Commit Rules
+
+- Commit after each task — never one giant commit at the end
+- Every commit should leave the project in a working state (tests pass)
+- Include task ID (T-XX) in commit body for traceability back to tasks.md
+- Wave commits: one commit per wave is acceptable — list all task IDs in body
+- Include `specs/` folder in branch; remove during closeout
 
 ---
 
 ## After Approval (Closeout)
 
-1. Create ADR in `docs/decisions/` (if significant decision was made)
-2. Update AGENTS.md (if new patterns emerged)
-3. Delete `specs/[feature-name]/` folder (specs are ephemeral)
+1. Update affected reference docs in `docs/` (data-model, api, architecture, auth — only those that exist in the project)
+2. Create ADR in `docs/decisions/` (if significant decision was made)
+3. Update AGENTS.md (if new patterns, commands, or boundaries emerged)
+4. Delete `specs/[feature-name]/` folder (specs are ephemeral)
 
 ---
 
@@ -261,3 +357,5 @@ Templates live in `.agents/skills/feature-workflow/templates/`. When creating a 
 - Task files: @specs/[feature-name]/tasks.md
 - Decision records: @docs/decisions/
 - load skill `spec-writing`
+- load skill `testing` (for test strategy during Implement phase)
+- load skill `debug-workflow` (for bugs discovered during implementation)

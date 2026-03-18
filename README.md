@@ -31,6 +31,8 @@ AI coding assistants have no lasting knowledge of your project:
 | `spec-writing` | Write quality specs with acceptance criteria and scoping |
 | `agents-md` | Author and maintain effective AGENTS.md files |
 | `doc-writing` | Write reference docs, ADRs, and templates |
+| `debug-workflow` | Systematic debugging: reproduce, hypothesize, investigate, fix, verify |
+| `testing` | Test strategy, TDD guidance, and test quality checks |
 | `project-planning` | Manage roadmap, backlog, and multi-feature progress |
 
 Skills produce three types of project knowledge:
@@ -46,7 +48,7 @@ Skills produce three types of project knowledge:
 | Module | Skills | Purpose |
 | --- | --- | --- |
 | **1. Project Context** | `acdl`, `agents-md`, `doc-writing` | AGENTS.md + docs/ + project skills |
-| **2. Feature Development** | `feature-workflow`, `spec-writing` | Workflows for building features |
+| **2. Feature Development** | `feature-workflow`, `spec-writing`, `debug-workflow`, `testing` | Workflows for building features |
 | **3. Project Planning** | `project-planning` | Multi-feature management (optional) |
 
 ### Why Not Existing SDD Tools?
@@ -163,9 +165,9 @@ project/
 
 ### Module 2: Feature Development
 
-**Skills**: `feature-workflow`, `spec-writing`
+**Skills**: `feature-workflow`, `spec-writing`, `debug-workflow`, `testing`
 
-The `feature-workflow` skill drives the four-phase workflow (Research → Plan → Implement → Verify) with task tracking, verification checklists, and state inspection. The `spec-writing` skill teaches quality spec content.
+The `feature-workflow` skill drives the four-phase workflow (Research → Plan → Implement → Verify) with task tracking, verification checklists, and state inspection. The `spec-writing` skill teaches quality spec content. The `debug-workflow` skill provides systematic debugging, and `testing` covers test strategy and quality.
 
 | Situation | Docs Needed |
 | --- | --- |
