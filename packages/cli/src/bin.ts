@@ -35,9 +35,9 @@ initCmd.addHelpText(
   "after",
   `
 Available modules:
-  1  Project Context        — AGENTS.md bootstrap, reference doc templates, doc-writing skills
-  2  Feature Development    — feature workflow skills, spec templates, optional Cursor bridge
-  3  Project Planning       — project planning skill with roadmap, backlog, tasks, PRD templates
+  1  Foundation             — ACDL bootstrap, AGENTS.md, reference docs (acdl, docs skills)
+  2  Dev Workflow           — spec-driven development, pattern discovery (feature, patterns skills)
+  3  Project Planning       — multi-feature management: roadmap, backlog, PRD (project skill)
 
 Modules 1 and 2 are selected by default when using -y or the interactive prompt.
 `

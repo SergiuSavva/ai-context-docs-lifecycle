@@ -34,23 +34,23 @@ export interface InstallResult {
 export const MODULE_DEFINITIONS: ModuleDefinition[] = [
   {
     id: 1,
-    name: "Project Context",
-    description: "AGENTS.md bootstrap, reference doc templates, doc-writing skills",
-    skillsDir: "modules/01-project-context/skills",
+    name: "Foundation",
+    description: "ACDL bootstrap, AGENTS.md authoring, reference docs (acdl, docs skills)",
+    skillsDir: "modules/01-foundation/skills",
     defaultSelected: true,
-    skills: ["acdl", "agents-md", "doc-writing"],
+    skills: ["acdl", "docs"],
     extras: [],
   },
   {
     id: 2,
-    name: "Feature Development",
-    description: "feature workflow skills, spec templates, optional Cursor bridge",
-    skillsDir: "modules/02-feature-development/skills",
+    name: "Dev Workflow",
+    description: "spec-driven feature development, codebase pattern discovery (feature, patterns skills)",
+    skillsDir: "modules/02-dev-workflow/skills",
     defaultSelected: true,
-    skills: ["feature-workflow", "spec-writing"],
+    skills: ["feature", "patterns"],
     extras: [
       {
-        src: "feature-workflow/cursor-bridge.mdc",
+        src: "feature/cursor-bridge.mdc",
         dest: ".cursor/rules/feature-workflow.mdc",
       },
     ],
@@ -58,10 +58,10 @@ export const MODULE_DEFINITIONS: ModuleDefinition[] = [
   {
     id: 3,
     name: "Project Planning",
-    description: "project planning skill with roadmap, backlog, tasks, PRD templates",
+    description: "multi-feature management: roadmap, backlog, PRD (project skill)",
     skillsDir: "modules/03-project-planning/skills",
     defaultSelected: false,
-    skills: ["project-planning"],
+    skills: ["project"],
     extras: [],
   },
 ];

@@ -96,76 +96,85 @@ describe("acdl init", () => {
 });
 
 describe("acdl init --modules", () => {
-  it("installs Module 1 skills with --modules 1", () => {
+  it("installs Module 1 (Foundation) skills with --modules 1", () => {
     run(["init", "--modules", "1"], FIXTURE_DIR);
 
-    // Skills installed
+    // Skills installed: acdl + docs
     expect(existsSync(resolve(FIXTURE_DIR, ".agents", "skills", "acdl", "SKILL.md"))).toBe(true);
-    expect(existsSync(resolve(FIXTURE_DIR, ".agents", "skills", "agents-md", "SKILL.md"))).toBe(true);
-    expect(existsSync(resolve(FIXTURE_DIR, ".agents", "skills", "doc-writing", "SKILL.md"))).toBe(true);
+    expect(existsSync(resolve(FIXTURE_DIR, ".agents", "skills", "docs", "SKILL.md"))).toBe(true);
 
-    // Templates inside acdl skill
+    // Old skill names NOT installed
+    expect(existsSync(resolve(FIXTURE_DIR, ".agents", "skills", "agents-md"))).toBe(false);
+    expect(existsSync(resolve(FIXTURE_DIR, ".agents", "skills", "doc-writing"))).toBe(false);
+
+    // AGENTS.md templates in acdl
     expect(existsSync(resolve(FIXTURE_DIR, ".agents", "skills", "acdl", "templates", "AGENTS-single-app.md"))).toBe(true);
     expect(existsSync(resolve(FIXTURE_DIR, ".agents", "skills", "acdl", "templates", "AGENTS-monorepo-root.md"))).toBe(true);
-    expect(existsSync(resolve(FIXTURE_DIR, ".agents", "skills", "acdl", "templates", "docs", "api.md"))).toBe(true);
-    expect(existsSync(resolve(FIXTURE_DIR, ".agents", "skills", "acdl", "templates", "docs", "architecture.md"))).toBe(true);
-    expect(existsSync(resolve(FIXTURE_DIR, ".agents", "skills", "acdl", "templates", "docs", "decisions", "adr.md"))).toBe(true);
 
-    // No docs/ at project root (templates are inside skills now)
+    // Reference doc templates in docs skill (not in acdl)
+    expect(existsSync(resolve(FIXTURE_DIR, ".agents", "skills", "docs", "templates", "docs", "api.md"))).toBe(true);
+    expect(existsSync(resolve(FIXTURE_DIR, ".agents", "skills", "docs", "templates", "docs", "architecture.md"))).toBe(true);
+    expect(existsSync(resolve(FIXTURE_DIR, ".agents", "skills", "docs", "templates", "docs", "decisions", "adr.md"))).toBe(true);
+
+    // No docs/ at project root
     expect(existsSync(resolve(FIXTURE_DIR, "docs"))).toBe(false);
-
-    // No AGENTS.md templates at root
-    expect(existsSync(resolve(FIXTURE_DIR, "AGENTS-single-app.md"))).toBe(false);
   });
 
-  it("installs Module 2 skills with --modules 2", () => {
+  it("installs Module 2 (Dev Workflow) skills with --modules 2", () => {
     run(["init", "--modules", "2"], FIXTURE_DIR);
 
-    // Skills installed
-    expect(existsSync(resolve(FIXTURE_DIR, ".agents", "skills", "feature-workflow", "SKILL.md"))).toBe(true);
-    expect(existsSync(resolve(FIXTURE_DIR, ".agents", "skills", "spec-writing", "SKILL.md"))).toBe(true);
+    // Skills installed: feature + patterns
+    expect(existsSync(resolve(FIXTURE_DIR, ".agents", "skills", "feature", "SKILL.md"))).toBe(true);
+    expect(existsSync(resolve(FIXTURE_DIR, ".agents", "skills", "patterns", "SKILL.md"))).toBe(true);
 
-    // workflow-guide merged into feature-workflow — no separate directory
-    expect(existsSync(resolve(FIXTURE_DIR, ".agents", "skills", "workflow-guide"))).toBe(false);
+    // Old skill names NOT installed
+    expect(existsSync(resolve(FIXTURE_DIR, ".agents", "skills", "feature-workflow"))).toBe(false);
+    expect(existsSync(resolve(FIXTURE_DIR, ".agents", "skills", "spec-writing"))).toBe(false);
 
-    // Spec templates inside feature-workflow skill
-    expect(existsSync(resolve(FIXTURE_DIR, ".agents", "skills", "feature-workflow", "templates", "spec.md"))).toBe(true);
-    expect(existsSync(resolve(FIXTURE_DIR, ".agents", "skills", "feature-workflow", "templates", "tasks.md"))).toBe(true);
-    expect(existsSync(resolve(FIXTURE_DIR, ".agents", "skills", "feature-workflow", "templates", "plan.md"))).toBe(true);
-    expect(existsSync(resolve(FIXTURE_DIR, ".agents", "skills", "feature-workflow", "templates", "design.md"))).toBe(true);
+    // Feature templates
+    expect(existsSync(resolve(FIXTURE_DIR, ".agents", "skills", "feature", "templates", "spec.md"))).toBe(true);
+    expect(existsSync(resolve(FIXTURE_DIR, ".agents", "skills", "feature", "templates", "tasks.md"))).toBe(true);
+    expect(existsSync(resolve(FIXTURE_DIR, ".agents", "skills", "feature", "templates", "design.md"))).toBe(true);
+
+    // ADR template NOT in feature (lives in docs skill now)
+    expect(existsSync(resolve(FIXTURE_DIR, ".agents", "skills", "feature", "templates", "adr.md"))).toBe(false);
+
+    // Patterns skill has no templates (discovery-first)
+    expect(existsSync(resolve(FIXTURE_DIR, ".agents", "skills", "patterns", "templates"))).toBe(false);
 
     // Cursor bridge at expected location
     expect(existsSync(resolve(FIXTURE_DIR, ".cursor", "rules", "feature-workflow.mdc"))).toBe(true);
 
     // Cursor bridge NOT inside the skill directory
-    expect(existsSync(resolve(FIXTURE_DIR, ".agents", "skills", "feature-workflow", "cursor-bridge.mdc"))).toBe(false);
-
-    // No specs/_templates/ at project root (templates are inside skills now)
-    expect(existsSync(resolve(FIXTURE_DIR, "specs"))).toBe(false);
+    expect(existsSync(resolve(FIXTURE_DIR, ".agents", "skills", "feature", "cursor-bridge.mdc"))).toBe(false);
   });
 
-  it("installs Module 3 skill with --modules 3", () => {
+  it("installs Module 3 (Project Planning) skill with --modules 3", () => {
     run(["init", "--modules", "3"], FIXTURE_DIR);
 
     // Skill installed
-    expect(existsSync(resolve(FIXTURE_DIR, ".agents", "skills", "project-planning", "SKILL.md"))).toBe(true);
+    expect(existsSync(resolve(FIXTURE_DIR, ".agents", "skills", "project", "SKILL.md"))).toBe(true);
 
-    // Templates inside project-planning skill
-    expect(existsSync(resolve(FIXTURE_DIR, ".agents", "skills", "project-planning", "templates", "ROADMAP.md"))).toBe(true);
-    expect(existsSync(resolve(FIXTURE_DIR, ".agents", "skills", "project-planning", "templates", "BACKLOG.md"))).toBe(true);
-    expect(existsSync(resolve(FIXTURE_DIR, ".agents", "skills", "project-planning", "templates", "TASKS.md"))).toBe(true);
-    expect(existsSync(resolve(FIXTURE_DIR, ".agents", "skills", "project-planning", "templates", "PROJECT-PRD.md"))).toBe(true);
+    // Old skill name NOT installed
+    expect(existsSync(resolve(FIXTURE_DIR, ".agents", "skills", "project-planning"))).toBe(false);
+
+    // Templates inside project skill
+    expect(existsSync(resolve(FIXTURE_DIR, ".agents", "skills", "project", "templates", "ROADMAP.md"))).toBe(true);
+    expect(existsSync(resolve(FIXTURE_DIR, ".agents", "skills", "project", "templates", "BACKLOG.md"))).toBe(true);
+    expect(existsSync(resolve(FIXTURE_DIR, ".agents", "skills", "project", "templates", "TASKS.md"))).toBe(true);
+    expect(existsSync(resolve(FIXTURE_DIR, ".agents", "skills", "project", "templates", "PROJECT-PRD.md"))).toBe(true);
 
     // Templates NOT at project root
     expect(existsSync(resolve(FIXTURE_DIR, "ROADMAP.md"))).toBe(false);
-    expect(existsSync(resolve(FIXTURE_DIR, "BACKLOG.md"))).toBe(false);
   });
 
   it("installs multiple modules with --modules 1,2", () => {
     run(["init", "--modules", "1,2"], FIXTURE_DIR);
 
     expect(existsSync(resolve(FIXTURE_DIR, ".agents", "skills", "acdl", "SKILL.md"))).toBe(true);
-    expect(existsSync(resolve(FIXTURE_DIR, ".agents", "skills", "feature-workflow", "SKILL.md"))).toBe(true);
+    expect(existsSync(resolve(FIXTURE_DIR, ".agents", "skills", "docs", "SKILL.md"))).toBe(true);
+    expect(existsSync(resolve(FIXTURE_DIR, ".agents", "skills", "feature", "SKILL.md"))).toBe(true);
+    expect(existsSync(resolve(FIXTURE_DIR, ".agents", "skills", "patterns", "SKILL.md"))).toBe(true);
     expect(existsSync(resolve(FIXTURE_DIR, ".cursor", "rules", "feature-workflow.mdc"))).toBe(true);
   });
 
@@ -173,8 +182,10 @@ describe("acdl init --modules", () => {
     run(["init", "--modules", "all"], FIXTURE_DIR);
 
     expect(existsSync(resolve(FIXTURE_DIR, ".agents", "skills", "acdl", "SKILL.md"))).toBe(true);
-    expect(existsSync(resolve(FIXTURE_DIR, ".agents", "skills", "feature-workflow", "SKILL.md"))).toBe(true);
-    expect(existsSync(resolve(FIXTURE_DIR, ".agents", "skills", "project-planning", "SKILL.md"))).toBe(true);
+    expect(existsSync(resolve(FIXTURE_DIR, ".agents", "skills", "docs", "SKILL.md"))).toBe(true);
+    expect(existsSync(resolve(FIXTURE_DIR, ".agents", "skills", "feature", "SKILL.md"))).toBe(true);
+    expect(existsSync(resolve(FIXTURE_DIR, ".agents", "skills", "patterns", "SKILL.md"))).toBe(true);
+    expect(existsSync(resolve(FIXTURE_DIR, ".agents", "skills", "project", "SKILL.md"))).toBe(true);
     expect(existsSync(resolve(FIXTURE_DIR, ".cursor", "rules", "feature-workflow.mdc"))).toBe(true);
   });
 
@@ -195,25 +206,25 @@ describe("acdl init --modules", () => {
   it("installs default modules with -y flag", () => {
     run(["init", "-y"], FIXTURE_DIR);
 
-    // Module 1 skills
+    // Module 1 (Foundation) — default
     expect(existsSync(resolve(FIXTURE_DIR, ".agents", "skills", "acdl", "SKILL.md"))).toBe(true);
-    expect(existsSync(resolve(FIXTURE_DIR, ".agents", "skills", "acdl", "templates", "AGENTS-single-app.md"))).toBe(true);
+    expect(existsSync(resolve(FIXTURE_DIR, ".agents", "skills", "docs", "SKILL.md"))).toBe(true);
 
-    // Module 2 skills
-    expect(existsSync(resolve(FIXTURE_DIR, ".agents", "skills", "feature-workflow", "SKILL.md"))).toBe(true);
-    expect(existsSync(resolve(FIXTURE_DIR, ".agents", "skills", "feature-workflow", "templates", "spec.md"))).toBe(true);
+    // Module 2 (Dev Workflow) — default
+    expect(existsSync(resolve(FIXTURE_DIR, ".agents", "skills", "feature", "SKILL.md"))).toBe(true);
+    expect(existsSync(resolve(FIXTURE_DIR, ".agents", "skills", "patterns", "SKILL.md"))).toBe(true);
     expect(existsSync(resolve(FIXTURE_DIR, ".cursor", "rules", "feature-workflow.mdc"))).toBe(true);
 
     // Module 3 NOT installed by default
-    expect(existsSync(resolve(FIXTURE_DIR, ".agents", "skills", "project-planning"))).toBe(false);
+    expect(existsSync(resolve(FIXTURE_DIR, ".agents", "skills", "project"))).toBe(false);
   });
 
   it("installs default modules with --yes flag", () => {
     const { stdout } = run(["init", "--yes"], FIXTURE_DIR);
 
     expect(existsSync(resolve(FIXTURE_DIR, ".agents", "skills", "acdl", "SKILL.md"))).toBe(true);
-    expect(stdout).toContain("Installed Project Context");
-    expect(stdout).toContain("Installed Feature Development");
+    expect(stdout).toContain("Installed Foundation");
+    expect(stdout).toContain("Installed Dev Workflow");
   });
 });
 
@@ -283,7 +294,7 @@ describe("acdl init --dry-run", () => {
 
     expect(exitCode).toBe(0);
     expect(stdout).toContain("Dry run");
-    expect(stdout).toContain("Would install Project Context");
+    expect(stdout).toContain("Would install Foundation");
 
     expect(existsSync(resolve(FIXTURE_DIR, ".agents"))).toBe(false);
   });
@@ -317,8 +328,8 @@ describe("acdl init --help", () => {
   it("lists available modules in help output", () => {
     const { stdout } = run(["init", "--help"], FIXTURE_DIR);
 
-    expect(stdout).toContain("Project Context");
-    expect(stdout).toContain("Feature Development");
+    expect(stdout).toContain("Foundation");
+    expect(stdout).toContain("Dev Workflow");
     expect(stdout).toContain("Project Planning");
   });
 });

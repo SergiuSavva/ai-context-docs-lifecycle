@@ -7,7 +7,26 @@
       "WebFetch(domain:martinfowler.com)",
       "WebFetch(domain:www.thoughtworks.com)",
       "Bash(pip install:*)",
-      "Bash(mkdocs build:*)"
+      "Bash(mkdocs build:*)",
+      "Bash(npm run:*)",
+      "Bash(npx tsc:*)",
+      "Bash(npm test:*)",
+      "WebFetch(domain:platform.openai.com)",
+      "Bash(python3:*)",
+      "Bash(git add:*)",
+      "Bash(git commit:*)",
+      "Bash(node:*)",
+      "Bash(git push:*)",
+      "Bash(wc -l /Volumes/Work/Personal/SideProjects/ai-first-dev-kit/_temp/get-shit-done/get-shit-done/workflows/*.md)",
+      "WebFetch(domain:raw.githubusercontent.com)",
+      "Bash(cp:*)",
+      "Bash(cp -R /Volumes/Work/Personal/SideProjects/ai-first-dev-kit/content/modules/01-core /Volumes/Work/Personal/SideProjects/ai-first-dev-kit/packages/cli/content/modules/01-core)",
+      "Bash(cp -R /Volumes/Work/Personal/SideProjects/ai-first-dev-kit/content/modules/02-project /Volumes/Work/Personal/SideProjects/ai-first-dev-kit/packages/cli/content/modules/02-project)",
+      "Bash(npx vitest:*)",
+      "Bash(cd:*)",
+      "Bash(cp content/modules/01-core/skills/acdl/templates/AGENTS-*.md content/modules/01-foundation/skills/acdl/templates/)",
+      "Bash(cp content/modules/01-core/skills/feature/templates/*.md content/modules/02-dev-workflow/skills/feature/templates/)",
+      "Bash(cp content/modules/02-project/skills/project/templates/*.md content/modules/03-project-planning/skills/project/templates/)"
     ]
   }
 }
