@@ -28,7 +28,6 @@ This installs methodology skills and templates into your project. By default, Mo
 - `.agents/skills/docs/` — reference doc templates
 - `.agents/skills/feature/` — feature workflow with phases
 - `.agents/skills/patterns/` — stack pattern skill
-- optional `.cursor/rules/feature-workflow.mdc` — Cursor bridge
 
 > **Note**: `init` installs assets only. Your AI generates the actual project-specific files in Step 2.
 

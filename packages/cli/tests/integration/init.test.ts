@@ -142,11 +142,8 @@ describe("acdl init --modules", () => {
     // Patterns skill has no templates (discovery-first)
     expect(existsSync(resolve(FIXTURE_DIR, ".agents", "skills", "patterns", "templates"))).toBe(false);
 
-    // Cursor bridge at expected location
-    expect(existsSync(resolve(FIXTURE_DIR, ".cursor", "rules", "feature-workflow.mdc"))).toBe(true);
-
-    // Cursor bridge NOT inside the skill directory
-    expect(existsSync(resolve(FIXTURE_DIR, ".agents", "skills", "feature", "cursor-bridge.mdc"))).toBe(false);
+    // No tool-specific files installed
+    expect(existsSync(resolve(FIXTURE_DIR, ".cursor"))).toBe(false);
   });
 
   it("installs Module 3 (Project Planning) skill with --modules 3", () => {
@@ -175,7 +172,6 @@ describe("acdl init --modules", () => {
     expect(existsSync(resolve(FIXTURE_DIR, ".agents", "skills", "docs", "SKILL.md"))).toBe(true);
     expect(existsSync(resolve(FIXTURE_DIR, ".agents", "skills", "feature", "SKILL.md"))).toBe(true);
     expect(existsSync(resolve(FIXTURE_DIR, ".agents", "skills", "patterns", "SKILL.md"))).toBe(true);
-    expect(existsSync(resolve(FIXTURE_DIR, ".cursor", "rules", "feature-workflow.mdc"))).toBe(true);
   });
 
   it("installs all modules with --modules all", () => {
@@ -186,7 +182,6 @@ describe("acdl init --modules", () => {
     expect(existsSync(resolve(FIXTURE_DIR, ".agents", "skills", "feature", "SKILL.md"))).toBe(true);
     expect(existsSync(resolve(FIXTURE_DIR, ".agents", "skills", "patterns", "SKILL.md"))).toBe(true);
     expect(existsSync(resolve(FIXTURE_DIR, ".agents", "skills", "project", "SKILL.md"))).toBe(true);
-    expect(existsSync(resolve(FIXTURE_DIR, ".cursor", "rules", "feature-workflow.mdc"))).toBe(true);
   });
 
   it("skips module installation with --skip-install", () => {
@@ -213,7 +208,6 @@ describe("acdl init --modules", () => {
     // Module 2 (Dev Workflow) — default
     expect(existsSync(resolve(FIXTURE_DIR, ".agents", "skills", "feature", "SKILL.md"))).toBe(true);
     expect(existsSync(resolve(FIXTURE_DIR, ".agents", "skills", "patterns", "SKILL.md"))).toBe(true);
-    expect(existsSync(resolve(FIXTURE_DIR, ".cursor", "rules", "feature-workflow.mdc"))).toBe(true);
 
     // Module 3 NOT installed by default
     expect(existsSync(resolve(FIXTURE_DIR, ".agents", "skills", "project"))).toBe(false);

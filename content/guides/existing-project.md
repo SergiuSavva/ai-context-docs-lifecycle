@@ -23,7 +23,7 @@ From project root:
 npx @acdl/cli init
 ```
 
-This installs methodology skills/templates directly into your project (for example `.agents/skills/...` and optional `.cursor/rules/feature-workflow.mdc`) for guided setup.
+This installs methodology skills/templates directly into your project (`.agents/skills/...`) for guided setup.
 
 If the installed assets already exist:
 

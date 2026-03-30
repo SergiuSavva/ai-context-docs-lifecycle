@@ -24,7 +24,6 @@ Structured feature development with spec writing, task tracking, debugging, test
 - **Location**: `skills/feature/SKILL.md`
 - **Templates**: `skills/feature/templates/`
   - `spec.md`, `tasks.md`, `research.md`, `design.md`, `plan.md`, `user-stories.md`, `verify-checklist.md`
-- **Cursor bridge**: `skills/feature/cursor-bridge.mdc` (installed as `.cursor/rules/feature-workflow.mdc`)
 
 **Usage**: `load skill feature`
 

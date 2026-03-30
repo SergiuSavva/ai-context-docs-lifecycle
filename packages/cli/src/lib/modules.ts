@@ -48,12 +48,7 @@ export const MODULE_DEFINITIONS: ModuleDefinition[] = [
     skillsDir: "modules/02-dev-workflow/skills",
     defaultSelected: true,
     skills: ["feature", "patterns"],
-    extras: [
-      {
-        src: "feature/cursor-bridge.mdc",
-        dest: ".cursor/rules/feature-workflow.mdc",
-      },
-    ],
+    extras: [],
   },
   {
     id: 3,
@@ -103,8 +98,6 @@ export function installModule(
     }
 
     for (const file of walkFiles(srcSkillDir)) {
-      // Skip cursor-bridge.mdc — handled via extras
-      if (file === "cursor-bridge.mdc") continue;
 
       const srcPath = resolve(srcSkillDir, file);
       const destRel = join(".agents", "skills", skillName, file);
