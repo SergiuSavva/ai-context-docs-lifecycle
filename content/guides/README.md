@@ -58,7 +58,7 @@ Then come back here for your specific situation:
 ```
 1. Bug fix or config change? Just do it — no docs needed.
 2. Real feature? Create specs/<feature>/spec.md + tasks.md
-3. Tell AI: "load skill `feature-workflow`"
+3. Tell AI: "load skill `feature`"
 ```
 
 ### Record an architecture decision
@@ -78,11 +78,10 @@ When asked to apply ACDL to a project:
 1. Determine project state: new or existing?
 2. Use the appropriate guide above
 3. Read relevant module READMEs before writing files:
-   - [Module 1: Project Context](../modules/01-project-context/README.md)
-   - [Module 2: Feature Development](../modules/02-feature-development/README.md)
+   - [Module 1: Foundation](../modules/01-foundation/README.md)
+   - [Module 2: Dev Workflow](../modules/02-dev-workflow/README.md)
    - [Module 3: Project Planning](../modules/03-project-planning/README.md)
 4. Use templates from skills: `skills/<skill>/templates/`
-5. Reference examples in Module 2: `examples/simple-todo/`, `examples/complex-auth/`
 
 ---
 
@@ -90,9 +89,9 @@ When asked to apply ACDL to a project:
 
 | Module | Templates | Examples |
 |--------|-----------|----------|
-| [01-project-context](../modules/01-project-context/README.md) | `skills/acdl/templates/`, plus `skills/*/SKILL.md` | — |
-| [02-feature-development](../modules/02-feature-development/README.md) | `skills/feature-workflow/templates/` | `examples/simple-todo/`, `examples/complex-auth/` |
-| [03-project-planning](../modules/03-project-planning/README.md) | `skills/project-planning/templates/` | — |
+| [01-foundation](../modules/01-foundation/README.md) | `skills/acdl/templates/`, `skills/docs/templates/` | — |
+| [02-dev-workflow](../modules/02-dev-workflow/README.md) | `skills/feature/templates/` | — |
+| [03-project-planning](../modules/03-project-planning/README.md) | `skills/project/templates/` | — |
 
 ---
 

@@ -6,22 +6,22 @@
 
 ## Overview
 
-| # | Module | Purpose |
-|---|--------|---------|
-| 1 | [Project Context](./01-project-context/README.md) | AGENTS.md + docs/ + .agents/skills/ |
-| 2 | [Feature Development](./02-feature-development/README.md) | Workflows for building features |
-| 3 | [Project Planning](./03-project-planning/README.md) | Multi-feature management (optional) |
+| # | Module | Purpose | Default? |
+|---|--------|---------|----------|
+| 1 | [Foundation](./01-foundation/README.md) | AGENTS.md bootstrap + reference doc templates | Yes |
+| 2 | [Dev Workflow](./02-dev-workflow/README.md) | Feature workflow + stack pattern skills | Yes |
+| 3 | [Project Planning](./03-project-planning/README.md) | Multi-feature management | No (optional) |
 
 ---
 
 ## Adoption Path
 
-Start with Module 1, add more as needed:
+Start with Modules 1-2 (installed by default), add Module 3 when needed:
 
 ```mermaid
 graph LR
-    M1["1: Project Context"] --> M2["2: Feature Dev"]
-    M2 --> M3["3: Planning"]
+    M1["1: Foundation"] --> M2["2: Dev Workflow"]
+    M2 --> M3["3: Project Planning"]
 ```
 
 Module 1 has three tiers: Basic (`AGENTS.md` only), Standard (`AGENTS.md` + `docs/`), Full (+ `.agents/skills/`). For a solo side project, Standard tier is the recommended starting point.
@@ -41,18 +41,10 @@ AGENTS.md + `docs/scripts.md` (and any docs your project needs). Best for person
 ### Production
 
 ```
-Module 1 — Full tier (AGENTS.md + docs/ + .agents/skills/)
+Modules 1-2 — Full tier (AGENTS.md + docs/ + .agents/skills/ + feature workflow)
 ```
 
-Adds on-demand skills for deep tech stack patterns. Best for production apps with specific framework or library conventions.
-
-### Team
-
-```
-Modules 1 + 2
-```
-
-Add feature workflows for structured development. Best for team projects building multiple features.
+Adds on-demand skills for deep tech stack patterns and structured feature workflows. Best for production apps with specific framework or library conventions.
 
 ### Enterprise
 

@@ -1,189 +1,49 @@
 # Module 3: Project Planning
 
-> **Optional module** for managing multiple features and project-level planning.
+> Multi-feature management — roadmap, backlog, and project tracking.
 
----
-
-## The Problem
-
-When you have multiple features to build:
-- "What should I build next?" - No clear priorities
-- "How far along is the project?" - Progress scattered across feature specs
-- "What's the vision?" - No single source of truth
-
-**The solution**: Project-level documents that AI agents can read to understand priorities and progress.
-
-**Note**: If you use Jira, Linear, or GitHub Projects, you may not need this module. Its value is keeping planning docs in-repo where AI can read them.
+**Optional module** — install with `npx @acdl/cli init --modules 3`.
 
 ---
 
 ## What This Module Does
 
-Provides a self-contained `project-planning` skill with templates for tracking multiple features, prioritizing work, and maintaining a project-level vision. The skill carries all templates inside its directory — install it by copying the folder or using the CLI.
+Adds portfolio-level planning for projects with multiple features:
 
-## When to Use
-
-- Managing multiple features/specs
-- Need to prioritize what to build next
-- Want project-level vision documented
-- Working with a team that needs shared roadmap
-
-## What You Get
-
-The `project-planning` skill installs to `.agents/skills/project-planning/` with templates inside. When activated, the AI copies templates to the project root:
-
-```
-your-project/
-├── AGENTS.md              # Module 1 — always loaded
-├── PROJECT-PRD.md         # Project vision (optional, from templates/)
-├── BACKLOG.md             # Feature prioritization (from templates/)
-├── ROADMAP.md             # Phase planning (from templates/)
-├── TASKS.md               # Global progress tracking (from templates/)
-├── .agents/skills/
-│   └── project-planning/
-│       ├── SKILL.md       # Workflow instructions
-│       └── templates/     # Source templates
-├── specs/                 # Module 2 — ephemeral feature work
-└── docs/                  # Module 1 — permanent reference
-```
+1. **PRD** — product vision and requirements
+2. **Backlog** — feature priorities and state tracking
+3. **Roadmap** — phase planning and milestones
+4. **Tasks** — global progress across all features
 
 ---
 
-## Templates
+## Skills
 
-### PROJECT-PRD.md (Optional)
+### `project`
 
-**What**: High-level product vision for the entire project
-**When**: When you need to document overall goals, target users, success metrics
-**Lifecycle**: Evergreen - keep updated as vision evolves
+Project planning workflow with discovery, planning, and status phases.
 
-This is different from feature specs:
-- Feature Spec = What to build for ONE feature
-- Project PRD = Vision for the ENTIRE product
+- **Location**: `skills/project/SKILL.md`
+- **Templates**: `skills/project/templates/`
+  - `PROJECT-PRD.md`, `BACKLOG.md`, `ROADMAP.md`, `TASKS.md`
 
-See: [`skills/project-planning/templates/PROJECT-PRD.md`](./skills/project-planning/templates/PROJECT-PRD.md)
+**Usage**: `load skill project`
 
----
-
-### BACKLOG.md
-
-**What**: Prioritized list of features/specs to build
-**When**: When managing multiple features
-**Lifecycle**: Evergreen - update as priorities change
-
-Features move through states:
-```
-Idea → Specified → Ready → In Progress → Complete
-```
-
-See: [`skills/project-planning/templates/BACKLOG.md`](./skills/project-planning/templates/BACKLOG.md)
+**Phases**: discovery, plan, status
 
 ---
 
-### ROADMAP.md
-
-**What**: Phase-based or time-based planning
-**When**: When features are grouped into releases or phases
-**Lifecycle**: Evergreen - update as plans change
-
-Organization options:
-- Phase-based: MVP → Phase 2 → Phase 3
-- Release-based: v1.0 → v1.1 → v2.0
-- Quarter-based: Q1 → Q2 → Q3
-
-See: [`skills/project-planning/templates/ROADMAP.md`](./skills/project-planning/templates/ROADMAP.md)
-
----
-
-### TASKS.md
-
-**What**: Global progress tracking across all features
-**When**: Want high-level view of project progress
-**Lifecycle**: Evergreen - update as features complete
-
-See: [`skills/project-planning/templates/TASKS.md`](./skills/project-planning/templates/TASKS.md)
-
----
-
-## Feature Spec vs Project PRD
-
-| Aspect | Feature Spec | Project PRD |
-|--------|--------------|-------------|
-| **Scope** | Single feature | Entire product |
-| **Location** | `specs/<feature>/` | `PROJECT-PRD.md` |
-| **Lifecycle** | Ephemeral (delete after) | Evergreen (keep updated) |
-| **Content** | Problem, scope, tasks | Vision, users, metrics |
-| **When Created** | Before each feature | Once per project |
-
----
-
-## Workflow
-
-### Starting a Project
-
-1. Create PROJECT-PRD.md (optional, for vision)
-2. Create ROADMAP.md (phases/releases)
-3. Create BACKLOG.md (feature list)
-
-### Adding Features
-
-1. Add to BACKLOG.md as "Idea"
-2. When ready to spec, create `specs/<feature>/`
-3. Update BACKLOG.md status to "Specified"
-
-### Building Features
-
-1. Update BACKLOG.md status to "In Progress"
-2. Use Module 2 workflows (Quick/Standard/Complex)
-3. Update TASKS.md progress
-
-### Completing Features
-
-1. Update BACKLOG.md status to "Complete"
-2. Update TASKS.md with 100%
-3. Update ROADMAP.md if phase complete
-
----
-
-## Skill
-
-This module provides one self-contained skill:
-
-| Skill | Purpose |
-|-------|---------|
-| `project-planning` | Project-level planning workflow — roadmap, backlog, task tracking, PRD. Includes all 4 planning templates. |
-
-### Setup
-
-**CLI:**
+## Setup
 
 ```bash
 npx @acdl/cli init --modules 3
 ```
 
-**Manual:**
-
-```bash
-cp -r skills/project-planning .agents/skills/
-```
-
-Then tell your AI agent: `load skill project-planning`
+Then tell your AI: `load skill project`
 
 ---
 
-## Prerequisites
+## Related Modules
 
-- [Module 1: Project Context](../01-project-context/README.md) — AGENTS.md + docs/
-- [Module 2: Feature Development](../02-feature-development/README.md) — For building features
-
----
-
-## When NOT to Use
-
-Skip this module if:
-- Solo project with clear scope
-- Single feature at a time
-- Don't need formal planning
-- Prefer lightweight approach
-
-Module 2 (Feature Development) is sufficient for most projects.
+- [Module 1: Foundation](../01-foundation/README.md) — AGENTS.md + reference docs (prerequisite)
+- [Module 2: Dev Workflow](../02-dev-workflow/README.md) — feature workflow for individual features

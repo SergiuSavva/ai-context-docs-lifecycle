@@ -40,8 +40,8 @@ Principle: keep `AGENTS.md` compact and route to deeper context only when needed
 
 | Module | Teaches | Main Artifacts |
 |--------|---------|----------------|
-| **1. Project Context** | Core context, reference, and on-demand skills | `AGENTS.md`, `docs/`, `.agents/skills/` |
-| **2. Feature Development** | Research → Plan → Implement → Verify workflow | `specs/<feature>/` |
+| **1. Foundation** | Project context, reference docs, AGENTS.md bootstrap | `AGENTS.md`, `docs/`, `.agents/skills/` |
+| **2. Dev Workflow** | Feature workflow and stack pattern skills | `specs/<feature>/`, `.agents/skills/feature/`, `.agents/skills/patterns/` |
 | **3. Project Planning** | Optional multi-feature planning | `PROJECT-PRD.md`, `BACKLOG.md`, `ROADMAP.md`, `TASKS.md` |
 
 Modules are adoption units. Layers are runtime loading behavior.
@@ -68,8 +68,8 @@ Core rule: stale docs are worse than no docs.
 Classify work before coding:
 
 - **Bug fix / tiny correction**: Quick Flow
-- **Feature work**: Standard or Complex Flow
-- **Portfolio-level planning**: Project Planning module
+- **Feature work**: Standard or Complex Flow (`load skill feature`)
+- **Portfolio-level planning**: Project Planning module (`load skill project`)
 
 ### 2. Context Loading
 
@@ -102,6 +102,7 @@ Rules during execution:
 - update `tasks.md` after each completed/blocked/skipped step
 - request human validation at checkpoints
 - commit after each completed task or wave
+- auto-fix bugs, missing validation, and blocking issues; stop only for architectural changes
 
 ### 5. Verify Before Closeout
 
@@ -253,6 +254,6 @@ Prefer:
 ## See Also
 
 - [Modules](./modules/README.md)
-- [Module 1: Project Context](./modules/01-project-context/README.md)
-- [Module 2: Feature Development](./modules/02-feature-development/README.md)
+- [Module 1: Foundation](./modules/01-foundation/README.md)
+- [Module 2: Dev Workflow](./modules/02-dev-workflow/README.md)
 - [Module 3: Project Planning](./modules/03-project-planning/README.md)

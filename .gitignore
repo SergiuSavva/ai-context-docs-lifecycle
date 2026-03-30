@@ -29,3 +29,4 @@ _*
 # CLI package build artifacts
 packages/cli/dist/
 packages/cli/content/
+packages/cli/packages/

@@ -9,12 +9,11 @@
 ```mermaid
 flowchart LR
     subgraph methodology [Methodology Skills]
-        FW["feature-workflow"]
-        AM["agents-md"]
-        SW["spec-writing"]
-        DW["doc-writing"]
         AC["acdl"]
-        PP["project-planning"]
+        DO["docs"]
+        FE["feature"]
+        PA["patterns"]
+        PR["project"]
     end
 
     subgraph stack [Stack Skills]
@@ -39,84 +38,79 @@ flowchart LR
 
 These ship as templates. Use them to teach AI agents how to follow the workflow.
 
-### `feature-workflow`
-
-| | |
-|---|---|
-| **When to use** | Building any feature, executing tasks, managing implementation progress, resuming work, asking "what should I do next?" |
-| **What it covers** | Project state inspection, four-phase workflow (Research → Plan → Implement → Verify), decision tree, task markers, parallel waves, verification checklist, git recommendations, doc freshness rule, recovery scenarios |
-| **Module** | 2 (Feature Development) |
-| **Token cost** | ~1,000-1,200 |
-| **Location** | `.agents/skills/feature-workflow/SKILL.md` |
-| **Cross-references** | `spec-writing` |
-
-**Trigger phrases**: "build a feature", "implement this", "what's the next task", "mark task complete", "what should I do next", "resume work", "project status"
-
----
-
-### `agents-md`
-
-| | |
-|---|---|
-| **When to use** | Creating a new AGENTS.md, updating project context, onboarding a project |
-| **What it covers** | Router pattern, essential sections (core + routing), token budget, what-goes-where decisions, update triggers, anti-patterns |
-| **Module** | 1 (Project Context) |
-| **Token cost** | ~1,200-1,400 |
-| **Location** | `.agents/skills/agents-md/SKILL.md` |
-| **Cross-references** | `acdl`, `doc-writing`, `feature-workflow` |
-
-**Trigger phrases**: "create AGENTS.md", "update project context", "set up AI docs"
-
----
-
-### `spec-writing`
-
-| | |
-|---|---|
-| **When to use** | Drafting spec.md content, reviewing acceptance criteria quality, scoping a feature |
-| **What it covers** | Spec section anatomy, problem/solution framing, acceptance criteria patterns, scoping discipline, anti-patterns |
-| **Module** | 2 (Feature Development) |
-| **Token cost** | ~1,200-1,400 |
-| **Location** | `.agents/skills/spec-writing/SKILL.md` |
-| **Cross-references** | `feature-workflow` |
-
-**Trigger phrases**: "write a spec", "define acceptance criteria", "scope this feature", "review this spec"
-
-> **Boundary with `feature-workflow`**: `spec-writing` teaches how to write quality spec *content* (framing, criteria, scoping). `feature-workflow` teaches the *process* (phases, task execution, progress tracking). When building a feature, load `feature-workflow` first — it will reference `spec-writing` if spec content needs improvement.
-
----
-
-### `doc-writing`
-
-| | |
-|---|---|
-| **When to use** | Writing or reviewing any markdown documentation — reference docs, guides, READMEs, ADRs, templates |
-| **What it covers** | Three rules (value only, structure over prose, visual over text), doc type routing, section ordering, reference doc patterns, ADR format, template placeholders, cross-referencing, freshness rules, anti-patterns |
-| **Module** | 1 (Project Context) |
-| **Token cost** | ~1,800-2,000 |
-| **Location** | `.agents/skills/doc-writing/SKILL.md` |
-| **Cross-references** | `agents-md`, `spec-writing`, `acdl` |
-
-**Trigger phrases**: "write a doc", "create a README", "write an ADR", "update documentation", "review this doc"
-
----
-
 ### `acdl`
 
 | | |
 |---|---|
-| **When to use** | Setting up ACDL for a project, configuring skills, understanding the daily workflow, maintaining docs |
-| **What it covers** | Full bootstrap workflow (4 phases), configure for your project, skill setup, daily workflow patterns, maintenance triggers, warning signs, what-goes-where routing |
-| **Module** | 1 (Project Context) |
+| **When to use** | Setting up ACDL for a project, creating/updating AGENTS.md, configuring skills, understanding the daily workflow |
+| **What it covers** | Full bootstrap workflow (4 phases), AGENTS.md authoring (router pattern, section anatomy, token budget), configure for your project, skill setup, daily workflow patterns, maintenance triggers |
+| **Module** | 1 (Foundation) |
 | **Token cost** | ~2,200-2,500 |
 | **Location** | `.agents/skills/acdl/SKILL.md` |
-| **Cross-references** | `agents-md`, `doc-writing`, `feature-workflow`, `spec-writing` |
+| **Cross-references** | `docs`, `feature` |
 
-**Trigger phrases**: "set up ACDL", "bootstrap this project", "configure AI docs", "how does ACDL work"
+**Trigger phrases**: "set up ACDL", "bootstrap this project", "create AGENTS.md", "update project context"
 
 ---
 
-### `project-planning`
+### `docs`
+
+| | |
+|---|---|
+| **When to use** | Writing reference docs, creating guides, writing ADRs, updating documentation, creating a README |
+| **What it covers** | Reference doc templates (architecture, API, auth, data model, scripts), ADR templates, guide writing patterns, doc lifecycle rules |
+| **Module** | 1 (Foundation) |
+| **Token cost** | ~1,000-1,500 |
+| **Location** | `.agents/skills/docs/SKILL.md` |
+| **Cross-references** | `acdl` |
+
+**Trigger phrases**: "write a doc", "create a README", "write an ADR", "update documentation", "create reference docs"
+
+---
+
+### `feature`
+
+| | |
+|---|---|
+| **When to use** | Building any feature, executing tasks, managing implementation progress, resuming work, writing specs, debugging, testing, asking "what should I do next?" |
+| **What it covers** | Seven-phase workflow (spec, research, design, tasks, build, verify, closeout), project state inspection, spec writing (problem framing, acceptance criteria, scoping), task markers, parallel waves, debugging strategies, testing patterns, verification checklist, git recommendations, doc freshness rule, recovery scenarios |
+| **Module** | 2 (Dev Workflow) |
+| **Token cost** | ~1,500-2,000 |
+| **Location** | `.agents/skills/feature/SKILL.md` |
+| **Cross-references** | `acdl`, `patterns` |
+
+**Phases**:
+
+| Phase | Command | Purpose |
+|-------|---------|---------|
+| spec | `/feature spec` | Define what to build, acceptance criteria |
+| research | `/feature research` | Explore unknowns, evaluate options |
+| design | `/feature design` | Architecture, APIs, data models |
+| tasks | `/feature tasks` | Break into executable tasks |
+| build | `/feature build` | Implement step by step (includes debugging + testing) |
+| verify | `/feature verify` | Confirm implementation matches spec |
+| closeout | `/feature closeout` | Update docs, create ADRs, clean up |
+
+**Trigger phrases**: "build a feature", "implement this", "what's the next task", "mark task complete", "what should I do next", "resume work", "project status", "write a spec", "define acceptance criteria", "scope this feature"
+
+---
+
+### `patterns`
+
+| | |
+|---|---|
+| **When to use** | Documenting stack-specific patterns, creating coding conventions, teaching AI your project's idioms |
+| **What it covers** | Pattern documentation structure, stack skill authoring, convention encoding |
+| **Module** | 2 (Dev Workflow) |
+| **Token cost** | ~800-1,200 |
+| **Location** | `.agents/skills/patterns/SKILL.md` |
+| **Cross-references** | `feature` |
+
+**Trigger phrases**: "document patterns", "create coding conventions", "teach AI my patterns", "stack patterns"
+
+---
+
+### `project`
 
 | | |
 |---|---|
@@ -124,8 +118,16 @@ These ship as templates. Use them to teach AI agents how to follow the workflow.
 | **What it covers** | Roadmap, backlog, global task tracking, PRD — with templates for all four documents, feature state machine, project workflow |
 | **Module** | 3 (Project Planning) |
 | **Token cost** | ~1,000-1,200 |
-| **Location** | `.agents/skills/project-planning/SKILL.md` |
-| **Cross-references** | `feature-workflow` |
+| **Location** | `.agents/skills/project/SKILL.md` |
+| **Cross-references** | `feature` |
+
+**Phases**:
+
+| Phase | Command | Purpose |
+|-------|---------|---------|
+| discovery | `/project discovery` | Analyze project and create planning docs |
+| plan | `/project plan` | Prioritize and organize work |
+| status | `/project status` | Review progress across features |
 
 **Trigger phrases**: "plan the project", "prioritize features", "update roadmap", "manage backlog", "project vision"
 
@@ -157,13 +159,13 @@ Add entries to your Context Loading table:
 
 | Task | Read First |
 |------|------------|
-| Building a feature          | load skill `feature-workflow` |
-| What should I do next?      | load skill `feature-workflow` |
-| Creating / updating AGENTS.md | load skill `agents-md` |
-| Writing specs or tasks      | load skill `spec-writing` |
-| Writing / reviewing docs    | load skill `doc-writing` |
+| Building a feature          | load skill `feature` |
+| What should I do next?      | load skill `feature` |
+| Creating / updating AGENTS.md | load skill `acdl` |
+| Writing / reviewing docs    | load skill `docs` |
+| Writing specs or tasks      | load skill `feature` |
 | Setting up ACDL             | load skill `acdl` |
-| Project planning / roadmap  | load skill `project-planning` |
+| Project planning / roadmap  | load skill `project` |
 | Database / auth / storage   | load skill `database` |
 | Writing tests               | load skill `testing` |
 ```
@@ -186,7 +188,7 @@ Skills can reference each other in their Related Docs section:
 
 ```markdown
 ## Related Docs
-- load skill `spec-writing`
+- load skill `feature`
 ```
 
 The agent loads the second skill only if the task needs it. Max 2 skills initially.
@@ -213,13 +215,13 @@ Skills also auto-load when AGENTS.md routes to them via the Context Loading tabl
 
 | Task | Load Skill |
 |------|------------|
-| Build a feature | `feature-workflow` |
-| What should I do next? / Resume work | `feature-workflow` |
-| Create/update AGENTS.md | `agents-md` |
-| Write a spec or tasks file | `spec-writing` |
-| Write/review any markdown doc | `doc-writing` |
+| Build a feature | `feature` |
+| What should I do next? / Resume work | `feature` |
+| Write a spec or tasks file | `feature` (phase: spec/tasks) |
+| Create/update AGENTS.md | `acdl` |
+| Write/review any markdown doc | `docs` |
 | Set up or maintain ACDL | `acdl` |
-| Plan project / manage backlog | `project-planning` |
+| Plan project / manage backlog | `project` |
 | Work with database/auth | `database` (project-specific) |
 | Write tests or stories | `testing` (project-specific) |
 | Build UI components | `ui-components` (project-specific) |
@@ -248,7 +250,8 @@ For detailed guidance, see the [Skill Routing Policy](./skill-routing.md).
 
 ## See Also
 
-- [Module 1: Project Context](../modules/01-project-context/README.md) — Full skills documentation
+- [Module 1: Foundation](../modules/01-foundation/README.md) — AGENTS.md + docs templates
+- [Module 2: Dev Workflow](../modules/02-dev-workflow/README.md) — Feature workflow + patterns
 - [Skill Routing Policy](./skill-routing.md) — Score-based activation rules
 - [AGENTS.md Best Practices](./agents-md-best-practices.md) — Context Loading table patterns
 - [Tool Compatibility](./tool-compatibility.md) — Multi-tool setup

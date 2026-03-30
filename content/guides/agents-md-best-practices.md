@@ -273,8 +273,8 @@ make migrate            # Run migrations
 ### Templates
 
 Use the monorepo templates from Module 1:
-- [Monorepo Root Template](../modules/01-project-context/skills/acdl/templates/AGENTS-monorepo-root.md)
-- [Subproject Template](../modules/01-project-context/skills/acdl/templates/AGENTS-monorepo-subproject.md)
+- [Monorepo Root Template](../modules/01-foundation/skills/acdl/templates/AGENTS-monorepo-root.md)
+- [Subproject Template](../modules/01-foundation/skills/acdl/templates/AGENTS-monorepo-subproject.md)
 
 ---
 
@@ -388,5 +388,5 @@ Start with a minimal AGENTS.md. When the AI makes a mistake, add a routing hint,
 
 ## See Also
 
-- [Module 1: Project Context](../modules/01-project-context/README.md) - AGENTS.md + docs/ + skills templates
+- [Module 1: Foundation](../modules/01-foundation/README.md) - AGENTS.md + docs templates
 - [Getting Started Guide](./getting-started.md) - Choose your modules

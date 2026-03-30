@@ -22,11 +22,13 @@
 npx @acdl/cli init
 ```
 
-This installs methodology skills and templates into your project. By default, Modules 1 + 2 are selected:
+This installs methodology skills and templates into your project. By default, Modules 1-2 are selected:
 
-- `.agents/skills/acdl/`, `agents-md/`, `doc-writing/` — Module 1: bootstrap + doc templates
-- `.agents/skills/feature-workflow/`, `spec-writing/` — Module 2: feature workflow
-- optional `.cursor/rules/feature-workflow.mdc` — Cursor bridge (Module 2)
+- `.agents/skills/acdl/` — bootstrap + AGENTS.md templates
+- `.agents/skills/docs/` — reference doc templates
+- `.agents/skills/feature/` — feature workflow with phases
+- `.agents/skills/patterns/` — stack pattern skill
+- optional `.cursor/rules/feature-workflow.mdc` — Cursor bridge
 
 > **Note**: `init` installs assets only. Your AI generates the actual project-specific files in Step 2.
 
@@ -66,7 +68,7 @@ If you are not using the CLI (no local skills installed):
 
 ```text
 Bootstrap AGENTS.md for this project.
-Follow: https://raw.githubusercontent.com/SergiuSavva/ai-context-docs-lifecycle/main/content/modules/01-project-context/skills/acdl/SKILL.md
+Follow: https://raw.githubusercontent.com/SergiuSavva/ai-context-docs-lifecycle/main/content/modules/01-foundation/skills/acdl/SKILL.md
 ```
 
 ---
@@ -109,19 +111,17 @@ mkdir -p .agents/skills/my-stack
 # Create .agents/skills/my-stack/SKILL.md with your patterns
 ```
 
-See [Module 1: Skills](modules/01-project-context/README.md#skills-on-demand-instruction-packages).
+See [Module 1: Foundation](modules/01-foundation/README.md).
 
 ### Pain: Feature work is chaotic or hard to resume
 
-Install Module 2 if you haven't already:
+The `feature` skill is included in Module 2. Tell your AI:
 
-```bash
-npx @acdl/cli init --modules 2
+```text
+load skill `feature`
 ```
 
-Then tell your AI: `load skill \`feature-workflow\``
-
-You'll get a Research → Plan → Implement → Verify workflow with spec and task templates.
+You'll get a structured workflow with phases: spec, research, design, tasks, build, verify, closeout.
 
 ### Pain: Managing too many features at once
 
@@ -131,7 +131,7 @@ Add Module 3 for roadmap, backlog, and project tracking:
 npx @acdl/cli init --modules 3
 ```
 
-Then tell your AI: `load skill \`project-planning\``
+Then tell your AI: `load skill \`project\``
 
 ---
 
@@ -139,12 +139,12 @@ Then tell your AI: `load skill \`project-planning\``
 
 | Module | What Gets Installed | Default? |
 |--------|---------------------|----------|
-| 1 — Project Context | `acdl`, `agents-md`, `doc-writing` skills | Yes |
-| 2 — Feature Development | `feature-workflow`, `spec-writing` skills + optional Cursor bridge | Yes |
-| 3 — Project Planning | `project-planning` skill | No |
+| 1 — Foundation | `acdl`, `docs` skills | Yes |
+| 2 — Dev Workflow | `feature`, `patterns` skills + optional Cursor bridge | Yes |
+| 3 — Project Planning | `project` skill | No |
 
 ```bash
-npx @acdl/cli init -y                  # installs Modules 1 + 2 (defaults)
+npx @acdl/cli init -y                  # installs Modules 1-2 (default)
 npx @acdl/cli init --modules 1        # Module 1 only
 npx @acdl/cli init --modules 1,2,3    # all modules
 npx @acdl/cli init --dry-run -y       # preview without writing files
@@ -156,12 +156,12 @@ npx @acdl/cli init --dry-run -y       # preview without writing files
 
 If you prefer not to use the CLI:
 
-1. Copy [`AGENTS-single-app.md`](https://github.com/SergiuSavva/ai-context-docs-lifecycle/blob/main/content/modules/01-project-context/skills/acdl/templates/AGENTS-single-app.md) to your project root as `AGENTS.md`
+1. Copy [`AGENTS-single-app.md`](https://github.com/SergiuSavva/ai-context-docs-lifecycle/blob/main/content/modules/01-foundation/skills/acdl/templates/AGENTS-single-app.md) to your project root as `AGENTS.md`
 2. Fill in your stack, commands, structure, and boundaries
-3. Create `docs/scripts.md` from the [template](https://github.com/SergiuSavva/ai-context-docs-lifecycle/blob/main/content/modules/01-project-context/skills/acdl/templates/docs/scripts.md)
+3. Create `docs/scripts.md` from the [template](https://github.com/SergiuSavva/ai-context-docs-lifecycle/blob/main/content/modules/01-foundation/skills/docs/templates/docs/scripts.md)
 4. Add other docs only if your project has them (architecture, API, auth, data model)
 
-See the full [template catalog](modules/01-project-context/README.md#choose-your-template).
+See the full [template catalog](modules/01-foundation/README.md#choose-your-template).
 
 ---
 
@@ -169,6 +169,7 @@ See the full [template catalog](modules/01-project-context/README.md#choose-your
 
 - [New Project Setup](guides/new-project.md) — detailed walkthrough from scratch
 - [Existing Project Setup](guides/existing-project.md) — adding ACDL to an existing codebase
-- [Module 1: Project Context](modules/01-project-context/README.md) — AGENTS.md, docs/, skills in depth
-- [Module 2: Feature Development](modules/02-feature-development/README.md) — feature workflow and spec templates
+- [Module 1: Foundation](modules/01-foundation/README.md) — AGENTS.md, docs/ templates
+- [Module 2: Dev Workflow](modules/02-dev-workflow/README.md) — feature workflow + stack patterns
+- [Module 3: Project Planning](modules/03-project-planning/README.md) — multi-feature management
 - [Skills Catalog](guides/skills-catalog.md) — available skills and when to use them

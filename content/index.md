@@ -12,8 +12,8 @@ Pick the modules you need:
 
 | # | Module | Purpose |
 |---|--------|---------|
-| 1 | **[Project Context](modules/01-project-context/README.md)** | AGENTS.md + docs/ + .agents/skills/ |
-| 2 | **[Feature Development](modules/02-feature-development/README.md)** | Workflows for building features |
+| 1 | **[Foundation](modules/01-foundation/README.md)** | AGENTS.md bootstrap + reference doc templates |
+| 2 | **[Dev Workflow](modules/02-dev-workflow/README.md)** | Feature workflow + stack pattern skills |
 | 3 | **[Project Planning](modules/03-project-planning/README.md)** | Multi-feature management (optional) |
 
 ---
@@ -55,7 +55,7 @@ For feature work, agents should follow this order:
 
 ## Quick Start
 
-> **Solo side project or new to ACDL?** [Quick Start →](quick-start.md) covers the minimum useful setup in three steps.
+> **Solo side project or new to ACDL?** [Quick Start ->](quick-start.md) covers the minimum useful setup in three steps.
 
 ### Fastest Path
 
@@ -81,7 +81,7 @@ See [Quick Start](quick-start.md) for the full progressive path, manual setup, a
 
 ## Three Workflow Tracks
 
-Module 2 provides structured workflows based on what you're building:
+Module 2 (Dev Workflow) provides structured workflows based on what you're building:
 
 ### Quick Flow
 
@@ -120,12 +120,5 @@ Works with every AI coding agent:
 **Zero tool-specific files required.** Optional bridges available (e.g., `.mdc` rules that point to skills).
 
 ---
-
-## Examples
-
-See complete walkthroughs in the repository:
-
-- [**Simple Todo Feature**](https://github.com/SergiuSavva/ai-context-docs-lifecycle/tree/main/content/modules/02-feature-development/examples/simple-todo/) — Standard Flow example
-- [**OAuth Authentication**](https://github.com/SergiuSavva/ai-context-docs-lifecycle/tree/main/content/modules/02-feature-development/examples/complex-auth/) — Complex Flow example
 
 [View All Modules](modules/README.md){ .md-button }

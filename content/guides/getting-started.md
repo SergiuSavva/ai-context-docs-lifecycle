@@ -1,6 +1,6 @@
 # Getting Started
 
-> **Pick the modules you need.** New to ACDL? Start with [Quick Start →](../quick-start.md) for the minimum setup, then return here to choose which modules to add.
+> **Pick the modules you need.** New to ACDL? Start with [Quick Start ->](../quick-start.md) for the minimum setup, then return here to choose which modules to add.
 
 ---
 
@@ -37,13 +37,13 @@ your-project/
 
 For a solo side project, Standard tier is the right default. Add skills only when the AI keeps getting your specific stack patterns wrong.
 
-[Go to Module 1: Project Context →](../modules/01-project-context/README.md)
+[Go to Module 1: Foundation ->](../modules/01-foundation/README.md)
 
 ---
 
 ### Building Features?
 
-**Add Module 2 for feature workflows.**
+**The feature workflow is included in Module 2 (Dev Workflow).**
 
 ```bash
 # What you get:
@@ -54,7 +54,9 @@ your-project/
 └── docs/
 ```
 
-[Go to Module 2: Feature Development →](../modules/02-feature-development/README.md)
+Tell your AI: `load skill feature`
+
+[Go to Module 2: Dev Workflow ->](../modules/02-dev-workflow/README.md)
 
 ---
 
@@ -75,7 +77,7 @@ your-project/
 └── docs/
 ```
 
-[Go to Module 3: Project Planning →](../modules/03-project-planning/README.md)
+[Go to Module 3: Project Planning ->](../modules/03-project-planning/README.md)
 
 ---
 
@@ -105,7 +107,7 @@ If your tool cannot load skills by name, replace `load skill \`acdl\`` with:
 `.agents/skills/acdl/SKILL.md`
 
 If you are not using the CLI, replace that local path with:
-`https://raw.githubusercontent.com/SergiuSavva/ai-context-docs-lifecycle/main/content/modules/01-project-context/skills/acdl/SKILL.md`
+`https://raw.githubusercontent.com/SergiuSavva/ai-context-docs-lifecycle/main/content/modules/01-foundation/skills/acdl/SKILL.md`
 
 ---
 
@@ -122,23 +124,15 @@ Best for: Personal projects, prototypes, side projects
 ### Production
 
 ```
-Module 1 — Full tier (AGENTS.md + docs/ + .agents/skills/)
+Modules 1-2 — Full tier (AGENTS.md + docs/ + .agents/skills/ + feature workflow)
 ```
 
 Best for: Production apps with specific tech stack patterns
 
-### Team
-
-```
-Modules 1 + 2 (Project Context + Feature Dev)
-```
-
-Best for: Team projects building multiple features
-
 ### Enterprise
 
 ```
-All modules (1 + 2 + 3)
+All modules (1-3)
 ```
 
 Best for: Products with roadmaps, multiple teams
@@ -149,8 +143,8 @@ Best for: Products with roadmaps, multiple teams
 
 | # | Module | Purpose |
 |---|--------|---------|
-| 1 | [Project Context](../modules/01-project-context/README.md) | AGENTS.md + docs/ + .agents/skills/ |
-| 2 | [Feature Development](../modules/02-feature-development/README.md) | Workflows for building features (specs/) |
+| 1 | [Foundation](../modules/01-foundation/README.md) | AGENTS.md bootstrap + reference doc templates |
+| 2 | [Dev Workflow](../modules/02-dev-workflow/README.md) | Feature workflow + stack pattern skills |
 | 3 | [Project Planning](../modules/03-project-planning/README.md) | Multi-feature management (optional) |
 
 ---

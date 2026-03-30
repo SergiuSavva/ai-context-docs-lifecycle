@@ -1,6 +1,6 @@
 # Existing Project Setup
 
-> **Adding to an existing codebase?** Follow this guide to integrate AI Context Docs Lifecycle. For the fastest path, see [Quick Start →](../quick-start.md) first.
+> **Adding to an existing codebase?** Follow this guide to integrate AI Context Docs Lifecycle. For the fastest path, see [Quick Start ->](../quick-start.md) first.
 
 ---
 
@@ -39,7 +39,7 @@ npx @acdl/cli init --force
 
 If you only want AI context without changing your workflow:
 
-1. Create `AGENTS.md` at project root from [Module 1 templates](../modules/01-project-context/README.md)
+1. Create `AGENTS.md` at project root from [Module 1 templates](../modules/01-foundation/README.md)
 2. Create `docs/` with reference docs describing what exists
 3. Done!
 
@@ -91,7 +91,7 @@ For deep tech patterns that AI needs to follow:
 mkdir -p .agents/skills
 ```
 
-Create skills for your specific tech stack. See the [Skills section in Module 1](../modules/01-project-context/README.md#skills-on-demand-instruction-packages).
+Create skills for your specific tech stack. See the [Skills Catalog](./skills-catalog.md).
 
 **Tip**: If you have existing `.cursor/rules/`, you can keep them as lightweight bridges that point to skills for deeper content.
 
@@ -103,7 +103,7 @@ For new features going forward:
 mkdir -p specs
 ```
 
-Use [Module 2](../modules/02-feature-development/README.md) workflow for new features only.
+Use Module 2's feature workflow (`load skill feature`) for new features only.
 
 ---
 
@@ -165,7 +165,7 @@ Don't modify existing code or documentation structure.
 Focus on adding AI context alongside what exists.
 ```
 
-If your tool cannot load skills by name, point it to `.agents/skills/acdl/SKILL.md`. If you are not using the CLI, replace that local path with the repository raw URL for `content/modules/01-project-context/skills/acdl/SKILL.md`.
+If your tool cannot load skills by name, point it to `.agents/skills/acdl/SKILL.md`. If you are not using the CLI, replace that local path with the repository raw URL for `content/modules/01-foundation/skills/acdl/SKILL.md`.
 
 ---
 
@@ -210,11 +210,11 @@ You don't have to do everything at once:
 
 ### Week 1: Foundation
 - Add AGENTS.md
-- Create the reference docs that match your project (see [template catalog](../modules/01-project-context/README.md#choose-your-template))
+- Create the reference docs that match your project (see [template catalog](../modules/01-foundation/README.md#choose-your-template))
 
 ### Week 2: Skills + New Features
 - Add skills for your tech stack
-- Use Module 2 workflow for NEW features only
+- Use feature workflow (`load skill feature`) for NEW features only
 
 ### Month 1: Documentation
 - Complete docs/ reference layer
@@ -240,5 +240,6 @@ You don't have to do everything at once:
 
 ## Next Steps
 
-- [Module 2: Feature Development](../modules/02-feature-development/README.md) — Use for new features
+- [Module 1: Foundation](../modules/01-foundation/README.md) — AGENTS.md + doc templates
+- [Module 2: Dev Workflow](../modules/02-dev-workflow/README.md) — Feature workflow and skills
 - [Getting Started](./getting-started.md) — Module overview

@@ -1,6 +1,6 @@
 # New Project Setup
 
-> **Starting from scratch?** Follow this guide to set up AI Context Docs Lifecycle. For the fastest path (3 steps), see [Quick Start →](../quick-start.md) first.
+> **Starting from scratch?** Follow this guide to set up AI Context Docs Lifecycle. For the fastest path (3 steps), see [Quick Start ->](../quick-start.md) first.
 
 ---
 
@@ -30,7 +30,7 @@ npx @acdl/cli init --force
 
 ### Step 3: Add AGENTS.md
 
-Copy the template from [Module 1](../modules/01-project-context/skills/acdl/templates/AGENTS-single-app.md):
+Copy the template from [Module 1](../modules/01-foundation/skills/acdl/templates/AGENTS-single-app.md):
 
 ```bash
 # Create AGENTS.md at project root
@@ -51,12 +51,12 @@ Fill in:
 mkdir -p docs/decisions
 ```
 
-Create docs from the [Module 1 template catalog](../modules/01-project-context/README.md#choose-your-template) — only the ones that match your project:
-- [`docs/architecture.md`](../modules/01-project-context/skills/acdl/templates/docs/architecture.md) — if project has multiple layers or services
-- [`docs/data-model.md`](../modules/01-project-context/skills/acdl/templates/docs/data-model.md) — if project has a database
-- [`docs/api.md`](../modules/01-project-context/skills/acdl/templates/docs/api.md) — if project exposes or consumes APIs
-- [`docs/auth.md`](../modules/01-project-context/skills/acdl/templates/docs/auth.md) — if project has authentication
-- [`docs/scripts.md`](../modules/01-project-context/skills/acdl/templates/docs/scripts.md) — if project has runnable commands
+Create docs from the [Module 1 template catalog](../modules/01-foundation/README.md#choose-your-template) — only the ones that match your project:
+- [`docs/architecture.md`](../modules/01-foundation/skills/docs/templates/docs/architecture.md) — if project has multiple layers or services
+- [`docs/data-model.md`](../modules/01-foundation/skills/docs/templates/docs/data-model.md) — if project has a database
+- [`docs/api.md`](../modules/01-foundation/skills/docs/templates/docs/api.md) — if project exposes or consumes APIs
+- [`docs/auth.md`](../modules/01-foundation/skills/docs/templates/docs/auth.md) — if project has authentication
+- [`docs/scripts.md`](../modules/01-foundation/skills/docs/templates/docs/scripts.md) — if project has runnable commands
 
 A simple CLI might only need `scripts.md`. A library might only need `architecture.md`.
 
@@ -76,18 +76,21 @@ Want the complete setup with on-demand skills? Add these steps:
 mkdir -p .agents/skills
 ```
 
-Create skills for your tech stack domains. See the [Skills section in Module 1](../modules/01-project-context/README.md#skills-on-demand-instruction-packages) for the SKILL.md format and template.
+Create skills for your tech stack domains. See the [Skills Catalog](./skills-catalog.md) for the SKILL.md format and template.
 
 ### Step 7: Add Feature Workflow
 
-If you ran `npx @acdl/cli init` with Module 2, the `feature-workflow` skill and optional Cursor bridge are already installed. Otherwise, install manually:
+The `feature` skill is included in Module 2 by default. Tell your AI:
+
+```text
+load skill `feature`
+```
+
+Then create your first spec:
 
 ```bash
 mkdir -p specs
-npx @acdl/cli init --modules 2
 ```
-
-Then tell your AI: `load skill feature-workflow`
 
 ### Step 8: Verify Structure
 
@@ -130,7 +133,7 @@ The AI will:
 2. Generate customized AGENTS.md
 3. Create reference docs and skills for your stack
 
-If your tool cannot load skills by name, point it to `.agents/skills/acdl/SKILL.md`. If you are not using the CLI, provide the GitHub raw URL for `content/modules/01-project-context/skills/acdl/SKILL.md` instead of the local path.
+If your tool cannot load skills by name, point it to `.agents/skills/acdl/SKILL.md`. If you are not using the CLI, provide the GitHub raw URL for `content/modules/01-foundation/skills/acdl/SKILL.md` instead of the local path.
 
 ---
 
@@ -147,7 +150,7 @@ No spec needed. Just fix and commit.
 ```bash
 # 1. Create spec
 mkdir -p specs/my-feature
-# Copy spec.md and tasks.md from Module 2 templates
+# Copy spec.md and tasks.md from feature skill templates
 
 # 2. Tell AI
 "Build the feature specified in specs/my-feature/"
@@ -163,7 +166,7 @@ mkdir -p specs/my-feature
 ```bash
 # 1. Create research
 mkdir -p specs/my-feature
-# Copy all templates from Module 2
+# Copy all templates from feature skill
 
 # 2. Tell AI
 "Research options for [feature] and create research.md"
@@ -190,5 +193,6 @@ mkdir -p specs/my-feature
 
 ## Next Steps
 
-- [Module 2: Feature Development](../modules/02-feature-development/README.md) — Learn the workflows
+- [Module 1: Foundation](../modules/01-foundation/README.md) — AGENTS.md + doc templates
+- [Module 2: Dev Workflow](../modules/02-dev-workflow/README.md) — Feature workflow
 - [Skills Catalog](./skills-catalog.md) — Available skills and when to use them

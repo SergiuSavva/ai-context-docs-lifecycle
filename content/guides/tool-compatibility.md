@@ -32,10 +32,10 @@ Use tool-specific files for extra ergonomics (globs, UI actions), not as your pr
 > **Solo user using one tool?** This section is all you need.
 
 1. Create `AGENTS.md` at project root from:
-   `content/modules/01-project-context/skills/acdl/templates/AGENTS-single-app.md`
+   `content/modules/01-foundation/skills/acdl/templates/AGENTS-single-app.md`
 2. Create `docs/` from Module 1 template catalog (only the docs your project needs).
-3. Optionally create `.agents/skills/` from Module 1 skill templates for deep patterns.
-4. Optionally keep feature workflow templates in `specs/` (Module 2).
+3. Optionally create `.agents/skills/` from Module 1-2 skill templates for deep patterns.
+4. Optionally keep feature workflow templates in `specs/` (Module 2 Dev Workflow).
 
 Works with every agent that can read markdown files. No tool-specific config required.
 
@@ -202,5 +202,6 @@ ln -s AGENTS.md CLAUDE.md
 ## See Also
 
 - [AGENTS.md Best Practices](./agents-md-best-practices.md)
-- [Module 1: Project Context](../modules/01-project-context/README.md)
+- [Module 1: Foundation](../modules/01-foundation/README.md)
+- [Module 2: Dev Workflow](../modules/02-dev-workflow/README.md)
 - [Getting Started](./getting-started.md)
